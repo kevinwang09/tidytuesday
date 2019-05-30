@@ -1,0 +1,12 @@
+# This file controls the layout of the website. 
+name: "Kevin's tidytuesday"
+navbar:
+  title: "Kevin's tidytuesday"
+  left:
+    - text: "Home"
+      href: index.html
+output_dir: "."
+output:
+  html_document:
+    theme: paper
+    highlight: textmate

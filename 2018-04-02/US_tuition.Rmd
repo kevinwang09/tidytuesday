@@ -1,0 +1,79 @@
+---
+title: "kevinMarkdown"
+author: "Kevin Wang"
+date: "`r paste0('Initiated on 2018 Apr 02, compiled on ', format(Sys.time(), '%Y %b %d'))`"
+output:
+  html_document:
+    code_folding: hide
+    fig_height: 12
+    fig_width: 12
+    toc: yes
+    number_sections: true
+    toc_depth: 3
+    toc_float: yes
+editor_options: 
+  chunk_output_type: console
+---
+
+# Loading packages
+```{r}
+library(tidyverse)
+library(here)
+library(readxl)
+```
+
+# Loading functions
+```{r}
+theme_set(theme_classic(18) +
+            theme(legend.position = 
+                    "bottom"))
+```
+
+
+# Loading data
+```{r}
+raw_data = readxl::read_excel(here("2018-04-02", "us_avg_tuition.xlsx"), sheet = 1)
+```
+
+
+# Data cleaning 
+```{r}
+long_data = raw_data %>% 
+  tidyr::gather(key = year, 
+                value = cost, 
+                -State)
+
+long_data
+```
+
+
+# Data summaries
+```{r}
+long_data %>% 
+  dplyr::filter(year == "2004-05") %>% 
+  dplyr::arrange(cost)
+```
+
+
+# Data visulisation
+
+## Time line
+```{r}
+long_data %>% 
+  ggplot(aes(x = year, y = cost, 
+             group = State,
+             colour = State)) +
+  geom_path() +
+  theme(legend.position = "none")
+```
+
+
+# Add in the GDP data from Wikipedia
+
+
+
+# Session Info
+```{r}
+sessionInfo()
+```
+

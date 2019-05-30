@@ -1,0 +1,18 @@
+---
+title: "Kevin's tidytuesday"
+author: "Kevin Wang"
+date: "21/05/2019"
+output: html_document
+---
+
+# 2019 May 21 - Plastic waste
+
+<img src="2019_05_21/gdp_growth_vs_plastic_per_cap.gif" width="700" height="700" />
+
+
+# Session info
+
+```{r}
+sessionInfo()
+```
+

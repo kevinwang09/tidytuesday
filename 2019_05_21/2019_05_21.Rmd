@@ -1,0 +1,206 @@
+---
+title: "Tidytuesday"
+author: "Kevin Wang"
+date: "`r paste0('Initiated on 2019 May 21, compiled on ', format(Sys.time(), '%Y %b %d'))`"
+output:
+  html_document:
+    code_folding: hide
+    fig_height: 12
+    fig_width: 12
+    toc: yes
+    number_sections: true
+    toc_depth: 3
+    toc_float: yes
+editor_options: 
+  chunk_output_type: console
+---
+
+# Summary 
+
++ This data originates from the `tidytuesday` challenge. (https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-05-21)
+
++ There are three pieces of data, however, I will only focus on one of these: `waste_vs_gdp`. 
+
++ I speculate the amount of waste is correlated to the GDP but also **GDP growth** (https://twitter.com/search?q=tidytuesday%20plastic&src=typd). Since GDP growth is not provided, I have decided to download the data from World Bank. 
+
+
+
+
+
+# Loading packages
+```{r}
+library(tidyverse)
+library(janitor)
+library(gganimate)
+library(skimr)
+library(ggsci)
+
+theme_set(theme_classic(18) + 
+            theme(legend.position = "bottom"))
+```
+
+
+# Loading data
+```{r}
+coast_vs_waste <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-21/coastal-population-vs-mismanaged-plastic.csv") %>% 
+  janitor::clean_names()
+
+mismanaged_vs_gdp <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-21/per-capita-mismanaged-plastic-waste-vs-gdp-per-capita.csv") %>% 
+  janitor::clean_names()
+
+waste_vs_gdp <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-21/per-capita-plastic-waste-vs-gdp-per-capita.csv") %>% 
+  janitor::clean_names()
+```
+
+# Cleaning up `waste_vs_gdp`
+```{r}
+waste_vs_gdp_missing = waste_vs_gdp %>% 
+  group_by(entity) %>% 
+  summarise(nMissing = per_capita_plastic_waste_kilograms_per_person_per_day %>% is.na %>% sum) %>% 
+  dplyr::arrange(desc(nMissing))
+
+
+
+waste_vs_gdp_cleaned = waste_vs_gdp %>% 
+  dplyr::transmute(
+    entity, code, year, 
+    plastic_standard = per_capita_plastic_waste_kilograms_per_person_per_day,
+    pop = total_population_gapminder) %>% 
+  na.omit()
+
+waste_vs_gdp_cleaned
+```
+
+
+# Loading World Bank data 
+
+```{r}
+gdp_growth_raw = readr::read_csv("API_NY.GDP.PCAP.KD.ZG_DS2_en_csv_v2_10576663/API_NY.GDP.PCAP.KD.ZG_DS2_en_csv_v2_10576663.csv", skip = 4)
+
+country_regions = readr::read_csv("API_NY.GDP.PCAP.KD.ZG_DS2_en_csv_v2_10576663/Metadata_Country_API_NY.GDP.PCAP.KD.ZG_DS2_en_csv_v2_10576663.csv", skip = 0) %>% 
+  dplyr::select(entity = TableName, 
+                region = Region)
+
+
+
+gdp_growth_cleaned = gdp_growth_raw %>% 
+  dplyr::rename(entity = `Country Name`
+                # code = `Country Code`
+) %>% 
+  dplyr::select(entity, `1960`:`2018`) %>% 
+  tidyr::gather(key = growth_year,
+                value = gdp_growth, 
+                `1960`:`2018`) %>% 
+  left_join(country_regions, by = "entity")
+
+gdp_growth_cleaned %>% skimr::skim()
+
+
+gdp_growth_nest = gdp_growth_cleaned %>% 
+  group_by(entity) %>% 
+  tidyr::nest()
+
+
+waste_join_growth = waste_vs_gdp_cleaned %>% 
+  inner_join(gdp_growth_nest, by = "entity") %>% 
+  unnest() %>% 
+  dplyr::filter(growth_year >= 2001, growth_year != 2018)
+
+waste_join_growth %>% skimr::skim()
+
+waste_join_growth_filled = waste_join_growth %>% 
+  group_by(entity) %>% 
+  dplyr::arrange(growth_year) %>% 
+  tidyr::fill(gdp_growth, .direction = "up") %>% 
+  dplyr::filter(abs(gdp_growth) <= 20, plastic_standard < 2, complete.cases(region))
+# dplyr::mutate(growth_year = growth_year %>% ISOdate(1, 1) %>% as.Date)
+```
+
+
+# GDP growth vs waste in 2010 only
+
+```{r}
+waste_join_growth_filled_2010 = waste_join_growth_filled %>% 
+  dplyr::filter(growth_year == 2010, abs(gdp_growth) <= 20, plastic_standard < 2)
+
+
+
+waste_join_growth_filled_2010 %>% 
+  ggplot(aes(x = gdp_growth, y = plastic_standard)) +
+  geom_point(aes(colour = region), size = 3) +
+  geom_smooth(aes(group = 1), method = "lm", se = FALSE) +
+  ggsci::scale_color_d3()
+```
+
+
+
+# GDP growth vs waste over (extropolated years)
+
+```{r, message=FALSE}
+waste_join_growth_filled_lm = waste_join_growth_filled %>% 
+  group_by(growth_year) %>% 
+  tidyr::nest() %>% 
+  dplyr::mutate(
+    lm_tidy = purrr::map(
+      .x = data, 
+      .f = ~ lm(plastic_standard ~ gdp_growth, data = .x) %>% 
+        broom::tidy()),
+    slope_est = purrr::map_dbl(
+      lm_tidy, .f = ~ .x$estimate[2]) %>% 
+      round(4) %>% paste0("Slope = ", .), 
+    slope_pval = purrr::map_dbl(
+      lm_tidy, .f = ~ .x$p.value[2]) %>% 
+      round(4) %>% paste0("Slope pvalue = ", .), 
+    corr_est = purrr::map_dbl(
+      .x = data, 
+      .f = ~ cor(.x$plastic_standard, .x$gdp_growth)) %>% 
+      round(4) %>% paste0("Corr = ", .), 
+  ) %>%
+  dplyr::select(-lm_tidy)
+# tidyr::unnest()
+
+waste_join_growth_filled_lm
+
+
+
+
+
+gif = waste_join_growth_filled %>%
+  ggplot(aes(x = gdp_growth,
+             y = plastic_standard)) +
+  geom_point(aes(colour = region, group = 1L), size = 3) +
+  geom_smooth(aes(group = growth_year), method = "lm", se = FALSE) +
+  geom_text(data = waste_join_growth_filled_lm,
+            mapping = aes(x = -10, y = 0.6, label = slope_est), 
+            colour = "red", size = 5) +
+  geom_text(data = waste_join_growth_filled_lm,
+            mapping = aes(x = -10, y = 0.5, label = slope_pval), 
+            colour = "red", size = 5) +
+  geom_text(data = waste_join_growth_filled_lm,
+            mapping = aes(x = -10, y = 0.4, label = corr_est), 
+            colour = "red", size = 5) +
+  ggsci::scale_colour_d3() +
+  transition_states(growth_year,
+                    transition_length = 0.1,
+                    state_length = 0.5) +
+  labs(title = 'Year: {closest_state}',
+       x = 'GDP growth per capita',
+       y = 'Plastic waste per capita (kg/day), in 2010') +
+  # theme(title = slope_est) +
+  # shadow_mark() + ## Make points stay
+  ease_aes('linear')
+# facet_wrap(~growth_year)
+
+anim_save(filename = "gdp_growth_vs_plastic_per_cap.gif",
+          animation = gif, width = 800)
+```
+
+
+
+
+
+# Session Info
+```{r}
+sessionInfo()
+```
+
