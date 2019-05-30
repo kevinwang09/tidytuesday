@@ -22,4 +22,3 @@ deploy:
   on:
     branch: master
   local_dir: "."
-  fqdn: kevinwang09.github.io/tidytuesday
