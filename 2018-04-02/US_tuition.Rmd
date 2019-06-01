@@ -20,6 +20,8 @@ editor_options:
 library(tidyverse)
 library(here)
 library(readxl)
+library(patchwork)
+library(ggiraph)
 ```
 
 # Loading functions
@@ -68,7 +70,99 @@ long_data %>%
 ```
 
 
+
+
+
+# Add in US regions data
+```{r}
+region_data = read_csv(here("2018-04-02", "US_state_regions.csv"), 
+                       col_names = c("Region", "State")) %>% 
+  tidyr::fill(Region, .direction = "down") %>% 
+  dplyr::mutate(State = str_trim(State, side = "right"))
+
+region_data
+
+```
+
+
+
+
+
+
+
 # Add in the GDP data from Wikipedia
+
+```{r}
+us_states_gdp = read_csv(here("2018-04-02", "us_states_GDP_PerCap.csv")) %>% 
+  dplyr::select(-Rank) %>% 
+  tidyr::gather(key = year, 
+                value = gdp,
+                -State)
+
+us_states_gdp
+```
+
+
+## Checking state labels
+```{r}
+gplots::venn(
+  list(
+    tuition_data = long_data$State %>% unique,
+    gdp_data = us_states_gdp$State %>% unique, 
+    region_data = region_data$State %>% unique
+  )
+)
+```
+
+## Merging data
+
+```{r}
+long_data_merge = long_data %>% 
+  dplyr::mutate(
+    year_range = year, 
+    year = stringr::str_sub(year, 1L, 4L))
+
+merge_data = long_data_merge %>% 
+  dplyr::left_join(us_states_gdp, by = c("State", "year")) %>% 
+  dplyr::left_join(region_data, by = "State")
+```
+
+## Visualisation of GDP and cost
+
+```{r}
+complete_merge_data = merge_data %>% 
+  dplyr::filter(complete.cases(gdp)) %>% 
+  dplyr::group_by(year) %>% 
+  dplyr::mutate(
+    rank_gdp = rank(-gdp), 
+    rank_cost = rank(-cost))
+
+plot_merge_2011 = complete_merge_data %>% 
+  dplyr::filter(year == 2011) %>% 
+  ggplot(aes(x = gdp, y = cost, colour = Region)) +
+  ggiraph::geom_point_interactive(aes(tooltip = State, onclick = rank_gdp, data_id = State)) +
+  ggsci::scale_color_lancet()
+
+plot_merge_2015 = complete_merge_data %>% 
+  dplyr::filter(year == 2015) %>% 
+  ggplot(aes(x = gdp, y = cost, colour = Region)) +
+  ggiraph::geom_point_interactive(aes(tooltip = State, onclick = rank_gdp, data_id = State)) +
+  ggsci::scale_color_lancet()
+
+
+cowplot::plot_grid(plot_merge_2011 +
+                     ggpubr::stat_conf_ellipse(aes(color = Region), level = 0.8), 
+                   plot_merge_2015 +
+                     ggpubr::stat_conf_ellipse(aes(color = Region), level = 0.8))
+
+```
+
+https://cran.r-project.org/web/packages/ggsci/vignettes/ggsci.html
+
+## Interactive plot 
+```{r}
+girafe(code = print(plot_merge_2011 + plot_merge_2015), width_svg = 8, height_svg = 4)
+```
 
 
 
