@@ -9,8 +9,6 @@ output:
 
 ```{r, message = FALSE, echo = FALSE}
 library(tidyverse)
-library(ggplot2)
-library(dplyr)
 library(ggiraph)
 library(patchwork)
 ```
