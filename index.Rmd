@@ -2,17 +2,79 @@
 title: "Kevin's tidytuesday"
 author: "Kevin Wang"
 date: "21/05/2019"
-output: html_document
+output:
+  html_document:
+    code_folding: hide
 ---
 
+```{r, message = FALSE, echo = FALSE}
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(ggiraph)
+library(patchwork)
+```
+
+
 # 2019 May 21 - Plastic waste
+
+Summary: It is known that there is a positive correlation between GDP of a country and the amount of plastic waste produced by a country. One reason for this is that wealthier nations demands more goods/resources and therefore produces more waste during consumptions. There are many wonderful visualisations of this trend already on Twitter. 
+
+I am personally interested in another metric: GDP growth. My reasoning is that when a country has a high GDP growth, the expansion in economic activities (e.g. industrial production) will yield more waste. This is a hard hypothesis to verify due that the waste data is only available for the year of 2010 and the messy World Bank data. 
+
+**One key thing that I learnt**: `gganimate` package went through significant updates since I used it in 2016. The package's functionalities have been enhanced, particularly in respect to the speed/aesthetics of the transitions. Additionally, the `ggpubr` package provides some important functions that allows rapid annotations on ggplot figures (in this case, correlation value). 
 
 <img src="2019_05_21/gdp_growth_vs_plastic_per_cap.gif" width="700" height="700" />
 
 
-# Session info
+# 2018 April 02 - US Tuition 
 
-```{r}
-sessionInfo()
+Summary: It is known that the cost of US university tuition fee has increased in the past decades. The original data is somewhat limited in scope since there are only `state`, `year` and `cost` variables. 
+
+I am personally interested in knowing the cost of tuition fee vs the GDP per capita in each US state. This would create about 10 scatter plots (one for each year). However, I decided to look at the tuition cost/GDP per capita ratio as a measure of the affordability of university education in each state in each year. Here, a higher ratio implies the education is getting more expensive and thus less affordable. In order to summarise the 50 US states, I further summarised the states into 8 geographical regions. 
+
+Interestingly, for most regions/states, the ratio is rather stable or slightly increasing, suggesting that the tuition cost is somewhat in pace with GDP increase. However, Southeast states seems to have a steeper increase. 
+
+**One key thing that I learnt**: `ggpubr` provides very nice colour palettes (e.g. Lancet, NEJM) that are somewhat in line with what these journals expect in their publications. The `ggiraph` package has received some very powerful updates since the last time I used it in 2016. I would even go as far as to say it has better aesthetics than `plotly` in certain areas. 
+
+```{r, fig.width = 15, fig.height = 6}
+complete_merge_data = readRDS("2018-04-02/complete_merge_data.RDS")
+
+ratio_region_plot = complete_merge_data %>% 
+  dplyr::mutate(Region = fct_reorder(Region, cost_gdp_ratio, .fun = median)) %>% 
+  ggplot() +
+  geom_path_interactive(aes(x = year, 
+                            y = cost_gdp_ratio, 
+                            colour = Region, 
+                            group = State, 
+                            tooltip = State), 
+                        size = 2,
+                        alpha = 0.5) +
+  stat_summary(aes(x = year, 
+                   y = cost_gdp_ratio, 
+                   colour = Region, 
+                   group = Region),
+               fun.y = "median", size = 2, geom = "path") +
+  facet_wrap(~Region, nrow = 1) +
+  scale_y_continuous(breaks = seq(0, 1, by = 0.1)) +
+  ggsci::scale_color_d3() +
+  labs(title = "Tuition cost - GDP per cap ratio, per US Region (interactive ggiraph plot)", 
+       x = "Year", 
+       y = "Tuition cost - GDP per cap ratio", 
+       caption = "Thin line = state. Bold line = median ratio across all states per region") +
+  theme_classic(18) +
+  theme(legend.position = "bottom", 
+        plot.title = element_text(hjust = 0.5), 
+        panel.grid.major.x = element_blank(), 
+        axis.text.x = element_text(angle = 90))
+
+
+girafe(code = print(ratio_region_plot), width_svg = 15, height_svg = 6)
 ```
 
+
+
+
+```{r}
+R.home()
+```

@@ -3,4 +3,9 @@ Type: Website
 Title: Does not matter
 Version: 0.0.1
 Imports: 
-  rmarkdown
+  rmarkdown,
+  dplyr, 
+  ggplot2,
+  ggiraph,
+  ggsci,
+  patchwork

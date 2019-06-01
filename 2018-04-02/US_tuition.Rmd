@@ -135,20 +135,45 @@ complete_merge_data = merge_data %>%
   dplyr::group_by(year) %>% 
   dplyr::mutate(
     rank_gdp = rank(-gdp), 
-    rank_cost = rank(-cost))
+    rank_cost = rank(-cost),
+    cost_gdp_ratio = cost/gdp) %>% 
+  ungroup()
+
+complete_merge_data %>% 
+  ggplot(aes(x = gdp, y = cost, colour = Region)) +
+  ggiraph::geom_point_interactive(aes(tooltip = State, onclick = rank_gdp, data_id = State)) +
+  ggsci::scale_color_lancet() +
+  scale_y_continuous(labels = scales::dollar) +
+  scale_x_continuous(labels = scales::dollar) +
+  facet_grid(year ~ Region) +
+  labs(title = "Tuition cost vs GDP per cap, per US state", 
+       x = "GDP per cap (USD)", 
+       y = "Tuition cost (USD)") +
+  theme_bw(18) +
+  theme(legend.position = "bottom")
+
 
 plot_merge_2011 = complete_merge_data %>% 
   dplyr::filter(year == 2011) %>% 
   ggplot(aes(x = gdp, y = cost, colour = Region)) +
   ggiraph::geom_point_interactive(aes(tooltip = State, onclick = rank_gdp, data_id = State)) +
-  ggsci::scale_color_lancet()
+  ggsci::scale_color_lancet() +
+  scale_y_continuous(labels = scales::dollar) +
+  scale_x_continuous(labels = scales::dollar) +
+  labs(title = "2011: Tuition cost vs GDP per cap, per US state", 
+       x = "GDP per cap (USD)", 
+       y = "Tuition cost (USD)")
 
 plot_merge_2015 = complete_merge_data %>% 
   dplyr::filter(year == 2015) %>% 
   ggplot(aes(x = gdp, y = cost, colour = Region)) +
   ggiraph::geom_point_interactive(aes(tooltip = State, onclick = rank_gdp, data_id = State)) +
-  ggsci::scale_color_lancet()
-
+  ggsci::scale_color_lancet() +
+  scale_y_continuous(labels = scales::dollar) +
+  scale_x_continuous(labels = scales::dollar) +
+  labs(title = "2015: Tuition cost vs GDP per cap, per US state", 
+       x = "GDP per cap (USD)", 
+       y = "Tuition cost (USD)")
 
 cowplot::plot_grid(plot_merge_2011 +
                      ggpubr::stat_conf_ellipse(aes(color = Region), level = 0.8), 
@@ -162,6 +187,84 @@ https://cran.r-project.org/web/packages/ggsci/vignettes/ggsci.html
 ## Interactive plot 
 ```{r}
 girafe(code = print(plot_merge_2011 + plot_merge_2015), width_svg = 8, height_svg = 4)
+```
+
+
+# Time series plot of GDP and Tuition 
+
+```{r}
+cost_gather_gdp_data = complete_merge_data %>% 
+  ungroup() %>% 
+  tidyr::gather(key = key, 
+                value = value, 
+                cost, gdp) %>% 
+   dplyr::mutate(
+     key = dplyr::case_when(
+    key == "gdp" ~ "GDP per cap", 
+    key == "cost" ~ "Tuition cost"
+  ))
+
+
+cost_gather_gdp_data %>% 
+  ggplot() +
+  geom_path(aes(x = year, y = value, colour = Region, group = State), 
+            alpha = 0.3) +
+  stat_summary(aes(x = year, 
+                   y = value, 
+                   colour = Region, 
+                   group = Region),
+               fun.y = "median", size = 2, geom = "path") +
+  facet_wrap(~key, nrow = 1, scales = "free_y") +
+  scale_y_continuous(labels = scales::dollar, breaks = c(5000, 7500, 10000, 12500, 15000, (3:7)*10000)) +
+  ggsci::scale_color_d3() +
+  labs(title = "Tuition cost and GDP per cap, per US Region", 
+       x = "Year", 
+       y = "") +
+  theme_classic(18) +
+  theme(legend.position = "bottom", 
+    plot.title = element_text(hjust = 0.5), 
+    panel.grid.major.x = element_blank())
+
+
+
+complete_merge_data %>% 
+  dplyr::mutate(Region = fct_reorder(Region, cost_gdp_ratio, .fun = median)) %>% 
+  ggplot(aes(x = year, y = cost_gdp_ratio)) +
+  geom_path(aes(colour = Region, group = State)) +
+  facet_wrap(Region~., nrow = 1)
+
+
+tuition_gdp_ratio_plot = complete_merge_data %>% 
+  dplyr::mutate(Region = fct_reorder(Region, cost_gdp_ratio, .fun = median)) %>% 
+  ggplot() +
+  geom_path(aes(x = year, y = cost_gdp_ratio, colour = Region, group = State), 
+            alpha = 0.5) +
+  stat_summary(aes(x = year, 
+                   y = cost_gdp_ratio, 
+                   colour = Region, 
+                   group = Region),
+               fun.y = "median", size = 2, geom = "path") +
+  facet_wrap(~Region, nrow = 1) +
+  scale_y_continuous(breaks = seq(0, 1, by = 0.1)) +
+  ggsci::scale_color_d3() +
+  labs(title = "Tuition cost - GDP per cap ratio, per US Region", 
+       x = "Year", 
+       y = "Tuition cost - GDP per cap ratio") +
+  theme_classic(18) +
+  theme(legend.position = "bottom", 
+    plot.title = element_text(hjust = 0.5), 
+    panel.grid.major.x = element_blank(), 
+    axis.text.x = element_text(angle = 90))
+
+tuition_gdp_ratio_plot
+
+
+ggsave(filename = here("2018-04-02", "tuition_gdp_ratio_plot.png"), 
+       plot = tuition_gdp_ratio_plot, 
+       width = 15, height = 6)
+
+
+saveRDS(complete_merge_data, file = here("2018-04-02", "complete_merge_data.RDS"))
 ```
 
 
