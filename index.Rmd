@@ -5,6 +5,7 @@ date: "21/05/2019"
 output:
   html_document:
     code_folding: hide
+    toc: true
 ---
 
 ```{r, message = FALSE, echo = FALSE}
@@ -33,7 +34,7 @@ I am personally interested in knowing the cost of tuition fee vs the GDP per cap
 
 Interestingly, for most regions/states, the ratio is rather stable or slightly increasing, suggesting that the tuition cost is somewhat in pace with GDP increase. However, Southeast states seems to have a steeper increase. 
 
-**One key thing that I learnt**: `ggpubr` provides very nice colour palettes (e.g. Lancet, NEJM) that are somewhat in line with what these journals expect in their publications. The `ggiraph` package has received some very powerful updates since the last time I used it in 2016. I would even go as far as to say it has better aesthetics than `plotly` in certain areas. 
+**One key thing that I learnt**: `ggpubr` provides very nice colour palettes (e.g. Lancet, NEJM) that are somewhat in line with what these journals expect in their publications. The `ggiraph` package has received some very powerful updates since the last time I used it in 2016. In some areas, I believe it has better aesthetics/grammar than `plotly` (a default interactive plotting package in my area). 
 
 ```{r, fig.width = 15, fig.height = 6}
 complete_merge_data = readRDS("2018-04-02/complete_merge_data.RDS")
@@ -71,8 +72,10 @@ girafe(code = print(ratio_region_plot), width_svg = 15, height_svg = 6)
 ```
 
 
+# Other info
 
-
+This webpage was deployed through Travis and GitHub Pages.
 ```{r}
 R.home()
 ```
+
