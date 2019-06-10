@@ -82,6 +82,6 @@ girafe(code = print(ratio_region_plot), width_svg = 15, height_svg = 6)
 
 This webpage was deployed through Travis and GitHub Pages.
 ```{r}
-R.home()
+installed.packages() %>% as.data.frame %>% DT::datatable()
 ```
 

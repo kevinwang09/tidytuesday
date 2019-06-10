@@ -8,5 +8,6 @@ Imports:
   ggiraph,
   ggsci,
   patchwork,
-  BiocManager
+  BiocManager,
+  DT
 biocViews: BatchEffect
