@@ -9,5 +9,6 @@ Imports:
   ggsci,
   patchwork,
   BiocManager,
-  DT
+  DT,
+  edgeR
 biocViews: BatchEffect
