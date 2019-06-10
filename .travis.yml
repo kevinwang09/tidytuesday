@@ -17,7 +17,7 @@ cache:
 
 script:
   - Rscript -e 'BiocManager::version()'
-  - Rscript -e 'BiocManager::install(version = "3.10")'
+  - Rscript -e 'BiocManager::install(version = "3.10", ask = FALSE)'
   - Rscript -e 'BiocManager::version()'
   - R -e 'rmarkdown::render("./index.Rmd")'
 
