@@ -37,7 +37,7 @@ I am personally interested in knowing the cost of tuition fee vs the GDP per cap
 
 Interestingly, for most regions/states, the ratio is rather stable or slightly increasing, suggesting that the tuition cost is somewhat in pace with GDP increase. However, Southeast states seems to have a steeper increase than othe regions. 
 
-**Key thing that I learnt**: 
+**Key things that I learnt**: 
 
     + `ggpubr` provides very nice colour palettes (e.g. Lancet, NEJM) that are somewhat in line with what these journals expect in their publications. 
     + The `ggiraph` package has received some very powerful updates since the last time I used it in 2016. In some areas, I believe it has better aesthetics/grammar than `plotly` (a default interactive plotting package in my area). 

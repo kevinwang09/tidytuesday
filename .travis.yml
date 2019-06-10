@@ -1,6 +1,10 @@
-language: r
+language: R
+R: bioc-devel
 dist: xenial
 latex: false
+
+env:
+  - R_BIOC_VERSION: "3.10"
 
 branches:
   only:
@@ -12,6 +16,7 @@ cache:
     - $HOME/bin
 
 script:
+  - R -e 'BiocManager::version()'
   - R -e 'rmarkdown::render("./index.Rmd")'
 
 r_github_packages:

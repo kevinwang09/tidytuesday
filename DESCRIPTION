@@ -7,4 +7,6 @@ Imports:
   tidyverse,
   ggiraph,
   ggsci,
-  patchwork
+  patchwork,
+  BiocManager
+biocViews: BatchEffect
