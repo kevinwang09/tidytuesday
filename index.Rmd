@@ -17,6 +17,20 @@ library(patchwork)
 
 # 2019 July 23 - Birds impact
 
+
+
+Summary of findings: 
+  + This is a data on number of bird impact incidents with airplanes in the US between 1990 and 2018. Unfortunately, due to limited supplementary data available, the analysis I can do at this stage is limited. 
+  + As expected, we find that the birds impact incidents are seasonal with less incidents during the winter months. However, we cannot conclude whether this is due to inactivities of birds during these months or due to reduced number of flights. 
+  
+  
+  <img src="2019-07-23/incidents_2018.gif" width="700" height="700" />
+  
+  + Another interesting trend is that there is a dip in the number of incidents around June every year. And this dip was only visible for flights around night times. This could be due to the scheduling of the flights around this time of the year.
+  
+  <img src="2019-07-23/combine_trace_plot.png" width="800" height="800" />
+
+
 # 2019 May 28 - Wines around the world
 
 Summary: this file can be found [here](2019-05-28/wine.html). I chose not to publish a thorough detailed analysis because I used this dataset for teaching purposes. 
