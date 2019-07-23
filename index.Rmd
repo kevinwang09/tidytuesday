@@ -15,6 +15,13 @@ library(patchwork)
 ```
 
 
+# 2019 July 23 - Birds impact
+
+# 2019 May 28 - Wines around the world
+
+Summary: this file can be found [here](2019-05-28/wine.html). I chose not to publish a thorough detailed analysis because I used this dataset for teaching purposes. 
+
+
 # 2019 May 21 - Plastic waste
 
 Summary: It is known that there is a positive correlation between GDP of a country and the amount of plastic waste produced by a country. One reason for this is that wealthier nations demands more goods/resources and therefore produces more waste during consumptions. There are many wonderful visualisations of this trend already on Twitter. 
