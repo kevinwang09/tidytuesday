@@ -23,8 +23,8 @@ I am personally interested in another metric: GDP growth. My reasoning is that w
 
 **Key things that I learnt**: 
 
-    + `gganimate` package went through significant updates since I used it in 2016. The package's functionalities have been enhanced, particularly in respect to the speed/aesthetics of the transitions. 
-    + Additionally, the `ggpubr` package provides some important functions that allows rapid annotations on ggplot figures (in this case, correlation value). 
+  + `gganimate` package went through significant updates since I used it in 2016. The package's functionalities have been enhanced, particularly in respect to the speed/aesthetics of the transitions. 
+  + Additionally, the `ggpubr` package provides some important functions that allows rapid annotations on ggplot figures (in this case, correlation value). 
 
 <img src="2019_05_21/gdp_growth_vs_plastic_per_cap.gif" width="700" height="700" />
 
@@ -39,8 +39,8 @@ Interestingly, for most regions/states, the ratio is rather stable or slightly i
 
 **Key things that I learnt**: 
 
-    + `ggpubr` provides very nice colour palettes (e.g. Lancet, NEJM) that are somewhat in line with what these journals expect in their publications. 
-    + The `ggiraph` package has received some very powerful updates since the last time I used it in 2016. In some areas, I believe it has better aesthetics/grammar than `plotly` (a default interactive plotting package in my area). 
+  + `ggpubr` provides very nice colour palettes (e.g. Lancet, NEJM) that are somewhat in line with what these journals expect in their publications. 
+  + The `ggiraph` package has received some very powerful updates since the last time I used it in 2016. In some areas, I believe it has better aesthetics/grammar than `plotly` (a default interactive plotting package in my area). 
 
 ```{r, fig.width = 15, fig.height = 6}
 complete_merge_data = readRDS("2018-04-02/complete_merge_data.RDS")
@@ -81,7 +81,3 @@ girafe(code = print(ratio_region_plot), width_svg = 15, height_svg = 6)
 # Other info
 
 This webpage was deployed through Travis and GitHub Pages.
-```{r}
-installed.packages() %>% as.data.frame %>% DT::datatable()
-```
-
