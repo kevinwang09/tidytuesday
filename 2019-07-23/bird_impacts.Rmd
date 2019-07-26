@@ -184,9 +184,54 @@ ggsave(plot = combine_trace_plot,
 
 
 # Regression on cost of repair
+```{r}
+table(is.na(raw_data$cost_repairs_infl_adj))
+summary(raw_data$cost_repairs_infl_adj)
+hist(raw_data$cost_repairs_infl_adj)
+
+complete_cost_data = raw_data %>% 
+  dplyr::filter(complete.cases(cost_repairs_infl_adj)) %>% 
+  dplyr::rename(cost_repairs = cost_repairs_infl_adj) %>% 
+  dplyr::mutate(
+    atype_cat = atype %>% 
+      forcats::fct_lump(n = 15) %>% 
+      forcats::fct_lump_min(min = 5) %>%
+      forcats::fct_reorder(cost_repairs, .fun = median)) %>% 
+  tidyr::separate(atype,
+                  into = c("acompany", "amodel", "avariant"), 
+                  sep = "-", 
+                  remove = FALSE)
+
+complete_cost_data %>% 
+  group_by(atype_cat) %>% 
+  summarise(median(cost_repairs))
+
+
+complete_cost_data %>% 
+  dplyr::filter(atype_cat != "Other") %>% 
+  ggplot(aes(x = atype_cat, 
+             y = cost_repairs,
+             fill = acompany)) +
+  # geom_violin(width = 1) +
+  geom_boxplot(width = 0.5) +
+  scale_y_log10(label = scales::comma) +
+  ggsci::scale_fill_nejm() +
+  coord_flip()
+
+
+complete_cost_data %>% 
+  ggplot(aes(x = month, 
+             y = cost_repairs)) +
+  # geom_violin(width = 1) +
+  geom_boxplot(width = 0.5) +
+  scale_y_log10(label = scales::comma)
+```
 
 
 
+
+
+https://cran.r-project.org/web/packages/geofacet/index.html
 # Session Info
 
 ```{r}
