@@ -60,10 +60,10 @@ month_summ = raw_data %>%
 
 
 month_trace_plot = ggplot(month_summ, 
-       aes(x = month, 
-           y = n, 
-           colour = incident_year, 
-           group = incident_year)) +
+                          aes(x = month, 
+                              y = n, 
+                              colour = incident_year, 
+                              group = incident_year)) +
   geom_line() +
   labs(title = "Number of birds impacts per year per month",
        y = "Number of incidents") +
@@ -121,8 +121,8 @@ https://socviz.co/maps.html
 ## gganimate version
 ```{r}
 gif = ggplot(data = us_states,
-       mapping = aes(x = long, y = lat,
-                     group = group)) +
+             mapping = aes(x = long, y = lat,
+                           group = group)) +
   geom_polygon(aes(fill = n), colour = "black") +
   scale_fill_distiller(palette = "Reds", direction = 1) +
   theme_void(18) +
@@ -149,10 +149,10 @@ time_summ = raw_data %>%
 
 
 time_trace_plot = ggplot(time_summ, 
-       aes(x = month, 
-           y = n, 
-           colour = incident_year, 
-           group = interaction(incident_year, time_of_day))) +
+                         aes(x = month, 
+                             y = n, 
+                             colour = incident_year, 
+                             group = interaction(incident_year, time_of_day))) +
   geom_line() +
   facet_grid(~ time_of_day) +
   labs(title = "Number of birds incidents during the time of day",
@@ -183,13 +183,49 @@ ggsave(plot = combine_trace_plot,
 ```
 
 
-# Regression on cost of repair
-```{r}
-table(is.na(raw_data$cost_repairs_infl_adj))
-summary(raw_data$cost_repairs_infl_adj)
-hist(raw_data$cost_repairs_infl_adj)
 
-complete_cost_data = raw_data %>% 
+# Height and incidence rate
+
+```{r}
+complete_phase = raw_data %>% 
+  dplyr::filter(complete.cases(phase_of_flt)) %>% 
+  dplyr::mutate(
+    phase_of_flt = tolower(phase_of_flt),
+     phase_of_flt_cat = phase_of_flt %>% 
+      forcats::fct_lump(n = 15) %>% 
+      forcats::fct_lump_min(min = 5) %>% 
+       forcats::fct_infreq(),
+     log_height = log10(height + 1)
+  )
+
+table(complete_phase$phase_of_flt_cat)
+
+complete_phase %>% 
+  ggplot(aes(x = phase_of_flt_cat)) +
+  geom_bar()
+
+
+complete_phase %>% 
+  ggplot(aes(x = log_height)) +
+  geom_histogram() +
+  facet_wrap(~phase_of_flt_cat, scales = "free")
+
+complete_phase %>% 
+  dplyr::filter(log_height > 0) %>% 
+  ggplot(aes(x = log_height)) +
+  geom_histogram(bins = 30) +
+  facet_wrap(~phase_of_flt_cat, scales = "free")
+```
+
+
+
+## Visualisation on cost of repair
+```{r}
+table(is.na(complete_phase$cost_repairs_infl_adj))
+summary(complete_phase$cost_repairs_infl_adj)
+hist(complete_phase$cost_repairs_infl_adj)
+
+complete_cost_data = complete_phase %>% 
   dplyr::filter(complete.cases(cost_repairs_infl_adj)) %>% 
   dplyr::rename(cost_repairs = cost_repairs_infl_adj) %>% 
   dplyr::mutate(
@@ -224,7 +260,58 @@ complete_cost_data %>%
              y = cost_repairs)) +
   # geom_violin(width = 1) +
   geom_boxplot(width = 0.5) +
-  scale_y_log10(label = scales::comma)
+  scale_y_log10(breaks = c(1e4, 2e4, 5e4, 7e4, 
+                           1e5, 2e5, 5e5, 7e5, 
+                           1e6, 2e6, 5e6, 7e6), 
+                label = scales::comma)
+```
+
+
+
+```{r}
+library(ggparty)
+
+complete_cost_data %>% skimr::skim()
+
+cost_data_reg = complete_cost_data %>% 
+  dplyr::filter(complete.cases(sky), 
+                # complete.cases(phase_of_flt),
+                complete.cases(speed), complete.cases(height),
+                complete.cases(time_of_day)) %>% 
+  dplyr::transmute(
+    sky, 
+    # phase_of_flt, 
+    speed, 
+    log_height = log10(height + 1L), 
+    time_of_day, 
+    log_cost_repairs = log10(cost_repairs),
+  ) %>% as.data.frame()
+
+
+lm(log_cost_repairs ~ ., data = cost_data_reg) %>% 
+  broom::tidy()
+
+library(randomForest)
+
+rf = randomForest::randomForest(
+  x = model.matrix(log_cost_repairs ~., data = cost_data_reg),
+  y = cost_data_reg$log_cost_repairs)
+
+varImpPlot(rf)
+
+
+cost_data_reg %>% 
+  ggplot(aes(x = log_height, 
+             y = log_cost_repairs)) +
+  geom_point() +
+  geom_smooth(method = "loess")
+
+cost_data_reg %>% 
+  dplyr::filter(log_height > 0) %>% 
+  ggplot(aes(x = log_height, 
+             y = log_cost_repairs)) +
+  geom_point() +
+  geom_smooth(method = "loess")
 ```
 
 
