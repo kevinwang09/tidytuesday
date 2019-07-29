@@ -232,7 +232,13 @@ complete_cost_data = complete_phase %>%
     atype_cat = atype %>% 
       forcats::fct_lump(n = 15) %>% 
       forcats::fct_lump_min(min = 5) %>%
-      forcats::fct_reorder(cost_repairs, .fun = median)) %>% 
+      forcats::fct_reorder(cost_repairs, .fun = median),
+    species_cat = species %>% 
+      forcats::fct_lump(n = 20) %>% 
+      forcats::fct_lump_min(min = 5) %>%
+      forcats::fct_infreq(),
+    phase_of_flt = forcats::fct_infreq(phase_of_flt)
+    ) %>% 
   tidyr::separate(atype,
                   into = c("acompany", "amodel", "avariant"), 
                   sep = "-", 
@@ -256,6 +262,29 @@ complete_cost_data %>%
 
 
 complete_cost_data %>% 
+  dplyr::filter(species_cat != "Other") %>% 
+  ggplot(aes(x = species_cat, 
+             y = cost_repairs)) +
+  # geom_violin(width = 1) +
+  geom_boxplot(width = 0.5) +
+  scale_y_log10(label = scales::comma) +
+  ggsci::scale_fill_nejm() +
+  coord_flip()
+
+
+complete_cost_data %>% 
+  group_by(phase_of_flt, species_cat, .drop = FALSE) %>% 
+  dplyr::count() %>% 
+  ggplot(aes(x = phase_of_flt, 
+             y = species_cat, 
+             fill = n,
+             label = n)) +
+  geom_tile() +
+  geom_text() +
+  scale_fill_distiller(palette = "Spectral")
+
+
+complete_cost_data %>% 
   ggplot(aes(x = month, 
              y = cost_repairs)) +
   # geom_violin(width = 1) +
@@ -276,11 +305,15 @@ complete_cost_data %>% skimr::skim()
 cost_data_reg = complete_cost_data %>% 
   dplyr::filter(complete.cases(sky), 
                 # complete.cases(phase_of_flt),
-                complete.cases(speed), complete.cases(height),
+                complete.cases(speed), 
+                complete.cases(height),
+                complete.cases(damage),
                 complete.cases(time_of_day)) %>% 
   dplyr::transmute(
     sky, 
     # phase_of_flt, 
+    damage_three = forcats::fct_recode(damage, "M" = "M?") %>% 
+      forcats::fct_relevel("N"),
     speed, 
     log_height = log10(height + 1L), 
     time_of_day, 
@@ -302,19 +335,38 @@ varImpPlot(rf)
 
 cost_data_reg %>% 
   ggplot(aes(x = log_height, 
-             y = log_cost_repairs)) +
+             y = log_cost_repairs,
+             colour = damage_three)) +
   geom_point() +
   geom_smooth(method = "loess")
 
 cost_data_reg %>% 
   dplyr::filter(log_height > 0) %>% 
   ggplot(aes(x = log_height, 
-             y = log_cost_repairs)) +
+             y = log_cost_repairs,
+             colour = damage_three)) +
   geom_point() +
   geom_smooth(method = "loess")
 ```
 
 
+
+```{r}
+library(ggparty)
+
+cost_data_reg = cost_data_reg %>%
+  dplyr::mutate_if(is.character, as.factor)
+
+tree <- ctree(log_cost_repairs ~ ., data = cost_data_reg)
+
+ggparty(tree, horizontal = TRUE, terminal_space = 0.6) +
+  geom_edge() +
+  geom_edge_label() +
+  geom_node_splitvar() +
+  geom_node_plot(gglist = list(
+    geom_density(aes(x = log_cost_repairs))),
+    shared_axis_labels = TRUE)
+```
 
 
 
