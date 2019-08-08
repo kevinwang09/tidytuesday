@@ -22,24 +22,15 @@ Due to my very limited time and unlimited amount of curiosity, I have decided to
 
 This webpage was deployed through [Travis](https://travis-ci.org/kevinwang09/tidytuesday) and GitHub Pages.
 
-# Why am I doing this?
-
-The main reasons that I am doing this challenge: 
-  
-  1. Create a repository of code snippets. Due to the ethics restriction of the research that I do, I cannot always share codes from my own research but I can always apply the same code to different data. 
-  2. Learn efficient coding and reporting. I typically only set aside a few hours a week to complete these challenges due to my busy schedule. I want to make sure that I can code in a reproducible way and have something meaningful every week. 
-  3. Building up a data repository for teaching. I also teach at the University of Sydney as a casual lecturer. I have to design assignments and tutorial examples every now and then. Having access to a repository of data that I understand and work on is very helpful for my own teaching. 
-  4. Learn more about new packages and technologies. I consider myself to be quite experienced at `tidyverse` and most mainstream machine learning packages. But with so new packages released everyday, it is hard for me to understand what these packages bring to the R community without trying them out. I aim to use at least one new package or an alternative way to do a task in every data challenge. 
-
-
-
 
 
 
 # 2019 July 23 - Birds impact
 
+Report can be found [here](2019-07-23/bird_impacts.html).
 
 Summary of findings: 
+  + This analysis is incomplete and should be resumed at a future date. I find this data to be much messier than previous weeks, and this gets me excited. Messy data is like a puzzle and I like puzzles. 
   + This is a data on number of bird impact incidents with airplanes in the US between 1990 and 2018. Unfortunately, due to limited supplementary data available, the analysis I can do at this stage is limited. 
   + As expected, we find that the birds impact incidents are seasonal with less incidents during the winter months. However, we cannot conclude whether this is due to inactivities of birds during these months or due to reduced number of flights. 
   
@@ -51,12 +42,21 @@ Summary of findings:
   <img src="2019-07-23/combine_trace_plot.png" width="800" height="800" />
 
 
+**Key things that I learnt**: 
+
+  + I am getting a bit better at using the `gganimate` package. This time, it integrated very smoothly with the `maps` package. 
+  + One observation on the performance of `gganimate`: it is usually very fast for simple plots (say 24 fps), but it can be 10 times slower for more complicated plots (2 ~ 3 fps for the map above).  
+
 # 2019 May 28 - Wines around the world
 
-Summary: this file can be found [here](2019-05-28/wine.html). I chose not to publish a thorough detailed analysis because I used this dataset for teaching purposes. 
+Report can be found [here](2019-05-28/wine.html)
+
+Summary: I chose not to publish a thorough detailed analysis because I have used this dataset for teaching purposes at my institution. 
 
 
 # 2019 May 21 - Plastic waste
+
+Report can be found [here](2019_05_21/2019_05_21.html)
 
 Summary: It is known that there is a positive correlation between GDP of a country and the amount of plastic waste produced by a country. One reason for this is that wealthier nations demands more goods/resources and therefore produces more waste during consumptions. There are many wonderful visualisations of this trend already on Twitter. 
 
@@ -71,6 +71,8 @@ I am personally interested in another metric: GDP growth. My reasoning is that w
 
 
 # 2018 April 02 - US Tuition 
+
+Report can be found [here](2018-04-02/US_tuition.html)
 
 Summary: It is known that the cost of US university tuition fee has increased in the past decades. The original data is somewhat limited in scope since there are only `state`, `year` and `cost` variables. 
 
