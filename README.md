@@ -1,8 +1,3 @@
----
-title: "Kevin's Tidytuesday"
-output: github_document
----
-
 # Introduction
 
 I am currently a PhD candidate at the University of Sydney. My research focus on statistics and bioinformatics and I have an active interest in `R` and `tidyverse`. Since May 2019, I have been undertaking the [tidytuesday](https://github.com/rfordatascience/tidytuesday) challenges. 
