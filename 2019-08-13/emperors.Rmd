@@ -1,0 +1,223 @@
+---
+title: "Emperors"
+author: "Kevin Wang"
+date: "2019 Aug 13"
+output:
+  html_document:
+    code_folding: hide
+    fig_height: 10
+    fig_width: 10
+    toc: yes
+    number_sections: true
+    toc_depth: 3
+    toc_float: yes
+editor_options: 
+  chunk_output_type: console
+---
+
+# Loading the packages
+```{r, message = FALSE}
+library(tidyverse)
+library(janitor)
+library(skimr)
+library(ggpubr)
+library(survminer)
+library(survival)
+
+
+theme_set(theme_classic(18) +
+            theme(legend.position = "bottom"))
+```
+
+
+
+# Load data
+
+```{r}
+raw_data = read_csv("emperors.csv") %>% 
+  janitor::clean_names()
+
+
+raw_data %>% 
+  skimr::skim()
+```
+
+
+
+# How many emperors die during reign
+
+An overwhelming number of emperors died during their reign. What a high risk job. 
+
+```{r}
+table(raw_data$reign_end == raw_data$death)
+```
+
+
+
+
+# Cleaning up the data for survival analysis
+```{r}
+surv_data = raw_data %>% 
+  dplyr::filter(reign_end == death) %>% 
+  dplyr::mutate(
+    # surv_time = abs(death - birth) %>% as.integer,
+    reign_end_num = reign_end %>% stringr::str_sub(2, 4) %>% as.numeric(),
+    surv_time = (abs(reign_end - reign_start)/365) %>% as.numeric,
+    surv_dead = case_when(
+      cause == "Natural Causes" ~ "natural", 
+      cause == "Unknown" ~ "unknown",
+      TRUE ~ "killed"
+    )
+  ) %>% 
+  dplyr::filter(
+    complete.cases(surv_time), 
+    surv_dead != "unknown"
+  ) %>% 
+  dplyr::mutate(
+    surv_dead_int = (surv_dead == "natural") + 0L,
+    rise = case_when(
+      str_detect(rise, "Appointment") ~ "appointment",
+      rise %in% c("Election", "Birthright", "Purchase") ~ "peaceful", 
+      rise %in% c("Seized Power") ~ "seized power", 
+    ) %>% fct_relevel("peaceful"),
+    killer = case_when(
+      killer %in% c("Aneurism", "Disease", "Heart Failure", "Fire", "Lightning") ~ "natural", 
+      TRUE ~ "other"
+    ) %>% fct_relevel("natural"),
+  )
+
+# surv_data$surv_time
+# surv_data$surv_dead
+
+surv_data %>% 
+  janitor::tabyl(rise, surv_dead) %>% 
+  adorn_crosstab()
+# adorn_totals(where = c("row", "col")) 
+
+library(ggbeeswarm)
+q1 = function(x){quantile(x, 0.25)}
+q3 = function(x){quantile(x, 0.75)}
+
+boxplot_reign = surv_data %>% 
+  ggplot(aes(x = surv_dead, 
+             y = surv_time)) +
+  geom_violin() +
+  stat_summary(
+    fun.y = median, 
+    fun.ymin = q1,
+    fun.ymax = q3,
+    size = 1.5,
+    colour = "red") +
+  geom_beeswarm() +
+  facet_grid(~rise, labeller = label_both) +
+  labs(x = "Survival status", 
+       y = "Survival time (years of reign)")
+
+boxplot_reign
+
+ggsave(filename = "boxplot_reign.png", plot = boxplot_reign,
+       height = 5, width = 8)
+
+```
+
+
+
+## Survival plot 
+```{r}
+fit = survfit(Surv(surv_time, surv_dead_int) ~ rise, data = surv_data)
+
+fit
+
+surv_plot_rise = ggsurvplot(fit, 
+                            data = surv_data, 
+                            pval = TRUE, 
+                            palette = "Set1")
+
+surv_plot_rise = surv_plot_rise$plot +
+  labs(x = "Time (years of reign)")
+
+surv_plot_rise
+
+ggsave(filename = "surv_plot_emperor_rise.png", plot = surv_plot_rise,
+       height = 6, width = 8)
+```
+
+
+
+## Cox regression 
+
+```{r}
+coxph(Surv(surv_time, surv_dead_int) ~ rise + reign_end_num, data = surv_data) %>% 
+  broom::tidy()
+```
+
+
+# Timeline plot
+```{r}
+timeline_data = raw_data %>% 
+  dplyr::mutate(
+    surv_dead = case_when(
+      cause == "Natural Causes" ~ "natural", 
+      cause == "Unknown" ~ "unknown",
+      TRUE ~ "killed"), 
+    surv_dead_int = (surv_dead == "natural") + 0L,
+    rise = case_when(
+      str_detect(rise, "Appointment") ~ "appointment",
+      rise %in% c("Election", "Birthright", "Purchase") ~ "peaceful", 
+      rise %in% c("Seized Power") ~ "seized power", 
+    ) %>% fct_relevel("peaceful"),
+    killer = case_when(
+      killer %in% c("Aneurism", "Disease", "Heart Failure", "Fire", "Lightning") ~ "natural", 
+      TRUE ~ "other"
+    ) %>% fct_relevel("natural"),
+    name = as_factor(name) %>% fct_rev(),
+    reign_start = reign_start %>% stringr::str_sub(2, 4) %>% as.numeric(),
+    reign_end = reign_end %>% stringr::str_sub(2, 4) %>% as.numeric()
+    )
+
+timeline_data$reign_start[1] = -timeline_data$reign_start[1]
+
+
+
+
+timeline_surv = timeline_data %>%
+  ggplot(aes(x = reign_start, y = name, 
+             colour = surv_dead)) +
+  geom_errorbarh(aes(xmin = reign_start, xmax = reign_end), size = 1.5) +
+  scale_colour_brewer(palette = "Set1") +
+  labs(x = "Year", y = "", colour = "Cause of death") +
+  theme_minimal(18) +
+  theme(axis.ticks.y = element_blank(),
+legend.position = "bottom",
+        panel.grid.major = element_blank())
+
+
+timeline_rise = timeline_data %>% 
+  ggplot(aes(x = reign_start, y = name, 
+             colour = rise)) +
+  geom_errorbarh(aes(xmin = reign_start, xmax = reign_end), size = 1.5) +
+  ggsci::scale_color_jama() +
+  labs(x = "Year", y = "", colour = "Rise to power") +
+  theme_minimal(18) +
+  theme(axis.ticks.y = element_blank(), 
+        axis.line.y = element_blank(),
+        legend.position = "bottom",
+        panel.grid.major = element_blank(),
+        axis.text.y = element_blank())
+
+
+timeline_plot = ggpubr::ggarrange(timeline_surv, timeline_rise, nrow = 1)
+
+timeline_plot
+
+ggsave(filename = "timeline_plot.png", plot = timeline_plot,
+       height = 13, width = 20)
+```
+
+
+# Session Info
+
+```{r}
+sessionInfo()
+```
+
