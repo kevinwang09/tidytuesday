@@ -1,0 +1,152 @@
+---
+title: "Individual variable power"
+author: "Kevin Wang"
+date: "2019 Aug 14"
+output:
+  html_document:
+    code_folding: hide
+    fig_height: 10
+    fig_width: 10
+    toc: yes
+    number_sections: true
+    toc_depth: 3
+    toc_float: yes
+editor_options: 
+  chunk_output_type: console
+---
+
+# Loading the packages
+```{r, message = FALSE}
+library(tidyverse)
+library(janitor)
+library(yardstick)
+library(ggrepel)
+
+theme_set(theme_classic(18) +
+            theme(legend.position = "bottom"))
+```
+
+
+
+# Introduction
+
+This question was from Adam Chan. "Is there a way to get the individual contribution of each variable on the predictive power of the classifier."
+
+
+My idea: stepwise dropout variable and evaluate.
+
+
+
+# Loading in iris data
+
+
+```{r}
+set.seed(123)
+iris_new = iris %>% 
+  janitor::clean_names() %>% 
+  dplyr::filter(species %in% c("versicolor", "virginica")) %>% 
+  dplyr::mutate(
+    species = (species == "versicolor"),
+    rnorm = rnorm(nrow(.))
+    ) %>% 
+  dplyr::select(rnorm, everything())
+
+full_logit = glm(species ~ ., data = iris_new, family = "binomial")
+
+full_logit %>% broom::tidy()
+```
+
+
+
+# Dropping individual variable
+
+
+```{r}
+p = ncol(iris_new) - 1L
+dropone_logit = vector("list", p)
+
+for (j in 1:p){
+  message("Variable dropped from the full model: ", colnames(iris_new)[j])
+  dropone_logit[[j]] = glm(species ~ ., family = "binomial", data = iris_new[,-j])
+  dropone_logit[[j]] %>% broom::tidy() %>% print
+}
+names(dropone_logit) = colnames(iris_new)[-(p+1)]
+```
+
+
+
+```{r}
+dropone_logit_fitted = purrr::map(
+  .x = dropone_logit,
+  .f = ~ tibble::tibble(
+    fitted = .x$fitted.values, 
+    truth = iris_new$species)
+)
+
+dropone_logit_var = dropone_logit_fitted %>% 
+  purrr::map_dfr(.f = ~ roc_auc(data = .x, truth = factor(truth), fitted),
+                 .id = "dropone_variable")
+```
+
+
+# Adding individual variable
+
+
+```{r}
+p = 5L
+addone_logit = vector("list", p)
+
+for (j in 1:p){
+  message("Variable added from the null model: ", colnames(iris_new)[j])
+  addone_logit[[j]] = glm(species ~ ., family = "binomial", data = iris_new[,c(j, p+1)])
+  addone_logit[[j]] %>% broom::tidy() %>% print
+}
+names(addone_logit) = colnames(iris_new)[-(p+1)]
+```
+
+
+
+```{r}
+addone_logit_fitted = purrr::map(
+  .x = addone_logit,
+  .f = ~ tibble::tibble(
+    fitted = .x$fitted.values, 
+    truth = iris_new$species)
+)
+
+addone_logit_var = addone_logit_fitted %>% 
+  purrr::map_dfr(.f = ~ roc_auc(data = .x, truth = factor(truth), fitted), 
+                 .id = "addone_variable")
+```
+
+
+
+# Visualisation 
+```{r}
+dropone_logit_var
+addone_logit_var
+
+combine_logit_var = dropone_logit_var %>% 
+  dplyr::transmute(
+    variable = dropone_variable, 
+    dropone_roc = .estimate,
+    addone_roc = addone_logit_var$.estimate
+  )
+
+
+
+combine_logit_var %>% 
+  ggplot(aes(x = dropone_roc, 
+             y = addone_roc,
+             label = variable)) +
+  geom_point() +
+  geom_text_repel()
+```
+
+
+# Session Info
+
+```{r}
+sessionInfo()
+```
+
