@@ -1,0 +1,113 @@
+---
+title: "Starting letter of R packages"
+author: "Kevin Wang"
+date: "16/08/2019"
+output:
+  html_document:
+    code_folding: hide
+    fig_height: 10
+    fig_width: 10
+    toc: yes
+    number_sections: true
+    toc_depth: 3
+    toc_float: yes
+---
+
+# Introduction
+
+This document will show some simple web-scrapping techniques and visualise the frequencies of R packages from different repositories. 
+
+# Loading packages
+
+```{r}
+library(rvest)
+library(xml2)
+library(tidyverse)
+library(BiocPkgTools)
+
+
+theme_set(theme_classic(18) +
+            theme(legend.position = "bottom"))
+```
+
+
+
+# CRAN packages
+
+```{r}
+cran_raw_html = xml2::read_html("https://cran.r-project.org/web/packages/available_packages_by_name.html")
+
+cran_pkg = cran_raw_html %>% 
+  rvest::html_nodes("td a") %>% 
+  rvest::html_text(trim = TRUE)
+
+cran_pkg %>% head
+
+cran_df = tibble::tibble(
+  pkg_name = cran_pkg,
+  repo = "CRAN"
+)
+
+cran_df
+```
+
+# BioC packages
+
+```{r}
+bioc_types = c("BioCsoft", "BioCann", "BioCexp", "BioCworkflows")
+names(bioc_types) = bioc_types
+bioc_pkgs = purrr::map_dfr(
+  .x = bioc_types,
+  .f = ~ BiocPkgTools::biocPkgList(version = "3.10", repo = .x), 
+  .id = "repo")
+
+bioc_df = tibble::tibble(
+  pkg_name = bioc_pkgs$Package,
+  repo = bioc_pkgs$repo
+)
+
+bioc_df
+```
+
+
+
+# Visualisation
+
+```{r}
+combine_df = dplyr::bind_rows(cran_df, bioc_df) %>% 
+  dplyr::mutate(
+    first_letter = pkg_name %>% 
+      stringr::str_sub(1, 1) %>% 
+      tolower %>% 
+      forcats::fct_relevel(letters[1:26])) %>% 
+  dplyr::group_by(first_letter, repo) %>% 
+  dplyr::count() %>% 
+  dplyr::group_by(repo) %>% 
+  dplyr::mutate(prop = n/sum(n),
+                label = ifelse(rank(-prop) <= 5, as.character(first_letter), ""))
+
+combine_df
+
+
+
+
+combine_df %>% 
+  ggplot(aes(x = first_letter, y = prop, fill = repo)) +
+  geom_col() +
+  geom_text(aes(label = label), vjust = -0.5) +
+  scale_fill_brewer(palette = "Set1") +
+  labs(x = "First letter of packages", 
+       y = "Proportion", 
+       fill = "Repositories",
+       title = "Frequency of each letter of R packages (CRAN + BioC)", 
+       subtitle = "Top 5 most frequent letters in each repo is labelled") +
+  scale_y_continuous(limits = c(0, 0.25)) +
+  facet_wrap(~repo)
+```
+
+
+# Session Info
+```{r}
+sessionInfo()
+```
+
