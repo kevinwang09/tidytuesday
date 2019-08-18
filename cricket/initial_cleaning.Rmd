@@ -53,7 +53,7 @@ clean_test_batting_career = test_batting_career %>%
     not_out = no %>% as.integer(),
     runs = as.integer(runs),
     hs, 
-    ave %>% as.numeric(),
+    ave = ave %>% as.numeric(),
     century = x100 %>% stringr::str_extract("([0-9]+).*$") %>% as.integer(), 
     half_century = x50%>% stringr::str_extract("([0-9]+).*$") %>% as.integer(),
     ducks = x0 %>% stringr::str_extract("([0-9]+).*$") %>% as.integer(), 

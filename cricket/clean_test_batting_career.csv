@@ -1,4 +1,4 @@
-country,player_name,span,career_start,career_end,mat,inns,not_out,runs,hs,ave %>% as.numeric(),century,half_century,ducks,fours,sixes,balls_faced,strike_rate
+country,player_name,span,career_start,career_end,mat,inns,not_out,runs,hs,ave,century,half_century,ducks,fours,sixes,balls_faced,strike_rate
 australia,C Bannerman,1877-1879,1877,1879,3,6,2,239,165*,59.75,1,0,0,NA,NA,NA,NA
 australia,JM Blackham,1877-1894,1877,1894,35,62,11,800,74,15.68,0,4,6,NA,NA,NA,NA
 australia,BB Cooper,NA,NA,NA,1,2,0,18,15,9,0,0,0,NA,NA,NA,NA
