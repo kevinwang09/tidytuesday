@@ -89,3 +89,21 @@ clean_test_batting_inngings = test_batting_inngings %>%
 clean_test_batting_inngings %>% glimpse()
 ```
 
+
+
+# Saving data
+```{r}
+readr::write_csv(x = clean_test_batting_career, 
+                 path = "./clean_test_batting_career.csv")
+
+readr::write_csv(x = clean_test_batting_inngings, 
+                 path = "./clean_test_batting_inngings.csv")
+
+```
+
+
+# Session Info
+```{r}
+sessionInfo()
+```
+
