@@ -7,7 +7,7 @@ australia,DW Gregory,overall,1877-1879,3,5,2,60,43,20.00,0,0,0,Profile,NA,NA,NA,
 australia,EJ Gregory,overall,NA,1,2,0,11,11,5.50,0,0,1,Profile,1,0,NA,NA
 australia,JR Hodges,overall,NA,2,4,1,10,8,3.33,0,0,1,Profile,1,0,NA,NA
 australia,TP Horan,overall,1877-1885,15,27,2,471,124,18.84,1,1,3,Profile,NA,NA,NA,NA
-australia,TK Kendall,overall,NA,2,4,1,39,17*,13,0,0,0,Profile,NA,NA,NA,NA
+australia,TK Kendall,overall,NA,2,4,1,39,17*,13.00,0,0,0,Profile,NA,NA,NA,NA
 australia,WE Midwinter,overall,1877-1887,12,21,1,269,37,13.45,0,0,1,Profile,NA,NA,NA,NA
 australia,NFD Thomson,overall,NA,2,4,0,67,41,16.75,0,0,0,Profile,NA,NA,NA,NA
 australia,TJD Kelly,overall,1877-1879,2,3,0,64,35,21.33,0,0,0,Profile,NA,NA,NA,NA
@@ -22,7 +22,7 @@ australia,TU Groube,overall,NA,1,2,0,11,11,5.50,0,0,1,Profile,1,0,45,24.44
 australia,PS McDonnell,overall,1880-1888,19,34,1,955,147,28.93,3,2,6,Profile,NA,NA,NA,NA
 australia,WH Moule,overall,NA,1,2,0,40,34,20.00,0,0,0,Profile,4,0,113,35.39
 australia,GE Palmer,overall,1880-1886,17,25,4,296,48,14.09,0,0,3,Profile,NA,NA,NA,NA
-australia,J Slight,overall,NA,1,2,0,11,11,5.5,0,0,1,Profile,1,0,36,30.55
+australia,J Slight,overall,NA,1,2,0,11,11,5.50,0,0,1,Profile,1,0,36,30.55
 australia,WH Cooper,overall,1881-1884,2,3,1,13,7,6.50,0,0,0,Profile,NA,NA,NA,NA
 australia,E Evans,overall,1881-1886,6,10,2,82,33,10.25,0,0,3,Profile,NA,NA,NA,NA
 australia,G Giffen,overall,1881-1896,31,53,0,1238,161,23.35,1,6,5,Profile,NA,NA,NA,NA
@@ -41,7 +41,7 @@ australia,JW Trumble,overall,1885-1886,7,13,1,243,59,20.25,0,1,1,Profile,NA,NA,N
 australia,J Worrall,overall,1885-1899,11,22,3,478,76,25.15,0,5,2,Profile,NA,NA,NA,NA
 australia,PG McShane,overall,1885-1888,3,6,1,26,12*,5.20,0,0,3,Profile,2,0,NA,NA
 australia,FH Walters,overall,NA,1,2,0,12,7,6.00,0,0,0,Profile,2,0,NA,NA
-australia,J McIlwraith,overall,NA,1,2,0,9,7,4.50,0,0,0,Profile,NA,NA,NA,NA
+australia,J McIlwraith,overall,NA,1,2,0,9,7,4.5,0,0,0,Profile,NA,NA,NA,NA
 australia,JJ Ferris,overall,1887-1892,9,17,4,114,20*,8.76,0,0,1,Profile,NA,NA,NA,NA
 australia,H Moses,overall,1887-1895,6,10,0,198,33,19.80,0,0,0,Profile,NA,NA,NA,NA
 australia,CTB Turner,overall,1887-1895,17,32,4,323,29,11.53,0,0,6,Profile,NA,NA,NA,NA
@@ -67,7 +67,7 @@ australia,FA Iredale,overall,1894-1899,14,23,1,807,140,36.68,2,4,2,Profile,NA,NA
 australia,E Jones,overall,1894-1902,19,26,1,126,20,5.04,0,0,5,Profile,NA,NA,NA,NA
 australia,CE McLeod,overall,1894-1905,17,29,5,573,112,23.87,1,4,5,Profile,NA,NA,NA,NA
 australia,JC Reedman,overall,NA,1,2,0,21,17,10.50,0,0,0,Profile,1,1,NA,NA
-australia,A Coningham,overall,NA,1,2,0,13,10,6.50,0,0,0,Profile,NA,NA,NA,NA
+australia,A Coningham,overall,NA,1,2,0,13,10,6.5,0,0,0,Profile,NA,NA,NA,NA
 australia,J Harry,overall,NA,1,2,0,8,6,4.00,0,0,0,Profile,NA,NA,NA,NA
 australia,AE Trott,overall,1895-1899,5,9,3,228,85*,38.00,0,2,2,Profile,NA,NA,NA,NA
 australia,TR McKibbin,overall,1895-1898,5,8,2,88,28*,14.66,0,0,2,Profile,NA,NA,NA,NA
@@ -84,7 +84,7 @@ australia,AJY Hopkins,overall,1902-1909,20,33,2,509,43,16.41,0,0,4,Profile,NA,NA
 australia,JV Saunders,overall,1902-1908,14,23,6,39,11*,2.29,0,0,8,Profile,NA,NA,NA,NA
 australia,JPF Travers,overall,NA,1,2,0,10,9,5.00,0,0,0,Profile,NA,NA,NA,NA
 australia,A Cotter,overall,1904-1912,21,37,2,457,45,13.05,0,0,6,Profile,NA,NA,NA,NA
-australia,PA McAlister,overall,1904-1909,8,16,1,252,41,16.8,0,0,0,Profile,NA,NA,NA,NA
+australia,PA McAlister,overall,1904-1909,8,16,1,252,41,16.80,0,0,0,Profile,NA,NA,NA,NA
 australia,DRA Gehrs,overall,1904-1911,6,11,0,221,67,20.09,0,2,1,Profile,NA,NA,NA,NA
 australia,H Carter,overall,1907-1921,28,47,9,873,72,22.97,0,4,4,Profile,NA,NA,NA,NA
 australia,GR Hazlitt,overall,1907-1912,9,12,4,89,34*,11.12,0,0,2,Profile,NA,NA,NA,NA
@@ -128,7 +128,7 @@ australia,DD Blackie,overall,NA,3,6,3,24,11*,8.00,0,0,2,Profile,0,0,106,22.64
 australia,OE Nothling,overall,NA,1,2,0,52,44,26.00,0,0,0,Profile,7,0,120,43.33
 australia,EL a'Beckett,overall,1928-1932,4,7,0,143,41,20.42,0,0,0,Profile,NA,NA,NA,NA
 australia,RK Oxenham,overall,1928-1931,7,10,0,151,48,15.10,0,0,2,Profile,9,0,NA,NA
-australia,A Jackson,overall,1929-1931,8,11,1,474,164,47.40,1,2,1,Profile,NA,NA,NA,NA
+australia,A Jackson,overall,1929-1931,8,11,1,474,164,47.4,1,2,1,Profile,NA,NA,NA,NA
 australia,AG Fairfax,overall,1929-1931,10,12,4,410,65,51.25,0,4,0,Profile,NA,NA,NA,NA
 australia,PM Hornibrook,overall,1929-1930,6,7,1,60,26,10.00,0,0,1,Profile,NA,NA,305,19.67
 australia,TW Wall,overall,1929-1934,18,24,5,121,20,6.36,0,0,5,Profile,NA,NA,NA,NA
@@ -150,13 +150,13 @@ australia,HSB Love,overall,NA,1,2,0,8,5,4.00,0,0,0,Profile,0,0,38,21.05
 australia,HH Alexander,overall,NA,1,2,1,17,17*,17.00,0,0,1,Profile,2,0,18,94.44
 australia,WA Brown,overall,1934-1948,22,35,1,1592,206*,46.82,4,9,1,Profile,NA,NA,NA,NA
 australia,AG Chipperfield,overall,1934-1938,14,20,3,552,109,32.47,1,2,1,Profile,NA,NA,NA,NA
-australia,HI Ebeling,overall,NA,1,2,0,43,41,21.5,0,0,0,Profile,NA,NA,55,78.18
+australia,HI Ebeling,overall,NA,1,2,0,43,41,21.50,0,0,0,Profile,NA,NA,55,78.18
 australia,LO Fleetwood-Smith,overall,1935-1938,10,11,5,54,16*,9.00,0,0,2,Profile,NA,NA,NA,NA
 australia,EL McCormick,overall,1935-1938,12,14,5,54,17*,6.00,0,0,3,Profile,NA,NA,NA,NA
 australia,CL Badcock,overall,1936-1938,7,12,1,160,118,14.54,1,0,4,Profile,18,0,424,37.73
-australia,RH Robinson,overall,NA,1,2,0,5,3,2.5,0,0,0,Profile,0,0,10,50.00
-australia,MW Sievers,overall,NA,3,6,1,67,25*,13.4,0,0,0,Profile,3,0,317,21.13
-australia,FA Ward,overall,1936-1938,4,8,2,36,18,6,0,0,2,Profile,1,0,151,23.84
+australia,RH Robinson,overall,NA,1,2,0,5,3,2.50,0,0,0,Profile,0,0,10,50.00
+australia,MW Sievers,overall,NA,3,6,1,67,25*,13.40,0,0,0,Profile,3,0,317,21.13
+australia,FA Ward,overall,1936-1938,4,8,2,36,18,6.00,0,0,2,Profile,1,0,151,23.84
 australia,RG Gregory,overall,NA,2,3,0,153,80,51.00,0,2,0,Profile,7,0,453,33.77
 australia,BA Barnett,overall,NA,4,8,1,195,57,27.85,0,1,0,Profile,25,0,399,48.87
 australia,AL Hassett,overall,1938-1953,43,69,3,3073,198*,46.56,10,11,1,Profile,NA,NA,NA,NA
@@ -173,8 +173,8 @@ australia,AR Morris,overall,1946-1955,46,79,3,3533,206,46.48,12,12,4,Profile,NA,
 australia,GE Tribe,overall,NA,3,3,1,35,25*,17.50,0,0,0,Profile,6,0,27,129.62
 australia,FAW Freer,overall,NA,1,1,1,28,28*,-,0,0,0,Profile,3,1,21,133.33
 australia,B Dooland,overall,NA,3,5,1,76,29,19.00,0,0,0,Profile,4,0,255,29.80
-australia,MR Harvey,overall,NA,1,2,0,43,31,21.50,0,0,0,Profile,5,0,107,40.18
-australia,RA Hamence,overall,NA,3,4,1,81,30*,27,0,0,0,Profile,4,0,232,34.91
+australia,MR Harvey,overall,NA,1,2,0,43,31,21.5,0,0,0,Profile,5,0,107,40.18
+australia,RA Hamence,overall,NA,3,4,1,81,30*,27.00,0,0,0,Profile,4,0,232,34.91
 australia,WA Johnston,overall,1947-1955,40,49,25,273,29,11.37,0,0,7,Profile,NA,NA,NA,NA
 australia,RN Harvey,overall,1948-1963,79,137,10,6149,205,48.41,21,24,7,Profile,NA,NA,NA,NA
 australia,LJ Johnson,overall,NA,1,1,1,25,25*,-,0,0,0,Profile,1,0,51,49.01
@@ -184,7 +184,7 @@ australia,RA Saggers,overall,NA,6,5,2,30,14,10.00,0,0,0,Profile,NA,NA,NA,NA
 australia,J Moroney,overall,1949-1952,7,12,1,383,118,34.81,2,1,3,Profile,NA,NA,NA,NA
 australia,G Noblet,overall,1950-1953,3,4,1,22,13*,7.33,0,0,1,Profile,3,0,NA,NA
 australia,JB Iverson,overall,NA,5,7,3,3,1*,0.75,0,0,2,Profile,0,0,NA,NA
-australia,KA Archer,overall,NA,5,9,0,234,48,26.00,0,0,1,Profile,17,0,NA,NA
+australia,KA Archer,overall,NA,5,9,0,234,48,26,0,0,1,Profile,17,0,NA,NA
 australia,JW Burke,overall,1951-1959,24,44,7,1280,189,34.59,3,5,0,Profile,NA,NA,NA,NA
 australia,GB Hole,overall,1951-1955,18,33,2,789,66,25.45,0,6,2,Profile,NA,NA,NA,NA
 australia,GRA Langley,overall,1951-1956,26,37,12,374,53,14.96,0,1,3,Profile,NA,NA,NA,NA
@@ -228,7 +228,7 @@ australia,TR Veivers,overall,1963-1967,21,30,4,813,88,31.26,0,7,3,Profile,NA,NA,
 australia,IR Redpath,overall,1964-1976,66,120,11,4737,171,43.45,8,31,9,Profile,NA,NA,NA,NA
 australia,GE Corling,overall,NA,5,4,1,5,3,1.66,0,0,2,Profile,0,0,61,8.19
 australia,RM Cowper,overall,1964-1968,27,46,2,2061,307,46.84,5,10,3,Profile,NA,NA,NA,NA
-australia,RHD Sellers,overall,NA,1,1,0,0,0,0,0,0,1,Profile,0,0,NA,NA
+australia,RHD Sellers,overall,NA,1,1,0,0,0,0.00,0,0,1,Profile,0,0,NA,NA
 australia,IM Chappell,overall,1964-1980,75,136,10,5345,196,42.42,14,26,11,Profile,NA,NA,NA,NA
 australia,DJ Sincock,overall,NA,3,4,1,80,29,26.66,0,0,0,Profile,NA,NA,NA,NA
 australia,LC Mayne,overall,1965-1970,6,11,3,76,13,9.50,0,0,1,Profile,NA,NA,NA,NA
@@ -244,7 +244,7 @@ australia,JW Gleeson,overall,1967-1972,29,46,8,395,45,10.39,0,0,11,Profile,NA,NA
 australia,AP Sheahan,overall,1967-1974,31,53,6,1594,127,33.91,2,7,3,Profile,NA,NA,NA,NA
 australia,EW Freeman,overall,1968-1970,11,18,0,345,76,19.16,0,2,0,Profile,NA,NA,NA,NA
 australia,LR Joslin,overall,NA,1,2,0,9,7,4.50,0,0,0,Profile,0,0,28,32.14
-australia,RJ Inverarity,overall,1968-1972,6,11,1,174,56,17.40,0,1,1,Profile,20,0,NA,NA
+australia,RJ Inverarity,overall,1968-1972,6,11,1,174,56,17.4,0,1,1,Profile,20,0,NA,NA
 australia,AA Mallett,overall,1968-1980,38,50,13,430,43*,11.62,0,0,10,Profile,NA,NA,NA,NA
 australia,TJ Jenner,overall,1970-1975,9,14,5,208,74,23.11,0,1,1,Profile,17,0,NA,NA
 australia,RW Marsh,overall,1970-1984,96,150,13,3633,132,26.51,3,16,12,Profile,381,24,NA,NA
@@ -254,9 +254,9 @@ australia,JRF Duncan,overall,NA,1,1,0,3,3,3.00,0,0,0,Profile,0,0,8,37.50
 australia,KJ O'Keeffe,overall,1971-1977,24,34,9,644,85,25.76,0,1,3,Profile,53,1,NA,NA
 australia,DK Lillee,overall,1971-1984,70,90,24,905,73*,13.71,0,1,10,Profile,96,8,NA,NA
 australia,AR Dell,overall,1971-1974,2,2,2,6,3*,-,0,0,0,Profile,0,0,26,23.07
-australia,KH Eastwood,overall,NA,1,2,0,5,5,2.50,0,0,1,Profile,0,0,25,20.00
+australia,KH Eastwood,overall,NA,1,2,0,5,5,2.5,0,0,1,Profile,0,0,25,20.00
 australia,DJ Colley,overall,NA,3,4,0,84,54,21,0,1,0,Profile,9,0,160,52.50
-australia,BC Francis,overall,NA,3,5,0,52,27,10.4,0,0,1,Profile,4,0,137,37.95
+australia,BC Francis,overall,NA,3,5,0,52,27,10.40,0,0,1,Profile,4,0,137,37.95
 australia,R Edwards,overall,1972-1975,20,32,3,1171,170*,40.37,2,9,4,Profile,104,1,NA,NA
 australia,RAL Massie,overall,NA,6,8,1,78,42,11.14,0,0,3,Profile,3,2,NA,NA
 australia,J Benaud,overall,NA,3,5,0,223,142,44.60,1,0,0,Profile,24,3,NA,NA
@@ -282,7 +282,7 @@ australia,RJ Bright,overall,1977-1986,25,39,8,445,33,14.35,0,0,6,Profile,44,2,13
 australia,KJ Hughes,overall,1977-1984,70,124,6,4415,213,37.41,9,22,10,Profile,444,27,NA,NA
 australia,MF Malone,overall,NA,1,1,0,46,46,46.00,0,0,0,Profile,6,0,81,56.79
 australia,WM Clark,overall,NA,10,19,2,98,33,5.76,0,0,8,Profile,10,0,NA,NA
-australia,PA Hibbert,overall,NA,1,2,0,15,13,7.50,0,0,0,Profile,1,0,89,16.85
+australia,PA Hibbert,overall,NA,1,2,0,15,13,7.5,0,0,0,Profile,1,0,89,16.85
 australia,AL Mann,overall,NA,4,8,0,189,105,23.62,1,0,2,Profile,16,1,371,50.94
 australia,AD Ogilvie,overall,NA,5,10,0,178,47,17.80,0,0,3,Profile,17,0,NA,NA
 australia,SJ Rixon,overall,1977-1985,13,24,3,394,54,18.76,0,2,4,Profile,33,0,NA,NA
@@ -290,11 +290,11 @@ australia,PM Toohey,overall,1977-1980,15,29,1,893,122,31.89,1,7,3,Profile,81,4,N
 australia,J Dyson,overall,1977-1984,30,58,7,1359,127*,26.64,2,5,4,Profile,123,3,4097,33.17
 australia,JB Gannon,overall,NA,3,5,4,3,3*,3.00,0,0,1,Profile,0,0,17,17.64
 australia,IW Callen,overall,NA,1,2,2,26,22*,-,0,0,0,Profile,2,1,NA,NA
-australia,WM Darling,overall,1978-1979,14,27,1,697,91,26.80,0,6,1,Profile,61,1,NA,NA
+australia,WM Darling,overall,1978-1979,14,27,1,697,91,26.8,0,6,1,Profile,61,1,NA,NA
 australia,GM Wood,overall,1978-1988,59,112,6,3374,172,31.83,9,13,9,Profile,316,8,NA,NA
 australia,B Yardley,overall,1978-1983,33,54,4,978,74,19.56,0,4,8,Profile,114,5,NA,NA
 australia,JD Higgs,overall,1978-1981,22,36,16,111,16,5.55,0,0,5,Profile,6,0,NA,NA
-australia,TJ Laughlin,overall,NA,3,5,0,87,35,17.40,0,0,0,Profile,7,0,NA,NA
+australia,TJ Laughlin,overall,NA,3,5,0,87,35,17.4,0,0,0,Profile,7,0,NA,NA
 australia,RM Hogg,overall,1978-1984,38,58,13,439,52,9.75,0,1,14,Profile,45,1,NA,NA
 australia,JA Maclean,overall,NA,4,8,1,79,33*,11.28,0,0,2,Profile,5,0,357,22.12
 australia,AR Border,overall,1978-1994,156,265,44,11174,205,50.56,27,63,11,Profile,1161,28,NA,NA
@@ -335,7 +335,7 @@ australia,GR Marsh,overall,1985-1992,50,93,7,2854,138,33.18,4,15,3,Profile,307,1
 australia,BA Reid,overall,1985-1992,27,34,14,93,13,4.65,0,0,6,Profile,7,0,394,23.60
 australia,SR Waugh,overall,1985-2004,168,260,46,10927,200,51.06,32,50,22,Profile,1175,20,22461,48.64
 australia,SP Davis,overall,NA,1,1,0,0,0,0.00,0,0,1,Profile,0,0,2,0.00
-australia,TJ Zoehrer,overall,NA,10,14,2,246,52*,20.50,0,1,0,Profile,30,2,581,42.34
+australia,TJ Zoehrer,overall,NA,10,14,2,246,52*,20.5,0,1,0,Profile,30,2,581,42.34
 australia,CD Matthews,overall,1986-1988,3,5,0,54,32,10.80,0,0,1,Profile,7,0,122,44.26
 australia,GC Dyer,overall,NA,6,6,0,131,60,21.83,0,1,1,Profile,11,0,307,42.67
 australia,PL Taylor,overall,1987-1991,13,19,3,431,87,26.93,0,2,1,Profile,37,0,1308,32.95
@@ -345,7 +345,7 @@ australia,AIC Dodemaide,overall,1987-1992,10,15,6,202,50,22.44,0,1,0,Profile,14,
 australia,IA Healy,overall,1988-1999,119,182,23,4356,161*,27.39,4,22,18,Profile,425,5,8760,49.72
 australia,TV Hohns,overall,NA,7,7,1,136,40,22.66,0,0,1,Profile,17,0,324,41.97
 australia,MA Taylor,overall,1989-1999,104,186,13,7525,334*,43.49,19,40,5,Profile,727,9,18140,41.48
-australia,GD Campbell,overall,NA,4,4,0,10,6,2.5,0,0,2,Profile,0,0,64,15.62
+australia,GD Campbell,overall,NA,4,4,0,10,6,2.50,0,0,2,Profile,0,0,64,15.62
 australia,TM Moody,overall,1989-1992,8,14,0,456,106,32.57,2,3,1,Profile,49,0,982,46.43
 australia,ME Waugh,overall,1991-2002,128,209,17,8029,153*,41.81,20,47,19,Profile,844,41,15360,52.27
 australia,SK Warne,overall,1992-2007,145,199,17,3154,99,17.32,0,12,34,Profile,353,37,5470,57.65
@@ -373,19 +373,19 @@ australia,AJ Bichel,overall,1997-2003,19,22,1,355,71,16.90,0,1,3,Profile,51,2,55
 australia,S Young,overall,NA,1,2,1,4,4*,4.00,0,0,1,Profile,1,0,27,14.81
 australia,SH Cook,overall,NA,2,2,2,3,3*,-,0,0,0,Profile,0,0,18,16.66
 australia,SCG MacGill,overall,1998-2008,44,47,11,349,43,9.69,0,0,12,Profile,38,2,715,48.81
-australia,GR Robertson,overall,NA,4,7,0,140,57,20,0,1,2,Profile,15,1,415,33.73
+australia,GR Robertson,overall,NA,4,7,0,140,57,20.00,0,1,2,Profile,15,1,415,33.73
 australia,P Wilson,overall,NA,1,2,2,0,0*,-,0,0,0,Profile,0,0,4,0.00
 australia,AC Dale,overall,NA,2,3,0,6,5,2.00,0,0,1,Profile,0,0,19,31.57
 australia,DS Lehmann,overall,1998-2004,27,42,2,1798,177,44.95,5,10,2,Profile,214,10,2909,61.80
 australia,CR Miller,overall,1998-2001,18,24,3,174,43,8.28,0,0,7,Profile,9,8,308,56.49
-australia,MJ Nicholson,overall,NA,1,2,0,14,9,7,0,0,0,Profile,0,0,47,29.78
+australia,MJ Nicholson,overall,NA,1,2,0,14,9,7.00,0,0,0,Profile,0,0,47,29.78
 australia,AC Gilchrist,overall,1999-2008,96,137,20,5570,204*,47.60,17,26,14,Profile,677,100,6796,81.95
 australia,SA Muller,overall,NA,2,2,2,6,6*,-,0,0,0,Profile,1,0,18,33.33
 australia,B Lee,overall,1999-2008,76,90,18,1451,64,20.15,0,5,14,Profile,182,18,2739,52.97
 australia,SM Katich,overall,2001-2010,56,99,6,4188,157,45.03,10,25,4,Profile,490,9,8483,49.36
 australia,ML Love,overall,NA,5,8,3,233,100*,46.60,1,1,2,Profile,17,0,476,48.94
 australia,BA Williams,overall,NA,4,6,3,23,10*,7.66,0,0,1,Profile,0,1,41,56.09
-australia,NW Bracken,overall,2003-2005,5,6,2,70,37,17.5,0,0,0,Profile,7,0,112,62.50
+australia,NW Bracken,overall,2003-2005,5,6,2,70,37,17.50,0,0,0,Profile,7,0,112,62.50
 australia,A Symonds,overall,2004-2008,26,41,5,1462,162*,40.61,2,10,4,Profile,154,28,2256,64.80
 australia,MJ Clarke,overall,2004-2015,115,198,22,8643,329*,49.10,28,27,9,Profile,978,39,15456,55.92
 australia,NM Hauritz,overall,2004-2010,17,24,7,426,75,25.05,0,2,1,Profile,50,3,854,49.88
@@ -401,7 +401,7 @@ australia,CJL Rogers,overall,2008-2015,25,48,1,2015,173,42.87,5,14,1,Profile,268
 australia,BJ Haddin,overall,2008-2015,66,112,13,3266,169,32.98,4,18,8,Profile,363,54,5587,58.45
 australia,B Casson,overall,NA,1,1,0,10,10,10.00,0,0,0,Profile,1,0,44,22.72
 australia,CL White,overall,NA,4,7,2,146,46,29.20,0,0,0,Profile,15,1,330,44.24
-australia,PM Siddle,overall,2008-2019,66,92,15,1133,51,14.71,0,2,17,Profile,121,4,2409,47.03
+australia,PM Siddle,overall,2008-2019,66,92,14,1133,51,14.52,0,2,17,Profile,121,4,2411,46.99
 australia,JJ Krejza,overall,NA,2,4,1,71,32,23.66,0,0,0,Profile,8,0,146,48.63
 australia,DE Bollinger,overall,2009-2010,12,14,7,54,21,7.71,0,0,3,Profile,7,0,159,33.96
 australia,AB McDonald,overall,NA,4,6,1,107,68,21.40,0,1,1,Profile,11,0,217,49.30
@@ -413,22 +413,22 @@ australia,GA Manou,overall,NA,1,2,1,21,13*,21.00,0,0,0,Profile,3,0,39,53.84
 australia,CJ McKay,overall,NA,1,1,0,10,10,10.00,0,0,0,Profile,1,0,15,66.66
 australia,RJ Harris,overall,2010-2015,27,39,11,603,74,21.53,0,3,2,Profile,63,9,955,63.14
 australia,TD Paine,overall,2010-2019,23,38,7,1046,92,33.74,0,5,2,Profile,111,4,2406,43.47
-australia,SPD Smith,overall,2010-2019,66,120,17,6565,239,63.73,25,25,4,Profile,725,38,11749,55.87
+australia,SPD Smith,overall,2010-2019,66,120,16,6577,239,63.24,25,25,4,Profile,728,38,11758,55.93
 australia,PR George,overall,NA,1,2,0,2,2,1.00,0,0,1,Profile,0,0,11,18.18
 australia,XJ Doherty,overall,2010-2013,4,7,3,51,18*,12.75,0,0,0,Profile,8,0,159,32.07
 australia,MA Beer,overall,NA,2,3,1,6,2*,3.00,0,0,0,Profile,0,0,28,21.42
 australia,UT Khawaja,overall,2011-2019,43,74,6,2854,174,41.97,8,14,4,Profile,307,15,5650,50.51
 australia,TA Copeland,overall,NA,3,4,1,39,23*,13.00,0,0,0,Profile,7,0,77,50.64
-australia,NM Lyon,overall,2011-2019,88,112,35,935,47,12.14,0,0,15,Profile,119,5,2033,45.99
+australia,NM Lyon,overall,2011-2019,88,113,35,941,47,12.06,0,0,15,Profile,119,5,2050,45.90
 australia,SE Marsh,overall,2011-2019,38,68,2,2265,182,34.31,6,10,10,Profile,264,8,5165,43.85
-australia,PJ Cummins,overall,2011-2019,22,33,6,573,63,21.22,0,2,4,Profile,60,10,1421,40.32
+australia,PJ Cummins,overall,2011-2019,22,33,5,579,63,20.67,0,2,4,Profile,61,10,1446,40.04
 australia,JL Pattinson,overall,2011-2019,18,21,8,379,47*,29.15,0,0,2,Profile,40,7,884,42.87
 australia,MA Starc,overall,2011-2019,51,78,15,1377,99,21.85,0,9,11,Profile,138,37,2051,67.13
 australia,DA Warner,overall,2011-2019,76,140,5,6376,253,47.22,21,29,6,Profile,767,55,8579,74.32
 australia,EJM Cowan,overall,2011-2013,18,32,0,1001,136,31.28,1,6,2,Profile,123,2,2425,41.27
 australia,MS Wade,overall,2012-2019,24,41,7,1003,110,29.50,3,4,1,Profile,104,8,2042,49.11
 australia,RJ Quiney,overall,NA,2,3,0,9,9,3.00,0,0,2,Profile,1,0,22,40.90
-australia,JW Hastings,overall,NA,1,2,0,52,32,26,0,0,0,Profile,5,2,88,59.09
+australia,JW Hastings,overall,NA,1,2,0,52,32,26.00,0,0,0,Profile,5,2,88,59.09
 australia,JM Bird,overall,2012-2017,9,9,6,43,19*,14.33,0,0,1,Profile,3,1,141,30.49
 australia,MC Henriques,overall,2013-2016,4,8,1,164,81*,23.42,0,2,2,Profile,12,2,346,47.39
 australia,GJ Maxwell,overall,2013-2017,7,14,1,339,104,26.07,1,0,0,Profile,33,7,570,59.47
@@ -438,12 +438,12 @@ australia,GJ Bailey,overall,NA,5,8,1,183,53,26.14,0,1,1,Profile,15,8,311,58.84
 australia,AJ Doolan,overall,NA,4,8,0,191,89,23.87,0,1,1,Profile,26,1,455,41.97
 australia,MR Marsh,overall,2014-2018,31,53,5,1219,181,25.39,2,3,6,Profile,154,17,2375,51.32
 australia,SNJ O'Keefe,overall,2014-2017,9,13,4,86,25,9.55,0,0,2,Profile,11,0,433,19.86
-australia,JR Hazlewood,overall,2014-2019,45,55,24,388,39,12.51,0,0,9,Profile,53,2,884,43.89
+australia,JR Hazlewood,overall,2014-2019,45,56,25,391,39,12.61,0,0,9,Profile,53,2,888,44.03
 australia,JA Burns,overall,2014-2019,16,28,0,1123,180,40.10,4,4,4,Profile,150,10,1874,59.92
 australia,AC Voges,overall,NA,20,31,7,1485,269*,61.87,5,4,2,Profile,186,5,2667,55.68
 australia,PM Nevill,overall,NA,17,23,2,468,66,22.28,0,3,1,Profile,52,1,1151,40.66
 australia,JM Holland,overall,2016-2018,4,7,5,6,3,3.00,0,0,0,Profile,0,0,46,13.04
-australia,CJ Ferguson,overall,NA,1,2,0,4,3,2.00,0,0,0,Profile,0,0,23,17.39
+australia,CJ Ferguson,overall,NA,1,2,0,4,3,2,0,0,0,Profile,0,0,23,17.39
 australia,JM Mennie,overall,NA,1,2,0,10,10,5.00,0,0,1,Profile,2,0,24,41.66
 australia,PSP Handscomb,overall,2016-2019,16,29,5,934,110,38.91,2,4,1,Profile,105,1,1874,49.83
 australia,NJ Maddinson,overall,NA,3,4,0,27,22,6.75,0,0,1,Profile,3,0,78,34.61
@@ -451,7 +451,7 @@ australia,MT Renshaw,overall,NA,11,20,1,636,184,33.47,1,3,0,Profile,77,3,1497,42
 australia,HWR Cartwright,overall,NA,2,2,0,55,37,27.50,0,0,0,Profile,7,1,125,44.00
 australia,CT Bancroft,overall,2017-2019,10,17,1,430,82*,26.87,0,3,1,Profile,60,1,1002,42.91
 australia,CJ Sayers,overall,NA,1,2,0,0,0,0.00,0,0,2,Profile,0,0,5,0.00
-australia,AJ Finch,overall,NA,5,10,0,278,62,27.8,0,2,1,Profile,30,1,618,44.98
+australia,AJ Finch,overall,NA,5,10,0,278,62,27.80,0,2,1,Profile,30,1,618,44.98
 australia,TM Head,overall,NA,10,17,1,756,161,47.25,1,6,1,Profile,83,1,1497,50.50
 australia,M Labuschagne,overall,NA,5,8,0,210,81,26.25,0,1,1,Profile,17,1,432,48.61
 australia,MS Harris,overall,NA,6,11,1,327,79,32.70,0,2,0,Profile,38,0,616,53.08
@@ -493,10 +493,10 @@ bangladesh,Rajin Saleh,overall,2003-2008,24,46,2,1141,89,25.93,0,7,8,Profile,138
 bangladesh,Enamul Haque jnr,overall,2003-2013,15,26,16,59,13,5.90,0,0,4,Profile,7,0,271,21.77
 bangladesh,Manjural Islam Rana,overall,NA,6,11,1,257,69,25.70,0,1,2,Profile,30,1,692,37.13
 bangladesh,Faisal Hossain,overall,NA,1,2,0,7,5,3.50,0,0,0,Profile,1,0,27,25.92
-bangladesh,Tareq Aziz,overall,NA,3,6,4,22,10*,11.00,0,0,2,Profile,2,0,147,14.96
+bangladesh,Tareq Aziz,overall,NA,3,6,4,22,10*,11,0,0,2,Profile,2,0,147,14.96
 bangladesh,Nafees Iqbal,overall,NA,11,22,0,518,121,23.54,1,2,2,Profile,72,1,1332,38.88
 bangladesh,Aftab Ahmed,overall,2004-2010,16,31,3,582,82*,20.78,0,1,4,Profile,78,3,1173,49.61
-bangladesh,Nazmul Hossain,overall,2004-2011,2,4,2,16,8*,8,0,0,2,Profile,2,1,21,76.19
+bangladesh,Nazmul Hossain,overall,2004-2011,2,4,2,16,8*,8.00,0,0,2,Profile,2,1,21,76.19
 bangladesh,Mushfiqur Rahim,overall,2005-2018,66,123,9,4006,219*,35.14,6,19,9,Profile,478,30,8540,46.90
 bangladesh,Shahadat Hossain,overall,2005-2015,38,69,17,521,40,10.01,0,0,10,Profile,69,6,1134,45.94
 bangladesh,Shahriar Nafees,overall,2005-2013,24,48,0,1267,138,26.39,1,7,4,Profile,189,1,2268,55.86
@@ -546,17 +546,17 @@ bangladesh,Mosaddek Hossain,overall,NA,2,4,1,104,75,34.66,0,1,0,Profile,11,2,251
 bangladesh,Sunzamul Islam,overall,NA,1,1,0,24,24,24.00,0,0,0,Profile,1,0,56,42.85
 bangladesh,Abu Jayed,overall,NA,5,10,3,11,4,1.57,0,0,3,Profile,1,0,62,17.74
 bangladesh,Ariful Haque,overall,NA,2,4,1,88,41*,29.33,0,0,0,Profile,8,2,159,55.34
-bangladesh,Nazmul Islam,overall,NA,1,2,0,4,4,2.00,0,0,1,Profile,1,0,16,25.00
+bangladesh,Nazmul Islam,overall,NA,1,2,0,4,4,2,0,0,1,Profile,1,0,16,25.00
 bangladesh,Mohammad Mithun,overall,NA,5,9,0,191,67,21.22,0,1,2,Profile,15,1,403,47.39
 bangladesh,Khaled Ahmed,overall,NA,2,2,1,4,4*,4.00,0,0,1,Profile,1,0,19,21.05
 bangladesh,Nayeem Hasan,overall,NA,2,3,1,43,26,21.50,0,0,0,Profile,2,0,130,33.07
-bangladesh,Shadman Islam,overall,NA,3,5,0,193,76,38.60,0,1,0,Profile,22,0,399,48.37
+bangladesh,Shadman Islam,overall,NA,3,5,0,193,76,38.6,0,1,0,Profile,22,0,399,48.37
 bangladesh,Ebadat Hossain,overall,NA,2,4,2,0,0*,0.00,0,0,2,Profile,0,0,7,0.00
-england,T Armitage,overall,NA,2,3,0,33,21,11.00,0,0,0,Profile,NA,NA,NA,NA
+england,T Armitage,overall,NA,2,3,0,33,21,11,0,0,0,Profile,NA,NA,NA,NA
 england,HRJ Charlwood,overall,NA,2,4,0,63,36,15.75,0,0,1,Profile,NA,NA,NA,NA
 england,T Emmett,overall,1877-1882,7,13,1,160,48,13.33,0,0,1,Profile,NA,NA,NA,NA
 england,A Greenwood,overall,NA,2,4,0,77,49,19.25,0,0,0,Profile,NA,NA,NA,NA
-england,A Hill,overall,NA,2,4,2,101,49,50.50,0,0,1,Profile,NA,NA,NA,NA
+england,A Hill,overall,NA,2,4,2,101,49,50.5,0,0,1,Profile,NA,NA,NA,NA
 england,H Jupp,overall,NA,2,4,0,68,63,17.00,0,1,1,Profile,2,0,NA,NA
 england,James Lillywhite jnr,overall,NA,2,3,1,16,10,8.00,0,0,0,Profile,1,0,NA,NA
 england,J Selby,overall,1877-1882,6,12,1,256,70,23.27,0,2,0,Profile,NA,NA,NA,NA
@@ -566,10 +566,10 @@ england,G Ulyett,overall,1877-1890,25,39,0,949,149,24.33,1,7,6,Profile,NA,NA,NA,
 england,CA Absolom,overall,NA,1,2,0,58,52,29.00,0,1,0,Profile,NA,NA,NA,NA
 england,Lord Harris,overall,1879-1884,4,6,1,145,52,29.00,0,1,0,Profile,NA,NA,NA,NA
 england,L Hone,overall,NA,1,2,0,13,7,6.50,0,0,0,Profile,NA,NA,NA,NA
-england,AN Hornby,overall,1879-1884,3,6,0,21,9,3.5,0,0,1,Profile,NA,NA,NA,NA
+england,AN Hornby,overall,1879-1884,3,6,0,21,9,3.50,0,0,1,Profile,NA,NA,NA,NA
 england,AP Lucas,overall,1879-1884,5,9,1,157,55,19.62,0,1,0,Profile,NA,NA,NA,NA
 england,FA MacKinnon,overall,NA,1,2,0,5,5,2.50,0,0,1,Profile,NA,NA,NA,NA
-england,VPFA Royle,overall,NA,1,2,0,21,18,10.50,0,0,0,Profile,NA,NA,NA,NA
+england,VPFA Royle,overall,NA,1,2,0,21,18,10.5,0,0,0,Profile,NA,NA,NA,NA
 england,SS Schultz,overall,NA,1,2,1,20,20,20.00,0,0,0,Profile,NA,NA,NA,NA
 england,AJ Webbe,overall,NA,1,2,0,4,4,2.00,0,0,1,Profile,NA,NA,NA,NA
 england,W Barnes,overall,1880-1890,21,33,2,725,134,23.38,1,5,3,Profile,NA,NA,NA,NA
@@ -600,7 +600,7 @@ england,S Christopherson,overall,NA,1,1,0,17,17,17.00,0,0,0,Profile,NA,NA,NA,NA
 england,W Attewell,overall,1884-1892,10,15,6,150,43*,16.66,0,0,4,Profile,NA,NA,NA,NA
 england,J Briggs,overall,1884-1899,33,50,5,815,121,18.11,1,2,10,Profile,NA,NA,NA,NA
 england,W Flowers,overall,1884-1893,8,14,0,254,56,18.14,0,1,0,Profile,NA,NA,NA,NA
-england,J Hunter,overall,NA,5,7,2,93,39*,18.6,0,0,0,Profile,8,1,NA,NA
+england,J Hunter,overall,NA,5,7,2,93,39*,18.60,0,0,0,Profile,8,1,NA,NA
 england,R Peel,overall,1884-1896,20,33,4,427,83,14.72,0,3,8,Profile,NA,NA,NA,NA
 england,GA Lohmann,overall,1886-1896,18,26,2,213,62*,8.87,0,1,7,Profile,NA,NA,NA,NA
 england,W Gunn,overall,1887-1899,11,20,2,392,102*,21.77,1,1,1,Profile,NA,NA,NA,NA
@@ -609,13 +609,13 @@ england,R Wood,overall,NA,1,2,0,6,6,3.00,0,0,1,Profile,0,0,NA,NA
 england,W Newham,overall,NA,1,2,0,26,17,13.00,0,0,0,Profile,2,0,137,18.97
 england,AE Stoddart,overall,1888-1898,16,30,2,996,173,35.57,2,3,3,Profile,NA,NA,NA,NA
 england,R Abel,overall,1888-1902,13,22,2,744,132*,37.20,2,2,1,Profile,NA,NA,NA,NA
-england,J Shuter,overall,NA,1,1,0,28,28,28.00,0,0,0,Profile,NA,NA,NA,NA
+england,J Shuter,overall,NA,1,1,0,28,28,28,0,0,0,Profile,NA,NA,NA,NA
 england,FH Sugg,overall,NA,2,2,0,55,31,27.50,0,0,0,Profile,NA,NA,NA,NA
-england,H Wood,overall,1888-1892,4,4,1,204,134*,68,1,1,0,Profile,NA,NA,NA,NA
+england,H Wood,overall,1888-1892,4,4,1,204,134*,68.00,1,1,0,Profile,NA,NA,NA,NA
 england,MP Bowden,overall,NA,2,2,0,25,25,12.50,0,0,1,Profile,5,0,NA,NA
 england,Hon.CJ Coventry,overall,NA,2,2,1,13,12,13.00,0,0,0,Profile,2,0,NA,NA
 england,AJ Fothergill,overall,NA,2,2,0,33,32,16.50,0,0,0,Profile,3,1,NA,NA
-england,BAF Grieve,overall,NA,2,3,2,40,14*,40.00,0,0,0,Profile,6,0,NA,NA
+england,BAF Grieve,overall,NA,2,3,2,40,14*,40,0,0,0,Profile,6,0,NA,NA
 england,F Hearne,overall,1889-1896,6,10,0,168,30,16.80,0,0,2,Profile,NA,NA,NA,NA
 england,CA Smith,overall,NA,1,1,0,3,3,3.00,0,0,0,Profile,0,0,NA,NA
 england,JEP McMaster,overall,NA,1,1,0,0,0,0.00,0,0,1,Profile,0,0,1,0.00
@@ -623,9 +623,9 @@ england,G MacGregor,overall,1890-1893,8,11,3,96,31,12.00,0,0,1,Profile,NA,NA,NA,
 england,J Cranston,overall,NA,1,2,0,31,16,15.50,0,0,0,Profile,NA,NA,NA,NA
 england,F Martin,overall,NA,2,2,0,14,13,7.00,0,0,0,Profile,NA,NA,NA,NA
 england,JW Sharpe,overall,NA,3,6,4,44,26,22.00,0,0,0,Profile,NA,NA,NA,NA
-england,G Bean,overall,NA,3,5,0,92,50,18.4,0,1,0,Profile,NA,NA,NA,NA
-england,VA Barton,overall,NA,1,1,0,23,23,23,0,0,0,Profile,NA,NA,NA,NA
-england,W Chatterton,overall,NA,1,1,0,48,48,48,0,0,0,Profile,NA,NA,NA,NA
+england,G Bean,overall,NA,3,5,0,92,50,18.40,0,1,0,Profile,NA,NA,NA,NA
+england,VA Barton,overall,NA,1,1,0,23,23,23.00,0,0,0,Profile,NA,NA,NA,NA
+england,W Chatterton,overall,NA,1,1,0,48,48,48.00,0,0,0,Profile,NA,NA,NA,NA
 england,JJ Ferris,overall,1887-1892,9,17,4,114,20*,8.76,0,0,1,Profile,NA,NA,NA,NA
 england,A Hearne,overall,NA,1,1,0,9,9,9.00,0,0,0,Profile,NA,NA,NA,NA
 england,GG Hearne,overall,NA,1,1,0,0,0,0.00,0,0,1,Profile,0,0,NA,NA
@@ -670,14 +670,14 @@ england,F Mitchell,overall,1899-1912,5,10,0,116,41,11.60,0,0,1,Profile,NA,NA,NA,
 england,AE Trott,overall,1895-1899,5,9,3,228,85*,38.00,0,2,2,Profile,NA,NA,NA,NA
 england,JT Tyldesley,overall,1899-1909,31,55,1,1661,138,30.75,4,9,4,Profile,NA,NA,NA,NA
 england,PF Warner,overall,1899-1912,15,28,2,622,132*,23.92,1,3,4,Profile,NA,NA,NA,NA
-england,CEM Wilson,overall,NA,2,4,1,42,18,14,0,0,0,Profile,NA,NA,NA,NA
+england,CEM Wilson,overall,NA,2,4,1,42,18,14.00,0,0,0,Profile,NA,NA,NA,NA
 england,AG Archer,overall,NA,1,2,1,31,24*,31.00,0,0,0,Profile,NA,NA,NA,NA
 england,W Rhodes,overall,1899-1930,58,98,21,2325,179,30.19,2,11,6,Profile,NA,NA,NA,NA
 england,GL Jessop,overall,1899-1912,18,26,0,569,104,21.88,1,3,3,Profile,NA,NA,NA,NA
-england,W Mead,overall,NA,1,2,0,7,7,3.5,0,0,1,Profile,NA,NA,NA,NA
-england,CL Townsend,overall,NA,2,3,0,51,38,17,0,0,0,Profile,NA,NA,NA,NA
+england,W Mead,overall,NA,1,2,0,7,7,3.50,0,0,1,Profile,NA,NA,NA,NA
+england,CL Townsend,overall,NA,2,3,0,51,38,17.00,0,0,0,Profile,NA,NA,NA,NA
 england,WG Quaife,overall,1899-1902,7,13,1,228,68,19.00,0,1,1,Profile,NA,NA,NA,NA
-england,HI Young,overall,NA,2,2,0,43,43,21.5,0,0,1,Profile,NA,NA,NA,NA
+england,HI Young,overall,NA,2,2,0,43,43,21.50,0,0,1,Profile,NA,NA,NA,NA
 england,WM Bradley,overall,NA,2,2,1,23,23*,23.00,0,0,1,Profile,NA,NA,NA,NA
 england,AO Jones,overall,1899-1909,12,21,0,291,34,13.85,0,0,2,Profile,NA,NA,NA,NA
 england,SF Barnes,overall,1901-1914,27,39,9,242,38*,8.06,0,0,8,Profile,NA,NA,NA,NA
@@ -718,7 +718,7 @@ england,FE Woolley,overall,1909-1934,64,98,7,3283,154,36.07,5,23,13,Profile,NA,N
 england,MC Bird,overall,1910-1914,10,16,1,280,61,18.66,0,2,2,Profile,NA,NA,NA,NA
 england,CP Buckenham,overall,NA,4,7,0,43,17,6.14,0,0,1,Profile,NA,NA,NA,NA
 england,HDG Leveson Gower,overall,NA,3,6,2,95,31,23.75,0,0,0,Profile,NA,NA,NA,NA
-england,GHT Simpson-Hayward,overall,NA,5,8,1,105,29*,15,0,0,1,Profile,NA,NA,NA,NA
+england,GHT Simpson-Hayward,overall,NA,5,8,1,105,29*,15.00,0,0,1,Profile,NA,NA,NA,NA
 england,H Strudwick,overall,1910-1926,28,42,13,230,24,7.93,0,0,5,Profile,NA,NA,NA,NA
 england,NC Tufnell,overall,NA,1,1,0,14,14,14.00,0,0,0,Profile,NA,NA,NA,NA
 england,JWHT Douglas,overall,1911-1925,23,35,2,962,119,29.15,1,6,3,Profile,NA,NA,NA,NA
@@ -738,20 +738,20 @@ england,CAG Russell,overall,1920-1923,10,18,2,910,140,56.87,5,2,2,Profile,NA,NA,
 england,A Waddington,overall,NA,2,4,0,16,7,4.00,0,0,1,Profile,1,0,55,29.09
 england,H Howell,overall,1920-1924,5,8,6,15,5,7.50,0,0,0,Profile,0,0,NA,NA
 england,JWH Makepeace,overall,NA,4,8,0,279,117,34.87,1,2,0,Profile,12,0,701,39.80
-england,PGH Fender,overall,1921-1929,13,21,1,380,60,19.00,0,2,3,Profile,NA,NA,NA,NA
+england,PGH Fender,overall,1921-1929,13,21,1,380,60,19,0,2,3,Profile,NA,NA,NA,NA
 england,A Dolphin,overall,NA,1,2,0,1,1,0.50,0,0,1,Profile,0,0,4,25.00
 england,ER Wilson,overall,NA,1,2,0,10,5,5.00,0,0,0,Profile,0,0,47,21.27
 england,P Holmes,overall,1921-1932,7,14,1,357,88,27.46,0,4,3,Profile,NA,NA,NA,NA
 england,VWC Jupp,overall,1921-1928,8,13,1,208,38,17.33,0,0,0,Profile,NA,NA,NA,NA
-england,DJ Knight,overall,NA,2,4,0,54,38,13.5,0,0,0,Profile,3,0,NA,NA
-england,TL Richmond,overall,NA,1,2,0,6,4,3.00,0,0,0,Profile,1,0,NA,NA
+england,DJ Knight,overall,NA,2,4,0,54,38,13.50,0,0,0,Profile,3,0,NA,NA
+england,TL Richmond,overall,NA,1,2,0,6,4,3,0,0,0,Profile,1,0,NA,NA
 england,GE Tyldesley,overall,1921-1929,14,20,2,990,122,55.00,3,6,2,Profile,NA,NA,NA,NA
 england,AE Dipper,overall,NA,1,2,0,51,40,25.50,0,0,0,Profile,3,0,NA,NA
 england,FJ Durston,overall,NA,1,2,1,8,6*,8.00,0,0,0,Profile,1,0,NA,NA
 england,AJ Evans,overall,NA,1,2,0,18,14,9.00,0,0,0,Profile,1,0,NA,NA
 england,NE Haig,overall,1921-1930,5,9,0,126,47,14.00,0,0,2,Profile,NA,NA,NA,NA
-england,G Brown,overall,NA,7,12,2,299,84,29.90,0,2,2,Profile,NA,NA,NA,NA
-england,A Ducat,overall,NA,1,2,0,5,3,2.50,0,0,0,Profile,0,0,NA,NA
+england,G Brown,overall,NA,7,12,2,299,84,29.9,0,2,2,Profile,NA,NA,NA,NA
+england,A Ducat,overall,NA,1,2,0,5,3,2.5,0,0,0,Profile,0,0,NA,NA
 england,HTW Hardinge,overall,NA,1,2,0,30,25,15.00,0,0,0,Profile,2,0,NA,NA
 england,JC White,overall,1921-1931,15,22,9,239,29,18.38,0,0,1,Profile,NA,NA,NA,NA
 england,C Hallows,overall,1921-1928,2,2,1,42,26,42.00,0,0,0,Profile,NA,NA,NA,NA
@@ -776,7 +776,7 @@ england,JCW MacBryan,overall,NA,1,-,-,-,-,-,-,-,-,Profile,-,-,-,-
 england,AP Freeman,overall,1924-1929,12,16,5,154,50*,14.00,0,1,2,Profile,NA,NA,NA,NA
 england,WW Whysall,overall,1925-1930,4,7,0,209,76,29.85,0,2,0,Profile,NA,NA,NA,NA
 england,CF Root,overall,NA,3,-,-,-,-,-,-,-,-,Profile,-,-,-,-
-england,H Larwood,overall,1926-1933,21,28,3,485,98,19.40,0,2,4,Profile,NA,NA,NA,NA
+england,H Larwood,overall,1926-1933,21,28,3,485,98,19.4,0,2,4,Profile,NA,NA,NA,NA
 england,WE Astill,overall,1927-1930,9,15,0,190,40,12.66,0,0,2,Profile,NA,NA,NA,NA
 england,WR Hammond,overall,1927-1947,85,140,16,7249,336*,58.45,22,24,4,Profile,NA,NA,NA,NA
 england,GB Legge,overall,1927-1930,5,7,1,299,196,49.83,1,0,2,Profile,NA,NA,NA,NA
@@ -798,7 +798,7 @@ england,F Barratt,overall,NA,5,4,1,28,17,9.33,0,0,0,Profile,NA,NA,NA,NA
 england,LEG Ames,overall,1929-1939,47,72,12,2434,149,40.56,8,7,5,Profile,NA,NA,NA,NA
 england,EW Clark,overall,1929-1934,8,9,5,36,10,9.00,0,0,1,Profile,NA,NA,NA,NA
 england,MJC Allom,overall,NA,5,3,2,14,8*,14.00,0,0,0,Profile,NA,NA,NA,NA
-england,WL Cornford,overall,NA,4,4,0,36,18,9,0,0,0,Profile,NA,NA,NA,NA
+england,WL Cornford,overall,NA,4,4,0,36,18,9.00,0,0,0,Profile,NA,NA,NA,NA
 england,AHH Gilligan,overall,NA,4,4,0,71,32,17.75,0,0,0,Profile,NA,NA,NA,NA
 england,MS Nichols,overall,1930-1939,14,19,7,355,78*,29.58,0,2,0,Profile,NA,NA,NA,NA
 england,MJL Turnbull,overall,1930-1936,9,13,2,224,61,20.36,0,1,1,Profile,NA,NA,NA,NA
@@ -807,7 +807,7 @@ england,Hon.FSG Calthorpe,overall,NA,4,7,0,129,49,18.42,0,0,1,Profile,NA,NA,NA,N
 england,W Voce,overall,1930-1947,27,38,15,308,66,13.39,0,1,6,Profile,NA,NA,NA,NA
 england,LF Townsend,overall,1930-1934,4,6,0,97,40,16.16,0,0,0,Profile,NA,NA,NA,NA
 england,GOB Allen,overall,1930-1948,25,33,2,750,122,24.19,1,3,1,Profile,NA,NA,NA,NA
-england,TWJ Goddard,overall,1930-1939,8,5,3,13,8,6.5,0,0,1,Profile,NA,NA,NA,NA
+england,TWJ Goddard,overall,1930-1939,8,5,3,13,8,6.50,0,0,1,Profile,NA,NA,NA,NA
 england,W Farrimond,overall,1931-1935,4,7,0,116,35,16.57,0,0,0,Profile,NA,NA,NA,NA
 england,HW Lee,overall,NA,1,2,0,19,18,9.50,0,0,0,Profile,NA,NA,NA,NA
 england,J Arnold,overall,NA,1,2,0,34,34,17.00,0,0,1,Profile,5,0,NA,NA
@@ -821,7 +821,7 @@ england,TB Mitchell,overall,1933-1935,5,6,2,20,9,5.00,0,0,1,Profile,NA,NA,NA,NA
 england,CF Walters,overall,NA,11,18,3,784,102,52.26,1,7,0,Profile,NA,NA,NA,NA
 england,James Langridge,overall,1933-1946,8,9,0,242,70,26.88,0,1,0,Profile,NA,NA,NA,NA
 england,CJ Barnett,overall,1933-1948,20,35,4,1098,129,35.41,2,5,1,Profile,NA,NA,NA,NA
-england,CS Marriott,overall,NA,1,1,0,0,0,0,0,0,1,Profile,0,0,NA,NA
+england,CS Marriott,overall,NA,1,1,0,0,0,0.00,0,0,1,Profile,0,0,NA,NA
 england,A Mitchell,overall,1933-1936,6,10,0,298,72,29.80,0,2,1,Profile,NA,NA,NA,NA
 england,BH Valentine,overall,1933-1939,7,9,2,454,136,64.85,2,1,0,Profile,NA,NA,NA,NA
 england,WHV Levett,overall,NA,1,2,1,7,5,7.00,0,0,0,Profile,NA,NA,NA,NA
@@ -846,7 +846,7 @@ england,AE Fagg,overall,1936-1939,5,8,0,150,39,18.75,0,0,0,Profile,NA,NA,NA,NA
 england,LB Fishlock,overall,1936-1947,4,5,1,47,19*,11.75,0,0,1,Profile,NA,NA,NA,NA
 england,AR Gover,overall,1936-1946,4,1,1,2,2*,-,0,0,0,Profile,0,0,NA,NA
 england,L Hutton,overall,1937-1955,79,138,15,6971,364,56.67,19,33,5,Profile,NA,NA,NA,NA
-england,JH Parks,overall,NA,1,2,0,29,22,14.50,0,0,0,Profile,NA,NA,NA,NA
+england,JH Parks,overall,NA,1,2,0,29,22,14.5,0,0,0,Profile,NA,NA,NA,NA
 england,AW Wellard,overall,NA,2,4,0,47,38,11.75,0,0,1,Profile,NA,NA,NA,NA
 england,DCS Compton,overall,1937-1957,78,131,15,5807,278,50.06,17,28,10,Profile,NA,NA,NA,NA
 england,ADG Matthews,overall,NA,1,1,1,2,2*,-,0,0,0,Profile,0,0,NA,NA
@@ -889,7 +889,7 @@ england,A Coxon,overall,NA,1,2,0,19,19,9.50,0,0,1,Profile,NA,NA,NA,NA
 england,JF Crapp,overall,NA,7,13,2,319,56,29.00,0,3,1,Profile,NA,NA,NA,NA
 england,GM Emmett,overall,NA,1,2,0,10,10,5.00,0,0,1,Profile,0,0,NA,NA
 england,JG Dewes,overall,1948-1950,5,10,0,121,67,12.10,0,1,1,Profile,NA,NA,NA,NA
-england,AJ Watkins,overall,1948-1952,15,24,4,810,137*,40.50,2,4,2,Profile,NA,NA,NA,NA
+england,AJ Watkins,overall,1948-1952,15,24,4,810,137*,40.5,2,4,2,Profile,NA,NA,NA,NA
 england,RO Jenkins,overall,1948-1952,9,12,1,198,39,18.00,0,0,0,Profile,NA,NA,NA,NA
 england,FG Mann,overall,NA,7,12,2,376,136*,37.60,1,0,0,Profile,NA,NA,NA,NA
 england,RT Simpson,overall,1948-1955,27,45,3,1401,156*,33.35,4,6,6,Profile,NA,NA,NA,NA
@@ -905,7 +905,7 @@ england,D Shackleton,overall,1950-1963,7,13,7,113,42,18.83,0,0,0,Profile,NA,NA,N
 england,MJ Hilton,overall,NA,4,6,1,37,15,7.40,0,0,2,Profile,NA,NA,NA,NA
 england,AJW McIntyre,overall,1950-1955,3,6,0,19,7,3.16,0,0,1,Profile,NA,NA,NA,NA
 england,Rev.DS Sheppard,overall,1950-1963,22,33,2,1172,119,37.80,3,6,2,Profile,NA,NA,NA,NA
-england,JJ Warr,overall,NA,2,4,0,4,4,1,0,0,3,Profile,0,0,NA,NA
+england,JJ Warr,overall,NA,2,4,0,4,4,1.00,0,0,3,Profile,0,0,NA,NA
 england,R Tattersall,overall,1951-1954,16,17,7,50,10*,5.00,0,0,1,Profile,NA,NA,NA,NA
 england,JB Statham,overall,1951-1965,70,87,28,675,38,11.44,0,0,13,Profile,NA,NA,NA,NA
 england,W Watson,overall,1951-1959,23,37,3,879,116,25.85,2,3,3,Profile,NA,NA,NA,NA
@@ -969,7 +969,7 @@ england,AC Smith,overall,NA,6,7,3,118,69*,29.50,0,1,0,Profile,15,0,NA,NA
 england,JH Edrich,overall,1963-1976,77,127,9,5138,310*,43.54,12,24,6,Profile,NA,NA,NA,NA
 england,PJ Sharpe,overall,1963-1969,12,21,4,786,111,46.23,1,4,1,Profile,NA,NA,NA,NA
 england,JB Bolus,overall,NA,7,12,0,496,88,41.33,0,4,0,Profile,NA,NA,NA,NA
-england,D Wilson,overall,1964-1971,6,7,1,75,42,12.50,0,0,0,Profile,7,1,NA,NA
+england,D Wilson,overall,1964-1971,6,7,1,75,42,12.5,0,0,0,Profile,7,1,NA,NA
 england,JG Binks,overall,NA,2,4,0,91,55,22.75,0,1,0,Profile,7,0,NA,NA
 england,IJ Jones,overall,1964-1968,15,17,9,38,16,4.75,0,0,2,Profile,5,0,NA,NA
 england,JSE Price,overall,1964-1972,15,15,6,66,32,7.33,0,0,5,Profile,6,0,NA,NA
@@ -977,7 +977,7 @@ england,G Boycott,overall,1964-1982,108,193,23,8114,246*,47.72,22,42,10,Profile,
 england,N Gifford,overall,1964-1973,15,20,9,179,25*,16.27,0,0,1,Profile,16,0,NA,NA
 england,TW Cartwright,overall,NA,5,7,2,26,9,5.20,0,0,2,Profile,NA,NA,NA,NA
 england,FE Rumsey,overall,NA,5,5,3,30,21*,15.00,0,0,0,Profile,NA,NA,NA,NA
-england,NI Thomson,overall,NA,5,4,1,69,39,23,0,0,1,Profile,9,0,NA,NA
+england,NI Thomson,overall,NA,5,4,1,69,39,23.00,0,0,1,Profile,9,0,NA,NA
 england,KE Palmer,overall,NA,1,1,0,10,10,10.00,0,0,0,Profile,1,0,NA,NA
 england,JA Snow,overall,1965-1976,49,71,14,772,73,13.54,0,2,17,Profile,NA,NA,NA,NA
 england,DJ Brown,overall,1965-1969,26,34,5,342,44*,11.79,0,0,6,Profile,NA,NA,NA,NA
@@ -990,7 +990,7 @@ england,RNS Hobbs,overall,1967-1971,7,8,3,34,15*,6.80,0,0,1,Profile,2,1,NA,NA
 england,GG Arnold,overall,1967-1975,34,46,11,421,59,12.02,0,1,5,Profile,50,2,NA,NA
 england,APE Knott,overall,1967-1981,95,149,15,4389,135,32.75,5,30,8,Profile,NA,NA,NA,NA
 england,PI Pocock,overall,1968-1985,25,37,4,206,33,6.24,0,0,10,Profile,NA,NA,NA,NA
-england,KWR Fletcher,overall,1968-1982,59,96,14,3272,216,39.90,7,19,6,Profile,NA,NA,NA,NA
+england,KWR Fletcher,overall,1968-1982,59,96,14,3272,216,39.9,7,19,6,Profile,NA,NA,NA,NA
 england,RM Prideaux,overall,NA,3,6,1,102,64,20.40,0,1,0,Profile,NA,NA,NA,NA
 england,RMH Cottam,overall,1969-1973,4,5,1,27,13,6.75,0,0,0,Profile,NA,NA,NA,NA
 england,JH Hampshire,overall,1969-1975,8,16,1,403,107,26.86,1,2,2,Profile,55,0,929,43.37
@@ -1019,12 +1019,12 @@ england,PH Edmonds,overall,1975-1987,51,65,15,875,64,17.50,0,2,5,Profile,84,9,22
 england,JM Brearley,overall,1976-1981,39,66,3,1442,91,22.88,0,9,6,Profile,131,0,4839,29.79
 england,MWW Selvey,overall,NA,3,5,3,15,5*,7.50,0,0,1,Profile,1,0,66,22.72
 england,JC Balderstone,overall,NA,2,4,0,39,35,9.75,0,0,2,Profile,3,0,198,19.69
-england,P Willey,overall,1976-1986,26,50,6,1184,102*,26.90,2,5,2,Profile,160,4,2794,42.37
+england,P Willey,overall,1976-1986,26,50,6,1184,102*,26.9,2,5,2,Profile,160,4,2794,42.37
 england,G Miller,overall,1976-1984,34,51,4,1213,98*,25.80,0,7,5,Profile,119,0,3416,35.50
 england,GD Barlow,overall,NA,3,5,1,17,7*,4.25,0,0,1,Profile,2,0,82,20.73
 england,JK Lever,overall,1976-1986,21,31,5,306,53,11.76,0,1,2,Profile,26,1,1198,25.54
 england,DW Randall,overall,1977-1984,47,79,5,2470,174,33.37,7,12,14,Profile,254,5,5625,43.91
-england,RW Tolchard,overall,NA,4,7,2,129,67,25.80,0,1,1,Profile,10,0,470,27.44
+england,RW Tolchard,overall,NA,4,7,2,129,67,25.8,0,1,1,Profile,10,0,470,27.44
 england,IT Botham,overall,1977-1992,102,161,6,5200,208,33.54,14,22,14,Profile,621,67,8565,60.71
 england,GA Cope,overall,NA,3,3,0,40,22,13.33,0,0,1,Profile,1,0,184,21.73
 england,BC Rose,overall,1977-1981,9,16,2,358,70,25.57,0,2,0,Profile,38,0,956,37.44
@@ -1047,7 +1047,7 @@ england,PWG Parker,overall,NA,1,2,0,13,13,6.50,0,0,1,Profile,2,0,49,26.53
 england,G Cook,overall,NA,7,13,0,203,66,15.61,0,2,1,Profile,20,0,529,38.37
 england,AJ Lamb,overall,1982-1992,79,139,10,4656,142,36.09,14,18,9,Profile,618,20,9058,51.40
 england,DR Pringle,overall,1982-1992,30,50,4,695,63,15.10,0,1,6,Profile,66,2,2439,28.49
-england,IA Greig,overall,NA,2,4,0,26,14,6.5,0,0,0,Profile,2,0,102,25.49
+england,IA Greig,overall,NA,2,4,0,26,14,6.50,0,0,0,Profile,2,0,102,25.49
 england,EE Hemmings,overall,1982-1991,16,21,4,383,95,22.52,0,2,5,Profile,35,1,939,40.78
 england,G Fowler,overall,1982-1985,21,37,0,1307,201,35.32,3,8,3,Profile,145,3,3362,38.87
 england,VJ Marks,overall,NA,6,10,1,249,83,27.66,0,3,0,Profile,23,0,532,46.80
@@ -1075,7 +1075,7 @@ england,MD Moxon,overall,1986-1989,10,17,1,455,99,28.43,0,3,2,Profile,44,0,1365,
 england,GC Small,overall,1986-1991,17,24,7,263,59,15.47,0,1,4,Profile,31,0,601,43.76
 england,PAJ DeFreitas,overall,1986-1995,44,68,5,934,88,14.82,0,4,10,Profile,103,8,1691,55.23
 england,CJ Richards,overall,1986-1988,8,13,0,285,133,21.92,1,0,2,Profile,29,0,750,38.00
-england,JJ Whitaker,overall,NA,1,1,0,11,11,11,0,0,0,Profile,1,0,34,32.35
+england,JJ Whitaker,overall,NA,1,1,0,11,11,11.00,0,0,0,Profile,1,0,34,32.35
 england,NH Fairbrother,overall,1987-1993,10,15,1,219,83,15.64,0,1,1,Profile,22,2,599,36.56
 england,DJ Capel,overall,1987-1990,15,25,1,374,98,15.58,0,2,4,Profile,34,1,1231,30.38
 england,PW Jarvis,overall,1988-1993,9,15,2,132,29*,10.15,0,0,1,Profile,11,0,339,38.93
@@ -1171,7 +1171,7 @@ england,RJ Kirtley,overall,NA,4,7,1,32,12,5.33,0,0,0,Profile,1,1,129,24.80
 england,ET Smith,overall,NA,3,5,0,87,64,17.40,0,1,2,Profile,15,0,172,50.58
 england,Kabir Ali,overall,NA,1,2,0,10,9,5.00,0,0,0,Profile,1,0,28,35.71
 england,GJ Batty,overall,2003-2016,9,12,2,149,38,14.90,0,0,2,Profile,15,2,580,25.68
-england,R Clarke,overall,NA,2,3,0,96,55,32,0,1,0,Profile,8,1,253,37.94
+england,R Clarke,overall,NA,2,3,0,96,55,32.00,0,1,0,Profile,8,1,253,37.94
 england,MJ Saggers,overall,NA,3,3,0,1,1,0.33,0,0,2,Profile,0,0,30,3.33
 england,PD Collingwood,overall,2003-2011,68,115,10,4259,206,40.56,10,20,6,Profile,470,24,9170,46.44
 england,GO Jones,overall,2004-2006,34,53,4,1172,100,23.91,1,6,2,Profile,155,12,2165,54.13
@@ -1206,17 +1206,17 @@ england,SR Patel,overall,2012-2015,6,9,0,151,42,16.77,0,0,2,Profile,16,1,338,44.
 england,JM Bairstow,overall,2012-2019,66,114,6,3872,167*,35.85,6,21,10,Profile,456,24,6989,55.40
 england,JWA Taylor,overall,2012-2016,7,13,1,312,76,26.00,0,2,1,Profile,32,2,753,41.43
 england,NRD Compton,overall,2012-2016,16,30,3,775,117,28.70,2,2,3,Profile,84,3,2150,36.04
-england,JE Root,overall,2012-2019,83,152,12,6817,254,48.69,16,42,5,Profile,770,19,12326,55.30
+england,JE Root,overall,2012-2019,83,153,12,6817,254,48.34,16,42,6,Profile,770,19,12327,55.30
 england,SC Kerrigan,overall,NA,1,1,1,1,1*,-,0,0,0,Profile,0,0,12,8.33
 england,CR Woakes,overall,2013-2019,29,48,11,1131,137*,30.56,1,4,5,Profile,146,3,2253,50.19
-england,BA Stokes,overall,2013-2019,54,98,2,3221,258,33.55,6,18,12,Profile,411,48,5516,58.39
+england,BA Stokes,overall,2013-2019,54,99,3,3237,258,33.71,6,18,12,Profile,413,48,5557,58.25
 england,GS Ballance,overall,2014-2017,23,42,2,1498,156,37.45,4,7,3,Profile,195,8,3176,47.16
 england,SG Borthwick,overall,NA,1,2,0,5,4,2.50,0,0,0,Profile,1,0,19,26.31
 england,WB Rankin,overall,2014-2019,3,6,1,43,17,8.60,0,0,1,Profile,6,0,99,43.43
 england,MM Ali,overall,2014-2019,60,104,8,2782,155*,28.97,5,14,14,Profile,337,25,5442,51.12
 england,CJ Jordan,overall,NA,8,11,1,180,35,18.00,0,0,0,Profile,24,1,320,56.25
 england,SD Robson,overall,NA,7,11,0,336,127,30.54,1,1,0,Profile,42,1,755,44.50
-england,JC Buttler,overall,2014-2019,33,57,6,1740,106,34.11,1,14,4,Profile,206,18,2934,59.30
+england,JC Buttler,overall,2014-2019,33,58,7,1750,106,34.31,1,14,4,Profile,206,18,2971,58.90
 england,A Lyth,overall,NA,7,13,0,265,107,20.38,1,0,1,Profile,40,1,529,50.09
 england,MA Wood,overall,2015-2019,13,23,5,297,52,16.50,0,1,2,Profile,46,2,493,60.24
 england,AU Rashid,overall,2015-2019,19,33,5,540,61,19.28,0,2,3,Profile,62,4,1270,42.51
@@ -1238,11 +1238,11 @@ england,MS Crane,overall,NA,1,2,0,6,4,3.00,0,0,0,Profile,0,0,11,54.54
 england,MJ Leach,overall,2018-2019,6,10,3,154,92,22.00,0,1,1,Profile,23,0,328,46.95
 england,DM Bess,overall,NA,2,3,0,111,57,37.00,0,1,0,Profile,16,0,215,51.62
 england,SM Curran,overall,NA,10,18,2,509,78,31.81,0,3,2,Profile,53,16,818,62.22
-england,OJ Pope,overall,NA,2,3,0,54,28,18,0,0,0,Profile,7,0,99,54.54
-england,RJ Burns,overall,NA,9,17,0,509,133,29.94,1,3,0,Profile,61,0,1151,44.22
+england,OJ Pope,overall,NA,2,3,0,54,28,18.00,0,0,0,Profile,7,0,99,54.54
+england,RJ Burns,overall,NA,9,18,0,538,133,29.88,1,3,0,Profile,64,0,1203,44.72
 england,BT Foakes,overall,NA,5,10,2,332,107,41.50,1,1,0,Profile,29,5,617,53.80
-england,JL Denly,overall,NA,5,9,0,204,69,22.66,0,1,0,Profile,28,0,412,49.51
-england,JJ Roy,overall,NA,3,5,0,115,72,23.00,0,1,1,Profile,16,1,172,66.86
+england,JL Denly,overall,NA,5,10,0,230,69,23.00,0,1,0,Profile,32,0,463,49.67
+england,JJ Roy,overall,NA,3,6,0,117,72,19.50,0,1,1,Profile,16,1,185,63.24
 england,OP Stone,overall,NA,1,2,0,19,19,9.50,0,0,1,Profile,4,0,29,65.51
 england,JC Archer,overall,NA,1,1,0,12,12,12.00,0,0,0,Profile,2,0,20,60.00
 india,L Amar Singh,overall,1932-1936,7,14,1,292,51,22.46,0,1,1,Profile,NA,NA,NA,NA
@@ -1257,10 +1257,10 @@ india,M Nissar,overall,1932-1936,6,11,3,55,14,6.87,0,0,2,Profile,NA,NA,NA,NA
 india,PE Palia,overall,1932-1936,2,4,1,29,16,9.66,0,0,0,Profile,NA,NA,NA,NA
 india,S Wazir Ali,overall,1932-1936,7,14,0,237,42,16.92,0,0,1,Profile,NA,NA,NA,NA
 india,L Amarnath,overall,1933-1952,24,40,4,878,118,24.38,1,4,5,Profile,NA,NA,NA,NA
-india,LP Jai,overall,NA,1,2,0,19,19,9.5,0,0,1,Profile,NA,NA,NA,NA
+india,LP Jai,overall,NA,1,2,0,19,19,9.50,0,0,1,Profile,NA,NA,NA,NA
 india,RJD Jamshedji,overall,NA,1,2,2,5,4*,-,0,0,0,Profile,NA,NA,NA,NA
 india,VM Merchant,overall,1933-1951,10,18,0,859,154,47.72,3,3,2,Profile,NA,NA,NA,NA
-india,L Ramji,overall,NA,1,2,0,1,1,0.5,0,0,1,Profile,0,0,NA,NA
+india,L Ramji,overall,NA,1,2,0,1,1,0.50,0,0,1,Profile,0,0,NA,NA
 india,Dilawar Hussain,overall,1934-1936,3,6,0,254,59,42.33,0,3,0,Profile,NA,NA,NA,NA
 india,MJ Gopalan,overall,NA,1,2,1,18,11*,18.00,0,0,0,Profile,NA,NA,NA,NA
 india,S Mushtaq Ali,overall,1934-1952,11,20,1,612,112,32.21,2,3,1,Profile,NA,NA,NA,NA
@@ -1278,7 +1278,7 @@ india,MH Mankad,overall,1946-1959,44,72,5,2109,231,31.47,5,6,7,Profile,NA,NA,NA,
 india,RS Modi,overall,1946-1952,10,17,1,736,112,46.00,1,6,0,Profile,NA,NA,NA,NA
 india,Nawab of Pataudi snr,overall,1932-1946,6,10,0,199,102,19.90,1,0,0,Profile,NA,NA,NA,NA
 india,SG Shinde,overall,1946-1952,7,11,5,85,14,14.16,0,0,0,Profile,NA,NA,NA,NA
-india,CT Sarwate,overall,1946-1951,9,17,1,208,37,13,0,0,4,Profile,NA,NA,NA,NA
+india,CT Sarwate,overall,1946-1951,9,17,1,208,37,13.00,0,0,4,Profile,NA,NA,NA,NA
 india,SW Sohoni,overall,1946-1951,4,7,2,83,29*,16.60,0,0,0,Profile,NA,NA,NA,NA
 india,HR Adhikari,overall,1947-1959,21,36,8,872,114*,31.14,1,4,5,Profile,NA,NA,NA,NA
 india,JK Irani,overall,NA,2,3,2,3,2*,3.00,0,0,1,Profile,0,0,22,13.63
@@ -1324,7 +1324,7 @@ india,VN Swamy,overall,NA,1,-,-,-,-,-,-,-,-,Profile,-,-,-,-
 india,NJ Contractor,overall,1955-1962,31,52,1,1611,108,31.58,1,11,2,Profile,NA,NA,NA,NA
 india,VL Mehra,overall,1955-1964,8,14,1,329,62,25.30,0,2,1,Profile,NA,NA,NA,NA
 india,SR Patil,overall,NA,1,1,1,14,14*,-,0,0,0,Profile,NA,NA,NA,NA
-india,RG Nadkarni,overall,1955-1968,41,67,12,1414,122*,25.7,1,7,6,Profile,NA,NA,NA,NA
+india,RG Nadkarni,overall,1955-1968,41,67,12,1414,122*,25.70,1,7,6,Profile,NA,NA,NA,NA
 india,GR Sunderam,overall,NA,2,1,1,3,3*,-,0,0,0,Profile,0,0,NA,NA
 india,CT Patankar,overall,NA,1,2,1,14,13,14.00,0,0,0,Profile,NA,NA,NA,NA
 india,CG Borde,overall,1958-1969,55,97,11,3061,177*,35.59,5,18,13,Profile,NA,NA,NA,NA
@@ -1340,7 +1340,7 @@ india,AL Apte,overall,NA,1,2,0,15,8,7.50,0,0,0,Profile,NA,NA,NA,NA
 india,AA Baig,overall,1959-1967,10,18,0,428,112,23.77,1,2,1,Profile,NA,NA,NA,NA
 india,VM Muddiah,overall,NA,2,3,1,11,11,5.50,0,0,1,Profile,NA,NA,NA,NA
 india,SA Durani,overall,1960-1973,29,50,2,1202,104,25.04,1,7,4,Profile,NA,NA,NA,NA
-india,BK Kunderan,overall,1960-1967,18,34,4,981,192,32.7,2,3,1,Profile,NA,NA,NA,NA
+india,BK Kunderan,overall,1960-1967,18,34,4,981,192,32.70,2,3,1,Profile,NA,NA,NA,NA
 india,AG Milkha Singh,overall,1960-1961,4,6,0,92,35,15.33,0,0,0,Profile,NA,NA,NA,NA
 india,MM Sood,overall,NA,1,2,0,3,3,1.50,0,0,1,Profile,0,0,NA,NA
 india,RF Surti,overall,1960-1969,26,48,4,1263,99,28.70,0,9,5,Profile,NA,NA,NA,NA
@@ -1359,12 +1359,12 @@ india,V Subramanya,overall,1965-1968,9,15,1,263,75,18.78,0,2,1,Profile,NA,NA,NA,
 india,AL Wadekar,overall,1966-1974,37,71,3,2113,143,31.07,1,14,7,Profile,NA,NA,NA,NA
 india,BS Bedi,overall,1966-1979,67,101,28,656,50*,8.98,0,1,20,Profile,NA,NA,NA,NA
 india,S Guha,overall,1967-1969,4,7,2,17,6,3.40,0,0,1,Profile,NA,NA,NA,NA
-india,RC Saxena,overall,NA,1,2,0,25,16,12.50,0,0,0,Profile,3,0,86,29.06
+india,RC Saxena,overall,NA,1,2,0,25,16,12.5,0,0,0,Profile,3,0,86,29.06
 india,S Abid Ali,overall,1967-1974,29,53,3,1018,81,20.36,0,6,3,Profile,NA,NA,NA,NA
 india,UN Kulkarni,overall,NA,4,8,5,13,7,4.33,0,0,1,Profile,1,0,NA,NA
 india,CPS Chauhan,overall,1969-1981,40,68,2,2084,97,31.57,0,16,6,Profile,NA,NA,NA,NA
 india,AV Mankad,overall,1969-1978,22,42,3,991,97,25.41,0,6,3,Profile,NA,NA,NA,NA
-india,AM Pai,overall,NA,1,2,0,10,9,5.00,0,0,0,Profile,2,0,NA,NA
+india,AM Pai,overall,NA,1,2,0,10,9,5,0,0,0,Profile,2,0,NA,NA
 india,AK Roy,overall,NA,4,7,0,91,48,13.00,0,0,2,Profile,NA,NA,NA,NA
 india,A Gandotra,overall,NA,2,4,0,54,18,13.50,0,0,0,Profile,NA,NA,NA,NA
 india,ED Solkar,overall,1969-1977,27,48,6,1068,102,25.42,1,6,1,Profile,NA,NA,NA,NA
@@ -1417,9 +1417,9 @@ india,M Azharuddin,overall,1984-2000,99,147,9,6215,199,45.03,22,21,5,Profile,NA,
 india,G Sharma,overall,1985-1990,5,4,1,11,10*,3.66,0,0,2,Profile,NA,NA,NA,NA
 india,LS Rajput,overall,NA,2,4,0,105,61,26.25,0,1,1,Profile,NA,NA,NA,NA
 india,S Viswanath,overall,NA,3,5,0,31,20,6.20,0,0,2,Profile,NA,NA,NA,NA
-india,KS More,overall,1986-1993,49,64,14,1285,73,25.70,0,7,7,Profile,NA,NA,NA,NA
+india,KS More,overall,1986-1993,49,64,14,1285,73,25.7,0,7,7,Profile,NA,NA,NA,NA
 india,CS Pandit,overall,1986-1992,5,8,1,171,39,24.42,0,0,0,Profile,18,0,331,51.66
-india,RR Kulkarni,overall,NA,3,2,0,2,2,1,0,0,1,Profile,0,0,NA,NA
+india,RR Kulkarni,overall,NA,3,2,0,2,2,1.00,0,0,1,Profile,0,0,NA,NA
 india,B Arun,overall,NA,2,2,1,4,2*,4.00,0,0,0,Profile,0,0,NA,NA
 india,R Lamba,overall,NA,4,5,0,102,53,20.40,0,1,1,Profile,NA,NA,NA,NA
 india,Arshad Ayub,overall,1987-1989,13,19,4,257,57,17.13,0,1,1,Profile,25,0,800,32.12
@@ -1427,7 +1427,7 @@ india,SV Manjrekar,overall,1987-1996,37,61,6,2043,218,37.14,4,9,3,Profile,220,1,
 india,ND Hirwani,overall,1988-1996,17,22,12,54,17,5.40,0,0,5,Profile,6,0,NA,NA
 india,WV Raman,overall,1988-1997,11,19,1,448,96,24.88,0,4,4,Profile,55,1,1183,37.86
 india,AK Sharma,overall,NA,1,2,0,53,30,26.50,0,0,0,Profile,8,0,169,31.36
-india,RGM Patel,overall,NA,1,2,0,0,0,0.00,0,0,2,Profile,0,0,15,0.00
+india,RGM Patel,overall,NA,1,2,0,0,0,0,0,0,2,Profile,0,0,15,0.00
 india,SK Sharma,overall,1988-1990,2,3,1,56,38,28.00,0,0,1,Profile,9,0,80,70.00
 india,M Venkataramana,overall,NA,1,2,2,0,0*,-,0,0,0,Profile,0,0,4,0.00
 india,SA Ankola,overall,NA,1,1,0,6,6,6.00,0,0,0,Profile,1,0,11,54.54
@@ -1485,7 +1485,7 @@ india,HK Badani,overall,NA,4,7,1,94,38,15.66,0,0,0,Profile,11,1,248,37.90
 india,D Dasgupta,overall,NA,8,13,1,344,100,28.66,1,2,2,Profile,40,1,1126,30.55
 india,V Sehwag,overall,2001-2013,104,180,6,8586,319,49.34,23,32,16,Profile,1233,91,10441,82.23
 india,SB Bangar,overall,NA,12,18,2,470,100*,29.37,1,3,2,Profile,57,3,1447,32.48
-india,IR Siddiqui,overall,NA,1,2,1,29,24,29.00,0,0,0,Profile,3,1,30,96.66
+india,IR Siddiqui,overall,NA,1,2,1,29,24,29,0,0,0,Profile,3,1,30,96.66
 india,T Yohannan,overall,NA,3,4,4,13,8*,-,0,0,0,Profile,1,0,30,43.33
 india,A Ratra,overall,NA,6,10,1,163,115*,18.11,1,0,1,Profile,14,0,533,30.58
 india,PA Patel,overall,2002-2018,25,38,8,934,71,31.13,0,6,4,Profile,126,1,1927,48.46
@@ -1494,11 +1494,11 @@ india,A Chopra,overall,NA,10,19,0,437,60,23.00,0,2,1,Profile,49,0,1263,34.60
 india,Yuvraj Singh,overall,2003-2012,40,62,6,1900,169,33.92,3,11,7,Profile,260,22,3277,57.97
 india,IK Pathan,overall,2003-2008,29,40,5,1105,102,31.57,1,6,5,Profile,131,18,2076,53.22
 india,G Gambhir,overall,2004-2016,58,104,5,4154,206,41.95,9,22,7,Profile,518,10,8067,51.49
-india,KD Karthik,overall,2004-2018,26,42,1,1025,129,25,1,7,4,Profile,134,4,2080,49.27
+india,KD Karthik,overall,2004-2018,26,42,1,1025,129,25.00,1,7,4,Profile,134,4,2080,49.27
 india,MS Dhoni,overall,2005-2014,90,144,16,4876,224,38.09,6,33,10,Profile,544,78,8249,59.11
 india,RP Singh,overall,2006-2011,14,19,3,116,30,7.25,0,0,7,Profile,16,1,276,42.02
 india,S Sreesanth,overall,2006-2011,27,40,13,281,35,10.40,0,0,10,Profile,38,4,539,52.13
-india,PP Chawla,overall,2006-2012,3,3,0,6,4,2,0,0,0,Profile,1,0,23,26.08
+india,PP Chawla,overall,2006-2012,3,3,0,6,4,2.00,0,0,0,Profile,1,0,23,26.08
 india,MM Patel,overall,2006-2011,13,14,6,60,15*,7.50,0,0,4,Profile,8,1,142,42.25
 india,VRV Singh,overall,NA,5,6,2,47,29,11.75,0,0,0,Profile,9,0,42,111.90
 india,RR Powar,overall,NA,2,2,0,13,7,6.50,0,0,0,Profile,2,0,18,72.22
@@ -1545,7 +1545,7 @@ newzealand,RC Blunt,overall,1930-1932,9,13,1,330,96,27.50,0,1,1,Profile,NA,NA,NA
 newzealand,CS Dempster,overall,1930-1933,10,15,4,723,136,65.72,2,5,0,Profile,NA,NA,NA,NA
 newzealand,GR Dickinson,overall,1930-1932,3,5,0,31,11,6.20,0,0,0,Profile,NA,NA,NA,NA
 newzealand,H Foley,overall,NA,1,2,0,4,2,2.00,0,0,0,Profile,0,0,NA,NA
-newzealand,M Henderson,overall,NA,1,2,1,8,6,8,0,0,0,Profile,NA,NA,NA,NA
+newzealand,M Henderson,overall,NA,1,2,1,8,6,8.00,0,0,0,Profile,NA,NA,NA,NA
 newzealand,KC James,overall,1930-1933,11,13,2,52,14,4.72,0,0,4,Profile,NA,NA,NA,NA
 newzealand,TC Lowry,overall,1930-1931,7,8,0,223,80,27.87,0,2,2,Profile,NA,NA,NA,NA
 newzealand,WE Merritt,overall,1930-1931,6,8,1,73,19,10.42,0,0,1,Profile,NA,NA,NA,NA
@@ -1563,7 +1563,7 @@ newzealand,HG Vivian,overall,1931-1937,7,10,0,421,100,42.10,1,5,0,Profile,NA,NA,
 newzealand,DC Cleverley,overall,1932-1946,2,4,3,19,10*,19.00,0,0,0,Profile,NA,NA,NA,NA
 newzealand,J Newman,overall,NA,3,4,0,33,19,8.25,0,0,0,Profile,NA,NA,NA,NA
 newzealand,DL Freeman,overall,NA,2,2,0,2,1,1.00,0,0,0,Profile,0,0,NA,NA
-newzealand,HD Smith,overall,NA,1,1,0,4,4,4,0,0,0,Profile,NA,NA,NA,NA
+newzealand,HD Smith,overall,NA,1,1,0,4,4,4.00,0,0,0,Profile,NA,NA,NA,NA
 newzealand,PE Whitelaw,overall,NA,2,4,2,64,30,32.00,0,0,0,Profile,NA,NA,NA,NA
 newzealand,JA Dunning,overall,1933-1937,4,6,1,38,19,7.60,0,0,2,Profile,NA,NA,NA,NA
 newzealand,J Cowie,overall,1937-1949,9,13,4,90,45,10.00,0,0,3,Profile,NA,NA,NA,NA
@@ -1644,14 +1644,14 @@ newzealand,RS Cunis,overall,1964-1972,20,31,8,295,51,12.82,0,1,6,Profile,NA,NA,N
 newzealand,RO Collinge,overall,1965-1978,35,50,13,533,68*,14.40,0,2,9,Profile,NA,NA,NA,NA
 newzealand,BE Congdon,overall,1965-1978,61,114,7,3448,176,32.22,7,19,9,Profile,NA,NA,NA,NA
 newzealand,RW Morgan,overall,1965-1972,20,34,1,734,97,22.24,0,5,5,Profile,NA,NA,NA,NA
-newzealand,PB Truscott,overall,NA,1,2,0,29,26,14.50,0,0,0,Profile,NA,NA,NA,NA
+newzealand,PB Truscott,overall,NA,1,2,0,29,26,14.5,0,0,0,Profile,NA,NA,NA,NA
 newzealand,TW Jarvis,overall,1965-1973,13,22,1,625,182,29.76,1,2,6,Profile,NA,NA,NA,NA
 newzealand,V Pollard,overall,1965-1973,32,59,7,1266,116,24.34,2,7,4,Profile,NA,NA,NA,NA
 newzealand,BR Taylor,overall,1965-1973,30,50,6,898,124,20.40,2,2,8,Profile,NA,NA,NA,NA
 newzealand,GE Vivian,overall,1965-1972,5,6,0,110,43,18.33,0,0,1,Profile,NA,NA,NA,NA
 newzealand,GP Bilby,overall,NA,2,4,0,55,28,13.75,0,0,0,Profile,7,0,NA,NA
 newzealand,N Puna,overall,NA,3,5,3,31,18*,15.50,0,0,0,Profile,2,0,NA,NA
-newzealand,MG Burgess,overall,1968-1980,50,92,6,2684,119*,31.20,5,14,5,Profile,NA,NA,NA,NA
+newzealand,MG Burgess,overall,1968-1980,50,92,6,2684,119*,31.2,5,14,5,Profile,NA,NA,NA,NA
 newzealand,RI Harford,overall,NA,3,5,2,7,6,2.33,0,0,1,Profile,NA,NA,NA,NA
 newzealand,BAG Murray,overall,1968-1971,13,26,1,598,90,23.92,0,5,1,Profile,NA,NA,NA,NA
 newzealand,K Thomson,overall,NA,2,4,1,94,69,31.33,0,1,1,Profile,NA,NA,NA,NA
@@ -1698,7 +1698,7 @@ newzealand,KR Rutherford,overall,1985-1995,56,99,8,2465,107*,27.08,3,18,16,Profi
 newzealand,VR Brown,overall,NA,2,3,1,51,36*,25.50,0,0,1,Profile,3,0,164,31.09
 newzealand,SR Gillespie,overall,NA,1,1,0,28,28,28.00,0,0,0,Profile,2,0,81,34.56
 newzealand,GK Robertson,overall,NA,1,1,0,12,12,12.00,0,0,0,Profile,2,0,35,34.28
-newzealand,W Watson,overall,1986-1993,15,18,6,60,11,5,0,0,3,Profile,7,0,243,24.69
+newzealand,W Watson,overall,1986-1993,15,18,6,60,11,5.00,0,0,3,Profile,7,0,243,24.69
 newzealand,TE Blain,overall,1986-1994,11,20,3,456,78,26.82,0,2,2,Profile,62,4,1201,37.96
 newzealand,DN Patel,overall,1987-1997,37,66,8,1200,99,20.68,0,5,10,Profile,119,8,2828,42.43
 newzealand,PA Horne,overall,1987-1990,4,7,0,71,27,10.14,0,0,2,Profile,7,0,289,24.56
@@ -1757,12 +1757,12 @@ newzealand,JEC Franklin,overall,2001-2013,31,46,7,808,122*,20.71,1,2,6,Profile,8
 newzealand,CJ Drum,overall,NA,5,5,2,10,4,3.33,0,0,1,Profile,1,0,91,10.98
 newzealand,SE Bond,overall,2001-2009,18,20,7,168,41*,12.92,0,0,1,Profile,20,4,432,38.88
 newzealand,L Vincent,overall,2001-2007,23,40,1,1332,224,34.15,3,9,4,Profile,161,12,2827,47.11
-newzealand,IG Butler,overall,2002-2004,8,10,2,76,26,9.5,0,0,2,Profile,10,1,163,46.62
+newzealand,IG Butler,overall,2002-2004,8,10,2,76,26,9.50,0,0,2,Profile,10,1,163,46.62
 newzealand,AR Adams,overall,NA,1,2,0,18,11,9.00,0,0,0,Profile,3,0,20,90.00
 newzealand,RG Hart,overall,NA,11,19,3,260,57*,16.25,0,1,4,Profile,18,0,1012,25.69
 newzealand,SB Styris,overall,2002-2007,29,48,4,1586,170,36.04,5,6,5,Profile,205,13,3089,51.34
 newzealand,JDP Oram,overall,2002-2009,33,59,10,1780,133,36.32,5,6,4,Profile,209,21,3533,50.38
-newzealand,RA Jones,overall,NA,1,2,0,23,16,11.5,0,0,0,Profile,1,0,91,25.27
+newzealand,RA Jones,overall,NA,1,2,0,23,16,11.50,0,0,0,Profile,1,0,91,25.27
 newzealand,BB McCullum,overall,2004-2016,101,176,9,6453,302,38.64,12,31,14,Profile,776,107,9989,64.60
 newzealand,MHW Papps,overall,2004-2007,8,16,1,246,86,16.40,0,2,4,Profile,37,0,696,35.34
 newzealand,MJ Mason,overall,NA,1,2,0,3,3,1.50,0,0,1,Profile,0,0,33,9.09
@@ -1786,7 +1786,7 @@ newzealand,MJ Guptill,overall,2009-2016,47,89,1,2586,189,29.38,3,17,10,Profile,3
 newzealand,BJ Watling,overall,2009-2019,62,99,14,3174,142*,37.34,6,17,9,Profile,360,7,7347,43.20
 newzealand,PJ Ingram,overall,NA,2,4,0,61,42,15.25,0,0,0,Profile,5,1,151,40.39
 newzealand,BJ Arnel,overall,2010-2012,6,12,4,45,8*,5.62,0,0,3,Profile,5,0,148,30.40
-newzealand,HK Bennett,overall,NA,1,1,0,4,4,4.00,0,0,0,Profile,0,0,30,13.33
+newzealand,HK Bennett,overall,NA,1,1,0,4,4,4,0,0,0,Profile,0,0,30,13.33
 newzealand,KS Williamson,overall,2010-2019,73,129,12,6143,242*,52.50,20,30,8,Profile,664,14,11906,51.59
 newzealand,AJ McKay,overall,NA,1,2,1,25,20*,25.00,0,0,0,Profile,3,0,55,45.45
 newzealand,RA Young,overall,NA,5,10,3,169,57,24.14,0,1,1,Profile,19,1,419,40.33
@@ -1862,7 +1862,7 @@ pakistan,Majid Khan,overall,1964-1983,63,106,5,3931,167,38.92,8,19,9,Profile,NA,
 pakistan,Pervez Sajjad,overall,1964-1973,19,20,11,123,24,13.66,0,0,2,Profile,NA,NA,NA,NA
 pakistan,Shafqat Rana,overall,1964-1969,5,7,0,221,95,31.57,0,2,1,Profile,NA,NA,NA,NA
 pakistan,Arif Butt,overall,NA,3,5,0,59,20,11.80,0,0,1,Profile,NA,NA,NA,NA
-pakistan,Farooq Hamid,overall,NA,1,2,0,3,3,1.5,0,0,1,Profile,0,0,12,25.00
+pakistan,Farooq Hamid,overall,NA,1,2,0,3,3,1.50,0,0,1,Profile,0,0,12,25.00
 pakistan,Mohammad Ilyas,overall,1964-1969,10,19,0,441,126,23.21,1,2,1,Profile,NA,NA,NA,NA
 pakistan,Naushad Ali,overall,NA,6,11,0,156,39,14.18,0,0,0,Profile,NA,NA,NA,NA
 pakistan,Mufasir-ul-Haq,overall,NA,1,1,1,8,8*,-,0,0,0,Profile,NA,NA,NA,NA
@@ -1874,7 +1874,7 @@ pakistan,Ghulam Abbas,overall,NA,1,2,0,12,12,6.00,0,0,1,Profile,1,0,76,15.78
 pakistan,Aftab Gul,overall,1969-1971,6,8,0,182,33,22.75,0,0,0,Profile,NA,NA,NA,NA
 pakistan,Asif Masood,overall,1969-1977,16,19,10,93,30*,10.33,0,0,5,Profile,NA,NA,NA,NA
 pakistan,Sarfraz Nawaz,overall,1969-1984,55,72,13,1045,90,17.71,0,4,6,Profile,NA,NA,NA,NA
-pakistan,Mohammad Nazir,overall,1969-1983,14,18,10,144,29*,18.00,0,0,3,Profile,NA,NA,NA,NA
+pakistan,Mohammad Nazir,overall,1969-1983,14,18,10,144,29*,18,0,0,3,Profile,NA,NA,NA,NA
 pakistan,Sadiq Mohammad,overall,1969-1981,41,74,2,2579,166,35.81,5,10,6,Profile,NA,NA,NA,NA
 pakistan,Younis Ahmed,overall,1969-1987,4,7,1,177,62,29.50,0,1,1,Profile,NA,NA,NA,NA
 pakistan,Zaheer Abbas,overall,1969-1985,78,124,11,5062,274,44.79,12,20,10,Profile,NA,NA,NA,NA
@@ -1955,7 +1955,7 @@ pakistan,Shadab Kabir,overall,1996-2002,5,7,0,148,55,21.14,0,1,0,Profile,22,0,40
 pakistan,Azam Khan,overall,NA,1,1,0,14,14,14.00,0,0,0,Profile,1,0,22,63.63
 pakistan,Shahid Nazir,overall,1996-2007,15,19,3,194,40,12.12,0,0,3,Profile,22,2,418,46.41
 pakistan,Hasan Raza,overall,1996-2005,7,10,1,235,68,26.11,0,2,1,Profile,39,0,608,38.65
-pakistan,Mohammad Hussain,overall,1996-1998,2,3,0,18,17,6,0,0,1,Profile,3,0,37,48.64
+pakistan,Mohammad Hussain,overall,1996-1998,2,3,0,18,17,6.00,0,0,1,Profile,3,0,37,48.64
 pakistan,Mohammad Wasim,overall,1996-2000,18,28,2,783,192,30.11,2,2,3,Profile,89,0,1746,44.84
 pakistan,Zahoor Elahi,overall,NA,2,3,0,30,22,10.00,0,0,0,Profile,4,1,77,38.96
 pakistan,Mohammad Zahid,overall,1996-2003,5,6,1,7,6*,1.40,0,0,4,Profile,1,0,85,8.23
@@ -2062,7 +2062,7 @@ southafrica,FW Smith,overall,1889-1896,3,6,1,45,12,9.00,0,0,1,Profile,NA,NA,NA,N
 southafrica,RB Stewart,overall,NA,1,2,0,13,9,6.50,0,0,0,Profile,0,0,NA,NA
 southafrica,AB Tancred,overall,NA,2,4,1,87,29,29.00,0,0,0,Profile,8,0,NA,NA
 southafrica,CH Vintcent,overall,1889-1892,3,6,0,26,9,4.33,0,0,1,Profile,NA,NA,NA,NA
-southafrica,WH Ashley,overall,NA,1,2,0,1,1,0.50,0,0,1,Profile,0,0,9,11.11
+southafrica,WH Ashley,overall,NA,1,2,0,1,1,0.5,0,0,1,Profile,0,0,9,11.11
 southafrica,WHM Richards,overall,NA,1,2,0,4,4,2.00,0,0,1,Profile,0,0,18,22.22
 southafrica,NHCD Theunissen,overall,NA,1,2,1,2,2*,2.00,0,0,1,Profile,0,0,5,40.00
 southafrica,G Cripps,overall,NA,1,2,0,21,18,10.50,0,0,0,Profile,NA,NA,NA,NA
@@ -2085,7 +2085,7 @@ southafrica,WHB Frank,overall,NA,1,2,0,7,5,3.50,0,0,0,Profile,NA,NA,NA,NA
 southafrica,CL Johnson,overall,NA,1,2,0,10,7,5.00,0,0,0,Profile,NA,NA,NA,NA
 southafrica,CB Llewellyn,overall,1896-1912,15,28,1,544,90,20.14,0,4,6,Profile,NA,NA,NA,NA
 southafrica,GA Rowe,overall,1896-1902,5,9,3,26,13*,4.33,0,0,3,Profile,NA,NA,NA,NA
-southafrica,GH Shepstone,overall,1896-1899,2,4,0,38,21,9.5,0,0,1,Profile,NA,NA,NA,NA
+southafrica,GH Shepstone,overall,1896-1899,2,4,0,38,21,9.50,0,0,1,Profile,NA,NA,NA,NA
 southafrica,GK Glover,overall,NA,1,2,1,21,18*,21.00,0,0,0,Profile,NA,NA,NA,NA
 southafrica,AR Richards,overall,NA,1,2,0,6,6,3.00,0,0,1,Profile,NA,NA,NA,NA
 southafrica,AW Seccull,overall,NA,1,2,1,23,17*,23.00,0,0,0,Profile,NA,NA,NA,NA
@@ -2114,7 +2114,7 @@ southafrica,PW Sherwell,overall,1906-1911,13,22,4,427,115,23.72,1,1,1,Profile,NA
 southafrica,SJ Snooke,overall,1906-1923,26,46,1,1008,103,22.40,1,5,1,Profile,NA,NA,NA,NA
 southafrica,AEE Vogler,overall,1906-1911,15,26,6,340,65,17.00,0,2,4,Profile,NA,NA,NA,NA
 southafrica,GC White,overall,1906-1912,17,31,2,872,147,30.06,2,4,3,Profile,NA,NA,NA,NA
-southafrica,SD Snooke,overall,NA,1,1,0,0,0,0,0,0,1,Profile,0,0,NA,NA
+southafrica,SD Snooke,overall,NA,1,1,0,0,0,0.00,0,0,1,Profile,0,0,NA,NA
 southafrica,T Campbell,overall,1910-1912,5,9,3,90,48,15.00,0,0,1,Profile,NA,NA,NA,NA
 southafrica,JMM Commaille,overall,1910-1928,12,22,1,355,47,16.90,0,0,1,Profile,NA,NA,NA,NA
 southafrica,LA Stricker,overall,1910-1912,13,24,0,344,48,14.33,0,0,5,Profile,NA,NA,NA,NA
@@ -2130,7 +2130,7 @@ southafrica,F Mitchell,overall,1899-1912,5,10,0,116,41,11.60,0,0,1,Profile,NA,NA
 southafrica,HW Taylor,overall,1912-1932,42,76,4,2936,176,40.77,7,17,2,Profile,NA,NA,NA,NA
 southafrica,TA Ward,overall,1912-1924,23,42,9,459,64,13.90,0,2,5,Profile,NA,NA,NA,NA
 southafrica,CP Carter,overall,1912-1924,10,15,5,181,45,18.10,0,0,3,Profile,NA,NA,NA,NA
-southafrica,HV Baumgartner,overall,NA,1,2,0,19,16,9.50,0,0,0,Profile,NA,NA,NA,NA
+southafrica,HV Baumgartner,overall,NA,1,2,0,19,16,9.5,0,0,0,Profile,NA,NA,NA,NA
 southafrica,JM Blanckenberg,overall,1913-1924,18,30,7,455,59,19.78,0,2,2,Profile,NA,NA,NA,NA
 southafrica,AHC Cooper,overall,NA,1,2,0,6,6,3.00,0,0,1,Profile,NA,NA,NA,NA
 southafrica,JL Cox,overall,NA,3,6,1,17,12*,3.40,0,0,3,Profile,NA,NA,NA,NA
@@ -2164,7 +2164,7 @@ southafrica,HG Deane,overall,1924-1931,17,27,2,628,93,25.12,0,3,1,Profile,NA,NA,
 southafrica,GM Parker,overall,NA,2,4,2,3,2*,1.50,0,0,2,Profile,0,0,NA,NA
 southafrica,MJ Susskind,overall,NA,5,8,0,268,65,33.50,0,4,0,Profile,NA,NA,NA,NA
 southafrica,HB Cameron,overall,1927-1935,26,45,4,1239,90,30.21,0,10,3,Profile,NA,NA,NA,NA
-southafrica,SK Coen,overall,NA,2,4,2,101,41*,50.5,0,0,0,Profile,NA,NA,NA,NA
+southafrica,SK Coen,overall,NA,2,4,2,101,41*,50.50,0,0,0,Profile,NA,NA,NA,NA
 southafrica,JP Duminy,overall,1927-1929,3,6,0,30,12,5.00,0,0,1,Profile,NA,NA,NA,NA
 southafrica,DPB Morkel,overall,1927-1932,16,28,1,663,88,24.55,0,4,3,Profile,NA,NA,NA,NA
 southafrica,HLE Promnitz,overall,NA,2,4,0,14,5,3.50,0,0,0,Profile,NA,NA,NA,NA
@@ -2223,10 +2223,10 @@ southafrica,MA Hanley,overall,NA,1,1,0,0,0,0.00,0,0,1,Profile,0,0,NA,NA
 southafrica,LA Markham,overall,NA,1,1,0,20,20,20.00,0,0,0,Profile,NA,NA,NA,NA
 southafrica,JE Cheetham,overall,1949-1955,24,43,6,883,89,23.86,0,5,1,Profile,NA,NA,NA,NA
 southafrica,JD Nel,overall,1949-1957,6,11,0,150,38,13.63,0,0,1,Profile,NA,NA,NA,NA
-southafrica,HJ Tayfield,overall,1949-1960,37,60,9,862,75,16.9,0,2,5,Profile,NA,NA,NA,NA
+southafrica,HJ Tayfield,overall,1949-1960,37,60,9,862,75,16.90,0,2,5,Profile,NA,NA,NA,NA
 southafrica,JC Watkins,overall,1949-1957,15,27,1,612,92,23.53,0,3,2,Profile,NA,NA,NA,NA
 southafrica,RG Draper,overall,NA,2,3,0,25,15,8.33,0,0,0,Profile,NA,NA,NA,NA
-southafrica,MG Melle,overall,1950-1953,7,12,4,68,17,8.50,0,0,1,Profile,NA,NA,NA,NA
+southafrica,MG Melle,overall,1950-1953,7,12,4,68,17,8.5,0,0,1,Profile,NA,NA,NA,NA
 southafrica,PL Winslow,overall,1950-1955,5,9,0,186,108,20.66,1,0,1,Profile,NA,NA,NA,NA
 southafrica,GWA Chubb,overall,NA,5,9,3,63,15*,10.50,0,0,0,Profile,NA,NA,NA,NA
 southafrica,DJ McGlew,overall,1951-1962,34,64,6,2440,255*,42.06,7,10,4,Profile,NA,NA,NA,NA
@@ -2257,7 +2257,7 @@ southafrica,JE Pothecary,overall,NA,3,4,0,26,12,6.50,0,0,0,Profile,NA,NA,NA,NA
 southafrica,AH McKinnon,overall,1960-1967,8,13,7,107,27,17.83,0,0,0,Profile,NA,NA,NA,NA
 southafrica,EJ Barlow,overall,1961-1970,30,57,2,2516,201,45.74,6,15,3,Profile,NA,NA,NA,NA
 southafrica,KC Bland,overall,1961-1966,21,39,5,1669,144*,49.08,3,9,2,Profile,NA,NA,NA,NA
-southafrica,HD Bromfield,overall,1961-1965,9,12,7,59,21,11.80,0,0,3,Profile,NA,NA,NA,NA
+southafrica,HD Bromfield,overall,1961-1965,9,12,7,59,21,11.8,0,0,3,Profile,NA,NA,NA,NA
 southafrica,MK Elgie,overall,NA,3,6,0,75,56,12.50,0,1,2,Profile,NA,NA,NA,NA
 southafrica,GB Lawrence,overall,NA,5,8,0,141,43,17.62,0,0,2,Profile,NA,NA,NA,NA
 southafrica,PM Pollock,overall,1961-1970,28,41,13,607,75*,21.67,0,2,3,Profile,NA,NA,NA,NA
@@ -2362,7 +2362,7 @@ southafrica,AN Petersen,overall,2010-2015,36,64,4,2093,182,34.88,5,8,3,Profile,2
 southafrica,LL Tsotsobe,overall,NA,5,5,2,19,8*,6.33,0,0,2,Profile,2,0,53,35.84
 southafrica,Imran Tahir,overall,2011-2015,20,23,9,130,29*,9.28,0,0,2,Profile,18,1,235,55.31
 southafrica,VD Philander,overall,2011-2019,58,82,18,1538,74,24.03,0,8,6,Profile,174,15,3338,46.07
-southafrica,M de Lange,overall,NA,2,2,0,9,9,4.50,0,0,1,Profile,2,0,19,47.36
+southafrica,M de Lange,overall,NA,2,2,0,9,9,4.5,0,0,1,Profile,2,0,19,47.36
 southafrica,RK Kleinveldt,overall,NA,4,5,2,27,17*,9.00,0,0,2,Profile,1,2,61,44.26
 southafrica,F du Plessis,overall,2012-2019,58,98,14,3608,137,42.95,9,19,9,Profile,438,17,7834,46.05
 southafrica,D Elgar,overall,2012-2019,56,96,8,3412,199,38.77,11,13,8,Profile,414,21,7533,45.29
@@ -2396,13 +2396,13 @@ srilanka,LWS Kaluperuma,overall,NA,2,4,1,12,11*,4.00,0,0,2,Profile,1,0,51,23.52
 srilanka,RS Madugalle,overall,1982-1988,21,39,4,1029,103,29.40,1,7,4,Profile,NA,NA,NA,NA
 srilanka,LRD Mendis,overall,1982-1988,24,43,1,1329,124,31.64,4,8,2,Profile,NA,NA,NA,NA
 srilanka,A Ranatunga,overall,1982-2000,93,155,12,5105,135*,35.69,4,38,12,Profile,NA,NA,NA,NA
-srilanka,B Warnapura,overall,NA,4,8,0,96,38,12.00,0,0,1,Profile,NA,NA,NA,NA
+srilanka,B Warnapura,overall,NA,4,8,0,96,38,12,0,0,1,Profile,NA,NA,NA,NA
 srilanka,S Wettimuny,overall,1982-1987,23,43,1,1221,190,29.07,2,6,5,Profile,NA,NA,NA,NA
 srilanka,JR Ratnayeke,overall,1982-1989,22,38,6,807,93,25.21,0,5,5,Profile,NA,NA,NA,NA
 srilanka,AN Ranasinghe,overall,NA,2,4,0,88,77,22.00,0,1,1,Profile,NA,NA,NA,NA
 srilanka,RSA Jayasekera,overall,NA,1,2,0,2,2,1.00,0,0,1,Profile,0,0,11,18.18
 srilanka,RGCE Wijesuriya,overall,1982-1985,4,7,2,22,8,4.40,0,0,2,Profile,NA,NA,NA,NA
-srilanka,RG de Alwis,overall,1983-1988,11,19,0,152,28,8,0,0,5,Profile,NA,NA,NA,NA
+srilanka,RG de Alwis,overall,1983-1988,11,19,0,152,28,8.00,0,0,5,Profile,NA,NA,NA,NA
 srilanka,ERNS Fernando,overall,NA,5,10,0,112,46,11.20,0,0,3,Profile,10,0,489,22.90
 srilanka,Y Goonasekera,overall,NA,2,4,0,48,23,12.00,0,0,0,Profile,3,0,145,33.10
 srilanka,S Jeganathan,overall,NA,2,4,0,19,8,4.75,0,0,1,Profile,3,0,50,38.00
@@ -2414,7 +2414,7 @@ srilanka,RPW Guneratne,overall,NA,1,2,2,0,0*,-,0,0,0,Profile,0,0,19,0.00
 srilanka,AMJG Amerasinghe,overall,NA,2,4,1,54,34,18.00,0,0,0,Profile,8,0,84,64.28
 srilanka,SMS Kaluperuma,overall,1984-1988,4,8,0,88,23,11.00,0,0,1,Profile,11,0,310,28.38
 srilanka,PA de Silva,overall,1984-2002,93,159,11,6361,267,42.97,20,22,7,Profile,NA,NA,NA,NA
-srilanka,FS Ahangama,overall,NA,3,3,1,11,11,5.50,0,0,1,Profile,NA,NA,NA,NA
+srilanka,FS Ahangama,overall,NA,3,3,1,11,11,5.5,0,0,1,Profile,NA,NA,NA,NA
 srilanka,EAR de Silva,overall,1985-1991,10,16,4,185,50,15.41,0,1,3,Profile,NA,NA,NA,NA
 srilanka,CDUS Weerasinghe,overall,NA,1,1,0,3,3,3.00,0,0,0,Profile,0,0,NA,NA
 srilanka,BR Jurangpathy,overall,NA,2,4,0,1,1,0.25,0,0,3,Profile,0,0,NA,NA
@@ -2429,7 +2429,7 @@ srilanka,DSBP Kuruppu,overall,1987-1991,4,7,1,320,201*,53.33,1,0,0,Profile,41,0,
 srilanka,CPH Ramanayake,overall,1988-1993,18,24,9,143,34*,9.53,0,0,7,Profile,13,0,550,26.00
 srilanka,MAWR Madurasinghe,overall,1988-1992,3,6,1,24,11,4.80,0,0,1,Profile,NA,NA,NA,NA
 srilanka,MAR Samarasekera,overall,1988-1991,4,7,0,118,57,16.85,0,1,1,Profile,NA,NA,NA,NA
-srilanka,D Ranatunga,overall,NA,2,3,0,87,45,29,0,0,0,Profile,4,0,250,34.80
+srilanka,D Ranatunga,overall,NA,2,3,0,87,45,29.00,0,0,0,Profile,4,0,250,34.80
 srilanka,AGD Wickremasinghe,overall,1989-1992,3,3,1,17,13*,8.50,0,0,0,Profile,2,0,29,58.62
 srilanka,HP Tillakaratne,overall,1989-2004,83,131,25,4545,204*,42.87,11,20,9,Profile,540,1,NA,NA
 srilanka,MS Atapattu,overall,1990-2007,90,156,15,5502,249,39.02,16,17,22,Profile,685,4,NA,NA
@@ -2498,18 +2498,18 @@ srilanka,MKDI Amerasinghe,overall,NA,1,2,2,0,0*,-,0,0,0,Profile,0,0,25,0.00
 srilanka,BAW Mendis,overall,2008-2014,19,19,6,213,78,16.38,0,1,2,Profile,25,1,455,46.81
 srilanka,KTGD Prasad,overall,2008-2015,25,39,2,476,47,12.86,0,0,8,Profile,53,8,888,53.60
 srilanka,NT Paranavitana,overall,2009-2012,32,60,5,1792,111,32.58,2,11,9,Profile,206,5,4274,41.92
-srilanka,AD Mathews,overall,2009-2019,81,145,20,5604,160,44.83,9,34,2,Profile,604,56,11318,49.51
+srilanka,AD Mathews,overall,2009-2019,81,146,21,5606,160,44.84,9,34,2,Profile,604,56,11323,49.50
 srilanka,S Randiv,overall,2010-2012,12,17,1,147,39,9.18,0,0,3,Profile,16,0,480,30.62
 srilanka,RAS Lakmal,overall,2010-2019,58,91,23,780,42,11.47,0,0,18,Profile,103,6,1589,49.08
 srilanka,NLTC Perera,overall,NA,6,10,0,203,75,20.30,0,1,0,Profile,21,4,278,73.02
-srilanka,HDRL Thirimanne,overall,2011-2019,34,66,7,1395,155*,23.64,1,6,8,Profile,135,3,3627,38.46
+srilanka,HDRL Thirimanne,overall,2011-2019,34,66,6,1402,155*,23.36,1,6,8,Profile,135,3,3658,38.32
 srilanka,S Prasanna,overall,NA,1,1,0,5,5,5.00,0,0,0,Profile,0,0,12,41.66
 srilanka,RMS Eranga,overall,2011-2016,19,26,11,193,45*,12.86,0,0,4,Profile,26,0,469,41.15
 srilanka,N Pradeep,overall,2011-2017,28,50,17,132,17*,4.00,0,0,18,Profile,19,0,361,36.56
 srilanka,JK Silva,overall,2011-2018,39,74,0,2099,139,28.36,3,12,6,Profile,238,2,5212,40.27
 srilanka,CKB Kulasekara,overall,NA,1,2,0,22,15,11.00,0,0,0,Profile,2,0,50,44.00
 srilanka,LD Chandimal,overall,2011-2019,53,97,7,3768,164,41.86,11,17,4,Profile,401,22,7667,49.14
-srilanka,FDM Karunaratne,overall,2012-2019,61,119,5,4184,196,36.70,8,23,12,Profile,415,7,8524,49.08
+srilanka,FDM Karunaratne,overall,2012-2019,61,119,5,4209,196,36.92,8,23,12,Profile,417,8,8561,49.16
 srilanka,KDK Vithanage,overall,2013-2015,10,16,2,370,103*,26.42,1,1,1,Profile,44,9,484,76.44
 srilanka,SMSM Senanayake,overall,NA,1,1,0,5,5,5.00,0,0,0,Profile,1,0,15,33.33
 srilanka,MDK Perera,overall,2014-2019,38,68,7,1126,95,18.45,0,6,12,Profile,135,21,2364,47.63
@@ -2518,7 +2518,7 @@ srilanka,PHT Kaushal,overall,NA,7,12,2,106,18,10.60,0,0,1,Profile,16,0,244,43.44
 srilanka,PVD Chameera,overall,2015-2019,8,15,2,69,19,5.30,0,0,4,Profile,9,0,249,27.71
 srilanka,MDKJ Perera,overall,2015-2019,17,30,3,911,153*,33.74,2,4,3,Profile,113,11,1237,73.64
 srilanka,TAM Siriwardana,overall,NA,5,9,0,298,68,33.11,0,2,1,Profile,32,11,454,65.63
-srilanka,BKG Mendis,overall,2015-2019,39,76,3,2692,196,36.87,6,10,6,Profile,337,25,4701,57.26
+srilanka,BKG Mendis,overall,2015-2019,39,77,3,2702,196,36.51,6,10,6,Profile,338,26,4707,57.40
 srilanka,MDUS Jayasundera,overall,NA,2,4,0,30,26,7.50,0,0,1,Profile,2,0,77,38.96
 srilanka,MD Shanaka,overall,NA,3,6,1,29,17,5.80,0,0,2,Profile,2,2,60,48.33
 srilanka,DM de Silva,overall,2016-2019,26,49,2,1500,173,31.91,4,5,5,Profile,182,9,2702,55.51
@@ -2528,7 +2528,7 @@ srilanka,DAS Gunaratne,overall,NA,6,10,2,455,116,56.87,1,3,1,Profile,50,1,861,52
 srilanka,CBRLS Kumara,overall,2016-2019,16,23,10,44,10,3.38,0,0,8,Profile,8,0,139,31.65
 srilanka,MD Gunathilaka,overall,NA,8,16,0,299,61,18.68,0,2,0,Profile,32,3,597,50.08
 srilanka,PM Pushpakumara,overall,NA,4,8,2,102,42*,17.00,0,0,0,Profile,15,2,224,45.53
-srilanka,PLS Gamage,overall,NA,5,8,4,6,3,1.50,0,0,1,Profile,0,0,99,6.06
+srilanka,PLS Gamage,overall,NA,5,8,4,6,3,1.5,0,0,1,Profile,0,0,99,6.06
 srilanka,S Samarawickrama,overall,NA,4,8,0,125,38,15.62,0,0,2,Profile,17,1,177,70.62
 srilanka,ARS Silva,overall,NA,12,23,3,702,109,35.10,1,5,2,Profile,59,3,1712,41.00
 srilanka,A Dananjaya,overall,2018-2019,6,10,2,135,43*,16.87,0,0,3,Profile,14,0,254,53.14
@@ -2580,7 +2580,7 @@ westindies,LG Hylton,overall,1935-1939,6,8,2,70,19,11.66,0,0,0,Profile,NA,NA,NA,
 westindies,JM Neblett,overall,NA,1,2,1,16,11*,16.00,0,0,0,Profile,NA,NA,NA,NA
 westindies,KL Wishart,overall,NA,1,2,0,52,52,26.00,0,1,1,Profile,NA,NA,NA,NA
 westindies,RL Fuller,overall,NA,1,1,0,1,1,1.00,0,0,0,Profile,0,0,NA,NA
-westindies,GH Mudie,overall,NA,1,1,0,5,5,5.00,0,0,0,Profile,NA,NA,NA,NA
+westindies,GH Mudie,overall,NA,1,1,0,5,5,5,0,0,0,Profile,NA,NA,NA,NA
 westindies,JH Cameron,overall,NA,2,3,0,6,5,2.00,0,0,1,Profile,NA,NA,NA,NA
 westindies,CB Clarke,overall,NA,3,4,1,3,2,1.00,0,0,1,Profile,0,0,NA,NA
 westindies,JB Stollmeyer,overall,1939-1955,32,56,5,2159,160,42.33,4,12,2,Profile,NA,NA,NA,NA
@@ -2621,7 +2621,7 @@ westindies,MC Frederick,overall,NA,1,2,0,30,30,15.00,0,0,1,Profile,NA,NA,NA,NA
 westindies,JKC Holt,overall,1954-1959,17,31,2,1066,166,36.75,2,5,2,Profile,NA,NA,NA,NA
 westindies,CA McWatt,overall,1954-1955,6,9,2,202,54,28.85,0,2,0,Profile,NA,NA,NA,NA
 westindies,GS Sobers,overall,1954-1974,93,160,21,8032,365*,57.78,26,30,12,Profile,NA,NA,NA,NA
-westindies,GL Gibbs,overall,NA,1,2,0,12,12,6,0,0,1,Profile,NA,NA,NA,NA
+westindies,GL Gibbs,overall,NA,1,2,0,12,12,6.00,0,0,1,Profile,NA,NA,NA,NA
 westindies,OG Smith,overall,1955-1959,26,42,0,1331,168,31.69,4,6,8,Profile,NA,NA,NA,NA
 westindies,LS Butler,overall,NA,1,1,0,16,16,16.00,0,0,0,Profile,NA,NA,NA,NA
 westindies,CC Depeiaza,overall,NA,5,8,2,187,122,31.16,1,0,1,Profile,NA,NA,NA,NA
@@ -2642,9 +2642,9 @@ westindies,JO Taylor,overall,NA,3,5,3,4,4*,2.00,0,0,2,Profile,NA,NA,NA,NA
 westindies,BF Butcher,overall,1958-1969,44,78,6,3104,209*,43.11,7,16,3,Profile,NA,NA,NA,NA
 westindies,WW Hall,overall,1958-1969,48,66,14,818,50*,15.73,0,2,7,Profile,NA,NA,NA,NA
 westindies,JS Solomon,overall,1958-1965,27,46,7,1326,100*,34.00,1,9,7,Profile,NA,NA,NA,NA
-westindies,MR Bynoe,overall,1959-1967,4,6,0,111,48,18.50,0,0,0,Profile,18,0,NA,NA
+westindies,MR Bynoe,overall,1959-1967,4,6,0,111,48,18.5,0,0,0,Profile,18,0,NA,NA
 westindies,RO Scarlett,overall,NA,3,4,1,54,29*,18.00,0,0,0,Profile,NA,NA,NA,NA
-westindies,CD Watson,overall,1960-1962,7,6,1,12,5,2.40,0,0,2,Profile,0,0,NA,NA
+westindies,CD Watson,overall,1960-1962,7,6,1,12,5,2.4,0,0,2,Profile,0,0,NA,NA
 westindies,CK Singh,overall,NA,2,3,0,11,11,3.66,0,0,2,Profile,NA,NA,NA,NA
 westindies,SM Nurse,overall,1960-1969,29,54,1,2523,258,47.60,6,10,3,Profile,NA,NA,NA,NA
 westindies,CC Griffith,overall,1960-1969,28,42,10,530,54,16.56,0,1,5,Profile,NA,NA,NA,NA
@@ -2663,11 +2663,11 @@ westindies,BA Davis,overall,NA,4,8,0,245,68,30.62,0,3,0,Profile,NA,NA,NA,NA
 westindies,DAJ Holford,overall,1966-1977,24,39,5,768,105*,22.58,1,3,3,Profile,NA,NA,NA,NA
 westindies,CH Lloyd,overall,1966-1985,110,175,14,7515,242*,46.67,19,39,4,Profile,NA,NA,NA,NA
 westindies,GS Camacho,overall,1968-1971,11,22,0,640,87,29.09,0,4,1,Profile,NA,NA,NA,NA
-westindies,CA Davis,overall,1968-1973,15,29,5,1301,183,54.20,4,4,1,Profile,NA,NA,NA,NA
+westindies,CA Davis,overall,1968-1973,15,29,5,1301,183,54.2,4,4,1,Profile,NA,NA,NA,NA
 westindies,RM Edwards,overall,NA,5,8,1,65,22,9.28,0,0,2,Profile,NA,NA,NA,NA
 westindies,RC Fredericks,overall,1968-1977,59,109,7,4334,169,42.49,8,26,7,Profile,NA,NA,NA,NA
 westindies,MLC Foster,overall,1969-1978,14,24,5,580,125,30.52,1,1,0,Profile,NA,NA,NA,NA
-westindies,VA Holder,overall,1969-1979,40,59,11,682,42,14.20,0,0,7,Profile,NA,NA,NA,NA
+westindies,VA Holder,overall,1969-1979,40,59,11,682,42,14.2,0,0,7,Profile,NA,NA,NA,NA
 westindies,JN Shepherd,overall,NA,5,8,0,77,32,9.62,0,0,2,Profile,NA,NA,NA,NA
 westindies,TM Findlay,overall,1969-1973,10,16,3,212,44*,16.30,0,0,1,Profile,NA,NA,NA,NA
 westindies,GC Shillingford,overall,1969-1972,7,8,1,57,25,8.14,0,0,1,Profile,NA,NA,NA,NA
@@ -2676,7 +2676,7 @@ westindies,JM Noreiga,overall,NA,4,5,2,11,9,3.66,0,0,1,Profile,NA,NA,NA,NA
 westindies,KD Boyce,overall,1971-1976,21,30,3,657,95*,24.33,0,4,4,Profile,NA,NA,NA,NA
 westindies,DM Lewis,overall,NA,3,5,2,259,88,86.33,0,3,0,Profile,NA,NA,NA,NA
 westindies,Inshan Ali,overall,1971-1977,12,18,2,172,25,10.75,0,0,3,Profile,NA,NA,NA,NA
-westindies,UG Dowe,overall,1971-1973,4,3,2,8,5*,8.00,0,0,0,Profile,1,0,NA,NA
+westindies,UG Dowe,overall,1971-1973,4,3,2,8,5*,8,0,0,0,Profile,1,0,NA,NA
 westindies,LG Rowe,overall,1972-1980,30,49,2,2047,302,43.55,7,7,2,Profile,NA,NA,NA,NA
 westindies,GA Greenidge,overall,NA,5,9,2,209,50,29.85,0,1,1,Profile,NA,NA,NA,NA
 westindies,AB Howard,overall,NA,1,-,-,-,-,-,-,-,-,Profile,-,-,-,-
@@ -2702,7 +2702,7 @@ westindies,RA Austin,overall,NA,2,2,0,22,20,11.00,0,0,0,Profile,3,0,NA,NA
 westindies,DL Haynes,overall,1978-1994,116,202,25,7487,184,42.29,18,39,10,Profile,NA,NA,NA,NA
 westindies,DR Parry,overall,1978-1980,12,20,3,381,65,22.41,0,3,3,Profile,NA,NA,NA,NA
 westindies,ST Clarke,overall,1978-1982,11,16,5,172,35*,15.63,0,0,2,Profile,NA,NA,NA,NA
-westindies,AE Greenidge,overall,NA,6,10,0,222,69,22.20,0,2,2,Profile,NA,NA,NA,NA
+westindies,AE Greenidge,overall,NA,6,10,0,222,69,22.2,0,2,2,Profile,NA,NA,NA,NA
 westindies,DA Murray,overall,1978-1982,19,31,3,601,84,21.46,0,3,3,Profile,NA,NA,NA,NA
 westindies,N Phillip,overall,NA,9,15,5,297,47,29.70,0,0,1,Profile,NA,NA,NA,NA
 westindies,S Shivnarine,overall,NA,8,14,1,379,63,29.15,0,4,2,Profile,NA,NA,NA,NA
@@ -2725,7 +2725,7 @@ westindies,CA Best,overall,1986-1990,8,13,1,342,164,28.50,1,1,1,Profile,39,2,735
 westindies,BP Patterson,overall,1986-1992,28,38,16,145,21*,6.59,0,0,8,Profile,18,0,404,35.89
 westindies,TRO Payne,overall,NA,1,1,0,5,5,5.00,0,0,0,Profile,0,0,6,83.33
 westindies,AH Gray,overall,NA,5,8,2,48,12*,8.00,0,0,2,Profile,5,0,134,35.82
-westindies,WKM Benjamin,overall,1987-1995,21,26,1,470,85,18.80,0,2,4,Profile,51,8,781,60.17
+westindies,WKM Benjamin,overall,1987-1995,21,26,1,470,85,18.8,0,2,4,Profile,51,8,781,60.17
 westindies,CL Hooper,overall,1987-2002,102,173,15,5762,233,36.46,13,27,13,Profile,633,63,11462,50.27
 westindies,PV Simmons,overall,1988-1997,26,47,2,1002,110,22.26,1,4,4,Profile,NA,NA,1933,51.83
 westindies,CEL Ambrose,overall,1988-2000,98,145,29,1439,53,12.40,0,1,26,Profile,172,12,3080,46.72
@@ -2748,7 +2748,7 @@ westindies,SL Campbell,overall,1995-2002,52,93,4,2882,208,32.38,4,18,7,Profile,3
 westindies,CO Browne,overall,1995-2005,20,30,6,387,68,16.12,0,1,7,Profile,45,6,967,40.02
 westindies,OD Gibson,overall,1995-1999,2,4,0,93,37,23.25,0,0,0,Profile,14,0,174,53.44
 westindies,RG Samuels,overall,NA,6,12,2,372,125,37.20,1,1,0,Profile,52,4,855,43.50
-westindies,PIC Thompson,overall,NA,2,3,1,17,10*,8.5,0,0,0,Profile,2,1,34,50.00
+westindies,PIC Thompson,overall,NA,2,3,1,17,10*,8.50,0,0,0,Profile,2,1,34,50.00
 westindies,AFG Griffith,overall,1997-2000,14,27,1,638,114,24.53,1,4,4,Profile,65,1,2060,30.97
 westindies,RIC Holder,overall,1997-1999,11,17,2,380,91,25.33,0,2,1,Profile,41,1,964,39.41
 westindies,FA Rose,overall,1997-2000,19,28,2,344,69,13.23,0,1,2,Profile,44,6,666,51.65
@@ -2786,7 +2786,7 @@ westindies,VC Drakes,overall,NA,12,20,2,386,67,21.44,0,1,2,Profile,54,7,819,47.1
 westindies,DS Smith,overall,2003-2018,43,76,2,1760,108,23.78,1,8,7,Profile,246,1,3834,45.90
 westindies,CS Baugh,overall,2003-2012,21,36,2,610,68,17.94,0,3,1,Profile,71,4,1220,50.00
 westindies,DE Bernard,overall,2003-2009,3,6,1,202,69,40.40,0,3,0,Profile,18,3,380,53.15
-westindies,OAC Banks,overall,2003-2005,10,16,4,318,50*,26.50,0,1,1,Profile,42,2,817,38.92
+westindies,OAC Banks,overall,2003-2005,10,16,4,318,50*,26.5,0,1,1,Profile,42,2,817,38.92
 westindies,TL Best,overall,2003-2013,25,38,6,401,95,12.53,0,1,9,Profile,52,5,706,56.79
 westindies,JE Taylor,overall,2003-2016,46,73,7,856,106,12.96,1,1,12,Profile,116,19,1368,62.57
 westindies,FH Edwards,overall,2003-2012,55,88,28,394,30,6.56,0,0,19,Profile,48,2,1397,28.20
@@ -2813,7 +2813,7 @@ westindies,LMP Simmons,overall,2009-2011,8,16,0,278,49,17.37,0,0,1,Profile,28,4,
 westindies,RA Austin,overall,NA,2,4,0,39,19,9.75,0,0,1,Profile,4,0,216,18.05
 westindies,TM Dowlin,overall,NA,6,11,0,343,95,31.18,0,3,0,Profile,41,1,742,46.22
 westindies,NO Miller,overall,NA,1,2,0,5,5,2.50,0,0,1,Profile,0,0,57,8.77
-westindies,OJ Phillips,overall,NA,2,4,0,160,94,40.00,0,1,0,Profile,16,0,312,51.28
+westindies,OJ Phillips,overall,NA,2,4,0,160,94,40,0,1,0,Profile,16,0,312,51.28
 westindies,DM Richards,overall,NA,3,6,0,125,69,20.83,0,1,1,Profile,20,3,165,75.75
 westindies,KAJ Roach,overall,2009-2019,53,85,17,827,41,12.16,0,0,12,Profile,99,4,2162,38.25
 westindies,CAK Walton,overall,NA,2,4,0,13,10,3.25,0,0,1,Profile,0,1,20,65.00
@@ -2830,8 +2830,8 @@ westindies,KC Brathwaite,overall,2011-2019,56,106,7,3449,212,34.83,8,17,12,Profi
 westindies,KA Edwards,overall,2011-2014,17,32,1,986,121,31.80,2,8,4,Profile,111,12,2052,48.05
 westindies,KOA Powell,overall,2011-2018,40,76,1,2011,134,26.81,3,6,7,Profile,261,16,3930,51.17
 westindies,ST Gabriel,overall,2012-2019,43,62,21,198,20*,4.82,0,0,16,Profile,25,5,521,38.00
-westindies,AB Fudadin,overall,NA,3,5,1,122,55,30.5,0,1,0,Profile,15,0,380,32.10
-westindies,SP Narine,overall,NA,6,7,2,40,22*,8.00,0,0,1,Profile,4,1,92,43.47
+westindies,AB Fudadin,overall,NA,3,5,1,122,55,30.50,0,1,0,Profile,15,0,380,32.10
+westindies,SP Narine,overall,NA,6,7,2,40,22*,8,0,0,1,Profile,4,1,92,43.47
 westindies,V Permaul,overall,2012-2015,6,9,1,98,23*,12.25,0,0,3,Profile,14,2,138,71.01
 westindies,SS Cottrell,overall,NA,2,4,0,11,5,2.75,0,0,1,Profile,1,0,24,45.83
 westindies,J Blackwood,overall,2014-2017,27,48,4,1324,112*,30.09,1,10,5,Profile,155,26,2236,59.21
@@ -2858,12 +2858,12 @@ zimbabwe,KJ Arnott,overall,NA,4,8,1,302,101*,43.14,1,1,1,Profile,30,1,926,32.61
 zimbabwe,EA Brandes,overall,1992-1999,10,15,3,121,39,10.08,0,0,2,Profile,11,3,335,36.11
 zimbabwe,MG Burmester,overall,NA,3,4,2,54,30*,27.00,0,0,1,Profile,6,1,133,40.60
 zimbabwe,ADR Campbell,overall,1992-2002,60,109,4,2858,103,27.21,2,18,10,Profile,355,4,6843,41.76
-zimbabwe,GJ Crocker,overall,NA,3,4,1,69,33,23.00,0,0,0,Profile,5,1,178,38.76
+zimbabwe,GJ Crocker,overall,NA,3,4,1,69,33,23,0,0,0,Profile,5,1,178,38.76
 zimbabwe,A Flower,overall,1992-2002,63,112,19,4794,232*,51.54,12,27,5,Profile,543,20,10636,45.07
 zimbabwe,GW Flower,overall,1992-2004,67,123,6,3457,201*,29.54,6,15,16,Profile,349,16,10013,34.52
 zimbabwe,DL Houghton,overall,1992-1997,22,36,2,1464,266,43.05,4,4,0,Profile,168,12,3221,45.45
 zimbabwe,MP Jarvis,overall,1992-1994,5,3,1,4,2*,2.00,0,0,1,Profile,0,0,15,26.66
-zimbabwe,AJ Pycroft,overall,NA,3,5,0,152,60,30.40,0,1,0,Profile,12,1,378,40.21
+zimbabwe,AJ Pycroft,overall,NA,3,5,0,152,60,30.4,0,1,0,Profile,12,1,378,40.21
 zimbabwe,AJ Traicos,overall,1970-1993,7,10,4,19,5*,3.16,0,0,2,Profile,2,0,132,14.39
 zimbabwe,AH Omarshah,overall,1992-1996,3,5,0,122,62,24.40,0,1,0,Profile,13,1,429,28.43
 zimbabwe,DH Brain,overall,1992-1995,9,13,2,115,28,10.45,0,0,4,Profile,17,0,187,61.49
@@ -2880,9 +2880,9 @@ zimbabwe,PA Strang,overall,1994-2001,24,41,10,839,106*,27.06,1,2,3,Profile,92,3,
 zimbabwe,SV Carlisle,overall,1995-2005,37,66,6,1615,118,26.91,2,8,7,Profile,185,10,4332,37.28
 zimbabwe,HK Olonga,overall,1995-2002,30,45,11,184,24,5.41,0,0,14,Profile,17,2,783,23.49
 zimbabwe,BC Strang,overall,1995-2001,26,45,9,465,53,12.91,0,1,8,Profile,54,2,849,54.77
-zimbabwe,IP Butchart,overall,NA,1,2,0,23,15,11.5,0,0,0,Profile,3,0,73,31.50
+zimbabwe,IP Butchart,overall,NA,1,2,0,23,15,11.50,0,0,0,Profile,3,0,73,31.50
 zimbabwe,ACI Lock,overall,NA,1,2,1,8,8*,8.00,0,0,1,Profile,2,0,33,24.24
-zimbabwe,CB Wishart,overall,1995-2005,27,50,1,1098,114,22.40,1,5,6,Profile,126,12,2419,45.39
+zimbabwe,CB Wishart,overall,1995-2005,27,50,1,1098,114,22.4,1,5,6,Profile,126,12,2419,45.39
 zimbabwe,CN Evans,overall,1996-2003,3,6,0,52,22,8.66,0,0,0,Profile,8,0,161,32.29
 zimbabwe,AR Whittall,overall,1996-1999,10,18,3,114,17,7.60,0,0,1,Profile,12,0,438,26.02
 zimbabwe,EZ Matambanadzo,overall,1996-1999,3,5,1,17,7,4.25,0,0,1,Profile,1,0,93,18.27
@@ -2961,3 +2961,34 @@ zimbabwe,RP Burl,overall,NA,1,2,0,16,16,8.00,0,0,1,Profile,3,0,39,41.02
 zimbabwe,B Muzarabani,overall,NA,1,2,1,14,10,14.00,0,0,0,Profile,2,1,14,100.00
 zimbabwe,WP Masakadza,overall,NA,1,2,0,21,17,10.50,0,0,0,Profile,1,0,88,23.86
 zimbabwe,B Mavuta,overall,NA,2,4,0,9,6,2.25,0,0,2,Profile,0,1,31,29.03
+afghanistan,Afsar Zazai,overall,NA,1,2,0,7,6,3.50,0,0,0,Profile,1,0,19,36.84
+afghanistan,Asghar Afghan,overall,NA,2,3,0,103,67,34.33,0,1,0,Profile,12,5,164,62.80
+afghanistan,Hashmatullah Shahidi,overall,NA,2,4,2,112,61,56.00,0,1,0,Profile,15,0,267,41.94
+afghanistan,Javed Ahmadi,overall,NA,1,2,0,4,3,2.00,0,0,0,Profile,0,0,19,21.05
+afghanistan,Mohammad Nabi,overall,NA,2,4,0,25,24,6.25,0,0,2,Profile,4,0,52,48.07
+afghanistan,Mohammad Shahzad,overall,NA,2,4,0,69,40,17.25,0,0,0,Profile,12,1,133,51.87
+afghanistan,Mujeeb Ur Rahman,overall,NA,1,2,0,18,15,9.00,0,0,0,Profile,2,1,17,105.88
+afghanistan,Rahmat Shah,overall,NA,2,4,0,192,98,48.00,0,2,0,Profile,30,0,357,53.78
+afghanistan,Rashid Khan,overall,NA,2,3,0,29,12,9.66,0,0,0,Profile,3,1,31,93.54
+afghanistan,Wafadar Momand,overall,NA,2,3,1,12,6*,6.00,0,0,1,Profile,2,0,33,36.36
+afghanistan,Yamin Ahmadzai,overall,NA,2,3,0,3,2,1.00,0,0,1,Profile,0,0,29,10.34
+afghanistan,Ihsanullah,overall,NA,1,2,1,72,65*,72.00,0,1,0,Profile,9,2,163,44.17
+afghanistan,Ikram Alikhil,overall,NA,1,1,0,7,7,7.00,0,0,0,Profile,0,0,40,17.50
+afghanistan,Waqar Salamkheil,overall,NA,1,1,1,1,1*,-,0,0,0,Profile,0,0,4,25.00
+ireland,A Balbirnie,overall,NA,3,6,0,146,82,24.33,0,2,2,Profile,23,0,247,59.10
+ireland,EC Joyce,overall,NA,1,2,0,47,43,23.50,0,0,0,Profile,6,0,102,46.07
+ireland,TE Kane,overall,NA,1,2,0,14,14,7.00,0,0,1,Profile,1,0,98,14.28
+ireland,TJ Murtagh,overall,NA,3,6,2,109,54*,27.25,0,1,0,Profile,14,2,132,82.57
+ireland,KJ O'Brien,overall,NA,3,6,1,258,118,51.60,1,1,0,Profile,29,0,467,55.24
+ireland,NJ O'Brien,overall,NA,1,2,0,18,18,9,0,0,1,Profile,2,0,55,32.72
+ireland,WTS Porterfield,overall,NA,3,6,0,58,32,9.66,0,0,1,Profile,7,0,227,25.55
+ireland,WB Rankin,overall,2014-2019,3,6,1,43,17,8.60,0,0,1,Profile,6,0,99,43.43
+ireland,PR Stirling,overall,NA,3,6,0,104,36,17.33,0,0,1,Profile,16,0,177,58.75
+ireland,SR Thompson,overall,NA,3,6,0,64,53,10.66,0,1,1,Profile,7,0,194,32.98
+ireland,GC Wilson,overall,NA,2,4,1,45,33*,15.00,0,0,2,Profile,7,0,114,39.47
+ireland,J Cameron-Dow,overall,NA,1,2,1,41,32*,41.00,0,0,0,Profile,5,0,70,58.57
+ireland,GH Dockrell,overall,NA,1,2,0,64,39,32.00,0,0,0,Profile,8,0,179,35.75
+ireland,AR McBrine,overall,NA,2,4,0,18,11,4.50,0,0,1,Profile,3,0,77,23.37
+ireland,JA McCollum,overall,NA,2,4,0,73,39,18.25,0,0,0,Profile,10,0,176,41.47
+ireland,SW Poynter,overall,NA,1,2,0,1,1,0.50,0,0,1,Profile,0,0,11,9.09
+ireland,MR Adair,overall,NA,1,2,0,11,8,5.50,0,0,0,Profile,0,1,24,45.83

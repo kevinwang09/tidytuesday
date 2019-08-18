@@ -1,5 +1,5 @@
 ---
-title: "Cricketer data"
+title: "Test cricketer data"
 author: "Kevin Wang"
 date: "16/08/2019"
 output:
@@ -17,7 +17,7 @@ editor_options:
 
 # Introduction
 
-Download all cricketer data
+In this document, we will download all available data from cricinfo for every Test players batting.
 
 # Loading packages
 
@@ -50,7 +50,9 @@ country_tibble = tibble::tribble(
   "southafrica", "http://www.espncricinfo.com/ci/content/player/caps.html?country=3;class=1",
   "srilanka", "http://www.espncricinfo.com/ci/content/player/caps.html?country=8;class=1",
   "westindies", "http://www.espncricinfo.com/ci/content/player/caps.html?country=4;class=1",
-  "zimbabwe", "http://www.espncricinfo.com/ci/content/player/caps.html?country=9;class=1"
+  "zimbabwe", "http://www.espncricinfo.com/ci/content/player/caps.html?country=9;class=1",
+  "afghanistan", "http://www.espncricinfo.com/ci/content/player/caps.html?country=40;class=1",
+  "ireland", "http://www.espncricinfo.com/ci/content/player/caps.html?country=29;class=1"
 )
 
 
