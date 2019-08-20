@@ -54,13 +54,13 @@ clean_test_batting_career = test_batting_career %>%
     runs = as.integer(runs),
     hs, 
     ave = ave %>% as.numeric(),
-    century = x100 %>% stringr::str_extract("([0-9]+).*$") %>% as.integer(), 
-    half_century = x50%>% stringr::str_extract("([0-9]+).*$") %>% as.integer(),
-    ducks = x0 %>% stringr::str_extract("([0-9]+).*$") %>% as.integer(), 
-    fours = x4s %>% stringr::str_extract("([0-9]+).*$") %>% as.integer(), 
-    sixes = x6s %>% stringr::str_extract("([0-9]+).*$") %>% as.integer(), 
-    balls_faced = bf %>% stringr::str_extract("([0-9]+).*$") %>% as.integer(), 
-    strike_rate = sr %>% stringr::str_extract("([0-9]+).*$") %>% as.numeric()
+    century = x100 %>% stringr::str_extract("\\-*\\d+\\.*\\d*") %>% as.integer(), 
+    half_century = x50 %>% stringr::str_extract("\\-*\\d+\\.*\\d*") %>% as.integer(),
+    ducks = x0 %>% stringr::str_extract("\\-*\\d+\\.*\\d*") %>% as.integer(), 
+    fours = x4s %>% stringr::str_extract("\\-*\\d+\\.*\\d*") %>% as.integer(), 
+    sixes = x6s %>% stringr::str_extract("\\-*\\d+\\.*\\d*") %>% as.integer(), 
+    balls_faced = bf %>% stringr::str_extract("\\-*\\d+\\.*\\d*") %>% as.integer(), 
+    strike_rate = sr %>% stringr::str_extract("\\-*\\d+\\.*\\d*") %>% as.numeric()
   )
 
 clean_test_batting_career %>% glimpse()
@@ -73,10 +73,10 @@ clean_test_batting_inngings = test_batting_inngings %>%
     player_name,
     runs,
     mins = mins %>% as.integer(),
-    balls_faced = bf %>% stringr::str_extract("([0-9]+).*$") %>% as.integer(), 
-    fours = x4s %>% stringr::str_extract("([0-9]+).*$") %>% as.integer(), 
-    sixes = x6s %>% stringr::str_extract("([0-9]+).*$") %>% as.integer(), 
-    strike_rate = sr %>% stringr::str_extract("([0-9]+).*$") %>% as.numeric(),
+    balls_faced = bf %>% stringr::str_extract("\\-*\\d+\\.*\\d*") %>% as.integer(), 
+    fours = x4s %>% stringr::str_extract("\\-*\\d+\\.*\\d*") %>% as.integer(), 
+    sixes = x6s %>% stringr::str_extract("\\-*\\d+\\.*\\d*") %>% as.integer(), 
+    strike_rate = sr %>% stringr::str_extract("\\-*\\d+\\.*\\d*") %>% as.numeric(),
     pos = pos %>% as.integer(),
     dismissal,
     inns = inns %>% as.integer(),
