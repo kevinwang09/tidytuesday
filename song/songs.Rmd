@@ -1,0 +1,44 @@
+---
+title: "Sogn simulations"
+author: "Kevin Wang"
+date: "01/09/2019"
+output: html_document
+---
+
+
+
+```{r}
+library(tidyverse)
+```
+
+
+# Simulation problem
+
+Initialise ($t = 1$) : every song has $1/n$ probability of being selected. 
+
+Step $t = t$: if a song is selected $k$ times, the probability of this song being selected $(k + 1)/(n + t - 1)$.
+
+What is the asymptotie behaviour of this?
+
+
+```{r}
+set.seed(1)
+n = 100
+maxt = 100000
+p = rep(1/n, n)
+k = rep(1, n)
+
+for(t in seq_len(maxt)){
+  # print(t)
+  # p %>% round(2) %>% print()
+  selected = sample(seq_len(n), 1, prob = p)
+  # selected %>% print
+  k[selected] = k[selected] + 1
+  # print(k)
+  p = k/(n + t)
+  # print(sum(k))
+}
+
+hist(p, breaks = 20)
+```
+
