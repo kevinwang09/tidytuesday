@@ -22,7 +22,7 @@ editor_options:
 library(tidyverse)
 library(ggmap)
 library(leaflet)
-# register_google()
+# register_google(key = "")
 ```
 
 
@@ -39,7 +39,7 @@ raw_beijing$Location
 beijing_query = raw_beijing %>% 
   dplyr::mutate(lonlat = purrr::map(Location, geocode))
 
-beijing_plotdf = beijing_query %>% tidyr::unnest()
+beijing_plotdf = beijing_query %>% tidyr::unnest(cols = c(lonlat))
 ```
 
 
@@ -52,5 +52,9 @@ leaflet() %>%
   addMarkers(lng = beijing_plotdf$lon, 
              lat = beijing_plotdf$lat, 
              popup = beijing_plotdf$Note)
+```
+
+```{r}
+
 ```
 
