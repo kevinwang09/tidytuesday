@@ -32,6 +32,20 @@ clean_test_batting_career = readr::read_csv("./clean_test_batting_career.csv")
 clean_test_batting_inngings = readr::read_csv("./clean_test_batting_inngings.csv")
 ```
 
+
+# Confirm relationships
+
+```{r}
+plot(clean_test_batting_career$strike_rate/100,
+     clean_test_batting_career$runs/clean_test_batting_career$balls_faced)
+abline(a = 0, b = 1, col = "red")
+
+plot(clean_test_batting_career$ave,
+     clean_test_batting_career$runs/(clean_test_batting_career$inns - clean_test_batting_career$not_out))
+abline(a = 0, b = 1, col = "red")
+```
+
+
 # Correlation betwen key numeric variables
 
 Looking at the correlation plot, it is not clear as to which variable is the main culprit that causes multi-collinearity. 
@@ -40,12 +54,34 @@ Looking at the correlation plot, it is not clear as to which variable is the mai
 ```{r}
 X = clean_test_batting_career %>% 
   dplyr::select_if(is.numeric) %>% 
+  dplyr::select(-fours, -half_century, -century) %>% 
   na.omit() %>% 
-  dplyr::mutate(log_runs = log10(runs + 1L),
-                log_bf = log10(balls_faced)) %>% 
-  dplyr::select(-career_start, -career_end, -ave, -mat, -runs, -balls_faced)
+  dplyr::mutate(
+    log_ave = log10(ave),
+    log_sr = log10(strike_rate),
+    log_bf = log10(balls_faced/100),
+    log_denom = log10(inns - not_out)
+    # log_runs = log10(runs + 1L),
+    # log_inns = log10(inns + 1L),
+    # log_not_out = log10(not_out + 1L)
+    ) %>% 
+dplyr::select(-career_start,
+              -career_end,
+              -ave,
+              -strike_rate,
+              -balls_faced,
+              -inns, 
+              -not_out,
+              -mat,
+              -runs)
 
 glimpse(X)
+
+plot(X$log_ave, 
+     X$log_sr + X$log_bf - X$log_denom)
+abline(a = 0, b = 1, col = "red")
+
+
 
 skimr::skim(X)
 

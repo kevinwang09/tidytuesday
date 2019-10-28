@@ -1,0 +1,23 @@
+---
+title: "scMerge_dep_pkg"
+author: "Kevin Wang"
+date: "21/09/2019"
+output: html_document
+---
+
+```{r}
+library(pkgDepTools)
+```
+
+```{r}
+library(BiocManager)
+library("Rgraphviz")
+biocUrl <- repositories()["BioCsoft"]
+biocDeps <- makeDepGraph(biocUrl, type="source", dosize=FALSE)
+edges(biocDeps)["scMerge"]
+categoryNodes <- c("scMerge",names(acc(biocDeps, "scMerge")[[1]]))
+categoryGraph <- subGraph(categoryNodes, biocDeps)
+nn <- makeNodeAttrs(categoryGraph, shape="ellipse")
+plot(categoryGraph, nodeAttrs=nn)
+```
+
