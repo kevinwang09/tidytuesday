@@ -54,13 +54,15 @@ Looking at the correlation plot, it is not clear as to which variable is the mai
 ```{r}
 X = clean_test_batting_career %>% 
   dplyr::select_if(is.numeric) %>% 
-  dplyr::select(-fours, -half_century, -century) %>% 
+  dplyr::select(-half_century, -century) %>%
   na.omit() %>% 
   dplyr::mutate(
     log_ave = log10(ave),
     log_sr = log10(strike_rate),
     log_bf = log10(balls_faced/100),
-    log_denom = log10(inns - not_out)
+    log_outs = log10(inns - not_out),
+    log_fours = log10(fours + 1L),
+    log_sixes = log10(sixes + 1L)
     # log_runs = log10(runs + 1L),
     # log_inns = log10(inns + 1L),
     # log_not_out = log10(not_out + 1L)
@@ -73,12 +75,17 @@ dplyr::select(-career_start,
               -inns, 
               -not_out,
               -mat,
-              -runs)
+              -runs,
+              -fours,
+              -sixes,
+              -ducks)
+
+
 
 glimpse(X)
 
 plot(X$log_ave, 
-     X$log_sr + X$log_bf - X$log_denom)
+     X$log_sr + X$log_bf - X$log_outs)
 abline(a = 0, b = 1, col = "red")
 
 
@@ -95,6 +102,30 @@ corrplot::corrplot.mixed(
 d3heatmap::d3heatmap(cor(X))
 ```
 
+## Scatter plot
+```{r, fig.height=12,fig.width=12}
+X %>% 
+  pairs(lower.panel = CPOP::panel_cor)
+```
+
+
+# Linear regression
+```{r}
+m = lm(log_ave ~ ., data = X)
+
+summary(m)
+```
+
+
+# VIF
+
+```{r}
+library(car)
+m %>% 
+  car::vif()
+```
+
+
 
 # mcvis
 
@@ -103,7 +134,7 @@ mcvis method seems to point to the `runs` variable as the main cause of colinear
 
 ```{r}
 mcvis_result = X %>% 
-  mcvis::mcvis()
+  mcvis::mcvis(standardise_method = "none")
 
 mcvis_result$MC %>% round(2)
 
