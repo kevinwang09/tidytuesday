@@ -92,7 +92,17 @@ tsne_plotdf %>%
              y = tsne2, 
              colour = role)) +
   geom_point()
+
+
+tsne_plotdf %>% 
+  ggplot(aes(x = tsne1, 
+             y = tsne2, 
+             colour = role,
+             label = player)) +
+  geom_point() +
+  geom_text()
 ```
+
 
 
 
