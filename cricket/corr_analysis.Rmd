@@ -53,40 +53,36 @@ Looking at the correlation plot, it is not clear as to which variable is the mai
 ## Corrplot
 ```{r}
 X = clean_test_batting_career %>% 
+  dplyr::mutate(hs_num = hs %>% stringr::str_extract("\\-*\\d+\\.*\\d*") %>% as.integer()) %>% 
   dplyr::select_if(is.numeric) %>% 
-  dplyr::select(-half_century, -century) %>%
   na.omit() %>% 
-  dplyr::mutate(
-    log_ave = log10(ave),
+  dplyr::transmute(
+    # log_ave = log10(ave),
     log_sr = log10(strike_rate),
     log_bf = log10(balls_faced/100),
-    log_outs = log10(inns - not_out),
+    # log_outs = log10(inns - not_out),
     log_fours = log10(fours + 1L),
-    log_sixes = log10(sixes + 1L)
-    # log_runs = log10(runs + 1L),
+    log_ducks = log10(ducks + 1L),
+    log_sixes = log10(sixes + 1L),
+    log_hs = log10(hs_num),
+    log_hcentury = log10(half_century + 1L),
+    log_runs = log10(runs)
     # log_inns = log10(inns + 1L),
     # log_not_out = log10(not_out + 1L)
-    ) %>% 
-dplyr::select(-career_start,
-              -career_end,
-              -ave,
-              -strike_rate,
-              -balls_faced,
-              -inns, 
-              -not_out,
-              -mat,
-              -runs,
-              -fours,
-              -sixes,
-              -ducks)
+    ) 
 
 
 
-glimpse(X)
+skimr::skim(X)
 
-plot(X$log_ave, 
-     X$log_sr + X$log_bf - X$log_outs)
+plot(X$log_sr, 
+     X$log_runs - X$log_bf)
 abline(a = 0, b = 1, col = "red")
+
+
+# plot(X$log_ave, 
+#      X$log_sr + X$log_bf - X$log_outs)
+# abline(a = 0, b = 1, col = "red")
 
 
 
@@ -111,7 +107,7 @@ X %>%
 
 # Linear regression
 ```{r}
-m = lm(log_ave ~ ., data = X)
+m = lm(log_sr ~ ., data = X)
 
 summary(m)
 ```
@@ -122,7 +118,8 @@ summary(m)
 ```{r}
 library(car)
 m %>% 
-  car::vif()
+  car::vif() %>% 
+  round(2)
 ```
 
 
@@ -134,6 +131,7 @@ mcvis method seems to point to the `runs` variable as the main cause of colinear
 
 ```{r}
 mcvis_result = X %>% 
+  # dplyr::select(-log_sr) %>% 
   mcvis::mcvis(standardise_method = "none")
 
 mcvis_result$MC %>% round(2)

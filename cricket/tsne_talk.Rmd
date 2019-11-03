@@ -1,0 +1,98 @@
+---
+title: "tSNE talk"
+author: "Kevin Wang"
+date: "03/11/2019"
+output: html_document
+---
+
+
+```{r}
+library(tidyverse)
+library(Rtsne)
+
+knitr::opts_chunk$set(fig.path="figures/")
+```
+
+```{r}
+raw_data = readxl::read_excel("AUS_AWAY_20YEARS_BAT.xlsx") %>% 
+  janitor::clean_names() %>% 
+  dplyr::mutate(role = ifelse(role == "A", "Batsman", "Bowler"))
+
+
+not_numeric = function(x){!is.numeric(x)}
+
+theme_set(theme_bw(18) +
+            theme(legend.position = "bottom"))
+```
+
+```{r}
+num_data = raw_data %>% 
+  dplyr::select_if(is.numeric)
+
+pca_obj = prcomp(num_data, center = TRUE, scale. = TRUE)
+
+pca_plotdf = num_data %>% 
+  dplyr::bind_cols(dplyr::select_if(raw_data, not_numeric)) %>% 
+  dplyr::mutate(
+    pc1 = pca_obj$x[,1],
+    pc2 = pca_obj$x[,2])
+
+score_plotdf = pca_obj$x[,1:4]
+```
+
+
+```{r}
+pca_plotdf %>% 
+  ggplot(aes(x = pc1, 
+             y = pc2, 
+             colour = role)) +
+  geom_point()
+```
+
+
+
+```{r, fig.height=8, fig.width=4}
+cor_pca_original = purrr::map(.x = 1:ncol(score_plotdf),
+                              .f = ~ cor(score_plotdf[,.x], num_data)) %>% 
+  do.call(rbind, .)
+rownames(cor_pca_original) = paste0("pc", 1:ncol(score_plotdf))
+
+cor_pca_original_plotdf = cor_pca_original %>% 
+  reshape2::melt() %>% 
+  dplyr::transmute(pca = Var1, 
+                   original = Var2,
+                   label = round(value, 2))
+
+cor_pca_original_plotdf %>% 
+  ggplot(aes(y = original, 
+             x = pca,
+             label = label,
+             fill = label)) +
+  geom_tile() +
+  geom_text() +
+  scale_fill_distiller(palette = "Spectral", limits = c(-1, 1)) +
+  theme(legend.position = "none")
+```
+
+# TSNE
+```{r}
+set.seed(3)
+tsne_obj = Rtsne::Rtsne(X = num_data, perplexity = 10)
+
+tsne_plotdf = num_data %>% 
+  dplyr::bind_cols(dplyr::select_if(raw_data, not_numeric)) %>% 
+  dplyr::mutate(
+    tsne1 = tsne_obj$Y[,1],
+    tsne2 = tsne_obj$Y[,2])
+```
+
+```{r}
+tsne_plotdf %>% 
+  ggplot(aes(x = tsne1, 
+             y = tsne2, 
+             colour = role)) +
+  geom_point()
+```
+
+
+
