@@ -22,6 +22,10 @@ Due to my very limited time and unlimited amount of curiosity, I have decided to
 
 This webpage was deployed through [Travis](https://travis-ci.org/kevinwang09/tidytuesday) and GitHub Pages.
 
+# 2019 Nov 04 - Cricket
+
+This is my own personal project. The index page is [here](cricket/index.html).
+
 
 # 2019 Aug 13 - Roman Emperors
 
