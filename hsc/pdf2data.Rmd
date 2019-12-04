@@ -1,0 +1,65 @@
+---
+title: "Untitled"
+author: "Kevin Wang"
+date: "28/11/2019"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(pdftools)
+txt <- pdf_text("data/2007.pdf")
+```
+
+
+```{r}
+
+# pdf_data(txt[44:48])
+
+txt[44]
+
+trim_txt <- str_split(txt[44], "\n", simplify = TRUE) %>% 
+  purrr::map(trimws)
+
+trim_txt[[6]]
+
+trim_txt[[6]] 
+
+make_tbl_heading = function(string){
+  string %>%
+    # trim_txt[[6]] %>% 
+    str_replace_all("\\s+", " ") %>% 
+    str_replace_all("([A-Z])", "\t \\0") %>% 
+    str_replace_all("S\t D", "SD") %>% 
+    str_replace_all("\t Course", "Course")
+}
+
+make_tbl_heading(trim_txt[[6]]) 
+(p = make_tbl_heading(trim_txt[[6]]) %>% 
+    str_count("\t"))
+
+pad_to_p = function(string, p, side){
+  # tmp = trim_txt[[7]] %>%
+  tmp = string %>%
+    str_replace_all("\\s+", " ") %>% 
+    str_replace_all("\\s\\d", "\t\\0")
+  
+  
+  if(str_count(tmp, "\t") < p){
+    if(side == "left"){
+      tmp = paste0(paste0(rep("\t", p - str_count(tmp, "\t")),collapse = ""), tmp)
+    }
+    
+    if(side == "right"){
+      tmp = paste0(tmp, paste0(rep("\t", p - str_count(tmp, "\t")),collapse = ""))
+    }
+  }
+  return(tmp)
+}
+pad_to_p(trim_txt[[7]],  p = p, side = "left")
+pad_to_p(trim_txt[[8]], p = p, side = "right")
+pad_to_p(trim_txt[[9]], p = p, side = "left")
+pad_to_p(trim_txt[[70]], p = p, side = "left")
+pad_to_p(trim_txt[[71]], p = p, side = "left")
+```
+
