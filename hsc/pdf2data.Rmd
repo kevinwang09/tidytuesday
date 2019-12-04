@@ -13,17 +13,10 @@ txt <- pdf_text("data/2007.pdf")
 
 
 ```{r}
-
-# pdf_data(txt[44:48])
-
-txt[44]
+txt[44] ## page 44
 
 trim_txt <- str_split(txt[44], "\n", simplify = TRUE) %>% 
   purrr::map(trimws)
-
-trim_txt[[6]]
-
-trim_txt[[6]] 
 
 make_tbl_heading = function(string){
   string %>%
@@ -34,32 +27,110 @@ make_tbl_heading = function(string){
     str_replace_all("\t Course", "Course")
 }
 
-make_tbl_heading(trim_txt[[6]]) 
-(p = make_tbl_heading(trim_txt[[6]]) %>% 
-    str_count("\t"))
-
-pad_to_p = function(string, p, side){
+pad_to_p = function(string, num_tabs, side){
   # tmp = trim_txt[[7]] %>%
   tmp = string %>%
     str_replace_all("\\s+", " ") %>% 
     str_replace_all("\\s\\d", "\t\\0")
   
   
-  if(str_count(tmp, "\t") < p){
+  if(str_count(tmp, "\t") < num_tabs){
     if(side == "left"){
-      tmp = paste0(paste0(rep("\t", p - str_count(tmp, "\t")),collapse = ""), tmp)
+      tmp = paste0(paste0(rep(" \t ", num_tabs - str_count(tmp, "\t")),collapse = ""), tmp)
     }
     
     if(side == "right"){
-      tmp = paste0(tmp, paste0(rep("\t", p - str_count(tmp, "\t")),collapse = ""))
+      tmp = paste0(tmp, paste0(rep(" \t ", num_tabs - str_count(tmp, "\t")),collapse = ""))
     }
   }
+  tmp = paste0(tmp, " \n")
   return(tmp)
 }
-pad_to_p(trim_txt[[7]],  p = p, side = "left")
-pad_to_p(trim_txt[[8]], p = p, side = "right")
-pad_to_p(trim_txt[[9]], p = p, side = "left")
-pad_to_p(trim_txt[[70]], p = p, side = "left")
-pad_to_p(trim_txt[[71]], p = p, side = "left")
+########################################################
+
+
+make_tbl_heading(trim_txt[[6]])
+(num_tabs = make_tbl_heading(trim_txt[[6]]) %>% 
+    str_count("\t"))
+pad_to_p(trim_txt[[7]],  num_tabs = num_tabs, side = "left")
+# pad_to_p(trim_txt[[7]],  num_tabs = num_tabs, side = "right")
+
+# pad_to_p(trim_txt[[8]],  num_tabs = num_tabs, side = "left")
+pad_to_p(trim_txt[[8]],  num_tabs = num_tabs, side = "right")
+
+pad_to_p(trim_txt[[9]],  num_tabs = num_tabs, side = "left")
+pad_to_p(trim_txt[[70]],  num_tabs = num_tabs, side = "left")
+pad_to_p(trim_txt[[71]],  num_tabs = num_tabs, side = "left")
 ```
+
+
+```{r}
+which_title = trim_txt %>% 
+  purrr::map_lgl(
+    .f = ~ str_detect(.x, pattern = "Type of mark")) %>% 
+  which()
+
+title = make_tbl_heading(trim_txt[[which_title]])
+
+(num_tabs = title %>%
+    str_count("\t"))
+
+trim_txt[[7]] %>% str_count("\\d")
+trim_txt[[8]] %>% str_count("\\d")
+
+tmp = vector(mode = "list", length(trim_txt))
+
+for(i in 1:length(trim_txt)){
+  if(i <= which_title){
+    tmp[[i]] = pad_to_p(trim_txt[[i]],  num_tabs = num_tabs, side = "right")
+    next
+  }
+  
+  if(str_count(trim_txt[[i]], "\\d") >= 10){
+    tmp[[i]] = pad_to_p(trim_txt[[i]],  num_tabs = num_tabs, side = "left")
+  } else {
+    tmp[[i]] = pad_to_p(trim_txt[[i]],  num_tabs = num_tabs, side = "right")
+  }
+}
+
+
+tmp
+
+result = tmp[(which_title+1L):length(tmp)]
+result
+
+result_df = purrr::map_dfr(
+  .x = result, 
+  .f = ~ read.delim(text = .x, header = FALSE, sep = "\t") %>% 
+    dplyr::mutate_all(as.character))
+
+colnames(result_df) = strsplit(title, split = " \t ")[[1]]
+
+result_df = result_df %>% 
+  as_tibble() %>% 
+  dplyr::mutate(
+    lead1 = dplyr::lead(Course, 1),
+    lag1 = dplyr::lag(Course, 1),
+    course_cleaned = coalesce(Course, lead1, lag1),
+    Number = paste0(Number, `Type of mark`) %>% 
+      str_extract(pattern = "[[:digit:]]+") %>% 
+      as.integer(),
+    lead1 = dplyr::lead(Number, 1),
+    lag1 = dplyr::lag(Number, 1),
+    number_cleaned = coalesce(Number, lead1, lag1),
+    numNA = rowSums(is.na(.)),
+    keep = numNA < 8
+  ) %>% 
+  dplyr::filter(keep) %>% 
+  dplyr::select(course_cleaned,
+                number_cleaned,
+                `Type of mark`:`P25`)
+
+```
+
+
+
+
+# Strategy
+1. Create an Excel sheet that documents the page number of Table A3 in all PDFs. 
 
