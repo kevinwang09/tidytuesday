@@ -11,7 +11,7 @@ library(pdftools)
 txt <- pdf_text("data/2007.pdf")
 ```
 
-
+## Extracting page 44
 ```{r}
 txt[44] ## page 44
 
@@ -64,6 +64,8 @@ pad_to_p(trim_txt[[71]],  num_tabs = num_tabs, side = "left")
 ```
 
 
+
+## Extracting page 44
 ```{r}
 which_title = trim_txt %>% 
   purrr::map_lgl(
@@ -102,12 +104,14 @@ result
 result_df = purrr::map_dfr(
   .x = result, 
   .f = ~ read.delim(text = .x, header = FALSE, sep = "\t") %>% 
-    dplyr::mutate_all(as.character))
+    dplyr::mutate_all(as.character)) %>% 
+  janitor::remove_empty(which = "rows")
 
 colnames(result_df) = strsplit(title, split = " \t ")[[1]]
 
 result_df = result_df %>% 
   as_tibble() %>% 
+  dplyr::filter(!str_detect(Course, "Report on the Scaling")|is.na(Course)) %>% 
   dplyr::mutate(
     lead1 = dplyr::lead(Course, 1),
     lag1 = dplyr::lag(Course, 1),
@@ -131,6 +135,8 @@ result_df = result_df %>%
 
 
 
-# Strategy
-1. Create an Excel sheet that documents the page number of Table A3 in all PDFs. 
+# Strategy going forward
+1. Create an Excel sheet that documents the page number of Table A3 in all PDFs (or automate this). 
+2. Apply this pipeline to all the documents. 
+3. Final cleaning. 
 

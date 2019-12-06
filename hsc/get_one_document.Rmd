@@ -1,0 +1,34 @@
+---
+title: "Untitled"
+author: "Kevin Wang"
+date: "28/11/2019"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(pdftools)
+txt <- pdf_text("data/2007.pdf")
+class(txt)
+length(txt)
+keyword_tablea3 = "Table A3 Descriptive statistics and selected percentiles for HSC marks"
+(tablea3_pages = str_detect(txt, keyword_tablea3) %>% which)
+
+tablea3_raw = txt[tablea3_pages]
+
+source("functions.R")
+```
+
+
+```{r}
+# result_df = this_page = tablea3_raw[1] %>%
+#   make_df_from_page() %>% 
+#   make_pretty_result_df()
+
+tablea3_cleaned = tibble::tibble(
+  raw = tablea3_raw, 
+  basic = purrr::map(.x = raw, .f = make_df_from_page),
+  cleaned = purrr::map(.x = basic, .f = make_pretty_result_df),
+)
+```
+
