@@ -17,15 +17,22 @@ library(patchwork)
 
 # Introduction
 
-I am currently a PhD candidate at the University of Sydney. My research focus on statistics and bioinformatics and I have an active interest in `R` and `tidyverse`. Since May 2019, I have been undertaking the [tidytuesday](https://github.com/rfordatascience/tidytuesday) challenges. 
+I am currently a PhD candidate at the University of Sydney. My research focus on statistics and bioinformatics and I have an active interest in `R` and `tidyverse`. Since May 2019, I have been undertaking the [tidytuesday](https://github.com/rfordatascience/tidytuesday) challenges. Not everything in this page replates to the official challenges, it also includes datasets and analyses that interested me at some point. 
 
 Due to my very limited time and unlimited amount of curiosity, I have decided to not produce a detailed annotated R Markdown report for every data challenge. Instead, I will post my most important findings in each data challenge below. In addition, I will also put up some brief comments about the packages that I have encountered along the way (e.g. ease of use, maturity of the package). 
 
 This webpage was deployed through [Travis](https://travis-ci.org/kevinwang09/tidytuesday) and GitHub Pages.
 
+
+# 2019 Dec 07 - Side-by-side plots
+
+[This](side-plots/side-plots.html) is a very small (blog) post about making side-by-side plots, in celebration of `patchwork` being uploaded onto CRAN. A more complex example using clustering can be found [here](side-plots/dim_redu.html). 
+
+
+
 # 2019 Nov 28 - UAC ATAR scaling
 
-This is my own personal project. The idea is to scrape the HSC scaling data from UAC published PDF. See the script for download [here](hsc/download_UAC.R), analysis will be made available later. 
+This is my own personal project. The idea is to scrape the HSC scaling data from UAC published PDF. See the script for download [here](hsc/download_UAC.R), analysis will be made available later. Some intermediate work are [here](hsc/get_all_docs.Rmd) 
 
 # 2019 Nov 04 - Cricket
 
