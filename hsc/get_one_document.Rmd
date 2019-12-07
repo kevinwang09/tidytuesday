@@ -1,34 +1,67 @@
 ---
 title: "Untitled"
 author: "Kevin Wang"
-date: "28/11/2019"
+date: "07/12/2019"
 output: html_document
 ---
 
+
+# Loading packages 
+
+
 ```{r}
 library(tidyverse)
+library(tabulizer)
 library(pdftools)
-txt <- pdf_text("data/2007.pdf")
+
+```
+
+# Loading one document using `pdftools` to locate TableA3
+```{r,echo = FALSE}
+txt <- pdftools::pdf_text("data/2007.pdf")
 class(txt)
 length(txt)
 keyword_tablea3 = "Table A3 Descriptive statistics and selected percentiles for HSC marks"
-(tablea3_pages = str_detect(txt, keyword_tablea3) %>% which)
-
-tablea3_raw = txt[tablea3_pages]
-
-source("functions.R")
 ```
 
-
+## Loading TableA3 using `tabulizer`
 ```{r}
-# result_df = this_page = tablea3_raw[1] %>%
-#   make_df_from_page() %>% 
-#   make_pretty_result_df()
+(tablea3_pages = str_detect(txt, keyword_tablea3) %>% which)
+txt <- tabulizer::extract_tables("data/2007.pdf", pages = tablea3_pages)
+class(txt)
+class(txt[[1]])
 
-tablea3_cleaned = tibble::tibble(
-  raw = tablea3_raw, 
-  basic = purrr::map(.x = raw, .f = make_df_from_page),
-  cleaned = purrr::map(.x = basic, .f = make_pretty_result_df),
-)
+list_df = txt %>% 
+  purrr::map(as.data.frame) %>% 
+  purrr::map(function(x){
+    res = x
+    colnames(res) = x[1,] %>% as.matrix() %>% as.character()
+    res = res[-1,]
+    return(res)
+  })
+
+head(list_df[[1]])
+
+whole_df = list_df %>% 
+  bind_rows() %>% 
+  dplyr::mutate(
+    course_lead1 = dplyr::lead(Course, 1, default = ""),
+    course_lag1 = dplyr::lag(Course, 1, default = ""),
+    course_cleaned = paste0(Course, course_lead1, course_lag1),
+    Number_paste = Number %>%
+        str_replace_all(pattern = " ", replacement = ""),
+      number_lead1 = dplyr::lead(Number_paste, 1, default = ""),
+      number_lag1 = dplyr::lag(Number_paste, 1, default = ""),
+      number_cleaned = paste0(Number_paste, number_lead1, number_lag1),
+    keep = `Type of mark` != ""
+  ) %>% 
+  dplyr::filter(keep) %>% 
+    dplyr::select(course_cleaned,
+                  number_cleaned,
+                  `Type of mark`:`P25`) %>% 
+  tibble::as_tibble()
+
+
+whole_df
 ```
 
