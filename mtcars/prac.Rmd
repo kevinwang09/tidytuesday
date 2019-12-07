@@ -1,0 +1,52 @@
+---
+title: "Untitled"
+author: "Kevin Wang"
+date: "07/12/2019"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+```
+
+
+```{r}
+dat = mtcars %>% 
+  tibble::rownames_to_column("id") %>% 
+  as_tibble()
+
+dat
+```
+
+```{r}
+(vars_unique = dat %>% apply(2, function(x){x %>% unique %>% length}))
+
+dat2 = dat %>% 
+  mutate_at(.vars = names(vars_unique)[vars_unique <=10],
+            .funs = as.factor)
+
+
+```
+
+# Checking mpg
+```{r}
+hist(dat$mpg)
+```
+
+```{r}
+dat %>% 
+  pivot_longer(cols = -c("id", "mpg")) %>% 
+  ggplot(aes(x = mpg, y = value)) +
+  geom_point() +
+  geom_smooth(method = "loess") +
+  facet_wrap(~name, scales = "free")
+```
+
+
+
+```{r}
+lm(mpg ~ .-id, data = dat2) %>% 
+  car::vif()
+  # broom::tidy()
+```
+

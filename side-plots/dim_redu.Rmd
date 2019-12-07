@@ -1,0 +1,146 @@
+---
+title: "Comparing different "
+author: "Kevin Wang"
+date: "07 Dec 2019"
+output: 
+  html_document:
+    code_download: true
+    toc: true
+    theme: paper
+---
+
+
+# Aim of this document
+
+This is a demonstration of the `ggiraph` package's interactive visualisation capability. Also, since `patchwork` was recently put on CRAN, "side-by-side interactive plotting" just got easier!
+
+I will perform the PCA, tSNE and UMAP dimensionality reduction on the `iris` data. 
+
+Just so you know that I know:
+
++ Yes, `iris` data is overused, but hey! It is only a quick coding demo!
+
++ Yes, I know about `plotly`, it also has the side-by-side option, but it is very painful when there are multiple plotting aesthetics.
+
+```{r, message=FALSE}
+library(ggiraph)
+library(patchwork)
+library(tidyverse)
+library(Rtsne)
+library(umap)
+```
+
+# Computing the dimensionality reduction objects
+
+```{r}
+## We:
+## + convert the iris data to a tibble
+## + remove one duplicated row
+## + add unique identifier to each row
+
+iris_tbl = iris %>% 
+  as_tibble() %>% 
+  distinct() %>% 
+  tibble::rownames_to_column("id")
+
+iris_tbl
+
+## Computing the PCA, TSNE and UMAP objects
+iris_pca = prcomp(iris_tbl %>% select_if(is.numeric))
+iris_tsne = Rtsne(iris_tbl %>% select_if(is.numeric))
+iris_umap = umap(iris_tbl %>% select_if(is.numeric))
+```
+
+# Preparing the plotting data and static plots 
+
+The main function we will use is `geom_point_interactive` from the `ggiraph` package. It behaves just like `geom_point`, but with two additional aesthetics. The `data_id` aesthetic is critical to link observations between plots and the `tooltip` aesthetic is optional but nice to have when mouse over a point. After making these plots, the `girafe` function using the same syntax in `patchwork` will allow us to make a pretty interactive plot!
+
+```{r}
+## Getting two reduced dimensions for each method
+iris_plotdf = iris_tbl %>% 
+  mutate(
+    pca_1 = iris_pca$x[,1],
+    pca_2 = iris_pca$x[,2],
+    tsne_1 = iris_tsne$Y[,1],
+    tsne_2 = iris_tsne$Y[,2],
+    umap_1 = iris_umap$layout[,1],
+    umap_2 = iris_umap$layout[,2]
+  )
+
+
+
+p1 = iris_plotdf %>% 
+  ggplot(aes(x = pca_1, y = pca_2, 
+             colour = Species,
+             tooltip = id,
+             data_id = id)) +
+  geom_point_interactive() +
+  labs(title = "PCA")
+
+p2 = iris_plotdf %>% 
+  ggplot(aes(x = tsne_1, y = tsne_2, 
+             colour = Species,
+             tooltip = id,
+             data_id = id)) +
+  geom_point_interactive() +
+  labs(title = "tSNE")
+
+p3 = iris_plotdf %>% 
+  ggplot(aes(x = umap_1, y = umap_2, 
+             colour = Species,
+             tooltip = id,
+             data_id = id)) +
+  geom_point_interactive() +
+  labs(title = "UMAP")
+```
+
+
+
+```{r, fig.width = 15, fig.height=5}
+p1 + p2 + p3
+```
+
+
+At this point, `p1 + p2 + p3` are combined together as a static plot thanks to `patchwork`. But making it iterative is just one line. 
+
+## The magical interactive visualisation
+```{r}
+girafe(code = print(p1 + p2 + p3), 
+       width_svg = 15, height_svg = 5)
+```
+
+
+
+## Extensions
+
+For the `tidyverse` fanatics (myself included), you will see that we have made three plots with similar structures and cringe a little bit. Here is another way to make similar plot by pivoting. 
+
+```{r, fig.width = 15, fig.height=5}
+iris_long_plotdf = iris_plotdf %>% 
+  tidyr::pivot_longer(cols = matches("1|2"), 
+                      names_to = c("method", "dim"),
+                      names_sep = "_") %>% 
+  tidyr::pivot_wider(names_from = dim, 
+                     values_from = value)
+
+iris_long_plotdf
+
+p4 = iris_long_plotdf %>% 
+  ggplot(aes(x = `1`, y = `2`, 
+             colour = Species,
+             tooltip = id,
+             data_id = id)) +
+  geom_point_interactive() +
+  facet_grid(~method, scales = "free")
+
+girafe(code = print(p4),
+       width_svg = 10, height_svg = 5)
+```
+
+
+
+# Session Info
+```{r}
+sessionInfo()
+```
+
