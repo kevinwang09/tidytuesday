@@ -87,22 +87,23 @@ make_df_from_page = function(this_page){
 #######################################################
 make_pretty_result_df = function(result_df){
   result_df %>% 
-    dplyr::filter(!str_detect(Course, "Report on the Scaling")|is.na(Course)) %>% 
+    dplyr::filter(!str_detect(Course, "Report on the Scaling")|is.na(Course)) %>% ## Get rid of footer
     dplyr::mutate(
-      lead1 = dplyr::lead(Course, 1),
-      lag1 = dplyr::lag(Course, 1),
-      course_cleaned = coalesce(Course, lead1, lag1),
-      Number = paste0(Number, `Type of mark`) %>% 
-        str_extract(pattern = "[[:digit:]]+") %>% 
+      linetype = ifelse(is.na(Course), "mark", "coursename"),
+      course_lead1 = dplyr::lead(Course, 1),
+      course_lag1 = dplyr::lag(Course, 1),
+      course_cleaned = coalesce(Course, course_lead1, course_lag1),
+      Number_paste = paste0(Number, `Type of mark`) %>%
+        str_extract(pattern = "[[:digit:]]+") %>%
         as.integer(),
-      lead1 = dplyr::lead(Number, 1),
-      lag1 = dplyr::lag(Number, 1),
-      number_cleaned = coalesce(Number, lead1, lag1),
-      numNA = rowSums(is.na(.)),
-      keep = numNA < 8
-    ) %>% 
-    dplyr::filter(keep) %>% 
-    dplyr::select(course_cleaned,
-                  number_cleaned,
-                  `Type of mark`:`P25`)
+      number_lead1 = dplyr::lead(Number_paste, 1),
+      number_lag1 = dplyr::lag(Number_paste, 1),
+      number_cleaned = coalesce(Number_paste, number_lead1, number_lag1),
+      # numNA = rowSums(is.na(.))
+      # keep = numNA < 8
+    ) 
+    # dplyr::filter(keep)
+    # dplyr::select(course_cleaned,
+    #               number_cleaned,
+    #               `Type of mark`:`P25`)
 }
