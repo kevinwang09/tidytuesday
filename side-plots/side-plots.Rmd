@@ -17,7 +17,7 @@ I will show you some options to make side-by-side ggplots in R. While there are 
 + `ggiraph`, which leverages `patchwork`'s syntax to make **interactive** ggplots!
 + `plotly`, which converts ggplots into interactive plotly-plots before combining everything into subplots. 
 
-See more [here](dim_redu.html)!
+A more advanced example using clustering is [here](dim_redu.html)!
 
 
 ## A small note
@@ -26,10 +26,11 @@ I wish to demonstrate a rather annoying behaviour of `ggplotly` in the `plotly` 
 
 One of the most powerful function in `plotly` is the `ggplotly` function. For a `ggplot2`-addict like myself it takes a static ggplot and makes it interative. 
 
-However, this function has an undesirable side-effect when trying to produce a side-by-side plot with mouse-over functionality. I found that the work around of this to be a bit harder than I would like. One way around this is to use the `ggiraph` package. I will demonstrate both of these packages below. 
+However, this function has an undesirable legend when trying to produce a side-by-side plot. I found that the work around of this to be a bit harder than I would like. One way around this is to use the `patchwork` + `ggiraph` framework.
 
 
 Just so you know that I know:
+
 + Yes, `mtcars` data is overused, but hey! It is only a quick coding demo!
 
 ```{r, message=FALSE}
