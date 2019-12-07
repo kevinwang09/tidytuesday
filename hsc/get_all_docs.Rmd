@@ -1,0 +1,78 @@
+---
+title: "Untitled"
+author: "Kevin Wang"
+date: "07/12/2019"
+output: html_document
+---
+
+
+# Loading packages 
+
+
+```{r}
+library(tidyverse)
+library(tabulizer)
+library(pdftools)
+```
+
+# Loading one document using `pdftools` to locate TableA3
+```{r, echo = FALSE}
+
+years = 2007:2018
+(pdf_names = paste0("data/", years, ".pdf"))
+names(pdf_names) = years
+
+suppressMessages({
+  list_pdfs = purrr::map(.x = pdf_names,
+             .f = ~ pdftools::pdf_text(pdf = .x))
+})
+
+# keyword_tablea3 = "Table A3 * Descriptive statistics and selected"
+# (list_tablea3_pages = list_pdfs %>% 
+#     purrr::map(~ str_detect(.x, keyword_tablea3) %>% which))
+list_tablea3_pages = list(
+  "2007" = c(44:48),
+  "2008" = c(44:48),
+  "2009" = c(45:49),
+  "2010" = c(43:47),
+  "2011" = c(43:47),
+  "2012" = c(44:48),
+  "2013" = c(44:48),
+  "2014" = c(43:47),
+  "2015" = c(43:47),
+  "2016" = c(43:47),
+  "2017" = c(44:48),
+  "2018" = c(45:49)
+)
+
+list_tables <- purrr::map2(
+  .x = pdf_names,
+  .y = list_tablea3_pages,
+  .f = ~ tabulizer::extract_tables(.x, pages = .y)
+)
+
+make_list_df = function(list_mat){
+  list_mat %>% 
+  purrr::map(as.data.frame) %>% 
+  purrr::map(function(x){
+    res = x
+    colnames(res) = x[1,] %>% as.matrix() %>% as.character()
+    res = res[-1,]
+    return(res)
+  })
+}
+
+list_df = purrr::map(list_tables, make_list_df) %>% 
+  purrr::map(bind_rows) %>% 
+  purrr::map(~.x[,1:11]) %>% 
+  purrr::map(as_tibble)
+
+list_df %>% purrr::map(class)
+list_df %>% purrr::map(dim)
+
+  # purrr::map(janitor::remove_empty)
+  # 
+  # purrr::map(as_tibble)
+```
+
+
