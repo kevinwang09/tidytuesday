@@ -121,6 +121,8 @@ anim_save(filename = "./Nowra_fire.gif",
 ```
 
 
+<img src="Nowra_fire.gif" width="400" height="300" />
+
 
 ```{r}
 sessionInfo()
