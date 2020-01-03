@@ -23,6 +23,15 @@ Due to my very limited time and unlimited amount of curiosity, I have decided to
 
 This webpage was deployed through [Travis](https://travis-ci.org/kevinwang09/tidytuesday) and GitHub Pages.
 
+# 2020 Jan 03 - bushfire
+
+This is not a fun exercise. My house is about 30 mins drive from the nearest bushfire this week. I grabbed the NASA - FIRMS data and made a visualisation of the spread of bushfire around my house in the past 30 days. 
+
+See [here](bushfire/NASA_FIRMS.html).
+
+
+<img src="bushfire/Nowra_fire.gif" width="400" height="300" />
+
 
 # 2019 Dec 07 - Side-by-side plots
 
@@ -49,7 +58,7 @@ Summary of findings:
   + Being an emperor is a highly risky job. You are more likely to die from assassination than any other causes. 
   + A good advice on having a long reign is to make your rise to power be somewhat peaceful. That means you better be someone who can inherit the empire through birthright. 
 
-<img src="2019-08-13/boxplot_reign.png" width="800" height="600" />
+<img src="2019-08-13/boxplot_reign.png" width="600" height="400" />
   
   + The previous analysis gave me an idea to set up a framework to do a survival analysis of the time which emperors reign. 
     
@@ -59,7 +68,7 @@ Summary of findings:
       1. If an emperor dies of other causes, then I will interpret that to mean this emperor has his life cut-short. So in the language of survival analysis, I will label this emperor as "censored". 
       1. Of course, this analysis is problematic because each observation is not independent. I mean, these emperors love killing each other! But this is a very simple attempt to incorporate the problem of unnatural death into an analysis of the reign of emperors based on their original rise to power. 
   
-<img src="2019-08-13/surv_plot_emperor_rise.png" width="600" height="400" />
+<img src="2019-08-13/surv_plot_emperor_rise.png" width="400" height="300" />
 
   + Below: timeline plot combining cause of death and rise of power. 
       
@@ -70,7 +79,7 @@ Summary of findings:
       
   
   
-<img src="2019-08-13/timeline_plot.png" width="1000" height="800" />  
+<img src="2019-08-13/timeline_plot.png" width="600" height="400" />  
   
 
 # 2019 Jul 23 - Birds impact
@@ -83,11 +92,11 @@ Summary of findings:
   + As expected, we find that the birds impact incidents are seasonal with less incidents during the winter months. However, we cannot conclude whether this is due to inactivities of birds during these months or due to reduced number of flights. 
   
   
-  <img src="2019-07-23/incidents_2018.gif" width="700" height="700" />
+  <img src="2019-07-23/incidents_2018.gif" width="600" height="400" />
   
   + Another interesting trend is that there is a dip in the number of incidents around June every year. And this dip was only visible for flights around night times. This could be due to the scheduling of the flights around this time of the year.
   
-  <img src="2019-07-23/combine_trace_plot.png" width="800" height="800" />
+  <img src="2019-07-23/combine_trace_plot.png" width="800" height="600" />
 
 
 **Key things that I learnt**: 
@@ -115,7 +124,7 @@ I am personally interested in another metric: GDP growth. My reasoning is that w
   + `gganimate` package went through significant updates since I used it in 2016. The package's functionalities have been enhanced, particularly in respect to the speed/aesthetics of the transitions. 
   + Additionally, the `ggpubr` package provides some important functions that allows rapid annotations on ggplot figures (in this case, correlation value). 
 
-<img src="2019_05_21/gdp_growth_vs_plastic_per_cap.gif" width="700" height="700" />
+<img src="2019_05_21/gdp_growth_vs_plastic_per_cap.gif" width="600" height="400" />
 
 
 # 2018 Apr 02 - US Tuition 
