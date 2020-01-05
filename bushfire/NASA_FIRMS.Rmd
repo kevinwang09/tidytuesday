@@ -105,8 +105,8 @@ p1 = ggmap(nowra_map) +
              y = -34.8432388,
              colour = "blue", size = 2) + ## A location near my home
   scale_colour_distiller(palette = "Reds", direction = 1) +
-  transition_time(my_time) +
-  labs(title = "Time: {frame_time}") +
+  transition_states(my_time) +
+  labs(title = "Time: {closest_state}") +
     shadow_trail(distance = 0.05, colour = "black", alpha = 1)
 
 p2 = animate(p1, nframes = 100)
