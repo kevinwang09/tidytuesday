@@ -1,0 +1,12 @@
+---
+title: "Untitled"
+author: "Kevin Wang"
+date: "05/01/2020"
+output: html_document
+---
+
+```{r}
+library(rtweet)
+famous_tweeters <- lookup_users("kevinwang009")
+```
+
