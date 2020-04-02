@@ -1,0 +1,123 @@
+---
+title: "NASA - FIRMS fire spread around Nowra"
+author: "Kevin Wang"
+date: "5 Jan 2020"
+output: 
+  html_document:
+    code_download: true
+    toc: true
+    theme: paper
+---
+
+# Summary
+
+# Loading 
+
+## Packages
+```{r, massage = FALSE}
+library(tidyverse)
+library(ggmap)
+library(lubridate)
+library(gganimate)
+```
+
+
+## Loading data
+
+```{r}
+raw = readr::read_csv("DL_FIRE_M6_94689/fire_nrt_M6_94689.csv")
+
+glimpse(raw)
+
+raw$acq_time %>% unique %>% sample(size = 50) ## Four digits time stamp
+```
+
+# Basic data cleaning and variable selection
+
+I am only selecting some variables of interest to me. 
+
+```{r}
+clean = raw %>% 
+  dplyr::transmute(
+    latitude,
+    longitude,
+    brightness,
+    confidence,
+    bright_t31,
+    frp,
+    daynight,
+    my_time = paste0(acq_date, " ", acq_time) %>% 
+      lubridate::ymd_hm(), ## Aftering pasting the hours and minites, we use lubridate to clean this 
+    confidence,
+    conf_cat = cut(
+      confidence, 
+      c(-1, 50, 101), 
+      labels = c("low", "high")) %>% as.factor,
+    brightness,
+    bright_cat = cut(
+      brightness, 
+      c(300, 350, 400, Inf), 
+      labels = c("low", "med", "high")) %>% as.factor
+  )
+
+glimpse(clean)
+```
+
+
+# Google Maps
+
+This code is not reproducible unless you have the correct Google Maps API. 
+
+```{r}
+nowra_map <- get_map("Nowra Hill, NSW", zoom = 10)
+str(nowra_map)
+map_bounds = attr(nowra_map, "bb")
+```
+
+
+## Subsetting the fire data to only those in the map
+```{r}
+nowra_data = clean %>% 
+  dplyr::filter(
+    latitude >= map_bounds$ll.lat,
+    latitude <= map_bounds$ur.lat,
+    longitude >= map_bounds$ll.lon,
+    longitude <= map_bounds$ur.lon)
+
+nowra_data %>% glimpse
+```
+
+
+```{r}
+p1 = ggmap(nowra_map) +
+  geom_point(data = nowra_data, 
+             aes(x = longitude,
+                 y = latitude,
+                 colour = brightness)) +
+  geom_point(x = 150.5934431,
+             y = -34.8432388,
+             colour = "blue", size = 2) + ## A location near my home
+  scale_colour_distiller(palette = "Reds", direction = 1) +
+  transition_states(my_time) +
+  labs(title = "Time: {closest_state}") +
+  shadow_mark(colour = "black", alpha = 1)
+
+p2 = animate(p1, nframes = 100, fps = 3)
+
+p2
+```
+
+
+```{r, echo = FALSE}
+anim_save(filename = "./Nowra_fire_aftersat.gif", 
+          animation = p2)
+```
+
+
+<!-- <img src="Nowra_fire_aftersat.gif" width="400" height="300" /> -->
+
+
+```{r}
+sessionInfo()
+```
+
