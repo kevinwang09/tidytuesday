@@ -12,4 +12,3 @@ Imports:
   BiocManager,
   DT,
   edgeR
-biocViews: BatchEffect

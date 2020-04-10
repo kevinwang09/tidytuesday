@@ -4,7 +4,7 @@ dist: xenial
 latex: false
 
 env:
-  - R_BIOC_VERSION: "3.10"
+  - R_BIOC_VERSION: "3.11"
 
 branches:
   only:
@@ -17,7 +17,7 @@ cache:
 
 script:
   - Rscript -e 'BiocManager::version()'
-  - Rscript -e 'BiocManager::install(version = "3.10", ask = FALSE)'
+  - Rscript -e 'BiocManager::install(version = "3.11", ask = FALSE)'
   - Rscript -e 'BiocManager::version()'
   - R -e 'rmarkdown::render("./index.Rmd")'
 
