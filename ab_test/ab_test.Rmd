@@ -183,9 +183,43 @@ multiple_data = multiple_data %>%
   ungroup()
 
 multiple_data %>% 
-   tabyl(index_visit, converted, landing_page) %>%
+  tabyl(index_visit, converted, landing_page) %>%
   # janitor::adorn_totals(where = "col") %>% 
   janitor::adorn_percentages(denominator = "row")
+```
+
+# Seasonality
+
+```{r}
+library(lubridate)
+
+raw_data_summ = raw_data %>% 
+  group_by(landing_page, hour = hour(timestamp)) %>% 
+  summarise(mean_rate = mean(as.integer(converted)),
+            n = n()) %>% 
+  ungroup()
+
+raw_data_summ %>% 
+  ggplot(aes(x = factor(hour), y = mean_rate, 
+             colour = landing_page, group = landing_page)) +
+  geom_path(size = 1.5)
+
+
+raw_data_summ %>% 
+  dplyr::select(-mean_rate) %>% 
+  pivot_wider(names_from = landing_page, 
+              values_from = n) %>% 
+  group_by(hour) %>% 
+  dplyr::mutate(prop_test = purrr::map2(
+    .x = old_page, 
+    .y = new_page,
+    .f = ~ prop.test(x = .y, n = .x + .y)),
+    p_value = purrr::map_dbl(prop_test, "p.value")) %>% 
+  ungroup() %>% 
+  dplyr::mutate(p_adj = p.adjust(p_value)) %>% 
+  ggplot(aes(x = hour, y = p_value)) +
+  geom_path() +
+  geom_text(aes(label = signif(p_adj, 2)))
 ```
 
 
@@ -212,9 +246,9 @@ pwr.p.test(h = ES.h(p1 = 0.13, p2 = 0.12),
            alternative = "two.sided")
 
 pwr.2p.test(h = ES.h(p1 = 0.13, p2 = 0.12),
-           sig.level = 0.05,
-           power = 0.80,
-           alternative = "two.sided")
+            sig.level = 0.05,
+            power = 0.80,
+            alternative = "two.sided")
 ```
 
 
