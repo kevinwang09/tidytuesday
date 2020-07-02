@@ -1,0 +1,303 @@
+---
+title: Am I less happy during my PhD?
+author: Kevin Wang
+date: '2020-04-17'
+slug: am-i-less-happy-during-my-phd
+categories: []
+tags:
+  - GCP
+  - datavis
+  - natural language processing
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2020-04-17T00:48:48+10:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+# Introduction 
+
+`tl;dr` The [googleLaguageR](https://github.com/ropensci/googleLanguageR) package is a powerful API to [Google's natural language processing](https://cloud.google.com/natural-language). One of the most intersting thing about this package is the sentiment analysis engine, which sends queries to Google's pre-trained sentiment analysis deep learning model. 
+
+While doing a PhD can be a great experience for some, most PhD students have struggles and horror stories. I am more of the latter. 
+
+
+
+
+```{r}
+library(tidyverse)
+library(lubridate)
+```
+
+
+
+```{r}
+library(rvest)
+library(xml2)
+raw = xml2::read_html("~/Downloads/kevinwang_html/posts/your_posts_1.html")
+raw_post = raw %>%
+  html_nodes("div._2pi0:not(_3-95)") %>%
+  html_text()
+
+
+raw_time = raw %>% 
+  html_nodes("div._3-94._2lem")
+clean_time = raw_time %>% html_text()
+```
+
+```{r}
+raw_tbl = tibble(post = raw_post, time = mdy_hm(clean_time)) %>% 
+  dplyr::filter(year(time) > "2012") %>% 
+  dplyr::mutate(
+    contains_zh = post %>% str_detect("[^\x20-\x7F]"),
+    zh_text = post %>% 
+      str_replace_all("\n", " ") %>% 
+      str_replace_all("[A-Za-z]|[:punct:]|\\s|\\d|[\u008f-\u009f]", ""),
+    en_text = post %>% 
+      str_replace_all("\n|[\u008f-\u009f]", " ") %>% 
+      str_replace_all("Kevin Wang", " ") %>% 
+      str_remove_all("[^\x20-\x7F]"))
+```
+
+
+
+```{r}
+library(googleLanguageR)
+
+english_gsent = googleLanguageR::gl_nlp(
+  raw_tbl$en_text,
+  nlp_type = "analyzeSentiment",
+  language = "en")
+
+chinese_gsent = googleLanguageR::gl_nlp(
+  raw_tbl$zh_text,
+  nlp_type = "analyzeSentiment",
+  language = "zh")
+```
+
+
+<!-- ```{r} -->
+<!-- save(english_gsent, chinese_gsent, file = "~/Desktop/sentiment.RData") -->
+<!-- ``` -->
+
+```{r}
+load("~/Desktop/sentiment.RData")
+```
+
+
+```{r}
+sent_tbl = raw_tbl %>% 
+  dplyr::mutate(
+    en_sent = english_gsent$documentSentiment$score,
+    en_mag = english_gsent$documentSentiment$magnitude,
+    zh_sent = chinese_gsent$documentSentiment$score,
+    zh_mag = chinese_gsent$documentSentiment$magnitude,
+    period = case_when(
+      time <= "2015-03-01" ~ "Undergrad",
+      time <= "2016-03-01" ~ "Honours",
+      time <= "2019-09-01" ~ "PhD",
+      TRUE ~ "Research Associate") %>% fct_relevel(c("Undergrad", "Honours", "PhD", "Research Associate")))
+```
+
+
+```{r}
+theme_set(theme_classic(18))
+
+
+sent_tbl %>% 
+  dplyr::filter(contains_zh) %>% 
+  dplyr::filter(!str_detect(en_text, "SUMS Executive")) %>% 
+  ggplot(aes(x = en_sent, y = zh_sent)) +
+  geom_point() +
+  ggpubr::stat_cor() +
+  geom_smooth(method = "lm") +
+  facet_wrap(~period)
+```
+
+
+```{r}
+library(patchwork)
+
+sent_tbl %>% 
+  ggplot() +
+  geom_segment(aes(x = time, y = zh_sent, xend = time, yend = 0,
+                   colour = period)
+               , alpha = 0.5, size = 2) +
+  geom_smooth(aes(x = time, y = zh_sent, colour = period)) +
+  ylim(-1, 1) +
+  scale_color_brewer(palette = "Set1") +
+sent_tbl %>% 
+  ggplot() +
+  geom_segment(aes(x = time, y = en_sent, xend = time, yend = 0,
+                   colour = period), 
+               alpha = 0.5, size = 2) + 
+  geom_smooth(aes(x = time, y = en_sent, colour = period)) +
+  ylim(-1, 1) +
+  scale_color_brewer(palette = "Set1") +
+  patchwork::plot_layout(nrow = 2) 
+```
+
+
+```{r}
+library(forecast)
+
+ggCcf(x = sent_tbl$zh_sent, 
+      y = sent_tbl$en_sent, lag.max = 10)
+```
+
+
+
+
+
+<!-- # Loading data from html -->
+<!-- ```{r} -->
+<!-- raw = fromJSON("~/Downloads/kevinwang_json_2/posts/your_posts_1.json", flatten = TRUE) %>% -->
+<!--   janitor::clean_names() %>% -->
+<!--   as_tibble() -->
+<!-- ``` -->
+
+
+<!-- ```{r} -->
+<!-- text_only = raw %>% dplyr::select(timestamp, data) %>% -->
+<!--   tidyr::unnest(data) %>% -->
+<!--   dplyr::mutate( -->
+<!--     timestamp = as.Date(as.POSIXct(timestamp, origin="1970-01-01"))) %>% -->
+<!--   dplyr::filter(timestamp >= "2012-02-01", -->
+<!--                 !str_detect(post, "birthday")) -->
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- text_only$post[2] -->
+<!-- ``` -->
+
+
+<!-- ```{r} -->
+<!-- text_only %>% -->
+<!--   group_by(timestamp) %>% -->
+<!--   tally() %>% -->
+<!--   ggplot(aes(x = timestamp, y = n)) + -->
+<!--   geom_path() -->
+<!-- ``` -->
+
+
+<!-- ```{r} -->
+<!-- library(googleLanguageR) -->
+<!-- g_raw = googleLanguageR::gl_nlp(text_only$post, -->
+<!--                                 nlp_type = "analyzeSentiment", -->
+<!--                                 language = "en") -->
+
+
+<!-- g_sent = bind_cols(text_only, g_raw$documentSentiment) -->
+
+<!-- g_sent %>% -->
+<!--   dplyr::mutate(phd = timestamp >= "2016-03-01") %>% -->
+<!--   ggplot(aes(x = timestamp, y = score)) + -->
+<!--   geom_point(aes(size = magnitude)) + -->
+<!--   geom_smooth(aes(group = phd, colour = phd), method = "loess") -->
+
+<!-- g_sent %>% -->
+<!--   dplyr::mutate( -->
+<!--     phd = timestamp >= "2016-03-01") %>% -->
+<!--   ggplot(aes(x = timestamp, y = magnitude)) + -->
+<!--   geom_path() + -->
+<!--   geom_smooth(aes(group = phd, colour = phd), method = "loess") -->
+<!-- ``` -->
+
+
+<!-- ```{r} -->
+<!-- library(sentimentr) -->
+<!-- library(furrr) -->
+<!-- plan(multisession, workers = 5) -->
+
+<!-- r_sent = text_only %>% -->
+<!--   dplyr::mutate( -->
+<!--     r_sent = furrr::future_map_dbl(post, ~ sentiment_by(.x)$ave_sentiment)) -->
+<!-- ``` -->
+
+
+<!-- ```{r} -->
+<!-- r_sent %>% -->
+<!--   dplyr::mutate( -->
+<!--     phd = timestamp >= "2016-03-01") %>% -->
+<!--   ggplot(aes(x = timestamp, y = r_sent)) + -->
+<!--   geom_path() + -->
+<!--   geom_smooth(aes(group = phd, colour = phd), method = "loess") -->
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- set.seed(123) -->
+
+<!-- r_sent_clust = r_sent %>% -->
+<!--   dplyr::filter(timestamp >= "2016-03-01") %>% -->
+<!--   dplyr::mutate(kmeans = kmeans(x = r_sent, centers = 2)$cluster) -->
+
+
+
+<!-- library(patchwork) -->
+
+<!-- r_sent %>% -->
+<!--   dplyr::mutate( -->
+<!--     period = case_when( -->
+<!--       timestamp <= "2015-03-01" ~ "Undergrad", -->
+<!--       timestamp <= "2016-03-01" ~ "Honours", -->
+<!--       timestamp <= "2019-09-01" ~ "PhD", -->
+<!--       TRUE ~ "Research Associate", -->
+<!--       ) %>% fct_relevel(c("Undergrad", "Honours", "PhD", "Research Associate")) -->
+<!--   ) %>% -->
+<!--   group_by(period, year_month =  ymd(timestamp, truncated = 1)) %>% -->
+<!--   tally() %>% -->
+<!--   ggplot(aes(x = year_month, y = n, colour = period)) + -->
+<!--   geom_point() + -->
+<!--   theme(axis.text.x = element_text(angle = 90)) + -->
+<!--   labs(x = "Time", -->
+<!--        y = "", -->
+<!--        title = "Number of posts per month") + -->
+<!--   scale_color_brewer(palette = "Set1") + -->
+<!--   theme_classic(18) + -->
+<!--   r_sent %>% -->
+<!--   dplyr::mutate( -->
+<!--     period = case_when( -->
+<!--       timestamp <= "2015-03-01" ~ "Undergrad", -->
+<!--       timestamp <= "2016-03-01" ~ "Honours", -->
+<!--       timestamp <= "2019-09-01" ~ "PhD", -->
+<!--       TRUE ~ "Research Associate", -->
+<!--       ) %>% fct_relevel(c("Undergrad", "Honours", "PhD", "Research Associate")), -->
+<!--     post_length = purrr::map_int(post, str_length) -->
+<!--   ) %>% -->
+<!--   group_by(period, year_month =  ymd(timestamp, truncated = 1)) %>% -->
+<!--   summarise(mean_post_length = mean(post_length)) %>% -->
+<!--   ggplot(aes(x = year_month, y = mean_post_length, colour = period)) + -->
+<!--   geom_point() + -->
+<!--   theme(axis.text.x = element_text(angle = 90)) + -->
+<!--   labs(x = "Time", -->
+<!--        y = "", -->
+<!--        title = "Avg. length of post") + -->
+<!--   scale_color_brewer(palette = "Set1") + -->
+<!--   theme_classic(18) + -->
+<!--   r_sent %>% -->
+<!--   dplyr::mutate( -->
+<!--     period = case_when( -->
+<!--       timestamp <= "2015-03-01" ~ "Undergrad", -->
+<!--       timestamp <= "2016-03-01" ~ "Honours", -->
+<!--       timestamp <= "2019-09-01" ~ "PhD", -->
+<!--       TRUE ~ "Research Associate", -->
+<!--       ) %>% fct_relevel(c("Undergrad", "Honours", "PhD", "Research Associate")) -->
+<!--   ) %>% -->
+<!--   ggplot(aes(x = timestamp, y = r_sent)) + -->
+<!--   geom_path() + -->
+<!--   geom_smooth(aes(group = period, colour = period), method = "loess") + -->
+<!--   labs(x = "Time", -->
+<!--        y = "", -->
+<!--        title = "`sentimentr` sentiment scoring") + -->
+<!--   scale_color_brewer(palette = "Set1") + -->
+<!--   theme_classic(18) + -->
+<!--   patchwork::plot_layout(nrow = 3) -->
+<!--   # geom_rug(data = r_sent_clust, aes(colour = factor(kmeans))) -->
+<!-- ``` -->
+
+

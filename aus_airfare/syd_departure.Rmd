@@ -1,0 +1,125 @@
+---
+title: "Untitled"
+author: "Kevin Wang"
+date: "03/05/2020"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(mapdeck)
+library(readxl)
+library(airportr)
+library(lubridate)
+```
+
+
+# Loading and cleaning
+```{r}
+syd_raw = read_excel("SYD_03_May_2020_departures.xlsx") %>% 
+  janitor::remove_empty(which = "cols")
+```
+
+# Adding geographical locations
+
+```{r}
+syd_cleaned = syd_raw %>% 
+  dplyr::mutate(
+    iata = str_extract(destination, "\\((.*?)\\)") %>% 
+      str_remove("\\(") %>% str_remove("\\)"), 
+    time = paste("2020-05-03", hour(time), minute(time), sep = "-") %>% 
+      ymd_hm,
+    id = row_number())
+
+glimpse(syd_cleaned)
+
+all_airports = tibble(
+  iata = syd_cleaned$iata %>% unique,
+  location = purrr::map(iata, airportr::airport_location)) %>% 
+  tidyr::unnest(location) %>% 
+  dplyr::rename(lat = Latitude,
+                lon = Longitude)
+
+(syd_location = airportr::airport_location("SYD"))
+
+syd_geo = syd_cleaned %>% 
+  left_join(all_airports, by = "iata") %>% 
+  dplyr::mutate(syd_lon = syd_location$Longitude, 
+                syd_lat = syd_location$Latitude) %>% 
+  dplyr::filter(lat < 0) %>% 
+  dplyr::mutate()
+
+glimpse(syd_geo)
+
+write_csv(syd_geo, "syd_geo_03_May_2020.csv")
+```
+
+
+
+# gganimate
+
+```{r}
+library(ggmap)
+map <- get_stamenmap( bbox = c(left = 110, bottom = -45, right = 160, top = 0), zoom = 4, maptype = "watercolor")
+
+
+ggmap(map) + 
+  geom_point(data = syd_geo, aes(x = lon, y = lat), colour = "red", size = 3) +
+  geom_curve(data = syd_geo, 
+               aes(x = syd_lon, y = syd_lat,
+                   xend = lon, yend = lat), colour = "red", size = 0.5) +
+  theme_void() +
+  coord_cartesian()
+```
+
+
+# Mapdeck
+```{r, eval = FALSE}
+library(mapdeck)
+set_token(Sys.getenv("MAPBOX_AUTH"))
+
+mapdeck(style = mapdeck_style('dark')) %>%
+  add_animated_arc(
+    data = syd_geo, 
+    origin = c("syd_lon", "syd_lat"), 
+    destination = c("Latitude", "Longitude"), 
+    # stroke_from = "port1", 
+    # stroke_to = "port2",
+    # tooltip = "real",
+    layer_id = 'arclayer',
+    # stroke_colour = "real",
+    # stroke_width = "real2",
+    trail_length = 10,
+    legend = TRUE
+  )
+```
+
+# Plotly
+```{r}
+library(plotly)
+fig <- syd_geo %>%
+  plot_ly(
+    lat = ~lat,
+    lon = ~lon,
+    marker = list(color = "red"),
+    type = 'scattermapbox') 
+
+fig <- fig %>%
+  layout(
+    mapbox = list(
+      style = 'dark',
+      zoom = 2.5,
+      center = list(lon = 151, lat = -33.9))) 
+
+fig <- fig %>% add_segments(
+    data = syd_geo,
+    x = ~syd_lon, xend = ~lon,
+    y = ~syd_lat, yend = ~lat
+  )
+
+fig <- fig %>%
+  config(mapboxAccessToken = Sys.getenv("MAPBOX_AUTH"))
+
+fig
+```
+
