@@ -1,0 +1,80 @@
+---
+title: COVID19 and GHS index
+author: Kevin Wang
+date: '2020-06-22'
+---
+
+```{r}
+library(nCov2019)
+library(tidyverse)
+library(ggpubr)
+library(ggrepel)
+
+covid19 = nCov2019::load_nCov2019(source = "github")["global"]
+covid19_today = covid19 %>% 
+  dplyr::filter(time == "2020-06-21")
+
+covid19_today %>% glimpse
+
+ghs_raw = readr::read_csv("./GHS.csv") %>% 
+  janitor::clean_names()
+
+ghs_raw %>% glimpse
+
+joined_tbl = covid19_today %>% 
+  left_join(ghs_raw, by = "country") %>% 
+  as_tibble() %>% 
+  dplyr::mutate(
+    dead_ratio = cum_dead/cum_confirm, 
+    heal_ratio = cum_heal/cum_confirm)
+
+
+joined_tbl %>% 
+  dplyr::filter(complete.cases(population), complete.cases(income)) %>% 
+  ggplot(aes(x = index_score, y = dead_ratio,
+             label = country)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  ggpubr::stat_cor() +
+  ggrepel::geom_text_repel() +
+  facet_grid(population ~ income)
+
+
+joined_tbl %>% 
+  dplyr::filter(complete.cases(population), complete.cases(income)) %>% 
+  ggplot(aes(x = index_score, y = heal_ratio,
+             label = country)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  ggpubr::stat_cor() +
+  ggrepel::geom_text_repel() +
+  facet_grid(population ~ income)
+
+joined_tbl %>% 
+  dplyr::filter(population == "100m+") %>% 
+  ggplot(aes(x = index_score, y = heal_ratio,
+             label = country)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  ggpubr::stat_cor() +
+  ggrepel::geom_text_repel()
+
+joined_tbl %>% 
+  dplyr::filter(rank <= 50| rank(-cum_dead) <= 20) %>% 
+  ggplot(aes(x = index_score, y = heal_ratio,
+             label = country)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  ggpubr::stat_cor() +
+  ggrepel::geom_text_repel()
+
+joined_tbl %>% 
+  dplyr::filter(rank <= 50) %>% 
+  ggplot(aes(x = index_score, y = dead_ratio,
+             label = country)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  ggpubr::stat_cor() +
+  ggrepel::geom_text_repel()
+```
+

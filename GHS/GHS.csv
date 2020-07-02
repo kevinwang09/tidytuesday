@@ -1,0 +1,196 @@
+﻿Rank,Country,Index Score,Region,Population,Income
+1,United States,83.5,Northern America,100m+,High income
+2,United Kingdom,77.9,Europe,50-100m,High income
+3,Netherlands,75.6,Europe,10-50m,High income
+4,Australia,75.5,Oceania,10-50m,High income
+5,Canada,75.3,Northern America,10-50m,High income
+6,Thailand,73.2,Southeastern Asia,50-100m,Upper middle income
+7,Sweden,72.1,Europe,1-10m,High income
+8,Denmark,70.4,Europe,1-10m,High income
+9,South Korea,70.2,Eastern Asia,50-100m,High income
+10,Finland,68.7,Europe,1-10m,High income
+11,France,68.2,Europe,50-100m,High income
+12,Slovenia,67.2,Europe,1-10m,High income
+13,Switzerland,67,Europe,1-10m,High income
+14,Germany,66,Europe,50-100m,High income
+15,Spain,65.9,Europe,10-50m,High income
+16,Norway,64.6,Europe,1-10m,High income
+17,Latvia,62.9,Europe,1-10m,High income
+18,Malaysia,62.2,Southeastern Asia,10-50m,Upper middle income
+19,Belgium,61,Europe,10-50m,High income
+20,Portugal,60.3,Europe,10-50m,High income
+21,Japan,59.8,Eastern Asia,100m+,High income
+22,Brazil,59.7,Latin America and the Caribbean,100m+,Upper middle income
+23,Ireland,59,Europe,1-10m,High income
+24,Singapore,58.7,Southeastern Asia,1-10m,High income
+25,Argentina,58.6,Latin America and the Caribbean,10-50m,High income
+26,Austria,58.5,Europe,1-10m,High income
+27,Chile,58.3,Latin America and the Caribbean,10-50m,High income
+28,Mexico,57.6,Latin America and the Caribbean,100m+,Upper middle income
+29,Estonia,57,Europe,1-10m,High income
+30,Indonesia,56.6,Southeastern Asia,100m+,Lower middle income
+31,Italy,56.2,Europe,50-100m,High income
+32,Poland,55.4,Europe,10-50m,High income
+33,Lithuania,55,Europe,1-10m,High income
+34,South Africa,54.8,Africa,50-100m,Upper middle income
+35,Hungary,54,Europe,1-10m,High income
+35,New Zealand,54,Oceania,1-10m,High income
+37,Greece,53.8,Europe,10-50m,High income
+38,Croatia,53.3,Europe,1-10m,High income
+39,Albania,52.9,Europe,1-10m,Upper middle income
+40,Turkey,52.4,Western Asia,50-100m,Upper middle income
+41,Serbia,52.3,Europe,1-10m,Upper middle income
+42,Czech Republic,52,Europe,10-50m,High income
+42,Georgia,52,Western Asia,1-10m,Lower middle income
+44,Armenia,50.2,Western Asia,1-10m,Upper middle income
+45,Ecuador,50.1,Latin America and the Caribbean,10-50m,Upper middle income
+46,Mongolia,49.5,Eastern Asia,1-10m,Lower middle income
+47,Kyrgyz Republic,49.3,Central Asia,1-10m,Lower middle income
+47,Saudi Arabia,49.3,Western Asia,10-50m,High income
+49,Peru,49.2,Latin America and the Caribbean,10-50m,Upper middle income
+50,Vietnam,49.1,Southeastern Asia,50-100m,Lower middle income
+51,China,48.2,Eastern Asia,100m+,Upper middle income
+52,Slovakia,47.9,Europe,1-10m,High income
+53,Philippines,47.6,Southeastern Asia,100m+,Lower middle income
+54,Israel,47.3,Western Asia,1-10m,High income
+55,Kenya,47.1,Africa,50-100m,Lower middle income
+56,United Arab Emirates,46.7,Western Asia,1-10m,High income
+57,India,46.5,Southern Asia,100m+,Lower middle income
+58,Iceland,46.3,Europe,<1m,High income
+59,Kuwait,46.1,Western Asia,1-10m,High income
+60,Romania,45.8,Europe,10-50m,Upper middle income
+61,Bulgaria,45.6,Europe,1-10m,Upper middle income
+62,Costa Rica,45.1,Latin America and the Caribbean,1-10m,Upper middle income
+63,Russia,44.3,Europe,100m+,Upper middle income
+63,Uganda,44.3,Africa,10-50m,Low income
+65,Colombia,44.2,Latin America and the Caribbean,10-50m,Upper middle income
+65,El Salvador,44.2,Latin America and the Caribbean,1-10m,Lower middle income
+67,Luxembourg,43.8,Europe,<1m,High income
+68,Montenegro,43.7,Europe,<1m,Upper middle income
+68,Morocco,43.7,Africa,10-50m,Lower middle income
+68,Panama,43.7,Latin America and the Caribbean,1-10m,High income
+71,Liechtenstein,43.5,Europe,<1m,High income
+72,Myanmar,43.4,Southeastern Asia,50-100m,Lower middle income
+73,Laos,43.1,Southeastern Asia,1-10m,Lower middle income
+73,Lebanon,43.1,Western Asia,1-10m,Upper middle income
+73,Nicaragua,43.1,Latin America and the Caribbean,1-10m,Lower middle income
+73,Oman,43.1,Western Asia,1-10m,High income
+77,Cyprus,43,Western Asia,<1m,High income
+78,Moldova,42.9,Europe,1-10m,Lower middle income
+79,Bosnia and Herzegovina,42.8,Europe,1-10m,Upper middle income
+80,Jordan,42.1,Western Asia,10-50m,Upper middle income
+81,Uruguay,41.3,Latin America and the Caribbean,1-10m,High income
+82,Qatar,41.2,Western Asia,1-10m,High income
+83,Kazakhstan,40.7,Central Asia,10-50m,Upper middle income
+84,Ethiopia,40.6,Africa,100m+,Low income
+85,Bhutan,40.3,Southern Asia,<1m,Lower middle income
+86,Madagascar,40.1,Africa,10-50m,Low income
+87,Egypt,39.9,Africa,50-100m,Lower middle income
+88,Bahrain,39.4,Western Asia,1-10m,High income
+89,Cambodia,39.2,Southeastern Asia,10-50m,Lower middle income
+90,North Macedonia,39.1,Europe,1-10m,Upper middle income
+91,Dominican Republic,38.3,Latin America and the Caribbean,10-50m,Upper middle income
+92,Sierra Leone,38.2,Africa,1-10m,Low income
+92,Zimbabwe,38.2,Africa,10-50m,Low income
+94,Ukraine,38,Europe,10-50m,Lower middle income
+95,Senegal,37.9,Africa,10-50m,Low income
+96,Nigeria,37.8,Africa,100m+,Lower middle income
+97,Iran,37.7,Southern Asia,50-100m,Upper middle income
+98,Malta,37.3,Europe,<1m,High income
+99,Trinidad and Tobago,36.6,Latin America and the Caribbean,1-10m,High income
+100,Suriname,36.5,Latin America and the Caribbean,<1m,Upper middle income
+101,Tanzania,36.4,Africa,50-100m,Low income
+102,Bolivia,35.8,Latin America and the Caribbean,10-50m,Lower middle income
+103,Paraguay,35.7,Latin America and the Caribbean,1-10m,Upper middle income
+104,Namibia,35.6,Africa,1-10m,Upper middle income
+105,Côte d’Ivoire,35.5,Africa,10-50m,Lower middle income
+105,Ghana,35.5,Africa,10-50m,Lower middle income
+105,Pakistan,35.5,Southern Asia,100m+,Lower middle income
+108,Belarus,35.3,Europe,1-10m,Upper middle income
+108,St Lucia,35.3,Latin America and the Caribbean,<1m,Upper middle income
+110,Cuba,35.2,Latin America and the Caribbean,10-50m,Upper middle income
+111,Liberia,35.1,Africa,1-10m,Low income
+111,Nepal,35.1,Southern Asia,10-50m,Low income
+113,Bangladesh,35,Southern Asia,100m+,Lower middle income
+114,Mauritius,34.9,Africa,1-10m,Upper middle income
+115,Cameroon,34.4,Africa,10-50m,Lower middle income
+116,Uzbekistan,34.3,Central Asia,10-50m,Lower middle income
+117,Azerbaijan,34.2,Western Asia,1-10m,Upper middle income
+117,Gambia,34.2,Africa,1-10m,Low income
+117,Rwanda,34.2,Africa,10-50m,Low income
+120,Sri Lanka,33.9,Southern Asia,10-50m,Lower middle income
+121,Maldives,33.8,Southern Asia,<1m,Upper middle income
+122,Tunisia,33.7,Africa,10-50m,Lower middle income
+123,St Vincent and The Grenadines,33,Latin America and the Caribbean,<1m,Upper middle income
+124,Micronesia,32.8,Oceania,<1m,Lower middle income
+125,Guatemala,32.7,Latin America and the Caribbean,10-50m,Upper middle income
+125,Guinea,32.7,Africa,10-50m,Low income
+125,Monaco,32.7,Europe,<1m,High income
+128,Brunei,32.6,Southeastern Asia,<1m,High income
+128,Togo,32.5,Africa,1-10m,Low income
+130,Afghanistan,32.3,Southern Asia,10-50m,Low income
+130,Tajikistan,32.3,Central Asia,1-10m,Low income
+132,Niger,32.2,Africa,10-50m,Low income
+133,Barbados,31.9,Latin America and the Caribbean,<1m,High income
+133,Seychelles,31.9,Africa,<1m,High income
+135,Belize,31.8,Latin America and the Caribbean,<1m,Upper middle income
+135,Turkmenistan,31.8,Central Asia,1-10m,Upper middle income
+137,Guyana,31.7,Latin America and the Caribbean,<1m,Upper middle income
+138,Haiti,31.5,Latin America and the Caribbean,10-50m,Low income
+139,Botswana,31.1,Africa,1-10m,Upper middle income
+139,Eswatini (Swaziland),31.1,Africa,1-10m,Lower middle income
+139,San Marino,31.1,Europe,<1m,High income
+142,Bahamas,30.6,Latin America and the Caribbean,<1m,High income
+143,Andorra,30.5,Europe,<1m,High income
+144,Lesotho,30.2,Africa,1-10m,Lower middle income
+145,Burkina Faso,30.1,Africa,10-50m,Low income
+146,Cabo Verde,29.3,Africa,<1m,Lower middle income
+147,Antigua and Barbuda,29,Latin America and the Caribbean,<1m,High income
+147,Jamaica,29,Latin America and the Caribbean,1-10m,Upper middle income
+147,Mali,29,Africa,10-50m,Low income
+150,Benin,28.8,Africa,10-50m,Low income
+150,Chad,28.8,Africa,10-50m,Low income
+152,Zambia,28.7,Africa,10-50m,Lower middle income
+153,Mozambique,28.1,Africa,10-50m,Low income
+154,Malawi,28,Africa,10-50m,Low income
+155,Papua New Guinea,27.8,Oceania,1-10m,Lower middle income
+156,Honduras,27.6,Latin America and the Caribbean,1-10m,Lower middle income
+157,Grenada,27.5,Latin America and the Caribbean,<1m,Upper middle income
+157,Mauritania,27.5,Africa,1-10m,Lower middle income
+159,Central African Republic,27.3,Africa,1-10m,Low income
+160,Comoros,27.2,Africa,<1m,Low income
+161,Congo Democratic Republic,26.5,Africa,50-100m,Low income
+162,Samoa,26.4,Oceania,<1m,Upper middle income
+163,St Kitts and Nevis,26.2,Latin America and the Caribbean,<1m,High income
+163,Sudan,26.2,Africa,10-50m,Lower middle income
+165,Vanuatu,26.1,Oceania,<1m,Lower middle income
+166,Timor Leste,26,Southeastern Asia,1-10m,Lower middle income
+167,Iraq,25.8,Western Asia,10-50m,Upper middle income
+168,Fiji,25.7,Oceania,<1m,Upper middle income
+168,Libya,25.7,Africa,1-10m,Upper middle income
+170,Angola,25.2,Africa,10-50m,Lower middle income
+171,Tonga,25.1,Oceania,<1m,Upper middle income
+172,Dominica,24,Latin America and the Caribbean,<1m,Upper middle income
+173,Algeria,23.6,Africa,10-50m,Upper middle income
+173,Congo Brazzaville,23.6,Africa,1-10m,Lower middle income
+175,Djibouti,23.2,Africa,<1m,Lower middle income
+176,Venezuela,23,Latin America and the Caribbean,10-50m,Upper middle income
+177,Burundi,22.8,Africa,10-50m,Low income
+178,Eritrea,22.4,Africa,1-10m,Low income
+179,Palau,21.9,Oceania,<1m,High income
+180,South Sudan,21.7,Africa,10-50m,Low income
+181,Tuvalu,21.6,Oceania,<1m,Upper middle income
+182,Nauru,20.8,Oceania,<1m,Upper middle income
+183,Solomon Islands,20.7,Oceania,<1m,Lower middle income
+184,Niue,20.5,Oceania,<1m,Upper middle income
+185,Cook Islands,20.4,Oceania,<1m,High income
+186,Gabon,20,Africa,1-10m,Upper middle income
+186,Guinea Bissau,20,Africa,1-10m,Low income
+188,Syria,19.9,Western Asia,10-50m,Low income
+189,Kiribati,19.2,Oceania,<1m,Lower middle income
+190,Yemen,18.5,Western Asia,10-50m,Low income
+191,Marshall Islands,18.2,Oceania,<1m,Upper middle income
+192,São Tomé and Príncipe,17.7,Africa,<1m,Lower middle income
+193,North Korea,17.5,Eastern Asia,10-50m,Low income
+194,Somalia,16.6,Africa,10-50m,Low income
+195,Equatorial Guinea,16.2,Africa,1-10m,Upper middle income
