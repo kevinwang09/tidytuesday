@@ -1,0 +1,90 @@
+---
+title: "Kevin Wang's template"
+author: "Kevin Wang"
+date: "`r paste0('Initiated on 2020 Aug 22, compiled on ', format(Sys.time(), '%Y %b %d'))`"
+output:
+  html_document:
+    code_folding: hide
+    fig_height: 12
+    fig_width: 12
+    toc: yes
+    number_sections: true
+    toc_depth: 3
+    toc_float: yes
+    theme: paper
+editor_options: 
+  chunk_output_type: console
+---
+
+# Summary
+
+# Loading 
+
+## packages
+```{r}
+library(tidyverse)
+library(foreign)
+library(lme4)
+library(sjPlot)
+library(broom)
+
+theme_set(theme_classic(18) +
+            theme(legend.position = "bottom"))
+```
+
+## data
+
+```{r}
+rawdata = readxl::read_excel("Minitab_stability_data.xlsx") %>% 
+  janitor::clean_names()
+
+rawdata %>% glimpse
+```
+
+# Model fitting
+## Linear model (common slope, different intercepts)
+```{r}
+LM = lm(drug_percent ~ month + batch, data = rawdata)
+LM %>% summary
+
+LM %>% 
+  broom::augment() %>% 
+  ggplot(aes(x = month, y = drug_percent, colour = batch)) +
+  geom_point(size = 3) +
+  geom_line(aes(y = .fitted), size = 1.5) +
+  scale_colour_brewer(palette = "Set1")
+```
+
+## Linear model (different slope, different intercepts)
+```{r}
+LM_int = lm(drug_percent ~ month * batch, data = rawdata)
+LM_int %>% summary
+
+LM_int %>% 
+  broom::augment() %>% 
+  ggplot(aes(x = month, y = drug_percent, colour = batch)) +
+  geom_point(size = 3) +
+  geom_line(aes(y = .fitted), size = 1.5) +
+  scale_colour_brewer(palette = "Set1")
+```
+
+
+## `lme4` fitting
+```{r}
+LMM = lmer(drug_percent ~ month + (1 | batch), data = rawdata)
+LMM %>% summary
+
+LMM %>% 
+  broom.mixed::augment() %>% 
+  ggplot(aes(x = month, y = drug_percent, colour = batch)) +
+  geom_point(size = 3) +
+  geom_line(aes(y = .fitted), size = 1.2) +
+  scale_colour_brewer(palette = "Set1")
+```
+
+
+# Session Info
+```{r}
+sessioninfo::session_info()
+```
+

@@ -9,6 +9,5 @@ Imports:
   ggiraph,
   ggsci,
   patchwork,
-  BiocManager,
-  DT,
-  edgeR
+  DT
+  
