@@ -43,4 +43,4 @@ jobs:
           git add -A .
           git commit --allow-empty -m "GHA deploy"
           git remote -v
-          git push --force origin gh-pages
+          git push --force origin HEAD:gh-pages
