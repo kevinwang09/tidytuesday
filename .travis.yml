@@ -16,9 +16,6 @@ cache:
     - $HOME/bin
 
 script:
-  - Rscript -e 'BiocManager::version()'
-  - Rscript -e 'BiocManager::install(version = "3.11", ask = FALSE)'
-  - Rscript -e 'BiocManager::version()'
   - R -e 'rmarkdown::render("./index.Rmd")'
 
 r_github_packages:

@@ -2,10 +2,10 @@ on:
   push:
     branches: master
 
-name: pkgdown
+name: build_site
 
 jobs:
-  pkgdown:
+  build_site:
     runs-on: macOS-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -33,11 +33,8 @@ jobs:
       - name: Install dependencies
         run: |
           remotes::install_deps(dependencies = TRUE)
-          R -e 'rmarkdown::render("./index.Rmd")'
+          rmarkdown::render(input = "./index.Rmd")
         shell: Rscript {0}
-
-      - name: Install package
-        run: R CMD INSTALL .
 
       - name: Deploy package
         run: |
