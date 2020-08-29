@@ -10,5 +10,6 @@ Imports:
   ggsci,
   patchwork,
   DT,
-  pkgdown
+  pkgdown,
+  sessioninfo
   

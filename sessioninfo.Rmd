@@ -1,0 +1,9 @@
+---
+title: "Session info"
+output: html_document
+---
+
+```{r}
+sessioninfo::session_info()
+```
+

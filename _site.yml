@@ -1,11 +1,16 @@
 # This file controls the layout of the website. 
-name: "Kevin's tidytuesday"
+name: "Kevin Wang"
 navbar:
-  title: "Kevin's tidytuesday"
+  title: "Kevin Wang"
   left:
-    - text: "Home"
+    - text: "My personal website"
+      href: https://kevinwang09.github.io
+    - text: "2020"
       href: https://kevinwang09.github.io/tidytuesday/
+    - text: "2019"
+      href: https://kevinwang09.github.io/tidytuesday/2019.html
 output_dir: "."
+exclude: ["README*"]
 output:
   html_document:
     theme: paper

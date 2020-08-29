@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Kevin’s secrete repo for data experiments</title>
+
+<script src="site_libs/header-attrs-2.3.1/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/paper.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="site_libs/d3-5.7.0/d3.min.js"></script>
+<script src="site_libs/d3-lasso-0.0.5/d3-lasso.min.js"></script>
+<link href="site_libs/ggiraphjs-0.3.0/ggiraphjs.min.css" rel="stylesheet" />
+<script src="site_libs/ggiraphjs-0.3.0/ggiraphjs.min.js"></script>
+<script src="site_libs/girafe-binding-0.7.8/girafe.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 64px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.section h2 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.section h3 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.section h4 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.section h5 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.section h6 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Kevin Wang</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="https://kevinwang09.github.io">My personal website</a>
+</li>
+<li>
+  <a href="https://kevinwang09.github.io/tidytuesday/">2020</a>
+</li>
+<li>
+  <a href="https://kevinwang09.github.io/tidytuesday/2019.html">2019</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Kevin’s secrete repo for data experiments</h1>
+
+</div>
+
+
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>This webpage was originally designed to host all of my work for the <a href="https://github.com/rfordatascience/tidytuesday">tidytuesday</a> challenge.</p>
+<p>However, as a data scientist, I often need a quick workspace to host all my other statistical analytics. Hence, as my analytical interests are not limited to just tidytuesday datasets, I also use this repo to host a whole range RMarkdown HTML reports.</p>
+<p>This webpage was deployed through GitHub Actions and GitHub Pages.</p>
+</div>
+<div id="jan-03---bushfire" class="section level1">
+<h1>2020 Jan 03 - bushfire</h1>
+<p>This is not a fun exercise. I live in Australia and Australia is now hit with unprecedented number of bushfires. My house is about 30 mins drive from the nearest bushfire this week. I grabbed the NASA - FIRMS data and made a visualisation of the spread of bushfire around my house in the past 30 days.</p>
+<p>See <a href="bushfire/NASA_FIRMS.html">here</a> for the RMarkdown generated HTML document.</p>
+<p><img src="bushfire/Nowra_fire.gif" width="400" height="300" /></p>
+</div>
+<div id="dec-07---side-by-side-plots" class="section level1">
+<h1>2019 Dec 07 - Side-by-side plots</h1>
+<p><a href="side-plots/side-plots.html">This</a> is a very small (blog) post about making side-by-side plots, in celebration of <code>patchwork</code> being uploaded onto CRAN. A more complex example using clustering can be found <a href="side-plots/dim_redu.html">here</a>.</p>
+</div>
+<div id="nov-28---uac-atar-scaling" class="section level1">
+<h1>2019 Nov 28 - UAC ATAR scaling</h1>
+<p>This is my own personal project. The idea is to scrape the HSC scaling data from UAC published PDF. See the script for download <a href="hsc/download_UAC.R">here</a>, analysis will be made available later. Some intermediate work are <a href="hsc/get_all_docs.Rmd">here</a></p>
+</div>
+<div id="nov-04---cricket" class="section level1">
+<h1>2019 Nov 04 - Cricket</h1>
+<p>This is my own personal project. A small website is <a href="cricket/index.html">here</a>.</p>
+<p>If you are interested in all the analytics that I have done in cricket analytics, see <a href="https://github.com/kevinwang09/cricinformatics">Cricinformatics</a>.</p>
+<p>I will merge this analysis with Cricinformatics soon.</p>
+</div>
+<div id="aug-13---roman-emperors" class="section level1">
+<h1>2019 Aug 13 - Roman Emperors</h1>
+<p>RMarkdown generated HTML document is <a href="2019-08-13/emperors.html">here</a>.</p>
+<p>Summary of findings:</p>
+<ul>
+<li>This analysis is incomplete and should be resumed at a future date.</li>
+<li>Being an emperor is a highly risky job. You are more likely to die from assassination than any other causes.</li>
+<li>A good advice on having a long reign is to make your rise to power be somewhat peaceful. That means you better be someone who can inherit the empire through birthright.</li>
+</ul>
+<p><img src="2019-08-13/boxplot_reign.png" width="600" height="400" /></p>
+<ul>
+<li><p>The previous analysis gave me an idea to set up a framework to do a survival analysis of the time which emperors reign.</p>
+<ol style="list-style-type: decimal">
+<li>Consider only the emperors that died during their reign with known causes.</li>
+<li>The time which an emperor reigns is the observed survival time.</li>
+<li>If an emperor dies of natural causes, then I will interpret that to mean this emperor has truly reached the end of his life. So in the language of survival analysis, I will label this emperor as truly “dead”.</li>
+<li>If an emperor dies of other causes, then I will interpret that to mean this emperor has his life cut-short. So in the language of survival analysis, I will label this emperor as “censored”.</li>
+<li>Of course, this analysis is problematic because each observation is not independent. I mean, these emperors love killing each other! But this is a very simple attempt to incorporate the problem of unnatural death into an analysis of the reign of emperors based on their original rise to power.</li>
+</ol></li>
+</ul>
+<p><img src="2019-08-13/surv_plot_emperor_rise.png" width="400" height="300" /></p>
+<ul>
+<li><p>Below: timeline plot combining cause of death and rise of power.</p>
+<ul>
+<li>Around 150 AD, there is a series of emperors that are rose to powerful peacefully and also died of natural causes. Interestingly, towards the end of the available data, there is also a group of emperors that rose to power peacefully but had a mixture of causes of death.</li>
+<li>Around 250 AD, there is a series of emperors that rose to power by also killed.</li>
+</ul>
+<p>Both of these time-dependent trends were not shown in the “survival analysis” above. This is why I criticise the survival analysis above since these time effects are taken into account for the reigning time of the emperors. Namly, during turbulent periods of the history, emperors are more likely to die regardless of their rise to power.</p></li>
+</ul>
+<p><img src="2019-08-13/timeline_plot.png" width="600" height="400" /></p>
+</div>
+<div id="jul-23---birds-impact" class="section level1">
+<h1>2019 Jul 23 - Birds impact</h1>
+<p>Report can be found <a href="2019-07-23/bird_impacts.html">here</a>.</p>
+<p>Summary of findings:</p>
+<ul>
+<li>This analysis is incomplete and should be resumed at a future date. I find this data to be much messier than previous weeks, and this gets me excited. Messy data is like a puzzle and I like puzzles.</li>
+<li>This is a data on number of bird impact incidents with airplanes in the US between 1990 and 2018. Unfortunately, due to limited supplementary data available, the analysis I can do at this stage is limited.</li>
+<li>As expected, we find that the birds impact incidents are seasonal with less incidents during the winter months. However, we cannot conclude whether this is due to inactivities of birds during these months or due to reduced number of flights.</li>
+</ul>
+<p><img src="2019-07-23/incidents_2018.gif" width="600" height="400" /></p>
+<ul>
+<li>Another interesting trend is that there is a dip in the number of incidents around June every year. And this dip was only visible for flights around night times. This could be due to the scheduling of the flights around this time of the year.</li>
+</ul>
+<p><img src="2019-07-23/combine_trace_plot.png" width="800" height="600" /></p>
+<p><strong>Key things that I learnt</strong>:</p>
+<ul>
+<li>I am getting a bit better at using the <code>gganimate</code> package. This time, it integrated very smoothly with the <code>maps</code> package.</li>
+<li>One observation on the performance of <code>gganimate</code>: it is usually very fast for simple plots (say 24 fps), but it can be 10 times slower for more complicated plots (2 ~ 3 fps for the map above).</li>
+</ul>
+</div>
+<div id="may-28---wines-around-the-world" class="section level1">
+<h1>2019 May 28 - Wines around the world</h1>
+<p>Report can be found <a href="2019-05-28/wine.html">here</a></p>
+<p>Summary: I chose not to publish a thorough detailed analysis because I have used this dataset for teaching purposes at my institution.</p>
+</div>
+<div id="may-21---plastic-waste" class="section level1">
+<h1>2019 May 21 - Plastic waste</h1>
+<p>Report can be found <a href="2019_05_21/2019_05_21.html">here</a></p>
+<p>Summary: It is known that there is a positive correlation between GDP of a country and the amount of plastic waste produced by a country. One reason for this is that wealthier nations demands more goods/resources and therefore produces more waste during consumptions. There are many wonderful visualisations of this trend already on Twitter.</p>
+<p>I am personally interested in another metric: GDP growth. My reasoning is that when a country has a high GDP growth, the expansion in economic activities (e.g. industrial production) will yield more waste. This is a hard hypothesis to verify due that the waste data is only available for the year of 2010 and the messy World Bank data.</p>
+<p><strong>Key things that I learnt</strong>:</p>
+<ul>
+<li><code>gganimate</code> package went through significant updates since I used it in 2016. The package’s functionalities have been enhanced, particularly in respect to the speed/aesthetics of the transitions.</li>
+<li>Additionally, the <code>ggpubr</code> package provides some important functions that allows rapid annotations on ggplot figures (in this case, correlation value).</li>
+</ul>
+<p><img src="2019_05_21/gdp_growth_vs_plastic_per_cap.gif" width="600" height="400" /></p>
+</div>
+<div id="apr-02---us-tuition" class="section level1">
+<h1>2018 Apr 02 - US Tuition</h1>
+<p>Report can be found <a href="2018-04-02/US_tuition.html">here</a></p>
+<p>Summary: It is known that the cost of US university tuition fee has increased in the past decades. The original data is somewhat limited in scope since there are only <code>state</code>, <code>year</code> and <code>cost</code> variables.</p>
+<p>I am personally interested in knowing the cost of tuition fee vs the GDP per capita in each US state. This would create about 10 scatter plots (one for each year) for 50 states - kinda messy. So, I decided to look at the <strong>tuition cost/GDP per capita ratio</strong> as a measure of the affordability of university education in each state in each year. Here, a higher ratio implies the education is getting more expensive and thus less affordable. In order to summarise the 50 US states, I further summarised the states into 8 geographical regions.</p>
+<p>Interestingly, for most regions/states, the ratio is rather stable or slightly increasing, suggesting that the tuition cost is somewhat in pace with GDP increase. However, Southeast states seems to have a steeper increase than othe regions.</p>
+<p><strong>Key things that I learnt</strong>:</p>
+<ul>
+<li><code>ggpubr</code> provides very nice colour palettes (e.g. Lancet, NEJM) that are somewhat in line with what these journals expect in their publications.</li>
+<li>The <code>ggiraph</code> package has received some very powerful updates since the last time I used it in 2016. In some areas, I believe it has better aesthetics/grammar than <code>plotly</code> (a default interactive plotting package in my area).</li>
+</ul>
+<pre class="r"><code>complete_merge_data = readRDS(&quot;2018-04-02/complete_merge_data.RDS&quot;)
+
+ratio_region_plot = complete_merge_data %&gt;% 
+  dplyr::mutate(Region = fct_reorder(Region, cost_gdp_ratio, .fun = median)) %&gt;% 
+  ggplot() +
+  geom_path_interactive(aes(x = year, 
+                            y = cost_gdp_ratio, 
+                            colour = Region, 
+                            group = State, 
+                            tooltip = State), 
+                        size = 2,
+                        alpha = 0.5) +
+  stat_summary(aes(x = year, 
+                   y = cost_gdp_ratio, 
+                   colour = Region, 
+                   group = Region),
+               fun.y = &quot;median&quot;, size = 2, geom = &quot;path&quot;) +
+  facet_wrap(~Region, nrow = 1) +
+  scale_y_continuous(breaks = seq(0, 1, by = 0.1)) +
+  ggsci::scale_color_d3() +
+  labs(title = &quot;Tuition cost - GDP per cap ratio, per US Region (interactive ggiraph plot)&quot;, 
+       x = &quot;Year&quot;, 
+       y = &quot;Tuition cost - GDP per cap ratio&quot;, 
+       caption = &quot;Thin line = state. Bold line = median ratio across all states per region&quot;) +
+  theme_classic(18) +
+  theme(legend.position = &quot;bottom&quot;, 
+        plot.title = element_text(hjust = 0.5), 
+        panel.grid.major.x = element_blank(), 
+        axis.text.x = element_text(angle = 90))</code></pre>
+<pre><code>## Warning: `fun.y` is deprecated. Use `fun` instead.</code></pre>
+<pre class="r"><code>girafe(code = print(ratio_region_plot), width_svg = 15, height_svg = 6)</code></pre>
+<div id="htmlwidget-ac78c149f1f6531f12f0" style="width:1440px;height:576px;" class="girafe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ac78c149f1f6531f12f0">{"x":{"html":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5' viewBox='0 0 1080.00 432.00'>\n  <g>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_1'>\n        <rect x='0.00' y='0.00' width='1080.00' height='432.00'/>\n      <\/clipPath>\n    <\/defs>\n    <rect x='0.00' y='0.00' width='1080.00' height='432.00' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_1' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_1)' fill='#FFFFFF' fill-opacity='1' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.75' stroke-linejoin='round' stroke-linecap='round'/>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_2'>\n        <rect x='0.00' y='0.00' width='1080.00' height='432.00'/>\n      <\/clipPath>\n    <\/defs>\n    <rect x='-0.00' y='0.00' width='1080.00' height='432.00' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_2' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_2)' fill='#FFFFFF' fill-opacity='1' stroke='#FFFFFF' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='round'/>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_3'>\n        <rect x='58.44' y='66.06' width='118.73' height='202.57'/>\n      <\/clipPath>\n    <\/defs>\n    <rect x='58.44' y='66.06' width='118.73' height='202.57' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_3' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_3)' fill='#FFFFFF' fill-opacity='1' stroke='none'/>\n    <polyline points='72.14,193.53 94.97,186.19 117.80,179.67 140.63,180.47 163.47,176.70' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_4' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_3)' fill='none' stroke='#1F77B4' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Colorado'/>\n    <polyline points='72.14,189.67 94.97,185.09 117.80,179.66 140.63,176.22 163.47,174.69' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_5' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_3)' fill='none' stroke='#1F77B4' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Idaho'/>\n    <polyline points='72.14,192.09 94.97,191.77 117.80,194.95 140.63,195.93 163.47,194.92' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_6' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_3)' fill='none' stroke='#1F77B4' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Montana'/>\n    <polyline points='72.14,214.63 94.97,210.63 117.80,208.67 140.63,206.53 163.47,204.35' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_7' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_3)' fill='none' stroke='#1F77B4' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Utah'/>\n    <polyline points='72.14,259.43 94.97,257.30 117.80,256.43 140.63,252.37 163.47,249.83' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_8' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_3)' fill='none' stroke='#1F77B4' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Wyoming'/>\n    <polyline points='72.14,193.53 94.97,191.77 117.80,194.95 140.63,195.93 163.47,194.92' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_9' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_3)' fill='none' stroke='#1F77B4' stroke-opacity='1' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt'/>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_4'>\n        <rect x='0.00' y='0.00' width='1080.00' height='432.00'/>\n      <\/clipPath>\n    <\/defs>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_5'>\n        <rect x='186.13' y='66.06' width='118.73' height='202.57'/>\n      <\/clipPath>\n    <\/defs>\n    <rect x='186.13' y='66.06' width='118.73' height='202.57' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_10' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_5)' fill='#FFFFFF' fill-opacity='1' stroke='none'/>\n    <polyline points='199.83,187.34 222.66,186.66 245.50,190.35 268.33,195.66 291.16,195.54' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_11' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_5)' fill='none' stroke='#FF7F0E' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Iowa'/>\n    <polyline points='199.83,193.66 222.66,190.81 245.50,189.36 268.33,184.11 291.16,180.29' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_12' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_5)' fill='none' stroke='#FF7F0E' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Kansas'/>\n    <polyline points='199.83,161.54 222.66,162.36 245.50,165.66 268.33,168.09 291.16,166.85' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_13' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_5)' fill='none' stroke='#FF7F0E' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Minnesota'/>\n    <polyline points='199.83,176.63 222.66,174.77 245.50,173.04 268.33,171.87 291.16,171.22' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_14' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_5)' fill='none' stroke='#FF7F0E' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Missouri'/>\n    <polyline points='199.83,203.36 222.66,204.07 245.50,207.62 268.33,207.87 291.16,206.30' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_15' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_5)' fill='none' stroke='#FF7F0E' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Nebraska'/>\n    <polyline points='199.83,205.78 222.66,211.29 245.50,217.54 268.33,230.34 291.16,228.31' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_16' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_5)' fill='none' stroke='#FF7F0E' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='North Dakota'/>\n    <polyline points='199.83,199.60 222.66,192.53 245.50,196.40 268.33,195.46 291.16,190.51' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_17' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_5)' fill='none' stroke='#FF7F0E' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='South Dakota'/>\n    <polyline points='199.83,193.66 222.66,190.81 245.50,190.35 268.33,195.46 291.16,190.51' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_18' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_5)' fill='none' stroke='#FF7F0E' stroke-opacity='1' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt'/>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_6'>\n        <rect x='0.00' y='0.00' width='1080.00' height='432.00'/>\n      <\/clipPath>\n    <\/defs>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_7'>\n        <rect x='313.83' y='66.06' width='118.73' height='202.57'/>\n      <\/clipPath>\n    <\/defs>\n    <rect x='313.83' y='66.06' width='118.73' height='202.57' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_19' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_7)' fill='#FFFFFF' fill-opacity='1' stroke='none'/>\n    <polyline points='327.53,132.84 350.36,128.66 373.19,127.36 396.02,126.75 418.86,121.64' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_20' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_7)' fill='none' stroke='#2CA02C' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Arizona'/>\n    <polyline points='327.53,210.44 350.36,206.79 373.19,203.66 396.02,202.25 418.86,198.06' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_21' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_7)' fill='none' stroke='#2CA02C' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='New Mexico'/>\n    <polyline points='327.53,194.33 350.36,189.03 373.19,192.82 396.02,192.07 418.86,190.36' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_22' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_7)' fill='none' stroke='#2CA02C' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Oklahoma'/>\n    <polyline points='327.53,184.66 350.36,183.08 373.19,185.21 396.02,187.75 418.86,188.30' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_23' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_7)' fill='none' stroke='#2CA02C' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Texas'/>\n    <polyline points='327.53,189.50 350.36,186.06 373.19,189.01 396.02,189.91 418.86,189.33' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_24' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_7)' fill='none' stroke='#2CA02C' stroke-opacity='1' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt'/>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_8'>\n        <rect x='0.00' y='0.00' width='1080.00' height='432.00'/>\n      <\/clipPath>\n    <\/defs>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_9'>\n        <rect x='441.52' y='66.06' width='118.73' height='202.57'/>\n      <\/clipPath>\n    <\/defs>\n    <rect x='441.52' y='66.06' width='118.73' height='202.57' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_25' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_9)' fill='#FFFFFF' fill-opacity='1' stroke='none'/>\n    <polyline points='455.22,250.27 478.05,245.84 500.89,246.77 523.72,247.75 546.55,240.87' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_26' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_9)' fill='none' stroke='#D62728' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Alaska'/>\n    <polyline points='455.22,183.66 478.05,184.93 500.89,186.52 523.72,189.50 546.55,190.34' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_27' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_9)' fill='none' stroke='#D62728' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='California'/>\n    <polyline points='455.22,183.88 478.05,184.22 500.89,180.09 523.72,174.73 546.55,168.74' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_28' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_9)' fill='none' stroke='#D62728' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Hawaii'/>\n    <polyline points='455.22,209.52 478.05,205.17 500.89,207.00 523.72,205.74 546.55,201.60' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_29' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_9)' fill='none' stroke='#D62728' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Nevada'/>\n    <polyline points='455.22,186.74 478.05,188.76 500.89,190.81 523.72,184.46 546.55,175.58' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_30' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_9)' fill='none' stroke='#D62728' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Oregon'/>\n    <polyline points='455.22,177.51 478.05,166.07 500.89,165.50 523.72,172.05 546.55,178.76' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_31' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_9)' fill='none' stroke='#D62728' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Washington'/>\n    <polyline points='455.22,185.31 478.05,186.84 500.89,188.67 523.72,186.98 546.55,184.55' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_32' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_9)' fill='none' stroke='#D62728' stroke-opacity='1' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt'/>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_10'>\n        <rect x='0.00' y='0.00' width='1080.00' height='432.00'/>\n      <\/clipPath>\n    <\/defs>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_11'>\n        <rect x='569.22' y='66.06' width='118.73' height='202.57'/>\n      <\/clipPath>\n    <\/defs>\n    <rect x='569.22' y='66.06' width='118.73' height='202.57' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_33' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_11)' fill='#FFFFFF' fill-opacity='1' stroke='none'/>\n    <polyline points='582.92,190.78 605.75,184.69 628.58,185.02 651.42,181.85 674.25,177.24' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_34' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_11)' fill='none' stroke='#9467BD' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Delaware'/>\n    <polyline points='582.92,198.12 605.75,198.64 628.58,198.33 651.42,197.56 674.25,191.44' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_35' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_11)' fill='none' stroke='#9467BD' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Maryland'/>\n    <polyline points='582.92,152.26 605.75,149.47 628.58,146.68 651.42,148.76 674.25,147.17' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_36' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_11)' fill='none' stroke='#9467BD' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='New Jersey'/>\n    <polyline points='582.92,230.55 605.75,229.65 628.58,227.00 651.42,226.61 674.25,222.62' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_37' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_11)' fill='none' stroke='#9467BD' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='New York'/>\n    <polyline points='582.92,119.18 605.75,121.64 628.58,120.93 651.42,122.41 674.25,121.96' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_38' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_11)' fill='none' stroke='#9467BD' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Pennsylvania'/>\n    <polyline points='582.92,190.78 605.75,184.69 628.58,185.02 651.42,181.85 674.25,177.24' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_39' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_11)' fill='none' stroke='#9467BD' stroke-opacity='1' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt'/>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_12'>\n        <rect x='0.00' y='0.00' width='1080.00' height='432.00'/>\n      <\/clipPath>\n    <\/defs>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_13'>\n        <rect x='696.91' y='66.06' width='118.73' height='202.57'/>\n      <\/clipPath>\n    <\/defs>\n    <rect x='696.91' y='66.06' width='118.73' height='202.57' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_40' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_13)' fill='#FFFFFF' fill-opacity='1' stroke='none'/>\n    <polyline points='710.61,146.98 733.45,137.62 756.28,134.25 779.11,132.83 801.94,129.40' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_41' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_13)' fill='none' stroke='#8C564B' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Alabama'/>\n    <polyline points='710.61,167.22 733.45,165.64 756.28,165.24 779.11,160.85 801.94,159.67' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_42' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_13)' fill='none' stroke='#8C564B' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Arkansas'/>\n    <polyline points='710.61,202.41 733.45,192.86 756.28,191.50 779.11,192.83 801.94,193.49' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_43' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_13)' fill='none' stroke='#8C564B' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Florida'/>\n    <polyline points='710.61,183.07 733.45,180.78 756.28,178.95 779.11,178.01 801.94,173.05' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_44' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_13)' fill='none' stroke='#8C564B' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Georgia'/>\n    <polyline points='710.61,151.06 733.45,149.80 756.28,149.93 779.11,144.72 801.94,139.70' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_45' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_13)' fill='none' stroke='#8C564B' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Kentucky'/>\n    <polyline points='710.61,225.45 733.45,220.33 756.28,206.24 779.11,197.36 801.94,185.22' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_46' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_13)' fill='none' stroke='#8C564B' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Louisiana'/>\n    <polyline points='710.61,179.19 733.45,170.64 756.28,162.37 779.11,161.76 801.94,156.73' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_47' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_13)' fill='none' stroke='#8C564B' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Mississippi'/>\n    <polyline points='710.61,211.69 733.45,204.88 756.28,202.09 779.11,200.35 801.94,196.67' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_48' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_13)' fill='none' stroke='#8C564B' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='North Carolina'/>\n    <polyline points='710.61,98.91 733.45,95.23 756.28,94.11 779.11,91.42 801.94,87.21' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_49' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_13)' fill='none' stroke='#8C564B' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='South Carolina'/>\n    <polyline points='710.61,176.31 733.45,170.23 756.28,169.47 779.11,160.83 801.94,157.12' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_50' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_13)' fill='none' stroke='#8C564B' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Tennessee'/>\n    <polyline points='710.61,174.84 733.45,173.18 756.28,169.24 779.11,160.99 801.94,151.95' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_51' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_13)' fill='none' stroke='#8C564B' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Virginia'/>\n    <polyline points='710.61,192.24 733.45,189.56 756.28,187.15 779.11,179.62 801.94,171.87' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_52' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_13)' fill='none' stroke='#8C564B' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='West Virginia'/>\n    <polyline points='710.61,177.75 733.45,171.91 756.28,169.35 779.11,161.38 801.94,158.40' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_53' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_13)' fill='none' stroke='#8C564B' stroke-opacity='1' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt'/>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_14'>\n        <rect x='0.00' y='0.00' width='1080.00' height='432.00'/>\n      <\/clipPath>\n    <\/defs>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_15'>\n        <rect x='824.61' y='66.06' width='118.73' height='202.57'/>\n      <\/clipPath>\n    <\/defs>\n    <rect x='824.61' y='66.06' width='118.73' height='202.57' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_54' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_15)' fill='#FFFFFF' fill-opacity='1' stroke='none'/>\n    <polyline points='838.31,142.12 861.14,138.50 883.97,139.11 906.81,142.65 929.64,137.30' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_55' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_15)' fill='none' stroke='#E377C2' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Illinois'/>\n    <polyline points='838.31,161.06 861.14,165.01 883.97,164.59 906.81,165.67 929.64,167.11' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_56' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_15)' fill='none' stroke='#E377C2' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Indiana'/>\n    <polyline points='838.31,99.37 861.14,106.81 883.97,108.56 906.81,115.68 929.64,112.19' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_57' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_15)' fill='none' stroke='#E377C2' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Michigan'/>\n    <polyline points='838.31,146.30 861.14,147.26 883.97,152.87 906.81,155.98 929.64,155.81' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_58' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_15)' fill='none' stroke='#E377C2' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Ohio'/>\n    <polyline points='838.31,172.00 861.14,168.90 883.97,172.97 906.81,176.41 929.64,177.25' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_59' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_15)' fill='none' stroke='#E377C2' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Wisconsin'/>\n    <polyline points='838.31,146.30 861.14,147.26 883.97,152.87 906.81,155.98 929.64,155.81' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_60' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_15)' fill='none' stroke='#E377C2' stroke-opacity='1' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt'/>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_16'>\n        <rect x='0.00' y='0.00' width='1080.00' height='432.00'/>\n      <\/clipPath>\n    <\/defs>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_17'>\n        <rect x='952.30' y='66.06' width='118.73' height='202.57'/>\n      <\/clipPath>\n    <\/defs>\n    <rect x='952.30' y='66.06' width='118.73' height='202.57' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_61' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_17)' fill='#FFFFFF' fill-opacity='1' stroke='none'/>\n    <polyline points='966.00,205.69 988.84,201.69 1011.67,195.44 1034.50,193.06 1057.33,183.79' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_62' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_17)' fill='none' stroke='#7F7F7F' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Connecticut'/>\n    <polyline points='966.00,132.65 988.84,136.98 1011.67,137.22 1034.50,137.47 1057.33,136.25' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_63' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_17)' fill='none' stroke='#7F7F7F' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Maine'/>\n    <polyline points='966.00,184.28 988.84,183.65 1011.67,186.67 1034.50,187.88 1057.33,180.51' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_64' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_17)' fill='none' stroke='#7F7F7F' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Massachusetts'/>\n    <polyline points='966.00,106.18 988.84,97.83 1011.67,101.73 1034.50,105.18 1057.33,100.70' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_65' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_17)' fill='none' stroke='#7F7F7F' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='New Hampshire'/>\n    <polyline points='966.00,150.41 988.84,142.68 1011.67,145.02 1034.50,147.79 1057.33,142.57' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_66' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_17)' fill='none' stroke='#7F7F7F' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Rhode Island'/>\n    <polyline points='966.00,82.27 988.84,85.19 1011.67,87.30 1034.50,83.36 1057.33,75.27' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_67' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_17)' fill='none' stroke='#7F7F7F' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' title='Vermont'/>\n    <polyline points='966.00,141.53 988.84,139.83 1011.67,141.12 1034.50,142.63 1057.33,139.41' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_68' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_17)' fill='none' stroke='#7F7F7F' stroke-opacity='1' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt'/>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_18'>\n        <rect x='0.00' y='0.00' width='1080.00' height='432.00'/>\n      <\/clipPath>\n    <\/defs>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_19'>\n        <rect x='58.44' y='38.20' width='118.73' height='27.86'/>\n      <\/clipPath>\n    <\/defs>\n    <rect x='58.44' y='38.20' width='118.73' height='27.86' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_69' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_19)' fill='#FFFFFF' fill-opacity='1' stroke='#000000' stroke-opacity='1' stroke-width='3.49' stroke-linejoin='round' stroke-linecap='round'/>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_19)'>\n      <text x='64.15' y='57.29' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_70' font-size='10.80pt' fill='#1A1A1A' fill-opacity='1' font-family='Helvetica'>Rocky Mountain <\/text>\n    <\/g>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_20'>\n        <rect x='0.00' y='0.00' width='1080.00' height='432.00'/>\n      <\/clipPath>\n    <\/defs>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_21'>\n        <rect x='186.13' y='38.20' width='118.73' height='27.86'/>\n      <\/clipPath>\n    <\/defs>\n    <rect x='186.13' y='38.20' width='118.73' height='27.86' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_71' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_21)' fill='#FFFFFF' fill-opacity='1' stroke='#000000' stroke-opacity='1' stroke-width='3.49' stroke-linejoin='round' stroke-linecap='round'/>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_21)'>\n      <text x='223.88' y='57.29' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_72' font-size='10.80pt' fill='#1A1A1A' fill-opacity='1' font-family='Helvetica'>Plains <\/text>\n    <\/g>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_22'>\n        <rect x='0.00' y='0.00' width='1080.00' height='432.00'/>\n      <\/clipPath>\n    <\/defs>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_23'>\n        <rect x='313.83' y='38.20' width='118.73' height='27.86'/>\n      <\/clipPath>\n    <\/defs>\n    <rect x='313.83' y='38.20' width='118.73' height='27.86' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_73' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_23)' fill='#FFFFFF' fill-opacity='1' stroke='#000000' stroke-opacity='1' stroke-width='3.49' stroke-linejoin='round' stroke-linecap='round'/>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_23)'>\n      <text x='337.56' y='57.29' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_74' font-size='10.80pt' fill='#1A1A1A' fill-opacity='1' font-family='Helvetica'>Southwest <\/text>\n    <\/g>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_24'>\n        <rect x='0.00' y='0.00' width='1080.00' height='432.00'/>\n      <\/clipPath>\n    <\/defs>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_25'>\n        <rect x='441.52' y='38.20' width='118.73' height='27.86'/>\n      <\/clipPath>\n    <\/defs>\n    <rect x='441.52' y='38.20' width='118.73' height='27.86' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_75' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_25)' fill='#FFFFFF' fill-opacity='1' stroke='#000000' stroke-opacity='1' stroke-width='3.49' stroke-linejoin='round' stroke-linecap='round'/>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_25)'>\n      <text x='471.67' y='57.29' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_76' font-size='10.80pt' fill='#1A1A1A' fill-opacity='1' font-family='Helvetica'>Far West<\/text>\n    <\/g>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_26'>\n        <rect x='0.00' y='0.00' width='1080.00' height='432.00'/>\n      <\/clipPath>\n    <\/defs>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_27'>\n        <rect x='569.22' y='38.20' width='118.73' height='27.86'/>\n      <\/clipPath>\n    <\/defs>\n    <rect x='569.22' y='38.20' width='118.73' height='27.86' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_77' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_27)' fill='#FFFFFF' fill-opacity='1' stroke='#000000' stroke-opacity='1' stroke-width='3.49' stroke-linejoin='round' stroke-linecap='round'/>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_27)'>\n      <text x='601.36' y='57.29' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_78' font-size='10.80pt' fill='#1A1A1A' fill-opacity='1' font-family='Helvetica'>Mideast <\/text>\n    <\/g>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_28'>\n        <rect x='0.00' y='0.00' width='1080.00' height='432.00'/>\n      <\/clipPath>\n    <\/defs>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_29'>\n        <rect x='696.91' y='38.20' width='118.73' height='27.86'/>\n      <\/clipPath>\n    <\/defs>\n    <rect x='696.91' y='38.20' width='118.73' height='27.86' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_79' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_29)' fill='#FFFFFF' fill-opacity='1' stroke='#000000' stroke-opacity='1' stroke-width='3.49' stroke-linejoin='round' stroke-linecap='round'/>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_29)'>\n      <text x='721.84' y='57.29' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_80' font-size='10.80pt' fill='#1A1A1A' fill-opacity='1' font-family='Helvetica'>Southeast <\/text>\n    <\/g>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_30'>\n        <rect x='0.00' y='0.00' width='1080.00' height='432.00'/>\n      <\/clipPath>\n    <\/defs>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_31'>\n        <rect x='824.61' y='38.20' width='118.73' height='27.86'/>\n      <\/clipPath>\n    <\/defs>\n    <rect x='824.61' y='38.20' width='118.73' height='27.86' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_81' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_31)' fill='#FFFFFF' fill-opacity='1' stroke='#000000' stroke-opacity='1' stroke-width='3.49' stroke-linejoin='round' stroke-linecap='round'/>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_31)'>\n      <text x='842.74' y='57.29' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_82' font-size='10.80pt' fill='#1A1A1A' fill-opacity='1' font-family='Helvetica'>Great Lakes <\/text>\n    <\/g>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_32'>\n        <rect x='0.00' y='0.00' width='1080.00' height='432.00'/>\n      <\/clipPath>\n    <\/defs>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_33'>\n        <rect x='952.30' y='38.20' width='118.73' height='27.86'/>\n      <\/clipPath>\n    <\/defs>\n    <rect x='952.30' y='38.20' width='118.73' height='27.86' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_83' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_33)' fill='#FFFFFF' fill-opacity='1' stroke='#000000' stroke-opacity='1' stroke-width='3.49' stroke-linejoin='round' stroke-linecap='round'/>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_33)'>\n      <text x='966.82' y='57.29' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_84' font-size='10.80pt' fill='#1A1A1A' fill-opacity='1' font-family='Helvetica'>New England <\/text>\n    <\/g>\n    <defs>\n      <clipPath id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34'>\n        <rect x='0.00' y='0.00' width='1080.00' height='432.00'/>\n      <\/clipPath>\n    <\/defs>\n    <polyline points='58.44,268.63 177.17,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_85' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='72.14,273.12 72.14,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_86' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='94.97,273.12 94.97,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_87' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='117.80,273.12 117.80,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_88' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='140.63,273.12 140.63,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_89' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='163.47,273.12 163.47,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_90' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(82.46,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_91' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2011<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(105.30,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_92' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2012<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(128.13,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_93' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2013<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(150.96,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_94' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2014<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(173.79,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_95' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2015<\/text>\n    <\/g>\n    <polyline points='186.13,268.63 304.86,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_96' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='199.83,273.12 199.83,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_97' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='222.66,273.12 222.66,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_98' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='245.50,273.12 245.50,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_99' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='268.33,273.12 268.33,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_100' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='291.16,273.12 291.16,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_101' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(210.16,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_102' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2011<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(232.99,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_103' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2012<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(255.82,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_104' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2013<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(278.66,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_105' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2014<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(301.49,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_106' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2015<\/text>\n    <\/g>\n    <polyline points='313.83,268.63 432.56,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_107' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='327.53,273.12 327.53,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_108' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='350.36,273.12 350.36,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_109' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='373.19,273.12 373.19,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_110' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='396.02,273.12 396.02,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_111' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='418.86,273.12 418.86,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_112' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(337.86,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_113' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2011<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(360.69,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_114' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2012<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(383.52,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_115' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2013<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(406.35,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_116' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2014<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(429.19,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_117' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2015<\/text>\n    <\/g>\n    <polyline points='441.52,268.63 560.25,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_118' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='455.22,273.12 455.22,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_119' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='478.05,273.12 478.05,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_120' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='500.89,273.12 500.89,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_121' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='523.72,273.12 523.72,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_122' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='546.55,273.12 546.55,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_123' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(465.55,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_124' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2011<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(488.38,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_125' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2012<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(511.22,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_126' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2013<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(534.05,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_127' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2014<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(556.88,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_128' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2015<\/text>\n    <\/g>\n    <polyline points='569.22,268.63 687.95,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_129' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='582.92,273.12 582.92,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_130' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='605.75,273.12 605.75,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_131' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='628.58,273.12 628.58,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_132' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='651.42,273.12 651.42,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_133' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='674.25,273.12 674.25,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_134' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(593.25,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_135' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2011<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(616.08,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_136' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2012<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(638.91,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_137' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2013<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(661.74,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_138' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2014<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(684.58,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_139' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2015<\/text>\n    <\/g>\n    <polyline points='696.91,268.63 815.64,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_140' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='710.61,273.12 710.61,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_141' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='733.45,273.12 733.45,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_142' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='756.28,273.12 756.28,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_143' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='779.11,273.12 779.11,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_144' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='801.94,273.12 801.94,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_145' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(720.94,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_146' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2011<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(743.77,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_147' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2012<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(766.61,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_148' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2013<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(789.44,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_149' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2014<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(812.27,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_150' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2015<\/text>\n    <\/g>\n    <polyline points='824.61,268.63 943.34,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_151' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='838.31,273.12 838.31,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_152' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='861.14,273.12 861.14,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_153' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='883.97,273.12 883.97,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_154' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='906.81,273.12 906.81,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_155' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='929.64,273.12 929.64,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_156' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(848.64,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_157' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2011<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(871.47,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_158' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2012<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(894.30,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_159' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2013<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(917.13,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_160' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2014<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(939.97,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_161' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2015<\/text>\n    <\/g>\n    <polyline points='952.30,268.63 1071.03,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_162' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='966.00,273.12 966.00,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_163' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='988.84,273.12 988.84,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_164' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='1011.67,273.12 1011.67,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_165' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='1034.50,273.12 1034.50,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_166' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='1057.33,273.12 1057.33,268.63' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_167' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(976.33,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_168' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2011<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(999.16,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_169' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2012<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(1022.00,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_170' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2013<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(1044.83,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_171' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2014<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(1067.66,308.75) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_172' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>2015<\/text>\n    <\/g>\n    <polyline points='58.44,268.63 58.44,66.06' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_173' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text x='30.34' y='242.33' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_174' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>0.1<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text x='30.34' y='177.41' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_175' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>0.2<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text x='30.34' y='112.49' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_176' font-size='10.80pt' fill='#4D4D4D' fill-opacity='1' font-family='Helvetica'>0.3<\/text>\n    <\/g>\n    <polyline points='53.95,237.16 58.44,237.16' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_177' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='53.95,172.24 58.44,172.24' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_178' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <polyline points='53.95,107.32 58.44,107.32' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_179' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.75' stroke-linejoin='round' stroke-linecap='butt'/>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text x='545.72' y='326.14' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_180' font-size='13.50pt' font-family='Helvetica'>Year<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text transform='translate(21.87,293.40) rotate(-90.00)' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_181' font-size='13.50pt' font-family='Helvetica'>Tuition cost - GDP per cap ratio<\/text>\n    <\/g>\n    <rect x='288.25' y='348.06' width='552.96' height='52.49' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_182' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' fill='#FFFFFF' fill-opacity='1' stroke='none'/>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text x='297.22' y='380.76' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_183' font-size='13.50pt' font-family='Helvetica'>Region<\/text>\n    <\/g>\n    <line x1='364.95' y1='365.67' x2='378.78' y2='365.67' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_184' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' stroke='#1F77B4' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' fill='#1F77B4' fill-opacity='0.5'/>\n    <line x1='364.95' y1='365.67' x2='378.78' y2='365.67' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_185' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' stroke='#1F77B4' stroke-opacity='1' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' fill='#1F77B4' fill-opacity='1'/>\n    <line x1='364.95' y1='382.95' x2='378.78' y2='382.95' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_186' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' stroke='#FF7F0E' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' fill='#FF7F0E' fill-opacity='0.5'/>\n    <line x1='364.95' y1='382.95' x2='378.78' y2='382.95' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_187' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' stroke='#FF7F0E' stroke-opacity='1' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' fill='#FF7F0E' fill-opacity='1'/>\n    <line x1='507.46' y1='365.67' x2='521.29' y2='365.67' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_188' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' stroke='#2CA02C' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' fill='#2CA02C' fill-opacity='0.5'/>\n    <line x1='507.46' y1='365.67' x2='521.29' y2='365.67' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_189' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' stroke='#2CA02C' stroke-opacity='1' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' fill='#2CA02C' fill-opacity='1'/>\n    <line x1='507.46' y1='382.95' x2='521.29' y2='382.95' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_190' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' stroke='#D62728' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' fill='#D62728' fill-opacity='0.5'/>\n    <line x1='507.46' y1='382.95' x2='521.29' y2='382.95' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_191' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' stroke='#D62728' stroke-opacity='1' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' fill='#D62728' fill-opacity='1'/>\n    <line x1='613.95' y1='365.67' x2='627.77' y2='365.67' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_192' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' stroke='#9467BD' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' fill='#9467BD' fill-opacity='0.5'/>\n    <line x1='613.95' y1='365.67' x2='627.77' y2='365.67' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_193' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' stroke='#9467BD' stroke-opacity='1' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' fill='#9467BD' fill-opacity='1'/>\n    <line x1='613.95' y1='382.95' x2='627.77' y2='382.95' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_194' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' stroke='#8C564B' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' fill='#8C564B' fill-opacity='0.5'/>\n    <line x1='613.95' y1='382.95' x2='627.77' y2='382.95' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_195' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' stroke='#8C564B' stroke-opacity='1' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' fill='#8C564B' fill-opacity='1'/>\n    <line x1='718.04' y1='365.67' x2='731.86' y2='365.67' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_196' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' stroke='#E377C2' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' fill='#E377C2' fill-opacity='0.5'/>\n    <line x1='718.04' y1='365.67' x2='731.86' y2='365.67' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_197' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' stroke='#E377C2' stroke-opacity='1' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' fill='#E377C2' fill-opacity='1'/>\n    <line x1='718.04' y1='382.95' x2='731.86' y2='382.95' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_198' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' stroke='#7F7F7F' stroke-opacity='0.5' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' fill='#7F7F7F' fill-opacity='0.5'/>\n    <line x1='718.04' y1='382.95' x2='731.86' y2='382.95' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_199' clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)' stroke='#7F7F7F' stroke-opacity='1' stroke-width='4.27' stroke-linejoin='round' stroke-linecap='butt' fill='#7F7F7F' fill-opacity='1'/>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text x='389.47' y='370.83' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_200' font-size='10.80pt' font-family='Helvetica'>Rocky Mountain <\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text x='389.47' y='388.11' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_201' font-size='10.80pt' font-family='Helvetica'>Plains <\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text x='531.98' y='370.83' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_202' font-size='10.80pt' font-family='Helvetica'>Southwest <\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text x='531.98' y='388.11' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_203' font-size='10.80pt' font-family='Helvetica'>Far West<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text x='638.46' y='370.83' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_204' font-size='10.80pt' font-family='Helvetica'>Mideast <\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text x='638.46' y='388.11' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_205' font-size='10.80pt' font-family='Helvetica'>Southeast <\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text x='742.56' y='370.83' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_206' font-size='10.80pt' font-family='Helvetica'>Great Lakes <\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text x='742.56' y='388.11' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_207' font-size='10.80pt' font-family='Helvetica'>New England <\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text x='217.88' y='24.45' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_208' font-size='16.20pt' font-family='Helvetica'>Tuition cost - GDP per cap ratio, per US Region (interactive ggiraph plot)<\/text>\n    <\/g>\n    <g clip-path='url(#svg_2af7bf27-e11c-444f-bad0-18c294110de5_cl_34)'>\n      <text x='633.81' y='419.85' id='svg_2af7bf27-e11c-444f-bad0-18c294110de5_el_209' font-size='10.80pt' font-family='Helvetica'>Thin line = state. Bold line = median ratio across all states per region<\/text>\n    <\/g>\n  <\/g>\n<\/svg>","js":null,"uid":"svg_2af7bf27-e11c-444f-bad0-18c294110de5","ratio":2.5,"settings":{"tooltip":{"css":".tooltip_SVGID_ { padding:5px;background:black;color:white;border-radius:2px 2px 2px 2px ; position:absolute;pointer-events:none;z-index:999;}\n","offx":10,"offy":0,"use_cursor_pos":true,"opacity":0.9,"usefill":false,"usestroke":false,"delay":{"over":200,"out":500}},"hover":{"css":".hover_SVGID_ { fill:orange;stroke:gray; }\n","reactive":false},"hoverkey":{"css":".hover_key_SVGID_ { stroke:red; }\n","reactive":false},"hovertheme":{"css":".hover_theme_SVGID_ { fill:green; }\n","reactive":false},"hoverinv":{"css":""},"zoom":{"min":1,"max":1},"capture":{"css":".selected_SVGID_ { fill:red;stroke:gray; }\n","type":"multiple","only_shiny":true,"selected":[]},"capturekey":{"css":".selected_key_SVGID_ { stroke:gray; }\n","type":"single","only_shiny":true,"selected":[]},"capturetheme":{"css":".selected_theme_SVGID_ { stroke:gray; }\n","type":"single","only_shiny":true,"selected":[]},"toolbar":{"position":"topright","saveaspng":true,"pngname":"diagram"},"sizing":{"rescale":true,"width":1}}},"evals":[],"jsHooks":[]}</script>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

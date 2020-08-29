@@ -1,16 +1,18 @@
-# Introduction
+# What is this?
 
-I am currently a PhD candidate at the University of Sydney. My research focus on statistics and bioinformatics and I have an active interest in `R` and `tidyverse`. Since May 2019, I have been undertaking the [tidytuesday](https://github.com/rfordatascience/tidytuesday) challenges. 
+Main gallery: https://kevinwang09.github.io/tidytuesday
 
-Due to my very limited time and unlimited amount of curiosity, I have decided to not produce a detailed annotated R Markdown report for every data challenge. Instead, I will post my most important findings in each data challenge below. In addition, I will also put up some brief comments about the packages that I have encountered along the way (e.g. ease of use, maturity of the package). 
+This repo was originally designed to host all of my work for the [tidytuesday](https://github.com/rfordatascience/tidytuesday) challenge. 
 
-This webpage was deployed through [Travis](https://travis-ci.org/kevinwang09/tidytuesday) and GitHub Pages.
+However, as a data scientist, I often need a quick workspace to host all my other statistical analytics. Hence, as my analytical interests are not limited to just tidytuesday datasets, I also use this repo to host a whole range RMarkdown HTML reports. 
+
+This webpage was deployed through GitHub Actions and GitHub Pages.
 
 # Why am I doing this?
 
-The main reasons that I am doing this challenge: 
+This repo is a part of a portfolio to demostrate my work, the main personal webpage being https://kevinwang09.github.io/. 
   
-  1. Create a repository of code snippets. Due to the ethics restriction associated with my research, I cannot always share codes from my own research but I can always apply the same code to different data. 
-  2. Learn efficient coding and reporting. I typically only set aside a few hours a week to complete these challenges due to my busy schedule. I want to make sure that I can code in a reproducible way and have something meaningful every week. 
-  3. Building up a data repository for teaching. I also teach at the University of Sydney as a casual lecturer. I have to design assignments and tutorial examples every now and then. Having access to a repository of data that I understand and work on is very helpful for my own teaching. 
-  4. Learn more about new packages and technologies. I consider myself to be quite experienced at `tidyverse` and most mainstream machine learning packages. But with so new packages released everyday, it is hard for me to understand what these packages bring to the R community without trying them out. I aim to use at least one new package or an alternative way to do a task in every data challenge. 
+  1. Create a repository of code snippets. Due to the ethics restriction associated with my research, I cannot always share codes from my own research but once I re-apply the codes to a novel dataset, I can then share this here. 
+  2. Learn efficient coding and reporting. I typically only set aside a few hours a week to complete these challenges. I want to make sure that I can code in a reproducible way (all data and codes are self-contained in this repo!) and have something meaningful every week. 
+  3. Building up a data repository for teaching. During my PhD program at the University of Sydney, I also did casual lecturing. Having access to a repository of data that I understand and work on is very helpful for my own teaching. 
+  4. Learn more about new packages and technologies. I am the kind of person who sees a hammer and tries to find a nail to hit. Everytime I learn about something, I want to quickly experience with it to get a quick understanding of it. This helps me to remember such a tool if I need it for my future work. 

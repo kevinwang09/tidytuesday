@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Session info</title>
+
+<script src="site_libs/header-attrs-2.3.1/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/paper.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 64px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.section h2 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.section h3 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.section h4 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.section h5 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.section h6 {
+  padding-top: 69px;
+  margin-top: -69px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Kevin Wang</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="https://kevinwang09.github.io">My personal website</a>
+</li>
+<li>
+  <a href="https://kevinwang09.github.io/tidytuesday/">2020</a>
+</li>
+<li>
+  <a href="https://kevinwang09.github.io/tidytuesday/2019.html">2019</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Session info</h1>
+
+</div>
+
+
+<pre class="r"><code>sessioninfo::session_info()</code></pre>
+<pre><code>## ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+##  setting  value                       
+##  version  R version 3.6.2 (2019-12-12)
+##  os       macOS Mojave 10.14.6        
+##  system   x86_64, darwin15.6.0        
+##  ui       RStudio                     
+##  language (EN)                        
+##  collate  en_AU.UTF-8                 
+##  ctype    en_AU.UTF-8                 
+##  tz       Australia/Melbourne         
+##  date     2020-08-29                  
+## 
+## ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+##  package     * version    date       lib source                            
+##  assertthat    0.2.1      2019-03-21 [1] CRAN (R 3.6.0)                    
+##  backports     1.1.8      2020-06-17 [1] CRAN (R 3.6.2)                    
+##  blob          1.2.1      2020-01-20 [1] CRAN (R 3.6.0)                    
+##  broom         0.7.0      2020-07-09 [1] CRAN (R 3.6.2)                    
+##  callr         3.4.3      2020-03-28 [1] CRAN (R 3.6.2)                    
+##  cellranger    1.1.0      2016-07-27 [1] CRAN (R 3.6.0)                    
+##  cli           2.0.2      2020-02-28 [1] CRAN (R 3.6.0)                    
+##  colorspace    1.4-1      2019-03-18 [1] CRAN (R 3.6.0)                    
+##  crayon        1.3.4      2017-09-16 [1] CRAN (R 3.6.0)                    
+##  DBI           1.1.0      2019-12-15 [1] CRAN (R 3.6.0)                    
+##  dbplyr        1.4.4      2020-05-27 [1] CRAN (R 3.6.2)                    
+##  digest        0.6.25     2020-02-23 [1] CRAN (R 3.6.0)                    
+##  dplyr       * 1.0.0      2020-05-29 [1] CRAN (R 3.6.2)                    
+##  ellipsis      0.3.1      2020-05-15 [1] CRAN (R 3.6.2)                    
+##  evaluate      0.14       2019-05-28 [1] CRAN (R 3.6.0)                    
+##  fansi         0.4.1      2020-01-08 [1] CRAN (R 3.6.0)                    
+##  farver        2.0.3      2020-01-16 [1] CRAN (R 3.6.0)                    
+##  forcats     * 0.5.0      2020-03-01 [1] CRAN (R 3.6.2)                    
+##  fs            1.4.2      2020-06-30 [1] CRAN (R 3.6.2)                    
+##  gdtools     * 0.2.2      2020-04-03 [1] CRAN (R 3.6.2)                    
+##  generics      0.0.2      2018-11-29 [1] CRAN (R 3.6.0)                    
+##  ggiraph     * 0.7.8      2020-07-01 [1] CRAN (R 3.6.2)                    
+##  ggplot2     * 3.3.2      2020-06-19 [1] CRAN (R 3.6.2)                    
+##  ggsci         2.9        2018-05-14 [1] CRAN (R 3.6.0)                    
+##  glue          1.4.1      2020-05-13 [1] CRAN (R 3.6.2)                    
+##  gtable        0.3.0      2019-03-25 [1] CRAN (R 3.6.0)                    
+##  haven         2.3.1      2020-06-01 [1] CRAN (R 3.6.2)                    
+##  hms           0.5.3      2020-01-08 [1] CRAN (R 3.6.0)                    
+##  htmltools     0.5.0      2020-06-16 [1] CRAN (R 3.6.2)                    
+##  htmlwidgets   1.5.1      2019-10-08 [1] CRAN (R 3.6.0)                    
+##  httr          1.4.1      2019-08-05 [1] CRAN (R 3.6.0)                    
+##  jsonlite      1.7.0      2020-06-25 [1] CRAN (R 3.6.2)                    
+##  knitr         1.29       2020-06-23 [1] CRAN (R 3.6.2)                    
+##  lifecycle     0.2.0      2020-03-06 [1] CRAN (R 3.6.0)                    
+##  lubridate     1.7.9      2020-06-08 [1] CRAN (R 3.6.2)                    
+##  magrittr      1.5        2014-11-22 [1] CRAN (R 3.6.0)                    
+##  MASS          7.3-51.6   2020-04-26 [1] CRAN (R 3.6.2)                    
+##  memoise       1.1.0      2017-04-21 [1] CRAN (R 3.6.0)                    
+##  modelr        0.1.8      2020-05-19 [1] CRAN (R 3.6.2)                    
+##  munsell       0.5.0      2018-06-12 [1] CRAN (R 3.6.0)                    
+##  packrat       0.5.0      2018-11-14 [1] CRAN (R 3.6.0)                    
+##  patchwork   * 1.0.1      2020-06-22 [1] CRAN (R 3.6.2)                    
+##  pillar        1.4.6      2020-07-10 [1] CRAN (R 3.6.2)                    
+##  pkgconfig     2.0.3      2019-09-22 [1] CRAN (R 3.6.0)                    
+##  pkgdown       1.5.1.9000 2020-05-05 [1] Github (r-lib/pkgdown@c181e5c)    
+##  processx      3.4.3      2020-07-05 [1] CRAN (R 3.6.2)                    
+##  ps            1.3.3      2020-05-08 [1] CRAN (R 3.6.2)                    
+##  purrr       * 0.3.4      2020-04-17 [1] CRAN (R 3.6.2)                    
+##  R6            2.4.1      2019-11-12 [1] CRAN (R 3.6.0)                    
+##  Rcpp          1.0.5      2020-07-06 [1] CRAN (R 3.6.2)                    
+##  readr       * 1.3.1      2018-12-21 [1] CRAN (R 3.6.0)                    
+##  readxl        1.3.1      2019-03-13 [1] CRAN (R 3.6.0)                    
+##  reprex        0.3.0      2019-05-16 [1] CRAN (R 3.6.0)                    
+##  rlang         0.4.7      2020-07-09 [1] CRAN (R 3.6.2)                    
+##  rmarkdown     2.3.1      2020-06-23 [1] Github (rstudio/rmarkdown@b53a85a)
+##  rsconnect     0.8.16     2019-12-13 [1] CRAN (R 3.6.1)                    
+##  rstudioapi    0.11       2020-02-07 [1] CRAN (R 3.6.0)                    
+##  rvest         0.3.5      2019-11-08 [1] CRAN (R 3.6.0)                    
+##  scales        1.1.1      2020-05-11 [1] CRAN (R 3.6.2)                    
+##  sessioninfo   1.1.1      2018-11-05 [1] CRAN (R 3.6.0)                    
+##  stringi       1.4.6      2020-02-17 [1] CRAN (R 3.6.1)                    
+##  stringr     * 1.4.0      2019-02-10 [1] CRAN (R 3.6.0)                    
+##  systemfonts   0.2.3      2020-06-09 [1] CRAN (R 3.6.2)                    
+##  tibble      * 3.0.3      2020-07-10 [1] CRAN (R 3.6.2)                    
+##  tidyr       * 1.1.0      2020-05-20 [1] CRAN (R 3.6.2)                    
+##  tidyselect    1.1.0      2020-05-11 [1] CRAN (R 3.6.2)                    
+##  tidyverse   * 1.3.0      2019-11-21 [1] CRAN (R 3.6.0)                    
+##  uuid          0.1-4      2020-02-26 [1] CRAN (R 3.6.0)                    
+##  vctrs         0.3.1      2020-06-05 [1] CRAN (R 3.6.2)                    
+##  withr         2.2.0      2020-04-20 [1] CRAN (R 3.6.2)                    
+##  xfun          0.15       2020-06-21 [1] CRAN (R 3.6.2)                    
+##  xml2          1.3.2      2020-04-23 [1] CRAN (R 3.6.2)                    
+##  yaml          2.2.1      2020-02-01 [1] CRAN (R 3.6.1)                    
+## 
+## [1] /Library/Frameworks/R.framework/Versions/3.6/Resources/library</code></pre>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
