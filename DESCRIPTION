@@ -9,5 +9,6 @@ Imports:
   ggiraph,
   ggsci,
   patchwork,
-  DT
+  DT,
+  pkgdown
   
