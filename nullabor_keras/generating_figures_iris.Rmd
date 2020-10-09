@@ -1,0 +1,130 @@
+---
+title: "Kevin Wang's template"
+author: "Kevin Wang"
+date: "`r paste0('Initiated on 2020 Oct 09, compiled on ', format(Sys.time(), '%Y %b %d'))`"
+output:
+  html_document:
+    code_folding: hide
+    fig_height: 12
+    fig_width: 12
+    toc: yes
+    number_sections: true
+    toc_depth: 3
+    toc_float: yes
+    theme: paper
+editor_options: 
+  chunk_output_type: console
+---
+
+# Summary
+
+# Loading 
+
+## packages
+```{r, message = FALSE}
+library(tidyverse)
+theme_set(theme_bw() +
+            theme(legend.position = "bottom"))
+```
+
+## Function
+```{r}
+bootstrap_iris_y = function(){
+  res = iris[sample(seq_len(nrow(iris)), size = 100, replace = TRUE), ] ## Subset 100 rows with replacement
+  res$Species = sample(res$Species) ## Further randomise the response
+  return(res)
+}
+
+bootstrap_iris_all = function(){
+  res = iris[sample(seq_len(nrow(iris)), size = 100, replace = TRUE), ] ## Subset 100 rows with replacement
+  return(res)
+}
+
+plot_iris_lda = function(data){
+  pca_obj = prcomp(x = data %>% dplyr::select(-Species), center = TRUE, scale. = TRUE)
+  pca_tbl = pca_obj$x[,1:2] %>% as.data.frame %>% as_tibble()
+  plotdf = data %>% bind_cols(pca_tbl)
+  
+  plotdf %>% 
+    ggplot(aes(x = PC1, y = PC2, colour = Species)) +
+    geom_point()
+}
+
+lineup_iris_plots = function(index){
+  stopifnot(all(index %in% c(0, 1)))
+  if(index == 0){ ## Null oplot
+    plot_iris_lda(data = bootstrap_iris_y())
+  } else { ## True oplot
+    plot_iris_lda(data = bootstrap_iris_all())
+  }
+}
+```
+
+# Testing out functions (eval = FALSE)
+```{r, eval = FALSE}
+plot_iris_lda(data = bootstrap_iris_all())
+plot_iris_lda(data = bootstrap_iris_y())
+```
+
+# Generate training image data
+```{r}
+set.seed(123)
+num_true = 100
+num_null = 100
+index = sample(c(rep(1, num_true), rep(0, num_null)))
+n = length(index)
+cat("True plots are:", paste0(which(index == 1), collapse = ", "))
+n_digits = floor(log10(n)) + 1L
+exp_num = sprintf(paste0("%0", n_digits, "d"), seq_len(n))
+filename = paste0("figures/train/", exp_num, ".png")
+
+for(i in seq_along(index)){
+  g = lineup_iris_plots(index = index[i])
+  ggsave(filename = filename[i],
+         plot = g, width = 5, height = 5)
+}
+
+train_tbl = tibble(
+  index,
+  exp_num,
+  filename)
+```
+
+
+# Generate test image data
+```{r}
+set.seed(123)
+num_true = 10
+num_null = 10
+index = sample(c(rep(1, num_true), rep(0, num_null)))
+n = length(index)
+cat("True plots are:", paste0(which(index == 1), collapse = ", "))
+n_digits = floor(log10(n)) + 1L
+exp_num = sprintf(paste0("%0", n_digits, "d"), seq_len(n))
+filename = paste0("figures/test/", exp_num, ".png")
+
+for(i in seq_along(index)){
+  g = lineup_iris_plots(index = index[i])
+  ggsave(filename = filename[i],
+         plot = g, width = 5, height = 5)
+}
+
+test_tbl = tibble(
+  index,
+  exp_num,
+  filename)
+```
+
+# Saving data
+```{r}
+save(train_tbl, 
+     test_tbl, 
+     file = "data/iris_lineup.RData")
+```
+
+
+# Session Info
+```{r}
+sessioninfo::session_info()
+```
+

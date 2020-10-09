@@ -1,0 +1,104 @@
+---
+title: "Kevin Wang's template"
+author: "Kevin Wang"
+date: "`r paste0('Initiated on 2020 Oct 09, compiled on ', format(Sys.time(), '%Y %b %d'))`"
+output:
+  html_document:
+    code_folding: hide
+    fig_height: 12
+    fig_width: 12
+    toc: yes
+    number_sections: true
+    toc_depth: 3
+    toc_float: yes
+    theme: paper
+editor_options: 
+  chunk_output_type: console
+---
+
+# Summary
+
+# Loading 
+
+## packages
+```{r}
+library(tidyverse)
+library(keras)
+library(EBImage) ## BiocManager::install("EBImage")
+```
+
+## data
+```{r}
+load("data/iris_lineup.RData")
+```
+
+```{r}
+train_filenames = list.files("figures/train/", full.names = TRUE)
+train_images <- vector("list", length(train_filenames))
+for (i in train_filenames){train_images[[i]] <- EBImage::readImage(i)}
+# hist(train_images$`figures/train//01.png`)
+# display(train_images$`figures/train//01.png`)
+train_images2 = train_images
+for (i in train_filenames){train_images2[[i]] <- resize(train_images[[i]],100,100)}
+# display(train_images2$`figures/train//01.png`)
+train_images3 = train_images
+for (i in train_filenames){train_images3[[i]] <- array_reshape(train_images2[[i]],c(100,100,4))}
+# display(train_images3$`figures/train//01.png`)
+
+X_train = do.call(rbind, train_images3)
+dim(X_train)
+# X_train <- NULL
+# for (i in train_filenames){X_train <- rbind(X_train, train_images[[i]])}
+# str(X_train)
+
+y_train = to_categorical(train_tbl$index)
+```
+
+
+```{r}
+# Model
+model <- keras_model_sequential()
+
+model %>%
+  layer_dense(units = 256, activation = 'relu', input_shape = c(40000)) %>%
+  layer_dense(units = 128, activation = 'relu') %>%
+  layer_dense(units = 128, activation = 'relu') %>%
+  layer_dense(units = 2, activation = 'softmax')
+
+summary(model)
+
+# Compile
+model %>%
+  compile(loss = 'binary_crossentropy',
+          optimizer = optimizer_rmsprop(),
+          metrics = 'accuracy')
+```
+
+
+```{r}
+fitModel <- model %>%
+  fit(X_train,
+      y_train,
+      epochs = 30,
+      # batch_size = 10,
+      validation_split = 0.2)
+
+plot(fitModel)
+```
+
+
+```{r}
+# Evaluation & Prediction: train data
+model %>% evaluate(X_train, y_train)
+
+pred <- model %>% predict_classes(X_train)
+
+table(Predicted = pred, Actual = train_tbl$index)
+```
+
+
+# Session Info
+```{r}
+sessioninfo::session_info()
+```
+
