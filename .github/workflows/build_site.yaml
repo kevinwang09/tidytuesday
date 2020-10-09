@@ -33,6 +33,10 @@ jobs:
       - name: Install dependencies
         run: |
           remotes::install_deps(dependencies = TRUE)
+        shell: Rscript {0}
+        
+      - name: Render site
+        run: |
           rmarkdown::render_site(input = ".")
         shell: Rscript {0}
 
