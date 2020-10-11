@@ -1,0 +1,78 @@
+---
+title: "Scrap Singer data"
+author: "Kevin Wang"
+date: "`r paste0('Initiated on 2020 Aug 22, compiled on ', format(Sys.time(), '%Y %b %d'))`"
+output:
+  html_document:
+    code_folding: hide
+    fig_height: 12
+    fig_width: 12
+    toc: yes
+    number_sections: true
+    toc_depth: 3
+    toc_float: yes
+    theme: paper
+editor_options: 
+  chunk_output_type: console
+---
+
+# Summary
+
+# Loading 
+
+## packages
+```{r}
+library(tidyverse)
+library(rvest)
+library(XML)
+library(httr)
+```
+
+
+# Getting data
+```{r}
+url = "https://zh.wikipedia.org/zh-cn/%E6%88%91%E6%98%AF%E6%AD%8C%E6%89%8B_(%E7%AC%AC%E4%B8%89%E5%AD%A3)#%E8%B3%BD%E7%A8%8B"
+
+list_df = url %>% 
+  read_html() %>% 
+  html_nodes("table.wikitable.mw-collapsible.iamasinger-s03") %>% 
+  html_table(fill = TRUE) %>% 
+  magrittr::extract(-c(15, 16))
+
+class(list_df)
+list_df[[1]]
+
+clean_tbl = function(d){
+  meta = colnames(d) %>% unique
+  colnames(d) = d[1,]
+  d = d[-1, ]
+  col_names = colnames(d)
+  
+  order = d %>% dplyr::select(str_detect(col_names, pattern = "出场顺序") %>% which) %>% unname %>% as.matrix() %>% as.vector
+  rank = d %>% dplyr::select(str_detect(col_names, pattern = "排名|结果") %>% which) %>% unname %>% as.matrix() %>% as.vector
+  d = d %>% dplyr::mutate(order, rank)
+  
+  result = d %>% as_tibble()
+  return(result)
+}
+
+# list_tbl = list_df %>% purrr::map(clean_tbl)
+list_tbl = list()
+for(i in seq_along(list_df)){
+  list_tbl[[i]] = clean_tbl(d = list_df[[i]])
+}
+```
+
+```{r}
+s3_tbl = list_tbl %>% 
+  bind_rows(.id = "round")
+```
+
+
+
+
+# Session Info
+```{r}
+sessioninfo::session_info()
+```
+
