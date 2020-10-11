@@ -117,9 +117,8 @@ test_tbl = tibble(
 
 # Saving data
 ```{r}
-save(train_tbl, 
-     test_tbl, 
-     file = "data/iris_lineup.RData")
+write_csv(train_tbl, path = "data/iris_lineup_train.csv")
+write_csv(test_tbl, path = "data/iris_lineup_test.csv")
 ```
 
 
