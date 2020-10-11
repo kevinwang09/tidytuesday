@@ -51,8 +51,8 @@ plot_iris_lda = function(data){
 }
 
 lineup_iris_plots = function(index){
-  stopifnot(all(index %in% c(0, 1)))
-  if(index == 0){ ## Null oplot
+  stopifnot(all(index %in% c("true", "null")))
+  if(index == "null"){ ## Null oplot
     plot_iris_lda(data = bootstrap_iris_y())
   } else { ## True oplot
     plot_iris_lda(data = bootstrap_iris_all())
@@ -71,12 +71,13 @@ plot_iris_lda(data = bootstrap_iris_y())
 set.seed(123)
 num_true = 100
 num_null = 100
-index = sample(c(rep(1, num_true), rep(0, num_null)))
+# index = sample(c(rep(1, num_true), rep(0, num_null)))
+index = sample(c(rep("true", num_true), rep("null", num_null)))
 n = length(index)
-cat("True plots are:", paste0(which(index == 1), collapse = ", "))
+cat("True plots are:", paste0(which(index == "true"), collapse = ", "))
 n_digits = floor(log10(n)) + 1L
 exp_num = sprintf(paste0("%0", n_digits, "d"), seq_len(n))
-filename = paste0("figures/train/", exp_num, ".png")
+filename = paste0("figures/train/", index, "/", index, "_image_", exp_num, ".png")
 
 for(i in seq_along(index)){
   g = lineup_iris_plots(index = index[i])
@@ -94,14 +95,15 @@ train_tbl = tibble(
 # Generate test image data
 ```{r}
 set.seed(123)
-num_true = 10
-num_null = 10
-index = sample(c(rep(1, num_true), rep(0, num_null)))
+num_true = 100
+num_null = 100
+# index = sample(c(rep(1, num_true), rep(0, num_null)))
+index = sample(c(rep("true", num_true), rep("null", num_null)))
 n = length(index)
-cat("True plots are:", paste0(which(index == 1), collapse = ", "))
+cat("True plots are:", paste0(which(index == "true"), collapse = ", "))
 n_digits = floor(log10(n)) + 1L
 exp_num = sprintf(paste0("%0", n_digits, "d"), seq_len(n))
-filename = paste0("figures/test/", exp_num, ".png")
+filename = paste0("figures/test/", index, "/", index, "_image_", exp_num, ".png")
 
 for(i in seq_along(index)){
   g = lineup_iris_plots(index = index[i])
