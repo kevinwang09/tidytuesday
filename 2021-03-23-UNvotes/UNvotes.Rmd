@@ -1,0 +1,24 @@
+---
+title: "UN Votes"
+author: "Kevin Wang"
+date: "22/06/2021"
+output: html_document
+---
+
+```{r}
+library(tidytuesdayR)
+library(tidyverse)
+tuesdata <- tidytuesdayR::tt_load('2021-03-23')
+```
+
+```{r}
+library(reticulate)
+reticulate::py_config()
+unvotes = r_to_py(tuesdata$unvotes)
+repl_python()
+```
+
+```{python}
+import pandas as pd
+r.unvotes
+```
