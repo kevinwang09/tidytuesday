@@ -1,0 +1,53 @@
+---
+title: "MCQ"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+library(tidyverse)
+library(jsonlite)
+```
+
+```{r, eval = FALSE}
+download.file("https://ai2-public-datasets.s3.amazonaws.com/sciq/SciQ.zip", "SciQ.zip")
+unzip("SciQ.zip")
+system("rm -r ./__MACOSX")
+system("rm ./SciQ.zip")
+system("mkdir SciQ_dataset")
+system("cp -r './SciQ dataset-2 3/' ./SciQ_dataset/")
+system("rm -r './SciQ dataset-2 3/'")
+```
+
+```{r}
+train = jsonlite::fromJSON("./SciQ_dataset/train.json") %>% 
+  as_tibble
+
+train %>% glimpse
+```
+
+# Comparing length
+
+```{r}
+train_long = train %>% 
+  dplyr::select(-support) %>% 
+  pivot_longer(
+    cols = distractor3:correct_answer,
+    names_to = "options", values_to = "text") %>% 
+  dplyr::mutate(text_length = str_length(text))
+
+train_long %>% 
+  ggplot(aes(x = text_length)) +
+  geom_histogram(bins = 30) +
+  facet_wrap(~options)
+```
+
+```{r}
+train_long %>% 
+  group_by(question) %>% 
+  dplyr::filter(text_length == max(text_length)) %>% 
+  group_by(options) %>% 
+  tally()
+```
+
