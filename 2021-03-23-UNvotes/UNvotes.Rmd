@@ -3,22 +3,64 @@ title: "UN Votes"
 author: "Kevin Wang"
 date: "22/06/2021"
 output: html_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r}
-library(tidytuesdayR)
 library(tidyverse)
-tuesdata <- tidytuesdayR::tt_load('2021-03-23')
+
+theme_set(theme_classic(18))
+
+# library(tidytuesdayR)
+# tuesdata <- tidytuesdayR::tt_load('2021-03-23')
+
+unvotes <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-03-23/unvotes.csv')
+roll_calls <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-03-23/roll_calls.csv')
+issues <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-03-23/issues.csv')
+```
+
+<!-- ```{r} -->
+<!-- library(reticulate) -->
+<!-- reticulate::use_condaenv( -->
+<!--   condaenv = "/home/u0037678/.conda/envs/env_cap", -->
+<!--   conda = "/home/u0037678/.conda/envs/env_cap") -->
+
+<!-- reticulate::py_config() -->
+
+<!-- unvotes = r_to_py(unvotes) -->
+<!-- roll_calls = r_to_py(roll_calls) -->
+<!-- issues = r_to_py(issues) -->
+<!-- repl_python() -->
+<!-- ``` -->
+
+<!-- ```{python} -->
+<!-- import pandas as pd -->
+<!-- r.unvotes -->
+<!-- ``` -->
+
+```{r}
+# unvotes %>% dplyr::filter(country == "United Kingdom")
+
+unvotes_5 = unvotes %>% 
+  dplyr::filter(country_code %in% c("US", "GB", "FR", "RU", "CN"))
+
+unvotes_5_joined = unvotes_5 %>% 
+  inner_join(roll_calls, by = "rcid") %>% 
+  inner_join(issues, by = "rcid") %>% 
+  dplyr::mutate(
+    year = lubridate::year(date))
 ```
 
 ```{r}
-library(reticulate)
-reticulate::py_config()
-unvotes = r_to_py(tuesdata$unvotes)
-repl_python()
+unvotes_5_joined %>% 
+  group_by(year, country_code, vote) %>% 
+  tally() %>% 
+  ggplot(aes(x = year, 
+             y = n,
+             colour = country_code)) +
+  # geom_point() +
+  geom_line() + 
+  facet_wrap(~vote, nrow = 3)
 ```
 
-```{python}
-import pandas as pd
-r.unvotes
-```
