@@ -1,16 +1,32 @@
 ---
 title: "UN Votes"
 author: "Kevin Wang"
-date: "22/06/2021"
-output: html_document
+date: "`r paste0('Initiated on 2021 June 24, compiled on ', format(Sys.time(), '%Y %b %d'))`"
+output:
+  html_document:
+    code_folding: hide
+    fig_height: 12
+    fig_width: 12
+    toc: yes
+    number_sections: true
+    toc_depth: 3
+    toc_float: yes
+    theme: paper
 editor_options: 
   chunk_output_type: console
 ---
 
+
 ```{r}
 library(tidyverse)
+library(funFEM)
+library(ggrepel)
 
-theme_set(theme_classic(18))
+theme_set(theme_classic(18) +
+            theme(legend.position = "bottom"))
+
+knitr::opts_chunk$set(warning = FALSE,
+                      message = FALSE)
 
 # library(tidytuesdayR)
 # tuesdata <- tidytuesdayR::tt_load('2021-03-23')
@@ -39,6 +55,8 @@ issues <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tid
 <!-- r.unvotes -->
 <!-- ``` -->
 
+# The 5 permanent members of the security council
+
 ```{r}
 # unvotes %>% dplyr::filter(country == "United Kingdom")
 
@@ -52,15 +70,139 @@ unvotes_5_joined = unvotes_5 %>%
     year = lubridate::year(date))
 ```
 
+## Aggregated voting patterns of the 5 countries
+
 ```{r}
-unvotes_5_joined %>% 
+unvotes_5_percent = unvotes_5_joined %>% 
   group_by(year, country_code, vote) %>% 
   tally() %>% 
+  group_by(year, country_code) %>% 
+  dplyr::mutate(percent = n/sum(n),
+                vote = vote %>% fct_relevel("no", "abstain")) %>% 
+  ungroup()
+
+unvotes_5_percent %>% 
   ggplot(aes(x = year, 
-             y = n,
+             y = percent,
              colour = country_code)) +
-  # geom_point() +
   geom_line() + 
   facet_wrap(~vote, nrow = 3)
+
+unvotes_5_percent %>% 
+  ggplot(aes(x = year, 
+             y = percent,
+             fill = vote)) +
+  geom_col() +
+  scale_y_continuous(labels = scales::percent) +
+  scale_fill_brewer(palette = "Set1") +
+  facet_wrap(~country_code, nrow = 3)
 ```
+
+## Voting patterns of the 5 countries, split by issues
+
+```{r}
+unvotes_5_percent = unvotes_5_joined %>% 
+  group_by(year, country_code, vote, issue) %>% 
+  tally() %>% 
+  group_by(year, country_code, issue) %>% 
+  dplyr::mutate(percent = n/sum(n),
+                vote = vote %>% fct_relevel("no", "abstain")) %>% 
+  ungroup()
+
+unvotes_5_percent %>% 
+  ggplot(aes(x = year, 
+             y = percent,
+             colour = country_code)) +
+  geom_line() + 
+  facet_wrap(~vote, nrow = 3)
+
+unvotes_5_percent %>% 
+  ggplot(aes(x = year, 
+             y = percent,
+             fill = vote)) +
+  geom_col() +
+  scale_y_continuous(labels = scales::percent) +
+  scale_fill_brewer(palette = "Set1") +
+  facet_grid(issue~country_code)
+```
+
+# Clustering on 100 countries
+
+We first calculate the percentage a country voted "yes" in a given year. We will filter for the 100 countries with the most votes (plus some hand-selected ones). 
+
+```{r}
+unvotes_joined = unvotes %>% 
+  inner_join(roll_calls, by = "rcid") %>% 
+  inner_join(issues, by = "rcid") %>% 
+  dplyr::mutate(
+    year = lubridate::year(date)) %>% 
+  dplyr::select(country, year, issue, vote)
+
+unvotes_joined_percent = unvotes_joined %>% 
+  # dplyr::filter(issue == "Colonialism") %>%
+  group_by(year, country, vote) %>% 
+  tally() %>% 
+  group_by(year, country) %>% 
+  dplyr::mutate(percent = n/sum(n)) %>% 
+  dplyr::filter(vote == "yes") %>% 
+  dplyr::select(-n, -vote)
+
+selected_countries = unvotes_joined %>% 
+  group_by(country) %>% 
+  tally() %>% 
+  dplyr::arrange(desc(n)) %>% 
+  dplyr::slice(1:100)
+
+unvotes_joined_percent_wide = unvotes_joined_percent %>% 
+  dplyr::filter(country %in% c(selected_countries$country, "China")) %>% 
+  pivot_wider(names_from = "country",
+              values_from = "percent") %>% 
+  dplyr::mutate(across(.fns = ~coalesce(.x, 0))) %>% 
+  ungroup()
+
+unvotes_joined_percent_wide_mat = unvotes_joined_percent_wide %>% 
+  as.data.frame() %>% 
+  tibble::column_to_rownames(var = "year") %>% 
+  as.matrix()
+```
+
+```{r}
+hc <- hclust(dist(t(unvotes_joined_percent_wide_mat)), "ave")
+plot(hc)
+```
+
+
+```{r}
+basis <- create.bspline.basis(c(0, nrow(unvotes_joined_percent_wide_mat)), nbasis = 30, norder = 4) # norder=4 : cubic spline
+fdobj <- smooth.basis(argvals = seq_len(nrow(unvotes_joined_percent_wide_mat)), 
+                      y = unvotes_joined_percent_wide_mat, 
+                      basis)$fd
+
+res <- funFEM(fdobj, K = 12, model = "AkjBk")
+```
+
+```{r, fig.width = 20, fig.height=12}
+unvotes_joined_percent_plotdf = unvotes_joined_percent %>% 
+  inner_join(tibble(
+    country = colnames(unvotes_joined_percent_wide_mat), 
+    cluster = res$cls), 
+    by = "country") %>% 
+  group_by(cluster, country) %>% 
+  dplyr::mutate(
+    # label = ifelse(year == max(year), country, NA)
+    label = ifelse(year == sample(year, 1), country, NA))
+
+
+unvotes_joined_percent_plotdf %>% 
+  ggplot(aes(x = year, 
+             y = percent,
+             group = country,
+             label = label)) +
+  geom_line(size = 0.1) +
+  ggrepel::geom_text_repel(colour = "#3079ff",
+                           fontface = "bold",
+                           size = 4) +
+  facet_wrap(~cluster, labeller = label_both)
+```
+
 
