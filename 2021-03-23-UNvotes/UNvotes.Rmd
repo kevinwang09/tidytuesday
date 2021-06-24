@@ -173,7 +173,8 @@ plot(hc)
 
 
 ```{r}
-basis <- create.bspline.basis(c(0, nrow(unvotes_joined_percent_wide_mat)), nbasis = 30, norder = 4) # norder=4 : cubic spline
+set.seed(20210624)
+basis <- create.bspline.basis(c(0, nrow(unvotes_joined_percent_wide_mat)), nbasis = 20, norder = 4) # norder=4 : cubic spline
 fdobj <- smooth.basis(argvals = seq_len(nrow(unvotes_joined_percent_wide_mat)), 
                       y = unvotes_joined_percent_wide_mat, 
                       basis)$fd
@@ -194,6 +195,18 @@ unvotes_joined_percent_plotdf = unvotes_joined_percent %>%
 
 
 unvotes_joined_percent_plotdf %>% 
+  ggplot(aes(x = year, 
+             y = percent,
+             group = country,
+             label = label)) +
+  geom_line(size = 0.1) +
+  ggrepel::geom_text_repel(colour = "#3079ff",
+                           fontface = "bold",
+                           size = 4) +
+  facet_wrap(~cluster, labeller = label_both)
+
+unvotes_joined_percent_plotdf %>% 
+  dplyr::filter(cluster %in% c(3, 4, 5, 6, 8, 12)) %>% 
   ggplot(aes(x = year, 
              y = percent,
              group = country,
