@@ -204,7 +204,10 @@ unvotes_joined_percent_plotdf %>%
                            fontface = "bold",
                            size = 4) +
   facet_wrap(~cluster, labeller = label_both)
+```
 
+
+```{r, fig.width = 10, fig.height=6}
 unvotes_joined_percent_plotdf %>% 
   dplyr::filter(cluster %in% c(3, 4, 5, 6, 8, 12)) %>% 
   ggplot(aes(x = year, 
@@ -215,6 +218,7 @@ unvotes_joined_percent_plotdf %>%
   ggrepel::geom_text_repel(colour = "#3079ff",
                            fontface = "bold",
                            size = 4) +
+  scale_y_continuous(labels = scales::percent) +
   facet_wrap(~cluster, labeller = label_both)
 ```
 
