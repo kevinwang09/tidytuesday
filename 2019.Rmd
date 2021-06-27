@@ -56,7 +56,7 @@ I will merge this analysis with Cricinformatics soon.
 # 2019 Aug 13 - Roman Emperors
 
 
-RMarkdown generated HTML document is [here](2019-08-13/emperors.html).
+RMarkdown generated HTML document is [here](2019-08-13-emperors/emperors.html).
 
 Summary of findings: 
 
@@ -64,7 +64,7 @@ Summary of findings:
   + Being an emperor is a highly risky job. You are more likely to die from assassination than any other causes. 
   + A good advice on having a long reign is to make your rise to power be somewhat peaceful. That means you better be someone who can inherit the empire through birthright. 
 
-<img src="2019-08-13/boxplot_reign.png" width="600" height="400" />
+<img src="2019-08-13-emperors/boxplot_reign.png" width="600" height="400" />
   
   + The previous analysis gave me an idea to set up a framework to do a survival analysis of the time which emperors reign. 
     
@@ -74,7 +74,7 @@ Summary of findings:
       1. If an emperor dies of other causes, then I will interpret that to mean this emperor has his life cut-short. So in the language of survival analysis, I will label this emperor as "censored". 
       1. Of course, this analysis is problematic because each observation is not independent. I mean, these emperors love killing each other! But this is a very simple attempt to incorporate the problem of unnatural death into an analysis of the reign of emperors based on their original rise to power. 
   
-<img src="2019-08-13/surv_plot_emperor_rise.png" width="400" height="300" />
+<img src="2019-08-13-emperors/surv_plot_emperor_rise.png" width="400" height="300" />
 
   + Below: timeline plot combining cause of death and rise of power. 
       
@@ -85,12 +85,12 @@ Summary of findings:
       
   
   
-<img src="2019-08-13/timeline_plot.png" width="600" height="400" />  
+<img src="2019-08-13-emperors/timeline_plot.png" width="600" height="400" />  
   
 
 # 2019 Jul 23 - Birds impact
 
-Report can be found [here](2019-07-23/bird_impacts.html).
+Report can be found [here](2019-07-23-bird_impacts/bird_impacts.html).
 
 Summary of findings: 
 
@@ -99,11 +99,11 @@ Summary of findings:
   + As expected, we find that the birds impact incidents are seasonal with less incidents during the winter months. However, we cannot conclude whether this is due to inactivities of birds during these months or due to reduced number of flights. 
   
   
-  <img src="2019-07-23/incidents_2018.gif" width="600" height="400" />
+  <img src="2019-07-23-bird_impacts/incidents_2018.gif" width="600" height="400" />
   
   + Another interesting trend is that there is a dip in the number of incidents around June every year. And this dip was only visible for flights around night times. This could be due to the scheduling of the flights around this time of the year.
   
-  <img src="2019-07-23/combine_trace_plot.png" width="800" height="600" />
+  <img src="2019-07-23-bird_impacts/combine_trace_plot.png" width="800" height="600" />
 
 
 **Key things that I learnt**: 
@@ -113,14 +113,14 @@ Summary of findings:
 
 # 2019 May 28 - Wines around the world
 
-Report can be found [here](2019-05-28/wine.html)
+Report can be found [here](2019-05-28-wine/wine.html)
 
 Summary: I chose not to publish a thorough detailed analysis because I have used this dataset for teaching purposes at my institution. 
 
 
 # 2019 May 21 - Plastic waste
 
-Report can be found [here](2019_05_21/2019_05_21.html)
+Report can be found [here](2019_05_21-plastic/2019_05_21.html)
 
 Summary: It is known that there is a positive correlation between GDP of a country and the amount of plastic waste produced by a country. One reason for this is that wealthier nations demands more goods/resources and therefore produces more waste during consumptions. There are many wonderful visualisations of this trend already on Twitter. 
 
@@ -131,12 +131,12 @@ I am personally interested in another metric: GDP growth. My reasoning is that w
   + `gganimate` package went through significant updates since I used it in 2016. The package's functionalities have been enhanced, particularly in respect to the speed/aesthetics of the transitions. 
   + Additionally, the `ggpubr` package provides some important functions that allows rapid annotations on ggplot figures (in this case, correlation value). 
 
-<img src="2019_05_21/gdp_growth_vs_plastic_per_cap.gif" width="600" height="400" />
+<img src="2019_05_21-plastic/gdp_growth_vs_plastic_per_cap.gif" width="600" height="400" />
 
 
 # 2018 Apr 02 - US Tuition 
 
-Report can be found [here](2018-04-02/US_tuition.html)
+Report can be found [here](2018-04-02-US-tuition/US_tuition.html)
 
 Summary: It is known that the cost of US university tuition fee has increased in the past decades. The original data is somewhat limited in scope since there are only `state`, `year` and `cost` variables. 
 
@@ -150,7 +150,7 @@ Interestingly, for most regions/states, the ratio is rather stable or slightly i
   + The `ggiraph` package has received some very powerful updates since the last time I used it in 2016. In some areas, I believe it has better aesthetics/grammar than `plotly` (a default interactive plotting package in my area). 
 
 ```{r, fig.width = 15, fig.height = 6}
-complete_merge_data = readRDS("2018-04-02/complete_merge_data.RDS")
+complete_merge_data = readRDS("2018-04-02-US-tuition/complete_merge_data.RDS")
 
 ratio_region_plot = complete_merge_data %>% 
   dplyr::mutate(Region = fct_reorder(Region, cost_gdp_ratio, .fun = median)) %>% 

@@ -1,0 +1,236 @@
+---
+title: "Wine data"
+author: "Kevin Wang"
+date: "5/30/2019"
+output:
+  html_document:
+    code_folding: hide
+    fig_height: 8
+    fig_width: 8
+    toc: yes
+    number_sections: true
+    toc_depth: 3
+    toc_float: yes
+editor_options: 
+  chunk_output_type: console
+---
+
+# Loading the packages
+```{r}
+library(tidyverse)
+```
+
+
+
+# Load data
+
+```{r}
+rawData = read_csv("winemag-data-130k-v2.csv") %>% 
+  janitor::clean_names()
+
+rawData
+```
+
+
+
+
+
+# Does price correlates with points?
+
+
+
+We wish to look into the relationship between points and price of the wine. We will mostly use `ggplot2` for visualisation and `lm` for linear regression. 
+
+
+## Visualisation
+
+```{r}
+rawData %>% 
+  ggplot(aes(x = points, y = price)) +
+  geom_point()
+```
+
+Note the discrete nature of the points rating and also the slightly increasing trend in the data. This implies that a highly rated wine will likely be highly priced as well. However, due to the price can be orders of magnitude different for different wine, we will need to use a logarithm scale on the y-axis. 
+
+
+```{r}
+rawData %>% 
+  ggplot(aes(x = points, y = price)) +
+  geom_point() + 
+  geom_smooth(method = "lm") +
+  scale_y_log10()
+```
+
+
+## Linear modelling
+
+We will create a new dataset, `clean_data`, with an extra column called `log10price` before performing linear regression modelling. 
+
+
+```{r}
+clean_data = rawData %>% 
+  dplyr::mutate(log10price = log10(price))
+
+
+M = lm(log10price ~ points, data = clean_data)
+
+plot(clean_data$points, clean_data$log10price)
+abline(M, col = "red")
+
+M
+
+
+summary(M)
+
+cor(clean_data$points, 
+    clean_data$log10price, use = "pairwise.complete.obs")
+```
+
+The linear model tells us as the rating point increase by 1, we will see an increase in the log10 price of 0.057. Taking the exponential of 10, this means every point increase of 1 translate to 10^0.057 = 1.14 fold increase in pricing (i.e. 14% increase). 
+
+
+# Which country produces the most expensive wine?
+
+
+## Bad visualisation
+
+This is a bad visualisation since we have way too many countries and also some countries has very small production. 
+
+```{r}
+clean_data %>% 
+  ggplot(aes(x = country, y = log10price)) +
+  geom_boxplot() +
+  labs(title = "This is ugly")
+
+table(clean_data$country)
+```
+
+## Further manipulation of the data to make better visualisation
+
+In a new data `subset_data`, we will only retain the top 8 countries with the highest production of wine by label. All other countries will be lumped into a category called "Others". This is through the use of the function `fct_lump` in the `forcats` package. 
+
+Then, we will reorder the countries by their median log 10 price (as oppose to alphabetical ordering). 
+
+```{r}
+subset_data = clean_data %>% 
+  dplyr::mutate(
+    country_lumped = forcats::fct_lump(f = country, n = 8) %>% 
+      fct_reorder(log10price, .fun = median, na.rm = TRUE)
+  )
+
+
+table(subset_data$country_lumped)
+
+
+
+subset_data %>% 
+  ggplot(aes(x = country_lumped, 
+             y = log10price)) +
+  geom_boxplot() +
+  labs(title = "Log10 price of wine for different countries")
+```
+
+
+
+# Which Australian state produces the most expensive wine?
+
+
+```{r}
+aus_data = subset_data %>% 
+  dplyr::filter(country == "Australia") %>% 
+  dplyr::mutate(variety = fct_lump(variety, n = 5))
+
+
+
+aus_data %>% 
+  ggplot(aes(x = fct_reorder(province, log10price, median, na.rm = TRUE), 
+             y = log10price)) +
+  geom_boxplot() +
+  labs(title = "Log 10 price of Australian wine, by states")
+
+
+aus_data %>% 
+  ggplot(aes(x = points, y = log10price)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  facet_wrap(~province) +
+  labs(title = "Log 10 price vs wine rating of Australian wine, by states")
+```
+
+
+
+# Visualising the wine varieties in each state
+
+```{r}
+aus_data_summ = aus_data %>% 
+  group_by(province, variety) %>% 
+  dplyr::tally() %>% 
+  group_by(province) %>% 
+  dplyr::mutate(prop = n/sum(n))
+
+aus_data_summ
+
+aus_data_summ %>% 
+  ggplot(aes(x = province, y = prop, fill = variety)) +
+  geom_col() +
+  labs("Proportion of wine variety across Australian states")
+```
+
+
+# Chi-square test for NSW and SA wine variety
+
+We will now focus on NSW and SA wine production. We theorise that these two states has very different varieties of wine. And we will use a Chi-square test. H0: The wine variety variable is independent for the states. H1: Not H0. 
+
+```{r}
+chi_data = aus_data %>% 
+  dplyr::filter(province %in% c("New South Wales", "South Australia"))
+
+chi_data
+
+table(chi_data$province, chi_data$variety)
+
+table(chi_data$province, chi_data$variety) %>% chisq.test()
+```
+
+
+Since we have p < 0.05, we will reject H0 in favour of H1. 
+
+
+# Two sample t-test on price
+
+We theorise that NSW and TAS has very different mean log10-price for their wine. We will perform a two-sample t-test. 
+H0: mean of NSW is the same as mean of TAS. 
+H0: mean of NSW is not the same as mean of TAS. 
+
+```{r}
+nsw_tas_data = aus_data %>% 
+  dplyr::filter(province %in% c("New South Wales", "Tasmania"))
+
+
+nsw_tas_data %>% 
+  ggplot(aes(x = log10price, 
+             y = ..density..)) +
+  geom_histogram(aes(fill = province)) + 
+  geom_density() +
+  facet_wrap(~province, nrow = 2) +
+  labs(title = "We note the small right skewness in NSW")
+
+
+nsw_tas_data %>% 
+  ggplot(aes(x = province, y = log10price)) +
+  geom_boxplot()
+
+
+t.test(log10price ~ province, data = nsw_tas_data)
+```
+
+As p < 0.05, we will reject H0 in favour of H1. 
+
+
+
+# Session Info
+
+```{r}
+sessionInfo()
+```
+

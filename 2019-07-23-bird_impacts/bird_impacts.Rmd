@@ -1,0 +1,379 @@
+---
+title: "Bird Impacts"
+author: "Kevin Wang"
+date: "5/30/2019"
+output:
+  html_document:
+    code_folding: hide
+    fig_height: 10
+    fig_width: 10
+    toc: yes
+    number_sections: true
+    toc_depth: 3
+    toc_float: yes
+editor_options: 
+  chunk_output_type: console
+---
+
+# Loading the packages
+```{r}
+library(tidyverse)
+library(janitor)
+library(skimr)
+library(maps)
+library(gganimate)
+library(ggpubr)
+
+theme_set(theme_classic(18) +
+            theme(legend.position = "bottom"))
+```
+
+
+
+# Load data
+
+```{r}
+raw_data = read_csv("bird_impacts.csv") %>% 
+  janitor::clean_names() %>% 
+  dplyr::mutate(incident_month = factor(incident_month), 
+                incident_year = factor(incident_year), 
+                month = lubridate::month(incident_date, label = TRUE, abbr = TRUE))
+
+raw_data %>% 
+  skimr::skim()
+```
+
+
+This data has a large number of missing data in some fields. It seems like we should consider analysing individual variables 
+
+# Does particular months has more birds impacts?
+
+We put forward the hypothesis that some months has more impacts due to weather and bird behaviours. 
+
+We will also visualise the number of incidence per year per month to detect any report-time bias in the data. 
+
+
+```{r}
+month_summ = raw_data %>% 
+  dplyr::group_by(incident_year, month) %>% 
+  dplyr::count()
+
+
+month_trace_plot = ggplot(month_summ, 
+                          aes(x = month, 
+                              y = n, 
+                              colour = incident_year, 
+                              group = incident_year)) +
+  geom_line() +
+  labs(title = "Number of birds impacts per year per month",
+       y = "Number of incidents") +
+  theme(legend.title = element_blank()) +
+  guides(colour = guide_legend(nrow = 3, byrow = TRUE))
+
+month_trace_plot
+```
+
+These numbers should be scaled by the number of flights in the US every year. This analysis will be delayed. 
+
+It should be clear that the number of impacts are lower in the winter (Dec to Feb) and both spring and autumn has a higher number of impacts. It is interesting that there is a dip in June every year. This could be caused by some sampling bias or somthing about bird behaviours. 
+
+
+# Geographical analysis of incidence in 2018
+```{r}
+state_data = tibble::tibble(
+  state_abb = datasets::state.abb, 
+  state_name = tolower(datasets::state.name),
+  state_division = datasets::state.division
+) 
+#########################
+
+state_summ = raw_data %>% 
+  dplyr::filter(incident_year == 2018) %>% 
+  dplyr::mutate(state = factor(state)) %>% 
+  dplyr::group_by(month, state, .drop = FALSE) %>% 
+  dplyr::tally() %>% 
+  ungroup() %>% 
+  left_join(state_data, by = c("state" = "state_abb"))
+
+state_summ
+
+summary(state_summ$n)
+
+#################
+us_states <- map_data("state") %>% 
+  left_join(state_summ, by = c("region" = "state_name")) %>% 
+  dplyr::filter(complete.cases(month))
+
+ggplot(data = us_states,
+       mapping = aes(x = long, y = lat,
+                     group = group)) +
+  geom_polygon(aes(fill = n), colour = "black") +
+  facet_wrap(~month) +
+  scale_fill_distiller(palette = "Reds", direction = 1) +
+  labs(title = "No. of bird impacts in 2018") +
+  theme_void(18) +
+  theme(legend.position = "bottom")
+```
+
+https://socviz.co/maps.html
+
+
+## gganimate version
+```{r}
+gif = ggplot(data = us_states,
+             mapping = aes(x = long, y = lat,
+                           group = group)) +
+  geom_polygon(aes(fill = n), colour = "black") +
+  scale_fill_distiller(palette = "Reds", direction = 1) +
+  theme_void(18) +
+  theme(legend.position = "bottom") +
+  transition_states(month,
+                    transition_length = 0.1,
+                    state_length = 0.5) +
+  ease_aes('linear') +
+  labs(title = "No. of bird impacts in 2018",
+       subtitle = "Month: {closest_state}")
+
+
+anim_save(filename = "incidents_2018.gif",
+          animation = gif, width = 800)
+
+```
+
+# Are there more impacts at night? 
+```{r}
+time_summ = raw_data %>% 
+  dplyr::filter(complete.cases(time_of_day)) %>% 
+  dplyr::group_by(incident_year, month, time_of_day) %>% 
+  dplyr::count()
+
+
+time_trace_plot = ggplot(time_summ, 
+                         aes(x = month, 
+                             y = n, 
+                             colour = incident_year, 
+                             group = interaction(incident_year, time_of_day))) +
+  geom_line() +
+  facet_grid(~ time_of_day) +
+  labs(title = "Number of birds incidents during the time of day",
+       y = "Number of incidents") +
+  theme(legend.title = element_blank(), 
+        axis.text.x = element_text(angle = 90),
+        legend.position = "none")
+
+time_trace_plot
+```
+
+
+Interestingly, the dipping effect in June was only visible at night times. 
+
+
+```{r}
+combine_trace_plot = cowplot::plot_grid(
+  month_trace_plot,
+  time_trace_plot,
+  nrow = 2,
+  rel_heights = c(2, 1))
+
+combine_trace_plot
+
+ggsave(plot = combine_trace_plot, 
+       filename = "combine_trace_plot.png",
+       width = 12, height = 8)
+```
+
+
+
+# Height and incidence rate
+
+```{r}
+complete_phase = raw_data %>% 
+  dplyr::filter(complete.cases(phase_of_flt)) %>% 
+  dplyr::mutate(
+    phase_of_flt = tolower(phase_of_flt),
+     phase_of_flt_cat = phase_of_flt %>% 
+      forcats::fct_lump(n = 15) %>% 
+      forcats::fct_lump_min(min = 5) %>% 
+       forcats::fct_infreq(),
+     log_height = log10(height + 1)
+  )
+
+table(complete_phase$phase_of_flt_cat)
+
+complete_phase %>% 
+  ggplot(aes(x = phase_of_flt_cat)) +
+  geom_bar()
+
+
+complete_phase %>% 
+  ggplot(aes(x = log_height)) +
+  geom_histogram() +
+  facet_wrap(~phase_of_flt_cat, scales = "free")
+
+complete_phase %>% 
+  dplyr::filter(log_height > 0) %>% 
+  ggplot(aes(x = log_height)) +
+  geom_histogram(bins = 30) +
+  facet_wrap(~phase_of_flt_cat, scales = "free")
+```
+
+
+
+## Visualisation on cost of repair
+```{r}
+table(is.na(complete_phase$cost_repairs_infl_adj))
+summary(complete_phase$cost_repairs_infl_adj)
+hist(complete_phase$cost_repairs_infl_adj)
+
+complete_cost_data = complete_phase %>% 
+  dplyr::filter(complete.cases(cost_repairs_infl_adj)) %>% 
+  dplyr::rename(cost_repairs = cost_repairs_infl_adj) %>% 
+  dplyr::mutate(
+    atype_cat = atype %>% 
+      forcats::fct_lump(n = 15) %>% 
+      forcats::fct_lump_min(min = 5) %>%
+      forcats::fct_reorder(cost_repairs, .fun = median),
+    species_cat = species %>% 
+      forcats::fct_lump(n = 20) %>% 
+      forcats::fct_lump_min(min = 5) %>%
+      forcats::fct_infreq(),
+    phase_of_flt = forcats::fct_infreq(phase_of_flt)
+    ) %>% 
+  tidyr::separate(atype,
+                  into = c("acompany", "amodel", "avariant"), 
+                  sep = "-", 
+                  remove = FALSE)
+
+complete_cost_data %>% 
+  group_by(atype_cat) %>% 
+  summarise(median(cost_repairs))
+
+
+complete_cost_data %>% 
+  dplyr::filter(atype_cat != "Other") %>% 
+  ggplot(aes(x = atype_cat, 
+             y = cost_repairs,
+             fill = acompany)) +
+  # geom_violin(width = 1) +
+  geom_boxplot(width = 0.5) +
+  scale_y_log10(label = scales::comma) +
+  ggsci::scale_fill_nejm() +
+  coord_flip()
+
+
+complete_cost_data %>% 
+  dplyr::filter(species_cat != "Other") %>% 
+  ggplot(aes(x = species_cat, 
+             y = cost_repairs)) +
+  # geom_violin(width = 1) +
+  geom_boxplot(width = 0.5) +
+  scale_y_log10(label = scales::comma) +
+  ggsci::scale_fill_nejm() +
+  coord_flip()
+
+
+complete_cost_data %>% 
+  group_by(phase_of_flt, species_cat, .drop = FALSE) %>% 
+  dplyr::count() %>% 
+  ggplot(aes(x = phase_of_flt, 
+             y = species_cat, 
+             fill = n,
+             label = n)) +
+  geom_tile() +
+  geom_text() +
+  scale_fill_distiller(palette = "Spectral")
+
+
+complete_cost_data %>% 
+  ggplot(aes(x = month, 
+             y = cost_repairs)) +
+  # geom_violin(width = 1) +
+  geom_boxplot(width = 0.5) +
+  scale_y_log10(breaks = c(1e4, 2e4, 5e4, 7e4, 
+                           1e5, 2e5, 5e5, 7e5, 
+                           1e6, 2e6, 5e6, 7e6), 
+                label = scales::comma)
+```
+
+
+
+```{r}
+library(ggparty)
+
+complete_cost_data %>% skimr::skim()
+
+cost_data_reg = complete_cost_data %>% 
+  dplyr::filter(complete.cases(sky), 
+                # complete.cases(phase_of_flt),
+                complete.cases(speed), 
+                complete.cases(height),
+                complete.cases(damage),
+                complete.cases(time_of_day)) %>% 
+  dplyr::transmute(
+    sky, 
+    # phase_of_flt, 
+    damage_three = forcats::fct_recode(damage, "M" = "M?") %>% 
+      forcats::fct_relevel("N"),
+    speed, 
+    log_height = log10(height + 1L), 
+    time_of_day, 
+    log_cost_repairs = log10(cost_repairs),
+  ) %>% as.data.frame()
+
+
+lm(log_cost_repairs ~ ., data = cost_data_reg) %>% 
+  broom::tidy()
+
+library(randomForest)
+
+rf = randomForest::randomForest(
+  x = model.matrix(log_cost_repairs ~., data = cost_data_reg),
+  y = cost_data_reg$log_cost_repairs)
+
+varImpPlot(rf)
+
+
+cost_data_reg %>% 
+  ggplot(aes(x = log_height, 
+             y = log_cost_repairs,
+             colour = damage_three)) +
+  geom_point() +
+  geom_smooth(method = "loess")
+
+cost_data_reg %>% 
+  dplyr::filter(log_height > 0) %>% 
+  ggplot(aes(x = log_height, 
+             y = log_cost_repairs,
+             colour = damage_three)) +
+  geom_point() +
+  geom_smooth(method = "loess")
+```
+
+
+
+```{r}
+library(ggparty)
+
+cost_data_reg = cost_data_reg %>%
+  dplyr::mutate_if(is.character, as.factor)
+
+tree <- ctree(log_cost_repairs ~ ., data = cost_data_reg)
+
+ggparty(tree, horizontal = TRUE, terminal_space = 0.6) +
+  geom_edge() +
+  geom_edge_label() +
+  geom_node_splitvar() +
+  geom_node_plot(gglist = list(
+    geom_density(aes(x = log_cost_repairs))),
+    shared_axis_labels = TRUE)
+```
+
+
+
+https://cran.r-project.org/web/packages/geofacet/index.html
+# Session Info
+
+```{r}
+sessionInfo()
+```
+
