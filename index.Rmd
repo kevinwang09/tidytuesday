@@ -59,6 +59,8 @@ Some interesting points in producing this plot:
 + The `plotly` (yyds!) package in `R` offers a good interface to Mapbox, and it is what I chose for my final visualisation.
 + I would also highly recommend `mapdeck` [(link)](https://symbolixau.github.io/mapdeck/index.html) package. It has a slightly different look to what `plotly` offers but could be just as good. 
 
+**Click the legend to interact with the map**, e.g. you can double click "fox" to only display foxes around the city. 
+
 ```{r}
 subdata = readRDS(file = "2021-06-29-animal-rescues/sub_animal_rescues.rds")
 
@@ -73,7 +75,7 @@ fig = subdata %>%
               hoverinfo = 'animal_type')
 
 fig = fig %>% 
-  layout(title = 'Where were animals rescued around London',
+  layout(title = 'Animals rescued around London',
          font = list(color='white'),
          plot_bgcolor = '#191A1A', 
          paper_bgcolor = '#191A1A',

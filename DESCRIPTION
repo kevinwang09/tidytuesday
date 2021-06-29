@@ -12,4 +12,6 @@ Imports:
   DT,
   pkgdown,
   sessioninfo
+  plotly,
+  knitr
   
