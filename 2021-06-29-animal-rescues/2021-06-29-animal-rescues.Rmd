@@ -37,11 +37,19 @@ animal_rescues <- readr::read_csv(file = "./animal_rescues.csv")
 skimr::skim(animal_rescues)
 ```
 
+# Original animal grouping
 ```{r}
-animal_rescues$animal_group_parent %>% table
+table(animal_rescues$animal_group_parent) %>% knitr::kable()
 ```
 
 # Selecting columns/cleaning up data for visualisation
+
+The main improvements are: 
+
++ Coerced date time.
++ Animal are collapsed into 8 types only for easy visualisations.
++ Error entry of a bird with latitude and longitude of zero was removed.
+
 ```{r}
 subdata = animal_rescues %>% 
   dplyr::transmute(
@@ -64,14 +72,8 @@ subdata = animal_rescues %>%
 
 # subdata
 # glimpse(subdata)
-subdata$animal_type %>% table
+table(subdata$animal_type) %>% knitr::kable()
 ```
-
-```{r}
-catdata = subdata %>% 
-  dplyr::filter(animal_type == "cat")
-```
-
 
 # Mapbox visualisation using `plotly`
 
@@ -107,23 +109,27 @@ fig = fig %>%
 fig
 ```
 
-
-# Mapbox visualisation using `mapdeck`
-
-```{r, eval = FALSE}
-library(mapdeck)
-set_token(Sys.getenv("MAPBOX_AUTH"))
-# mapdeck(token = mapdeck(token = 'your_token'))
-mapdeck::mapdeck(style = mapdeck_style('dark')) %>% 
-  mapdeck::add_scatterplot(
-    data = subdata,
-    lat = "latitude",
-    lon = "longitude",
-    tooltip = "animal_type",
-    radius = 200,
-    fill_colour = "animal_type",
-    palette = "viridis",
-    legend = TRUE
-  )
+# Saving `subdata` for visulisation in the main page 
+```{r}
+saveRDS(subdata, file = "sub_animal_rescues.rds")
 ```
+
+<!-- # Mapbox visualisation using `mapdeck` -->
+
+<!-- ```{r, eval = FALSE} -->
+<!-- library(mapdeck) -->
+<!-- set_token(Sys.getenv("MAPBOX_AUTH")) -->
+<!-- # mapdeck(token = mapdeck(token = 'your_token')) -->
+<!-- mapdeck::mapdeck(style = mapdeck_style('dark')) %>%  -->
+<!--   mapdeck::add_scatterplot( -->
+<!--     data = subdata, -->
+<!--     lat = "latitude", -->
+<!--     lon = "longitude", -->
+<!--     tooltip = "animal_type", -->
+<!--     radius = 200, -->
+<!--     fill_colour = "animal_type", -->
+<!--     palette = "viridis", -->
+<!--     legend = TRUE -->
+<!--   ) -->
+<!-- ``` -->
 

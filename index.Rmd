@@ -9,6 +9,8 @@ output:
 ---
 
 ```{r, message = FALSE, echo = FALSE}
+knitr::opts_chunk$set(warning = FALSE,
+                      message = FALSE)
 library(tidyverse)
 ```
 
@@ -19,7 +21,7 @@ This webpage was originally designed to host all of my work for the [tidytuesday
 
 However, as a data scientist, I often need a quick workspace to host all my other statistical analytics. Hence, as my analytical interests are not limited to just tidytuesday datasets, I also use this repo to host a whole range RMarkdown HTML reports. 
 
-This webpage was deployed through GitHub Actions and GitHub Pages and divided into years. 
+This webpage was deployed using GitHub Pages and divided into years. 
 
 # 2021-03-23 UNvotes
 
@@ -41,4 +43,58 @@ Main findings:
 + A number of European countries showed very similar voting patterns. Interestingly, Australia and New Zealand are also in this group. See cluster 3 and 8. 
 + South American countries are clustered together in cluster 5 and Middle Eastern countries (along with China) are in cluster 12. 
 
-<img src="2021-03-23-UNvotes/UNvotes_clustering.png" width="1000" height="600" />
+<img src="2021-03-23-UNvotes/UNvotes_clustering.png" width="1000" height="500" />
+
+# 2021-06-29 Animal rescue in London
+
+Codes are available [here](2021-06-29-animal-rescues/2021-06-29-animal-rescues.html).
+
+This dataset records the animal rescued around the city of London. The main aim of this analysis is to visualise the spatial distribution of the animal types around the city. 
+
+The main visualisation used here are `plotly` and Mapbox. 
+
+Some interesting points in producing this plot:
+
++ I would highly recommend Mapbox for its elegant looks for relatively simple coding efforts. Even though Mapbox requires you to register, I find that it offers a generous amount of free queries. 
++ The `plotly` (yyds!) package in `R` offers a good interface to Mapbox, and it is what I chose for my final visualisation.
++ I would also highly recommend `mapdeck` [(link)](https://symbolixau.github.io/mapdeck/index.html) package. It has a slightly different look to what `plotly` offers but could be just as good. 
+
+```{r}
+subdata = readRDS(file = "2021-06-29-animal-rescues/sub_animal_rescues.rds")
+
+library(plotly)
+Sys.setenv('MAPBOX_TOKEN' = Sys.getenv('MAPBOX_AUTH'))
+
+fig = subdata %>% 
+  plot_mapbox(lat = ~latitude, lon = ~longitude,
+              split = ~animal_type, 
+              size = 2,
+              mode = 'scattermapbox', 
+              hoverinfo = 'animal_type')
+
+fig = fig %>% 
+  layout(title = 'Where were animals rescued around London',
+         font = list(color='white'),
+         plot_bgcolor = '#191A1A', 
+         paper_bgcolor = '#191A1A',
+         mapbox = list(style = 'dark', 
+                       zoom = 7,
+                       center = list(
+                         lat = median(subdata$latitude),
+                         lon = median(subdata$longitude))),
+         legend = list(orientation = 'h',
+                       font = list(size = 8)),
+         margin = list(l = 25, r = 25,
+                       b = 25, t = 25,
+                       pad = 2)) 
+
+fig
+```
+
+
+Main findings: 
+
++ Birds were the only type of animal that is concentrated in the middle of the city. One explanation is that they fly around and when they need rescue, the incidents are reported in places where there are more people. Alternatively, birds are more in dangers in the city due to the high rise buildings. 
++ Most interestingly, foxes were found throughout the city, and a good number of them appeared in the middle of the city too. I personally find that interesting, because I have never seen a fox in city streets/parks before. 
++ As expected, larger animals like horses and deers were rescued on the outskirts of the city. 
++ Cats and dogs are rescued all around the city. Likely because these were dometic pets that ran into danger. 
