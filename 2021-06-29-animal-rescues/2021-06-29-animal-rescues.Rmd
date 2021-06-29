@@ -1,0 +1,129 @@
+---
+title: "Animal rescues"
+author: "Kevin Wang"
+date: "`r paste0('Initiated on 2021 June 29, compiled on ', format(Sys.time(), '%Y %b %d'))`"
+output:
+  html_document:
+    code_folding: hide
+    fig_height: 6
+    fig_width: 10
+    toc: yes
+    number_sections: true
+    toc_depth: 3
+    toc_float: yes
+    theme: paper
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+knitr::opts_chunk$set(warning = FALSE,
+                      message = FALSE)
+```
+
+
+```{r}
+library(tidyverse)
+library(lubridate)
+
+theme_set(theme_classic(18) +
+            theme(legend.position = "bottom"))
+
+# download.file(url = 'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-06-29/animal_rescues.csv', destfile = "./animal_rescues.csv")
+animal_rescues <- readr::read_csv(file = "./animal_rescues.csv")
+```
+
+```{r}
+skimr::skim(animal_rescues)
+```
+
+```{r}
+animal_rescues$animal_group_parent %>% table
+```
+
+# Selecting columns/cleaning up data for visualisation
+```{r}
+subdata = animal_rescues %>% 
+  dplyr::transmute(
+    incident_number, 
+    date_time_of_call = lubridate::dmy_hm(date_time_of_call),
+    animal_type = animal_group_parent %>% tolower,
+    animal_type = case_when(
+      str_detect(animal_type, "farm animal") ~ "farm animal", 
+      str_detect(animal_type, "heavy livestock animal") ~ "farm animal", 
+      animal_type == "bull" ~ "cow",
+      animal_type == "budgie" ~ "bird",
+      animal_type == "pigeon" ~ "bird",
+      # str_detect(animal_type, "unknown") ~ "unknown",
+      TRUE ~ animal_type),
+    animal_type = fct_lump(f = animal_type, n = 8),
+    animal_type_int = animal_type %>% as.factor() %>% as.integer(),
+    latitude = as.numeric(latitude), 
+    longitude = as.numeric(longitude)) %>% 
+  dplyr::filter(complete.cases(latitude), complete.cases(longitude), latitude > 0)
+
+# subdata
+# glimpse(subdata)
+subdata$animal_type %>% table
+```
+
+```{r}
+catdata = subdata %>% 
+  dplyr::filter(animal_type == "cat")
+```
+
+
+# Mapbox visualisation using `plotly`
+
+Click legend to select for specific type of animals.
+
+```{r}
+library(plotly)
+Sys.setenv('MAPBOX_TOKEN' = Sys.getenv('MAPBOX_AUTH'))
+
+fig = subdata %>% 
+  plot_mapbox(lat = ~latitude, lon = ~longitude,
+              split = ~animal_type, 
+              size = 2,
+              mode = 'scattermapbox', 
+              hoverinfo = 'animal_type')
+
+fig = fig %>% 
+  layout(title = 'Rescue animal types',
+         font = list(color='white'),
+         plot_bgcolor = '#191A1A', 
+         paper_bgcolor = '#191A1A',
+         mapbox = list(style = 'dark', 
+                       zoom = 7,
+                       center = list(
+                         lat = median(subdata$latitude),
+                         lon = median(subdata$longitude))),
+         legend = list(orientation = 'h',
+                       font = list(size = 8)),
+         margin = list(l = 25, r = 25,
+                       b = 25, t = 25,
+                       pad = 2)) 
+
+fig
+```
+
+
+# Mapbox visualisation using `mapdeck`
+
+```{r, eval = FALSE}
+library(mapdeck)
+set_token(Sys.getenv("MAPBOX_AUTH"))
+# mapdeck(token = mapdeck(token = 'your_token'))
+mapdeck::mapdeck(style = mapdeck_style('dark')) %>% 
+  mapdeck::add_scatterplot(
+    data = subdata,
+    lat = "latitude",
+    lon = "longitude",
+    tooltip = "animal_type",
+    radius = 200,
+    fill_colour = "animal_type",
+    palette = "viridis",
+    legend = TRUE
+  )
+```
+
