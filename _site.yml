@@ -5,8 +5,10 @@ navbar:
   left:
     - text: "My personal website"
       href: https://kevinwang09.github.io
-    - text: "2020"
+    - text: "Home"
       href: https://kevinwang09.github.io/tidytuesday/
+    - text: "2020"
+      href: https://kevinwang09.github.io/tidytuesday/2020.html
     - text: "2019"
       href: https://kevinwang09.github.io/tidytuesday/2019.html
 output_dir: "."

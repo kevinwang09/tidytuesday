@@ -1,5 +1,5 @@
 ---
-title: "Kevin's secrete repo for data experiments"
+title: "Kevin's TidyTuesdays"
 output:
   html_document:
     code_folding: hide
@@ -21,12 +21,24 @@ However, as a data scientist, I often need a quick workspace to host all my othe
 
 This webpage was deployed through GitHub Actions and GitHub Pages and divided into years. 
 
+# 2021-03-23 UNvotes
 
-# 2020 Jan 03 - bushfire
+Codes are available [here](2021-03-23-UNvotes/UNvotes.html).
 
-This is not a fun exercise. I live in Australia and Australia is now hit with unprecedented number of bushfires. My house is about 30 mins drive from the nearest bushfire this week. I grabbed the NASA - FIRMS data and made a visualisation of the spread of bushfire around my house in the past 30 days. 
+This dataset is on the voting records of countries in United Nations. The main question that I was interested in answering were, which countries had similar voting patterns in the past and how have those shifted and changed over the years. 
 
-See [here](bushfire/NASA_FIRMS.html) for the RMarkdown generated HTML document.
+The main method used here is time series clustering on the percentage of times that a country has voted yes across all issues raised at the UN. 
 
+What I learnt: 
 
-<img src="bushfire/Nowra_fire.gif" width="400" height="300" />
++ `funFEM` can be a great package for functional clustering. However, setting up the basis functions and the number of clusters requires a bit of exploration, as there will be degeneracy if the two numbers are too close to each other. 
++ Doing similar exercise in Python actually made me realise how consistent the `tidyverse` is when wrangling data. 
+
+Main findings: 
+
++ United States had increasing higher percentage of non-yes votes (i.e. voting either no or abstain). See cluster 6. 
++ Former Soviet states voted quite consistently in the past, however, have since diverged. See cluster 4. 
++ A number of European countries showed very similar voting patterns. Interestingly, Australia and New Zealand are also in this group. See cluster 3 and 8. 
++ South American countries are clustered together in cluster 5 and Middle Eastern countries (along with China) are in cluster 12. 
+
+<img src="2021-03-23-UNvotes/UNvotes_clustering.png" width="1000" height="600" />

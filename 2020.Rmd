@@ -1,0 +1,22 @@
+---
+title: "Kevin's TidyTuesdays in 2020"
+output:
+  html_document:
+    code_folding: hide
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+---
+
+```{r, message = FALSE, echo = FALSE}
+library(tidyverse)
+```
+
+# 2020 Jan 03 - bushfire
+
+This was not a fun exercise. I live in Australia and Australia is now hit with unprecedented number of bushfires. My house is about 30 mins drive from the nearest bushfire this week. I grabbed the NASA - FIRMS data and made a visualisation of the spread of bushfire around my house in the past 30 days. 
+
+See [here](bushfire/NASA_FIRMS.html) for the RMarkdown generated HTML document.
+
+
+<img src="bushfire/Nowra_fire.gif" width="400" height="300" />

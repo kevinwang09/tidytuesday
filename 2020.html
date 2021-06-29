@@ -11,7 +11,7 @@
 
 
 
-<title>Kevin’s TidyTuesdays</title>
+<title>Kevin’s TidyTuesdays in 2020</title>
 
 <script src="site_libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -354,7 +354,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Kevin’s TidyTuesdays</h1>
+<h1 class="title toc-ignore">Kevin’s TidyTuesdays in 2020</h1>
 
 </div>
 
@@ -365,24 +365,11 @@ div.tocify {
 <p>However, as a data scientist, I often need a quick workspace to host all my other statistical analytics. Hence, as my analytical interests are not limited to just tidytuesday datasets, I also use this repo to host a whole range RMarkdown HTML reports.</p>
 <p>This webpage was deployed through GitHub Actions and GitHub Pages and divided into years.</p>
 </div>
-<div id="unvotes" class="section level1">
-<h1>2021-03-23 UNvotes</h1>
-<p>Codes are available <a href="2021-03-23-UNvotes/UNvotes.html">here</a></p>
-<p>This dataset is on the voting records of countries in United Nations. The main question that I was interested in answering were, which countries had similar voting patterns in the past and how have those shifted and changed over the years.</p>
-<p>The main method used here is time series clustering on the percentage of times that a country has voted yes across all issues raised at the UN.</p>
-<p>What I learnt:</p>
-<ul>
-<li><code>funFEM</code> can be a great package for functional clustering. However, setting up the basis functions and the number of clusters requires a bit of exploration, as there will be degeneracy if the two numbers are too close to each other.</li>
-<li>Doing similar exercise in Python actually made me realise how consistent the <code>tidyverse</code> is when wrangling data.</li>
-</ul>
-<p>Main findings:</p>
-<ul>
-<li>United States had increasing higher percentage of non-yes votes (i.e. voting either no or abstain). See cluster 6.</li>
-<li>Former Soviet states voted quite consistently in the past, however, have since diverged. See cluster 4.</li>
-<li>A number of European countries showed very similar voting patterns. Interestingly, Australia and New Zealand are also in this group. See cluster 3 and 8.</li>
-<li>South American countries are clustered together in cluster 5 and Middle Eastern countries (along with China) are in cluster 12.</li>
-</ul>
-<p><img src="2021-03-23-UNvotes/UNvotes_clustering.png" width="1000" height="600" /></p>
+<div id="jan-03---bushfire" class="section level1">
+<h1>2020 Jan 03 - bushfire</h1>
+<p>This is not a fun exercise. I live in Australia and Australia is now hit with unprecedented number of bushfires. My house is about 30 mins drive from the nearest bushfire this week. I grabbed the NASA - FIRMS data and made a visualisation of the spread of bushfire around my house in the past 30 days.</p>
+<p>See <a href="bushfire/NASA_FIRMS.html">here</a> for the RMarkdown generated HTML document.</p>
+<p><img src="bushfire/Nowra_fire.gif" width="400" height="300" /></p>
 </div>
 
 
