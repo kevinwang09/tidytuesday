@@ -1,0 +1,63 @@
+---
+title: "2021-04-06-Deforestation"
+author: "Kevin Wang"
+date: "2021 Apr 06"
+output:
+  html_document:
+    code_folding: hide
+    fig_height: 10
+    fig_width: 12
+    toc: yes
+    number_sections: yes
+    theme: paper
+    # keep_md: true
+  pdf_document:
+    toc: yes
+    number_sections: yes
+  word_document: 
+    toc: yes
+    # keep_md: true
+    # reference_docx: "reference.docx"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r global-options, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, 
+                      warning=FALSE, 
+                      message=FALSE)
+```
+
+# Executive summary
+
+```{r, message=FALSE}
+library(tidyverse)
+library(lubridate)
+
+theme_set(theme_bw(18) +
+            theme(legend.position = "bottom"))
+```
+
+
+# Loading data
+```{r}
+filenames = c("forest.csv", "forest_area.csv", "brazil_loss.csv",
+                "soybean_use.csv", "vegetable_oil.csv")
+
+online_files = paste0("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-04-06/",
+              filenames)
+
+purrr::map2(
+  .x = filenames,
+  .y = online_files,
+  .f = ~ download.file(url = .y, destfile = .x)
+)
+
+
+forest <- readr::read_csv('forest.csv')
+forest_area <- readr::read_csv('forest_area.csv')
+# brazil_loss <- readr::read_csv('brazil_loss.csv')
+# soybean_use <- readr::read_csv('soybean_use.csv')
+# vegetable_oil <- readr::read_csv('vegetable_oil.csv')
+```
+
