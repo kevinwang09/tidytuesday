@@ -110,9 +110,22 @@ fig
 ```
 
 # Saving `subdata` for visulisation in the main page 
-```{r}
+```{r, eval = FALSE}
 saveRDS(subdata, file = "sub_animal_rescues.rds")
 ```
+
+<!-- # Time visualisation -->
+<!-- ```{r} -->
+<!-- subdata %>%  -->
+<!--   # dplyr::filter(animal_type == "fox") %>%  -->
+<!--   dplyr::mutate(hour = lubridate::hour(date_time_of_call), -->
+<!--                 quater = lubridate::quarter(date_time_of_call)) %>%  -->
+<!--   ggplot(aes(x = hour)) + -->
+<!--   # geom_histogram() + -->
+<!--   geom_density(aes(colour = factor(quater))) + -->
+<!--   facet_wrap(~animal_type) -->
+<!-- ``` -->
+
 
 <!-- # Mapbox visualisation using `mapdeck` -->
 
