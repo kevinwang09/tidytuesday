@@ -38,4 +38,5 @@ rsconnect/
 MCQ/SciQ_dataset/
 *.csv
 *.ipynb_checkpoints
-2021-06-29/animal_rescues.csv
+2021-06-29-animal_rescues/animal_rescues.csv
+2021-04-06-deforestation/*.csv
