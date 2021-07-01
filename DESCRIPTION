@@ -11,7 +11,7 @@ Imports:
   patchwork,
   DT,
   pkgdown,
-  sessioninfo
+  sessioninfo,
   plotly,
   knitr
   

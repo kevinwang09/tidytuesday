@@ -12,6 +12,7 @@ output:
 knitr::opts_chunk$set(warning = FALSE,
                       message = FALSE)
 library(tidyverse)
+library(plotly)
 ```
 
 
@@ -21,7 +22,7 @@ This webpage was originally designed to host all of my work for the [tidytuesday
 
 However, as a data scientist, I often need a quick workspace to host all my other statistical analytics. Hence, as my analytical interests are not limited to just tidytuesday datasets, I also use this repo to host a whole range RMarkdown HTML reports. 
 
-This webpage was deployed using GitHub Pages and divided into years. 
+This webpage was deployed using GitHub Pages and GitHub Actions and divided into years. 
 
 # 2021-03-23 UNvotes
 
@@ -45,13 +46,70 @@ Main findings:
 
 <img src="2021-03-23-UNvotes/UNvotes_clustering.png" width="1000" height="500" />
 
+
+# 2021-04-06 Deforestation
+
+Codes are available [here](2021-04-06-deforestation/2021-04-06-deforestation.html).
+
+This o[riginal tidytuesday dataset](https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-04-06/readme.md) is consist of 5 data. I have chosen to use only one, which is the `forest` data for it contains the deforestation measurements that I was most interested in. 
+
+In this data, deforestation is recorded as `net_forest_conversion`, in the units of hectares. 
+
+The main visualisation used here are `plotly`.
+
+Some interesting points in producing this plot:
+
++ Again, `plotly` was reliable as always in making interactive visualisations. However, I found these two documentation pages to be confusing. 
++ https://plotly.com/r/animations/ is a much better example of how to introduce sliders into the plot. Despite the title, https://plotly.com/r/sliders/ is much more advanced than its name suggests and it is more a page on very fine customisation.
++ `tidyr::complete` is a very well designed function. In wrangling the data, there was an issue with the forest data, in that some country's deforestation values for some years were not recorded. These missing entries in the data meant that I had to complete the data. 
+
+The solution was simple:
+```
+forest %>% 
+  tidyr::complete(expand(., nesting(entity, code), year), 
+                  fill = list(net_forest_conversion = NA))
+```
+
+In this code chunk: 
+
+  + `complete` is the main action to be performed on the data
+  + Each column named in `expand(...)` will then have its unique values expanded (in the sense of a Cartesian set product). 
+  + `nesting` looks into the both the `entity` and `code` columns (which stand for the country name and the country's 3-letters ISO code) and extract out their unique combinations within the data. Its placement within the `expand(...)` function was the key here, because each `entity` can only have one `code` and vice versa. The use of `nesting` keeps both columns in the final output. 
+  + The `fill=...` argument then specifies exactly what needs to go into every column. 
+  + Similar functions exist in `python`, but as this [post](https://stackoverflow.com/questions/44287445/pandas-or-python-equivalent-of-tidyr-complete) suggests, it is much more manual and require a specific combination of functions. 
+
+**Click the legend to interact with the map**, e.g. you can double click "fox" to only display foxes around the city. 
+
+```{r}
+subforest = read_csv(file = "2021-04-06-deforestation/subforest.csv")
+
+fig <- plot_ly(
+  subforest,
+  type = 'choropleth',
+  locations = ~code,
+  z = ~net_forest_conversion_log10,
+  text = ~entity,
+  frame = ~year,
+  colors = "RdYlGn") %>% 
+  layout(
+    geo = list(projection = list(type = "orthographic")),
+    showlegend = FALSE)
+
+fig
+```
+
+Main findings:
+
++ Australia is pretty interesting in that prior to 2010, it had decreased forest areas, but have turned that to the positive direction after. 
++ China had consistently high increases in forest area. This is something that has been [published in Nature](https://www.nature.com/articles/s41467-019-13798-8). This fact might sound surprising to some as China enjoyed rapid economic growth and industrialisation in the past few decades.
+
 # 2021-06-29 Animal rescue in London
 
 Codes are available [here](2021-06-29-animal-rescues/2021-06-29-animal-rescues.html).
 
 This dataset records the animal rescued around the city of London. The main aim of this analysis is to visualise the spatial distribution of the animal types around the city. 
 
-The main visualisation used here are `plotly` and Mapbox. 
+The main visualisation packages used here were `plotly` and Mapbox. 
 
 Some interesting points in producing this plot:
 
@@ -63,8 +121,6 @@ Some interesting points in producing this plot:
 
 ```{r}
 subdata = readRDS(file = "2021-06-29-animal-rescues/sub_animal_rescues.rds")
-
-library(plotly)
 Sys.setenv('MAPBOX_TOKEN' = Sys.getenv('MAPBOX_AUTH'))
 
 fig = subdata %>% 

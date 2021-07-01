@@ -33,6 +33,8 @@ knitr::opts_chunk$set(echo=FALSE,
 ```{r, message=FALSE}
 library(tidyverse)
 library(lubridate)
+library(plotly)
+
 
 theme_set(theme_bw(18) +
             theme(legend.position = "bottom"))
@@ -40,7 +42,7 @@ theme_set(theme_bw(18) +
 
 
 # Loading data
-```{r}
+```{r, eval = FALSE}
 filenames = c("forest.csv", "forest_area.csv", "brazil_loss.csv",
                 "soybean_use.csv", "vegetable_oil.csv")
 
@@ -53,11 +55,42 @@ purrr::map2(
   .f = ~ download.file(url = .y, destfile = .x)
 )
 
-
-forest <- readr::read_csv('forest.csv')
-forest_area <- readr::read_csv('forest_area.csv')
 # brazil_loss <- readr::read_csv('brazil_loss.csv')
 # soybean_use <- readr::read_csv('soybean_use.csv')
+```
+
+```{r}
+forest <- readr::read_csv('forest.csv')
+# forest_area <- readr::read_csv('forest_area.csv')
 # vegetable_oil <- readr::read_csv('vegetable_oil.csv')
 ```
 
+```{r}
+subforest = forest %>% 
+  dplyr::filter(net_forest_conversion != 0) %>% 
+  tidyr::complete(expand(., nesting(entity, code), year), 
+                  fill = list(net_forest_conversion = NA)) %>% 
+  dplyr::mutate(net_forest_conversion_log10 = sign(net_forest_conversion)*log10(abs(net_forest_conversion)))
+# subforest %>% glimpse()
+```
+
+```{r, eval=FALSE}
+write_csv(x = subforest, file = "./subforest.csv")
+```
+
+# Plotly visualisation with slider
+```{r}
+fig <- plot_ly(
+  subforest,
+  type = 'choropleth',
+  locations = ~code,
+  z = ~net_forest_conversion_log10,
+  text = ~entity,
+  frame = ~year,
+  colors = "RdYlGn") %>% 
+  layout(
+    geo = list(projection = list(type = "orthographic")),
+    showlegend = FALSE)
+
+fig
+```
