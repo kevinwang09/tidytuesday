@@ -10,21 +10,12 @@ output:
     toc: yes
     number_sections: yes
     theme: paper
-    # keep_md: true
-  pdf_document:
-    toc: yes
-    number_sections: yes
-  word_document: 
-    toc: yes
-    # keep_md: true
-    # reference_docx: "reference.docx"
 editor_options: 
   chunk_output_type: console
 ---
 
 ```{r global-options, include=FALSE}
-knitr::opts_chunk$set(echo=FALSE, 
-                      warning=FALSE, 
+knitr::opts_chunk$set(warning=FALSE, 
                       message=FALSE)
 ```
 
