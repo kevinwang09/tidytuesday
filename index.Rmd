@@ -78,7 +78,7 @@ In this code chunk:
   + The `fill=...` argument then specifies exactly what needs to go into every column. 
   + Similar functions exist in `python`, but as this [post](https://stackoverflow.com/questions/44287445/pandas-or-python-equivalent-of-tidyr-complete) suggests, it is much more manual and require a specific combination of functions. 
 
-**Click the legend to interact with the map**, e.g. you can double click "fox" to only display foxes around the city. 
+**Click and drag the globe to interact with this map**.
 
 ```{r}
 subforest = read_csv(file = "2021-04-06-deforestation/subforest.csv")
