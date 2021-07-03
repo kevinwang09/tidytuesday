@@ -1,0 +1,121 @@
+---
+title: "Kevin's template"
+author: "Kevin Wang"
+date: "2021 Apr 06"
+output:
+  html_document:
+    code_folding: hide
+    fig_height: 10
+    fig_width: 12
+    toc: yes
+    number_sections: yes
+    theme: paper
+    # keep_md: true
+  pdf_document:
+    toc: yes
+    number_sections: yes
+  word_document: 
+    toc: yes
+    # keep_md: true
+    # reference_docx: "reference.docx"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r global-options, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, 
+                      warning=FALSE, 
+                      message=FALSE)
+```
+
+# Executive summary
+
+```{r, message=FALSE}
+library(tidyverse)
+
+theme_set(theme_bw(18) +
+            theme(legend.position = "bottom"))
+```
+
+```{r, eval = FALSE}
+download.file('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-03-02/youtube.csv', "youtube.csv")
+```
+
+
+```{r}
+youtube <- readr::read_csv("youtube.csv") %>% 
+  dplyr::mutate(
+    video_publish_year = lubridate::year(published_at))
+```
+
+# Variable checks
+```{r}
+youtube %>% skimr::skim()
+```
+
+# High/low counts of views/likes
+
+```{r}
+library(scales)
+
+youtube %>% 
+  ggplot(aes(x = view_count)) +
+  geom_histogram(fill = "white", colour = "black") +
+  scale_x_log10(labels = label_number(suffix = "K", scale = 1e-3, accuracy = 1, big.mark = ",")) +
+  theme_classic(18)
+
+youtube %>% 
+  ggplot(aes(x = like_count)) +
+  geom_histogram(fill = "white", colour = "black") +
+  scale_x_log10(labels = label_number(suffix = "K", scale = 1e-3, accuracy = 1, big.mark = ",")) +
+  theme_classic(18)
+```
+
+
+## Year difference
+
+I have a hypothesis that if the video publication date is very far away from when the ad was made, then the view counts are likely to be lower. 
+
+```{r}
+youtube %>% 
+  ggplot(aes(x = video_publish_year - year,
+             y = view_count)) +
+  geom_point() +
+  scale_y_log10(labels = label_number(suffix = "K", scale = 1e-3, accuracy = 1, big.mark = ","))
+```
+
+# Binary classifications
+
+```{r}
+bin_data = youtube %>% 
+  dplyr::transmute(
+    year,
+    brand,
+    funny, 
+    show_product_quickly,
+    patriotic, 
+    celebrity, 
+    danger, 
+    animals, 
+    use_sex,
+    video_publish_year,
+    channel_title,
+    year_diff = video_publish_year - year,
+    view_count_class = ifelse(view_count <= 1e4, "low", "high") %>% 
+      as.factor()) %>% 
+  dplyr::mutate(across(.cols = where(is.logical),
+                       .fns = ~ ifelse(.x, "yes", "no"))) %>% 
+  na.omit()
+```
+
+```{r}
+library(treeheatr)
+
+heat_tree(bin_data, target_lab = 'view_count_class')
+```
+
+# Session Info
+```{r}
+sessioninfo::session_info()
+```
+

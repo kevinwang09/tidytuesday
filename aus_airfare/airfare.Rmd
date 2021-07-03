@@ -5,7 +5,7 @@ date: "02/04/2020"
 output:
   html_document:
     code_folding: hide
-    fig_height: 12
+    fig_height: 8
     fig_width: 12
     toc: yes
     number_sections: true
@@ -59,14 +59,13 @@ theme_set(theme_bw(18) +
 
 
 ```{r}
-# download.file(url = "https://www.bitre.gov.au/sites/default/files/documents/faresforbi_excel_0320.xlsx",
-#               destfile = "raw_aus_airfare.xlsx")
+# download.file(url = "https://www.bitre.gov.au/sites/default/files/documents/faresforbi_excel_0621.xlsx", destfile = "raw_aus_airfare.xlsx")
 
 raw_data = readxl::read_excel(path = "raw_aus_airfare.xlsx", sheet = 1) %>%
   janitor::clean_names() %>%
   dplyr::mutate(year_month = paste0(year, "_", month) %>% 
                   lubridate::ymd(truncated = 1),
-                covid = (year_month >= "2019-11-01") & (year_month <= "2020-04-01")) %>%
+                covid = ifelse(year_month >= "2020-01-01", "Yes", "No")) %>%
   janitor::remove_empty()
 
 glimpse(raw_data)
@@ -81,17 +80,17 @@ glimpse(raw_data)
 #   geo = purrr::map(city, ~ geocode(paste0(.x, ", Australia"))))
 # 
 # ## Adding airport location
-# location_tbl2 = location_tbl %>% 
-#   tidyr::unnest(geo) %>% 
+# location_tbl2 = location_tbl %>%
+#   tidyr::unnest(geo) %>%
 #   dplyr::mutate(airport = purrr::map2(
-#     .x = lat, .y = lon, 
-#     .f = ~ airports_around(lat = .x, lon = .y, distance = 50) %>% 
-#       slice(1))) %>% 
-#   tidyr::unnest(airport) %>% 
+#     .x = lat, .y = lon,
+#     .f = ~ airports_around(lat = .x, lon = .y, distance = 50) %>%
+#       slice(1))) %>%
+#   tidyr::unnest(airport) %>%
 #   dplyr::select(city, city_lon = lon, city_lat = lat,
 #                 airport_name = Name, itat = IATA,
 #                 airport_lon = Longitude, airport_lat = Latitude)
-#   
+# 
 # saveRDS(location_tbl2, file = "location_tbl.rds")
 ```
 
@@ -106,62 +105,82 @@ location_tbl = readRDS("location_tbl.rds")
 raw_data %>% 
   ggplot(aes(x = factor(month), y = real)) +
   geom_path(aes(group = route)) +
-  facet_wrap(~year)
+  facet_wrap(~year) + 
+  labs(x = "Month",
+       y = "Real (CPI adjusted) discount airfare")
 ```
 
 
 ## Melbourne to Sydney
 ```{r}
 library(directlabels)
+library(ggsci)
+
+years = c(2010:2021)
+colours = rev(pal_d3("category20")(length(years)))
+names(colours) = years
+
 raw_data %>% 
   dplyr::filter(route == "Melbourne - Sydney") %>% 
-  ggplot(aes(x = factor(month), y = real, colour = factor(year))) +
-  geom_line(aes(group = year, size = covid)) +
+  ggplot(aes(x = factor(month), 
+             y = real, 
+             colour = factor(year))) +
+  geom_line(aes(group = year, 
+                size = covid,
+                alpha = covid)) +
   geom_dl(aes(label = year), method = "first.qp") +
-  scale_size_manual(values = c(1, 3))
+  scale_size_manual(values = c("No" = 1.2, "Yes" = 2)) +
+  scale_alpha_manual(values = c("Yes" = 1, "No" = 0.5), guide = "none") +
+  scale_colour_manual(values = colours) + 
+  labs(colour = "Year",
+       size = "COVID affected",
+       x = "Month",
+       y = "Real (CPI adjusted) discount airfare",
+       title = "Melbourne - Sydney route",
+       caption = "Data source: https://www.bitre.gov.au/statistics/aviation/air_fares")
 ```
 
 
-# Mapbox
-```{r}
-path_data = raw_data %>% 
-  dplyr::filter(year == "2020", month == "4") %>% 
-  left_join(location_tbl, by = c("port1" = "city")) %>% 
-  left_join(location_tbl, by = c("port2" = "city"), suffix = c("_port1", "_port2")) %>% 
-  dplyr::mutate(real2 = real %>% log)
+<!-- # Mapbox -->
+<!-- ```{r} -->
+<!-- path_data = raw_data %>%  -->
+<!--   dplyr::filter(year == "2020", month == "4") %>%  -->
+<!--   left_join(location_tbl, by = c("port1" = "city")) %>%  -->
+<!--   left_join(location_tbl, by = c("port2" = "city"), suffix = c("_port1", "_port2")) %>%  -->
+<!--   dplyr::mutate(real2 = real %>% log) -->
 
 
-library(mapdeck)
-set_token(Sys.getenv("MAPBOX_AUTH"))
+<!-- library(mapdeck) -->
+<!-- set_token(Sys.getenv("MAPBOX_AUTH")) -->
 
 
-mapdeck(token = Sys.getenv("MAPBOX_AUTH"), style = mapdeck_style('dark')) %>%
-  add_line(
-    data = path_data, 
-    origin = c("city_lon_port1", "city_lat_port1"), 
-    destination = c("city_lon_port2", "city_lat_port2"), 
-    # stroke_from = "port1", 
-    # stroke_to = "port2",
-    tooltip = "real",
-    layer_id = 'arclayer',
-    stroke_colour = "real",
-    stroke_width = "real2",
-    # legend = TRUE
-  )
+<!-- mapdeck(token = Sys.getenv("MAPBOX_AUTH"), style = mapdeck_style('dark')) %>% -->
+<!--   add_line( -->
+<!--     data = path_data,  -->
+<!--     origin = c("city_lon_port1", "city_lat_port1"),  -->
+<!--     destination = c("city_lon_port2", "city_lat_port2"),  -->
+<!--     # stroke_from = "port1",  -->
+<!--     # stroke_to = "port2", -->
+<!--     tooltip = "real", -->
+<!--     layer_id = 'arclayer', -->
+<!--     stroke_colour = "real", -->
+<!--     stroke_width = "real2", -->
+<!--     # legend = TRUE -->
+<!--   ) -->
 
 
-mapdeck(style = mapdeck_style('dark')) %>%
-  add_animated_arc(
-    data = path_data, 
-    origin = c("city_lon_port1", "city_lat_port1"), 
-    destination = c("city_lon_port2", "city_lat_port2"), 
-    # stroke_from = "port1", 
-    # stroke_to = "port2",
-    tooltip = "real",
-    layer_id = 'arclayer',
-    # stroke_colour = "real",
-    stroke_width = "real2",
-    trail_length = 10,
-    legend = TRUE
-  )
-```
+<!-- mapdeck(style = mapdeck_style('dark')) %>% -->
+<!--   add_animated_arc( -->
+<!--     data = path_data,  -->
+<!--     origin = c("city_lon_port1", "city_lat_port1"),  -->
+<!--     destination = c("city_lon_port2", "city_lat_port2"),  -->
+<!--     # stroke_from = "port1",  -->
+<!--     # stroke_to = "port2", -->
+<!--     tooltip = "real", -->
+<!--     layer_id = 'arclayer', -->
+<!--     # stroke_colour = "real", -->
+<!--     stroke_width = "real2", -->
+<!--     trail_length = 10, -->
+<!--     legend = TRUE -->
+<!--   ) -->
+<!-- ``` -->
