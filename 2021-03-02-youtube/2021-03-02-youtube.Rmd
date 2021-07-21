@@ -30,6 +30,8 @@ knitr::opts_chunk$set(echo=FALSE,
 
 # Executive summary
 
+https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-03-02/readme.md
+
 ```{r, message=FALSE}
 library(tidyverse)
 
@@ -71,7 +73,6 @@ youtube %>%
   theme_classic(18)
 ```
 
-
 ## Year difference
 
 I have a hypothesis that if the video publication date is very far away from when the ad was made, then the view counts are likely to be lower. 
@@ -102,7 +103,7 @@ bin_data = youtube %>%
     channel_title,
     year_diff = video_publish_year - year,
     view_count_class = ifelse(view_count <= 1e4, "low", "high") %>% 
-      as.factor()) %>% 
+      factor(levels = "low", "high")) %>% 
   dplyr::mutate(across(.cols = where(is.logical),
                        .fns = ~ ifelse(.x, "yes", "no"))) %>% 
   na.omit()
@@ -113,6 +114,61 @@ library(treeheatr)
 
 heat_tree(bin_data, target_lab = 'view_count_class')
 ```
+
+
+# GLM - Logistic 
+```{r}
+glm(view_count_class ~ .*., family = "binomial", data = bin_data %>% dplyr::select(-channel_title, -brand)) %>% 
+  summary()
+```
+
+# xgboost
+
+https://juliasilge.com/blog/xgboost-tune-volleyball/
+
+```{r}
+library(xgboost)
+library(shapr)
+library(tidymodels)
+library(SHAPforxgboost)
+
+set.seed(123)
+rsobj = rsample::initial_split(data = bin_data %>% dplyr::select(-brand, -channel_title))
+
+train_df = training(rsobj)
+train_x = train_df %>% as.data.frame() %>% model.matrix(view_count_class ~ .*., data = .)
+train_y = train_df$view_count_class
+
+test_df = testing(rsobj)
+test_x = test_df %>% as.data.frame() %>% model.matrix(view_count_class ~ .*., data = .)
+test_y = test_df$view_count_class
+
+model <- xgboost::xgboost(
+  data = train_x,
+  label = as.integer(train_y)-1,
+  nround = 20,
+  verbose = FALSE,
+  objective = "binary:logistic")
+
+shap_values <- shap.values(xgb_model = model, X_train = train_x)
+xgb.importance(model = model)
+
+shap_long <- shap.prep(xgb_model = model, X_train = train_x)
+shap.plot.summary(shap_long)
+
+shap.plot.dependence(data_long = shap_long, 
+                     x = 'year', y = 'year', 
+                     color_feature = 'animalsyes') + 
+  ggtitle("")
+```
+
+https://www.kaggle.com/vikumsw/explaining-random-forest-model-with-shapely-values
+# Python Shapley values
+```{python}
+import pandas as pd
+import shap
+```
+
 
 # Session Info
 ```{r}

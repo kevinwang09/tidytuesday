@@ -1,0 +1,78 @@
+---
+title: "US Droughts"
+author: "Kevin Wang"
+date: "2021 Jul 21"
+output:
+  html_document:
+    code_folding: hide
+    fig_height: 10
+    fig_width: 12
+    toc: yes
+    number_sections: yes
+    theme: paper
+    # keep_md: true
+  pdf_document:
+    toc: yes
+    number_sections: yes
+  word_document: 
+    toc: yes
+    # keep_md: true
+    # reference_docx: "reference.docx"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r global-options, include=FALSE}
+knitr::opts_chunk$set(warning=FALSE, 
+                      message=FALSE)
+```
+
+# Executive summary
+
+```{r, message=FALSE}
+library(tidyverse)
+library(lubridate)
+
+theme_set(theme_bw(18) +
+            theme(legend.position = "bottom"))
+```
+
+
+```{r, eval = FALSE}
+download.file('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-07-20/drought.csv', destfile = "drought.csv")
+```
+
+
+```{r}
+drought <- readr::read_csv("drought.csv") %>% 
+  dplyr::mutate(
+    map_date = map_date %>% as.character() %>% lubridate::ymd()
+  )
+```
+
+```{r}
+subdata = drought %>% 
+  dplyr::filter(
+    # map_date <= ymd("2002-08-01"),
+    drought_lvl != "None")
+
+library(geofacet)
+p = subdata %>% 
+  ggplot(aes(x = valid_start,
+             y = area_pct,
+             colour = drought_lvl)) +
+  geom_line() +
+  scale_x_date(date_breaks = "4 years", date_labels = "%Y") +
+  facet_geo(~state_abb, grid = "us_state_grid2") +
+  theme(axis.text.x = element_text(angle = 90))
+
+ggsave(plot = p, filename = "plot.pdf", height = 20, width = 20)
+```
+
+
+
+# Session Info
+```{r}
+sessioninfo::session_info()
+```
+
