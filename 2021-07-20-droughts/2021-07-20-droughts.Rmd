@@ -46,29 +46,75 @@ download.file('https://raw.githubusercontent.com/rfordatascience/tidytuesday/mas
 ```{r}
 drought <- readr::read_csv("drought.csv") %>% 
   dplyr::mutate(
-    map_date = map_date %>% as.character() %>% lubridate::ymd()
-  )
+    year = valid_start %>% year(),
+    map_date = map_date %>% as.character() %>% lubridate::ymd(),
+    season = quarter(valid_start, with_year = FALSE, fiscal_start = 3),
+    season = case_when(
+        season == 1 ~ "Spring",
+        season == 2 ~ "Summer",
+        season == 3 ~ "Autumn",
+        season == 4 ~ "Winter"),
+    month = valid_start %>% lubridate::month(label = TRUE),
+    drought_lvl = drought_lvl %>% 
+      fct_level(c("None", paste0("D", 0:4)))
+    )
 ```
 
 ```{r}
 subdata = drought %>% 
   dplyr::filter(
     # map_date <= ymd("2002-08-01"),
-    drought_lvl != "None")
+    # state_abb  == "CA",
+    drought_lvl == "None"
+    )
+
 
 library(geofacet)
+
+
 p = subdata %>% 
   ggplot(aes(x = valid_start,
-             y = area_pct,
+             y = 100-area_pct, 
              colour = drought_lvl)) +
   geom_line() +
-  scale_x_date(date_breaks = "4 years", date_labels = "%Y") +
-  facet_geo(~state_abb, grid = "us_state_grid2") +
-  theme(axis.text.x = element_text(angle = 90))
+  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) +
+  labs(x = "",
+       y = "Percent of area impacted") +
+  facet_geo(~state_abb, grid = "us_state_grid2")
+
 
 ggsave(plot = p, filename = "plot.pdf", height = 20, width = 20)
 ```
 
+```{r}
+subdata2 = drought %>% 
+  group_by(year, month, state_abb, drought_lvl) %>% 
+  dplyr::summarise(
+    avg_area_pct = mean(area_pct, na.rm = TRUE)) %>% 
+  # dplyr::filter(state_abb  == "CA") %>% 
+  dplyr::mutate(
+    year_month = paste0(year, "-", month, "-01") %>% ymd())
+
+
+library(ggsci)
+
+p2 = subdata2 %>%
+  dplyr::filter(drought_lvl == "D2") %>% 
+  ggplot(aes(x = year_month,
+             y = avg_area_pct,
+             colour = drought_lvl)) +
+  geom_line() +
+  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
+  scale_colour_d3() +
+  facet_geo(~state_abb, grid = "us_state_grid2") +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) +
+  labs(x = "",
+       y = "Percent of area impacted")
+
+
+ggsave(plot = p2, filename = "plot2.pdf", height = 20, width = 30)
+```
 
 
 # Session Info
