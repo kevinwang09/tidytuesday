@@ -156,3 +156,35 @@ Main findings:
 + Most interestingly, foxes were found throughout the city, and a good number of them appeared in the middle of the city too. I personally find that interesting, because I have never seen a fox in city streets/parks before. 
 + As expected, larger animals like horses and deers were rescued on the outskirts of the city. 
 + Cats and dogs are rescued all around the city. Likely because these were dometic pets that ran into danger. 
+
+# 2021-07-24 US droughts
+
+Codes are available [here]().
+
+
+```{r}
+subdata2 = read_rds(file = "2021-07-20-droughts/subset_drought_data.rds")
+
+fig <- plot_ly(
+  data = subdata2 %>% 
+    dplyr::filter(drought_lvl == "D3"),
+  type = 'choropleth',
+  locationmode = 'USA-states',
+  locations = ~state_abb,
+  z = ~avg_area_pct,
+  frame = ~time,
+  color = ~avg_area_pct,
+  zauto = FALSE,
+  zmin = 0, 
+  zmax = 100) %>% 
+  layout(
+    title = "Severe droughts in the US",
+    geo = list(
+      scope = 'usa'),
+    showlegend = FALSE) %>% 
+  colorbar(
+    title = "Avg. % of area i•mpacted"
+  )
+
+fig
+```
