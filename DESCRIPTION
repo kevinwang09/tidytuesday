@@ -13,5 +13,7 @@ Imports:
   pkgdown,
   sessioninfo,
   plotly,
-  knitr
+  knitr,
+  geofacet,
+  directlabels
   

@@ -6,6 +6,8 @@ output:
     toc: yes
     toc_depth: 3
     toc_float: yes
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r, message = FALSE, echo = FALSE}
@@ -13,6 +15,13 @@ knitr::opts_chunk$set(warning = FALSE,
                       message = FALSE)
 library(tidyverse)
 library(plotly)
+library(ggsci)
+library(directlabels)
+library(geofacet)
+
+
+theme_set(theme_classic(18) +
+            theme(legend.position = "bottom"))
 ```
 
 
@@ -159,8 +168,27 @@ Main findings:
 
 # 2021-07-24 US droughts
 
-Codes are available [here]().
+Codes are available [here](2021-07-20-droughts/2021-07-20-droughts.html).
 
+This data is a bit hard to evaluate because there are different levels of droughts:
+
++ None: no drought
++ D0: abnormally dry
++ D1: moderate drought
++ D2: severe drought
++ D3: extreme drought
++ D4: exceptional drought
+
+The main variables indicating droughts are: 
+
++ area_pct: Percent of state currently in that drought category
++ area_total: Total land area (sq miles) of state currently in that drought category
++ pop_pct: Population percent of total state population in that drought category
++ pop_total: Population total of that state in that drought category
+
+The data is recorded on a weekly scale between 2001 July and 2021 July. Note that these percentages do not sum to 100%.
+
+For now, I looked into only extreme drought and the percentage of area impacted. For plotting purposes, I also averaged the percentage on a monthly scale. It is obvious that the areas impacted are spatially correlated. 
 
 ```{r}
 subdata2 = read_rds(file = "2021-07-20-droughts/subset_drought_data.rds")
@@ -178,13 +206,67 @@ fig <- plot_ly(
   zmin = 0, 
   zmax = 100) %>% 
   layout(
-    title = "Severe droughts in the US",
+    title = "Extreme droughts in the US",
     geo = list(
       scope = 'usa'),
     showlegend = FALSE) %>% 
-  colorbar(
-    title = "Avg. % of area i•mpacted"
-  )
+  colorbar(title = "Avg. % of area impacted")
 
 fig
 ```
+
+## `geofacet`
+
+I think `geofacet` is a great package for visualisations. It offers a twist on the usual `facet_wrap`, and places each facet based on the geographical location of the states being plotted. When using this package with `ggplotly`, I would recommend using `theme_minimal` to hide the excess facets (due to how the package is setup).
+
+```{r, fig.height = 15, fig.width = 25}
+p = subdata2 %>% 
+  dplyr::filter(drought_lvl == "D3") %>% 
+  ggplot(aes(x = month, 
+             y = avg_area_pct,
+             colour = factor(year),
+             label = year)) +
+  geom_point(size = 2) +
+  geom_dl(method = list("last.points"), position = position_nudge(x = 0.3), size = 3) + 
+  geom_line(aes(group = year)) +
+  scale_x_discrete(expand = c(0, 0, 0, 4),
+                   breaks = c("Jan", "Mar", "May", "Jul", "Sep", "Dec")) +
+  scale_y_continuous(limits = c(0, 100),
+                     n.breaks = 5,
+                     labels = scales::percent_format(accuracy = 1, scale = 1)) +
+  guides(colour = "none") +
+  facet_geo(~state_abb, grid = "us_state_grid2") +
+  labs(title = "Extreme droughts in the US",
+       x = "",
+       y = "Avg. % of area impacted") +
+  theme_minimal(18) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
+
+p
+```
+
+## California
+
+```{r}
+subdata2 %>% 
+  dplyr::filter(drought_lvl == "D3",
+                state_abb == "CA") %>% 
+  ggplot(aes(x = month, 
+             y = avg_area_pct,
+             colour = factor(year),
+             label = year)) +
+  geom_point(size = 2) +
+  geom_dl(method = list("last.points"), position = position_nudge(x = 0.3), size = 3) + 
+  geom_line(aes(group = year)) +
+  scale_x_discrete(expand = c(0, 0, 0, 4)) +
+  scale_y_continuous(limits = c(0, 100),
+                     n.breaks = 5,
+                     labels = scales::percent_format(accuracy = 1, scale = 1)) +
+  guides(colour = "none") +
+  labs(x = "",
+       y = "Avg. % of area impacted",
+       title = "Extreme droughts in California") +
+  theme_classic(18) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
+```
+
