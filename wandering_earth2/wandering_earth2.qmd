@@ -1,0 +1,150 @@
+---
+title: "Wandering Earth 2"
+author: "Kevin Wang"
+format: html
+editor: visual
+---
+
+# *Aim*
+
+*This is a document to explore the box office data associated with two movies: Wandering Earth 2 and MJH.*
+
+# *Data Source*
+
+*https://www.endata.com.cn/BoxOffice/MovieStock/movieShow.html?id=704382*
+
+*https://www.endata.com.cn/BoxOffice/MovieStock/movieShow.html?id=713237*
+
+# *Importing data and visualisation*
+
+```{r}
+suppressPackageStartupMessages({
+  library(tidyverse)
+  library(scales)
+  library(lubridate)
+  library(broom)
+})
+
+theme_set(theme_bw(14))
+```
+
+```{r}
+df_combined = dplyr::bind_rows(
+  list(
+    `WanderingEarth2` = readr::read_csv(
+      "wandering_earth2.csv", show_col_types = FALSE),
+    `MJH` = readr::read_csv(
+      "MJH.csv", show_col_types = FALSE)),
+  .id = "name") %>% 
+  dplyr::mutate(
+    WeekStart = WeekStart %>% lubridate::dmy()) %>% 
+  dplyr::filter(Sales > 100)
+```
+
+```{r}
+df_combined %>% 
+  ggplot(aes(x = WeekStart, y = Sales, 
+             colour = name, group = name)) +
+  geom_point() +
+  geom_line() +
+  scale_y_continuous(
+    trans = "log10", 
+    labels = label_number(scale_cut = cut_short_scale()))
+```
+
+# *Modelling strategy*
+
+-   *Both movies do not behave well on the first week. Hence, we will add those numbers to the second week (not ideal, but let's do it)*
+
+-   *Starting from the second week, we should start linearly model on the rate of decrease (on the log scale).*
+
+-   *We want to estimate roughly when will the cumulative sales from WE over take MJH.*
+
+```{r}
+df_collapsed = df_combined %>% 
+  dplyr::arrange(WeekStart) %>% 
+  dplyr::mutate(
+    WeekCollapsed = WeekStart,
+    WeekCollapsed = case_when(
+      WeekCollapsed == ymd("2023-01-16") ~ ymd("2023-01-23"), 
+      TRUE ~ WeekCollapsed))
+
+df_collapsed
+```
+
+```{r}
+df_collapsed2 = df_collapsed %>% 
+  dplyr::group_by(name, WeekCollapsed) %>% 
+  dplyr::summarise(Sales = sum(Sales)) %>% 
+  dplyr::group_by(name) %>% 
+  dplyr::mutate(
+    WeekNumber = rank(WeekCollapsed),
+    cumsumSales = cumsum(Sales)) %>% 
+  pivot_wider(names_from = "name", 
+              values_from = c("Sales", "cumsumSales"))
+  
+df_collapsed2
+```
+
+```{r}
+df_collapsed2 %>% 
+  pivot_longer(
+    cols = starts_with("Sales"), 
+    names_to = "name", 
+    values_to = "Sales") %>% 
+  ggplot(aes(x = WeekNumber, y = Sales, 
+             colour = name, group = name)) +
+  geom_point() +
+  geom_line() +
+  scale_y_continuous(
+    trans = "log10", 
+    labels = label_number(scale_cut = cut_short_scale())) +
+  scale_x_continuous(breaks = 1:6)
+```
+
+## Linear modelling on the log scale
+
+```{r}
+df_WE_model = df_collapsed2 %>% 
+  dplyr::mutate(log2_Sales_WanderingEarth2 = log2(Sales_WanderingEarth2))
+
+model_WE = lm(log2_Sales_WanderingEarth2 ~ WeekNumber, data = df_WE_model)
+model_WE %>% summary()
+```
+
+```{r}
+df_MJH_model = df_collapsed2 %>% 
+  dplyr::mutate(log2_Sales_MJH = log2(Sales_MJH))
+
+model_MJH = lm(log2_Sales_MJH ~ WeekNumber, data = df_MJH_model)
+model_MJH %>% summary()
+```
+
+## Linear prediction
+
+```{r}
+df_pred = dplyr::bind_rows(
+  list(
+    `WanderingEarth2` = model_WE %>% 
+      broom::augment(newdata = tibble(WeekNumber = 1:12)),
+    `MJH` = model_MJH %>% 
+      broom::augment(newdata = tibble(WeekNumber = 1:12))),
+  .id = "name") %>% 
+  dplyr::mutate(Sales = 2^.fitted) %>% 
+  dplyr::select(-.fitted) %>% 
+  dplyr::group_by(name) %>% 
+  dplyr::mutate(cumsumSales = cumsum(Sales)) %>% 
+  dplyr::ungroup()
+
+df_pred
+```
+
+```{r}
+df_pred_wide = df_pred %>% 
+  pivot_wider(names_from = "name", 
+              values_from = c("Sales", "cumsumSales"))
+
+df_pred_wide
+```
+
+# Final visualisations

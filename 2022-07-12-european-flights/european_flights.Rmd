@@ -1,0 +1,99 @@
+---
+title: "European flights"
+author: "Kevin Wang"
+date: "2022 Jul 23"
+output:
+  html_document:
+    code_folding: hide
+    fig_height: 10
+    fig_width: 12
+    toc: yes
+    number_sections: yes
+    theme: paper
+    # keep_md: true
+  pdf_document:
+    toc: yes
+    number_sections: yes
+  word_document: 
+    toc: yes
+    # keep_md: true
+    # reference_docx: "reference.docx"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r global-options, include=FALSE}
+knitr::opts_chunk$set(warning=FALSE, 
+                      message=FALSE)
+```
+
+# Executive summary
+
+```{r, message=FALSE}
+library(tidyverse)
+library(skimr)
+library(lubridate)
+
+theme_set(theme_bw(18) +
+            theme(legend.position = "bottom"))
+```
+
+# Loading data
+```{r}
+flights = read_csv("flights.csv")
+flights %>% glimpse()
+skimr::skim(flights)
+```
+
+```{r}
+flights_cleaned = flights %>% 
+  dplyr::transmute(
+    date = FLT_DATE,
+    airport_icao = APT_ICAO, 
+    airport_name = APT_NAME,
+    country = STATE_NAME,
+    dep = coalesce(FLT_DEP_1, FLT_DEP_IFR_2, 0),
+    arr = coalesce(FLT_ARR_1, FLT_ARR_IFR_2, 0),
+    total_flights = coalesce(FLT_TOT_1, FLT_TOT_IFR_2, 0))
+```
+
+# Checking distribution of total flights
+```{r}
+selected_2016 = flights_cleaned %>% 
+  dplyr::filter(date == ymd("2016-01-01"))
+
+selected_2016 %>% 
+  ggplot(aes(x = total_flights)) +
+  geom_histogram()
+```
+
+```{r}
+selected_2020 = flights_cleaned %>% 
+  dplyr::filter(date == ymd("2020-04-01"))
+
+selected_2020 %>% 
+  ggplot(aes(x = total_flights)) +
+  geom_histogram()
+```
+
+```{r}
+flights_cleaned %>% 
+  dplyr::filter(airport_icao == "EGLL") %>% 
+  ggplot(aes(x = date,
+             y = total_flights,
+             group = airport_icao)) +
+  geom_line()
+```
+
+
+```{r}
+flights_cleaned %>% 
+  dplyr::filter(country == "United Kingdom") %>% 
+  ggplot(aes(x = date,
+             y = total_flights,
+             group = airport_icao)) +
+  geom_line(alpha = 0.3) +
+  scale_y_log10()
+```
+
+
